@@ -1,2 +1,23 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="pointer-events-auto contents space-y-4">
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+</div>
