@@ -1,23 +1,12 @@
-<div class="pointer-events-auto contents space-y-4">
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
-	<p class="bg-blue-400 bg-opacity-30 text-3xl text-red-400">pageee</p>
+<script>
+	import { css } from 'styled-system/css';
+
+	const textBoxStyle = css({ pointerEvents: 'auto', display: 'contents', spaceY: '4' });
+	const textStyle = css({ bg: 'blue.400/30', fontSize: '3xl', color: 'red.400' });
+</script>
+
+<div class={textBoxStyle}>
+	{#each Array.from({ length: 100 }, (_, i) => i) as item}
+		<p class={textStyle}>pageee {item}</p>
+	{/each}
 </div>

@@ -1,11 +1,15 @@
 <script>
-	import { Canvas } from '@threlte/core';
+	import '../app.css';
+
+	import * as styles from './styles';
+
 	import Scene from './Scene.svelte';
+	import { Canvas } from '@threlte/core';
 </script>
 
-<main class="mx-auto max-w-7xl px-6 pb-12 pt-[10svh]">
-	<div class="pointer-events-none relative z-20 h-[500vh]">
-		<div class="fixed left-0 top-0 z-10 h-[100lvh] w-screen">
+<main class={styles.mainStyle}>
+	<div class={styles.canvasAndSlotBoxStyle}>
+		<div class={styles.canvasBoxStyle}>
 			<Canvas colorSpace="display-p3" useLegacyLights={false}>
 				<Scene />
 			</Canvas>
