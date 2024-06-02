@@ -4,6 +4,7 @@
 	import { spring } from 'svelte/motion';
 
 	interactivity();
+
 	const scale = spring(1);
 	let rotation = 0;
 	useTask((delta) => {
@@ -23,7 +24,9 @@
 	rotation.y={rotation}
 	position.y={1}
 	scale={$scale}
-	on:pointerenter={() => scale.set(1.5)}
+	on:pointerenter={() => {
+		scale.set(1.5);
+	}}
 	on:pointerleave={() => scale.set(1)}
 	castShadow
 >
