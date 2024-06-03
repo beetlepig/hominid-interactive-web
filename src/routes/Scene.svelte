@@ -1,16 +1,18 @@
 <script>
-	import { T, useTask } from '@threlte/core';
+	import { T } from '@threlte/core';
 	import { interactivity, useCursor } from '@threlte/extras';
 	import { spring } from 'svelte/motion';
-
-	interactivity();
-
-	const { onPointerEnter, onPointerLeave } = useCursor();
+	import { useScrollStore } from './use-scroll-store.js';
 
 	const scale = spring(1);
-	let rotation = 0;
-	useTask((delta) => {
-		rotation += delta;
+	const rotation = spring(0);
+
+	interactivity();
+	const { onPointerEnter, onPointerLeave } = useCursor();
+	const [scrollPercentage] = useScrollStore();
+
+	$effect(() => {
+		rotation.set(scrollPercentage() / 10);
 	});
 </script>
 
@@ -23,7 +25,7 @@
 />
 <T.DirectionalLight position={[0, 10, 10]} castShadow />
 <T.Mesh
-	rotation.y={rotation}
+	rotation.y={$rotation}
 	position.y={1}
 	scale={$scale}
 	on:pointerenter={() => {
