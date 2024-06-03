@@ -1,9 +1,11 @@
 <script>
 	import { T, useTask } from '@threlte/core';
-	import { interactivity } from '@threlte/extras';
+	import { interactivity, useCursor } from '@threlte/extras';
 	import { spring } from 'svelte/motion';
 
 	interactivity();
+
+	const { onPointerEnter, onPointerLeave } = useCursor();
 
 	const scale = spring(1);
 	let rotation = 0;
@@ -26,8 +28,12 @@
 	scale={$scale}
 	on:pointerenter={() => {
 		scale.set(1.5);
+		onPointerEnter();
 	}}
-	on:pointerleave={() => scale.set(1)}
+	on:pointerleave={() => {
+		scale.set(1);
+		onPointerLeave();
+	}}
 	castShadow
 >
 	<T.BoxGeometry args={[1, 2, 1]} />

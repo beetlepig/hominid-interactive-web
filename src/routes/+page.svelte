@@ -1,6 +1,8 @@
 <script>
 	import { css } from 'styled-system/css';
-	import { scrollStore } from './scroll.svelte';
+	import { useScrollStore } from './use-scroll-store';
+
+	const [scrollPercentage] = useScrollStore();
 </script>
 
 <div class={css({ display: 'contents', spaceY: '4' })}>
@@ -14,7 +16,7 @@
 			})}
 		>
 			pageee {item}
-			{scrollStore.scrollPercentage}
+			{scrollPercentage()}
 		</p>
 	{/each}
 </div>

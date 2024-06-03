@@ -5,7 +5,9 @@
 
 	import Scene from './Scene.svelte';
 	import { Canvas } from '@threlte/core';
-	import { scrollStore } from './scroll.svelte';
+	import { useScrollStore } from './use-scroll-store';
+
+	const setScrollPercentage = useScrollStore()[1];
 
 	/**
 	 * @type {import('svelte/elements').UIEventHandler<HTMLDivElement>}
@@ -20,7 +22,7 @@
 		const percentageNormalized =
 			Math.round(Math.max(0, Math.min(percentageRounded, 100)) * 10) / 10;
 
-		scrollStore.scrollPercentage = percentageNormalized;
+		setScrollPercentage(percentageNormalized);
 	};
 </script>
 
@@ -29,7 +31,6 @@
 		onscroll={handleScroll}
 		class={css({ position: 'relative', h: 'full', overflow: 'auto', w: 'full' })}
 	>
-		<p>{scrollStore.scrollPercentage}</p>
 		<div
 			class={css({
 				pos: 'fixed',
