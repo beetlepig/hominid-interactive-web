@@ -6,7 +6,6 @@
 	import Scene from './Scene.svelte';
 	import { Canvas } from '@threlte/core';
 	import { useScrollStore } from './use-scroll-store';
-	import { Grid } from '@threlte/extras';
 
 	const setScrollPercentage = useScrollStore()[1];
 
@@ -42,7 +41,6 @@
 			})}
 		>
 			<Canvas colorSpace="display-p3" useLegacyLights={false}>
-				<Grid />
 				<Scene />
 			</Canvas>
 		</div>

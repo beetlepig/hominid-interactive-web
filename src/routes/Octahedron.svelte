@@ -16,28 +16,19 @@
 
 	// prettier-ignore
 	const verticesOfOctahedron = [
-		1, 0, 0,   // Vertex 0 (right)
-		0, 1, 0,   // Vertex 1 (top)
-		-1, 0, 0,  // Vertex 2 (left)
-		0, -1, 0,  // Vertex 3 (bottom)
-		0, 0, 1,   // Vertex 4 (front)
-		0, 0, -1   // Vertex 5 (back)
+		1, 0, 0, 	-1, 0, 0,	0, 1, 0,
+		0, -1, 0, 	0, 0, 1,	0, 0, -1
 	];
 	// prettier-ignore
 	const indicesOfFaces = [
-		0, 1, 4,  // Top front triangle
-		1, 2, 4,  // Top left triangle
-		2, 3, 4,  // Top back triangle
-		3, 0, 4,  // Top right triangle
-		1, 0, 5,  // Bottom front triangle
-		2, 1, 5,  // Bottom left triangle
-		3, 2, 5,  // Bottom back triangle
-		0, 3, 5   // Bottom right triangle
+		0, 2, 4,	0, 4, 3,	0, 3, 5,
+		0, 5, 2,	1, 2, 5,	1, 5, 3,
+		1, 3, 4,	1, 4, 2
 	];
 </script>
 
 <T.Mesh
-	position.y={1}
+	position.x={0}
 	rotation.y={$rotation}
 	scale={$scale}
 	on:pointerenter={() => {
@@ -50,6 +41,6 @@
 	}}
 	castShadow
 >
-	<T.PolyhedronGeometry args={[verticesOfOctahedron, indicesOfFaces, 1, 0]}></T.PolyhedronGeometry>
+	<T.PolyhedronGeometry args={[verticesOfOctahedron, indicesOfFaces, 1, 0]} />
 	<T.MeshNormalMaterial />
 </T.Mesh>

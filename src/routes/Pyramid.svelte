@@ -15,27 +15,27 @@
 	});
 
 	// prettier-ignore
-	const verticesOfTetrahedron = [
-		// Define the vertices of the tetrahedron
-		-1, 0, -1,   // Vertex 0
-		1, 0, -1,    // Vertex 1
-		0, 0, 1,     // Vertex 2
-		0, 1, 0      // Vertex 3
+	const verticesOfPyramid = [
+		-1, 0, 0,
+		0, 0, 1,
+		1, 0, 0,
+		0, 0, -1,
+		0, 1, 0
 	];
-
 	// prettier-ignore
 	const indicesOfFaces = [
-		// Define the indices that make up each face of the tetrahedron
-		0, 1, 2,   // Base Face
-		0, 3, 1,   // Side Face 0
-		1, 3, 2,   // Side Face 1
-		2, 3, 0    // Side Face 2
+		0, 2, 1,
+		0, 3, 2,
+		1, 4, 0,
+		2, 4, 1,
+		4, 2, 3,
+		4, 3, 0
 	];
 </script>
 
 <T.Mesh
-	position.z={5}
-	position.y={1}
+	position.x={2}
+	position.y={0}
 	rotation.y={$rotation}
 	scale={$scale}
 	on:pointerenter={() => {
@@ -48,6 +48,6 @@
 	}}
 	castShadow
 >
-	<T.PolyhedronGeometry args={[verticesOfTetrahedron, indicesOfFaces, 1, 0]} />
+	<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
 	<T.MeshNormalMaterial />
 </T.Mesh>
