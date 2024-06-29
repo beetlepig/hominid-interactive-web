@@ -4,9 +4,47 @@
 	import Octahedron from './Octahedron.svelte';
 	import { interactivity } from '@threlte/extras';
 	import Pyramid from './Pyramid.svelte';
+	import { SheetObject } from '@threlte/theatre';
+	import PolyhedronSequence from './PolyhedronSequence.svelte';
+	import { polyhedronSequence } from '$lib';
+	import { useScrollStore } from './use-scroll-store.js';
 
 	interactivity();
+
+	const [scrollPosition] = useScrollStore();
+
+	/**
+	 * @type {symbol}
+	 */
+	let currentObjectSequence = $state(polyhedronSequence.Idle);
+
+	$effect(() => {
+		if (
+			scrollPosition() > 20 &&
+			scrollPosition() < 30 &&
+			currentObjectSequence !== polyhedronSequence.Exit
+		) {
+			currentObjectSequence = polyhedronSequence.Exit;
+		}
+		console.log(scrollPosition());
+	});
 </script>
+
+<PolyhedronSequence bind:currentObjectSequence />
+
+<SheetObject key="Light" let:Transform>
+	<Transform>
+		<T.PointLight args={[0xffffff, 80, 100]} castShadow />
+	</Transform>
+</SheetObject>
+
+<SheetObject key="Light Two" let:Transform>
+	<Transform>
+		<T.PointLight args={[0xffffff, 80, 100]} castShadow />
+	</Transform>
+</SheetObject>
+
+<Pyramid />
 
 <T.PerspectiveCamera
 	makeDefault
@@ -18,6 +56,3 @@
 >
 	<OrbitControls enableDamping />
 </T.PerspectiveCamera>
-<T.DirectionalLight position={[0, 10, 10]} castShadow />
-<Pyramid />
-<Octahedron />

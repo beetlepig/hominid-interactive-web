@@ -2,10 +2,12 @@
 	import '../app.css';
 
 	import { css } from 'styled-system/css';
+	import { dev } from '$app/environment';
 
 	import Scene from './Scene.svelte';
 	import { Canvas } from '@threlte/core';
 	import { useScrollStore } from './use-scroll-store';
+	import { Project, Sheet, Studio } from '@threlte/theatre';
 
 	const setScrollPercentage = useScrollStore()[1];
 
@@ -40,8 +42,13 @@
 				w: 'full'
 			})}
 		>
-			<Canvas colorSpace="display-p3" useLegacyLights={false}>
-				<Scene />
+			<Studio enabled={dev} />
+			<Canvas>
+				<Project>
+					<Sheet>
+						<Scene />
+					</Sheet>
+				</Project>
 			</Canvas>
 		</div>
 

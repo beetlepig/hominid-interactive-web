@@ -1,18 +1,6 @@
 <script>
 	import { T } from '@threlte/core';
-	import { spring } from 'svelte/motion';
-	import { useCursor } from '@threlte/extras';
-	import { useScrollStore } from './use-scroll-store';
-
-	const scale = spring(1);
-	const rotation = spring(0);
-
-	const { onPointerEnter, onPointerLeave } = useCursor();
-	const [scrollPercentage] = useScrollStore();
-
-	$effect(() => {
-		rotation.set(scrollPercentage() / 10);
-	});
+	import { SheetObject } from '@threlte/theatre';
 
 	// prettier-ignore
 	const verticesOfOctahedron = [
@@ -27,20 +15,12 @@
 	];
 </script>
 
-<T.Mesh
-	position.x={0}
-	rotation.y={$rotation}
-	scale={$scale}
-	on:pointerenter={() => {
-		scale.set(1.5);
-		onPointerEnter();
-	}}
-	on:pointerleave={() => {
-		scale.set(1);
-		onPointerLeave();
-	}}
-	castShadow
->
-	<T.PolyhedronGeometry args={[verticesOfOctahedron, indicesOfFaces, 1, 0]} />
-	<T.MeshNormalMaterial />
-</T.Mesh>
+<SheetObject key="Octahedron" let:Transform let:Sync>
+	<Transform>
+		<T.Mesh receiveShadow castShadow>
+			<T.PolyhedronGeometry args={[verticesOfOctahedron, indicesOfFaces, 1, 0]} />
+			<T.MeshNormalMaterial />
+			<Sync color roughness metalness />
+		</T.Mesh>
+	</Transform>
+</SheetObject>
