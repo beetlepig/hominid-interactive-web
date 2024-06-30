@@ -1,19 +1,6 @@
 <script>
 	import { T } from '@threlte/core';
-	import { spring } from 'svelte/motion';
-	import { useCursor } from '@threlte/extras';
-	import { useScrollStore } from './use-scroll-store';
 	import { SheetObject } from '@threlte/theatre';
-
-	const scale = spring(1);
-	const rotation = spring(0);
-
-	const { onPointerEnter, onPointerLeave } = useCursor();
-	const [scrollPercentage] = useScrollStore();
-
-	$effect(() => {
-		rotation.set(scrollPercentage() / 10);
-	});
 
 	// prettier-ignore
 	const verticesOfPyramid = [

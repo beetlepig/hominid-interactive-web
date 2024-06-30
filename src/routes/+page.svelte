@@ -1,22 +1,12 @@
 <script>
 	import { css } from 'styled-system/css';
-	import { useScrollStore } from './use-scroll-store';
-
-	const [scrollPercentage] = useScrollStore();
 </script>
 
-<div class={css({ display: 'contents', spaceY: '4' })}>
-	{#each Array.from({ length: 100 }, (_, i) => i) as item}
-		<p
-			class={css({
-				bg: 'blue.400/30',
-				fontSize: '3xl',
-				color: 'red.400',
-				pointerEvents: 'auto'
-			})}
-		>
-			pageee {item}
-			{scrollPercentage()}
-		</p>
-	{/each}
+<div class={css({ display: 'contents' })}>
+	<div class={css({ height: '80', bgColor: 'red.400/30', pointerEvents: 'all' })}></div>
+	<div class={css({ mt: '32', height: '96', bgColor: 'red.400/30', pointerEvents: 'all' })}></div>
+	<div class={css({ mt: '56', height: '2xl', bgColor: 'red.400/30', pointerEvents: 'all' })}></div>
+	<div class={css({ mt: '64', height: '80', bgColor: 'red.400/30', pointerEvents: 'all' })}></div>
+	<div class={css({ mt: '56', height: '96', bgColor: 'red.400/30', pointerEvents: 'all' })}></div>
+	<div class={css({ mt: '56', height: '3xl', bgColor: 'red.400/30', pointerEvents: 'all' })}></div>
 </div>

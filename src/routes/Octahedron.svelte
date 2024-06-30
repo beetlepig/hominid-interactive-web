@@ -19,8 +19,9 @@
 	<Transform>
 		<T.Mesh receiveShadow castShadow>
 			<T.PolyhedronGeometry args={[verticesOfOctahedron, indicesOfFaces, 1, 0]} />
-			<T.MeshNormalMaterial />
-			<Sync color roughness metalness />
+			<T.MeshStandardMaterial>
+				<Sync color emissive />
+			</T.MeshStandardMaterial>
 		</T.Mesh>
 	</Transform>
 </SheetObject>

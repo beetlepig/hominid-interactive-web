@@ -5,32 +5,36 @@
 	import { interactivity } from '@threlte/extras';
 	import Pyramid from './Pyramid.svelte';
 	import { SheetObject } from '@threlte/theatre';
-	import PolyhedronSequence from './PolyhedronSequence.svelte';
-	import { polyhedronSequence } from '$lib';
+	import PolyhedronSequence, { PolyhedronSequenceEnum } from './PolyhedronSequence.svelte';
 	import { useScrollStore } from './use-scroll-store.js';
+	import { onMount } from 'svelte';
 
 	interactivity();
 
 	const [scrollPosition] = useScrollStore();
 
 	/**
-	 * @type {symbol}
+	 * @type {import('./PolyhedronSequence.svelte').PolyhedronSequenceEnumType}
 	 */
-	let currentObjectSequence = $state(polyhedronSequence.Idle);
+	let targetObjectSequence = $state(PolyhedronSequenceEnum.Enter);
+
+	onMount(() => {
+		setTimeout(() => {
+			targetObjectSequence = PolyhedronSequenceEnum.Idle;
+		}, 500);
+	});
 
 	$effect(() => {
-		if (
-			scrollPosition() > 20 &&
-			scrollPosition() < 30 &&
-			currentObjectSequence !== polyhedronSequence.Exit
-		) {
-			currentObjectSequence = polyhedronSequence.Exit;
+		switch (true) {
+			case scrollPosition() > 20 && scrollPosition() < 30: {
+				targetObjectSequence = PolyhedronSequenceEnum.Exit;
+				break;
+			}
 		}
-		console.log(scrollPosition());
 	});
 </script>
 
-<PolyhedronSequence bind:currentObjectSequence />
+<PolyhedronSequence bind:targetObjectSequence />
 
 <SheetObject key="Light" let:Transform>
 	<Transform>
@@ -45,6 +49,7 @@
 </SheetObject>
 
 <Pyramid />
+<!--<Octahedron />-->
 
 <T.PerspectiveCamera
 	makeDefault
