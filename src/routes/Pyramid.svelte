@@ -23,7 +23,7 @@
 
 <SheetObject key="Pyramid" let:Transform let:Sync>
 	<Transform>
-		<T.Mesh castShadow receiveShadow>
+		<T.Mesh castShadow receiveShadow position.y={-0.5}>
 			<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
 			<T.MeshStandardMaterial>
 				<Sync color emissive />

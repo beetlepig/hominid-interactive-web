@@ -3,18 +3,18 @@
 	 * @typedef {keyof PolyhedronSequenceEnum} PolyhedronSequenceEnumType
 	 */
 	const PolyhedronSequenceEnum = Object.freeze({
-		Enter: 'Enter',
-		Idle: 'Idle',
-		Exit: 'Exit'
+		EnterPyramid: 'EnterPyramid',
+		IdlePyramid: 'IdlePyramid',
+		ExitPyramid: 'ExitPyramid'
 	});
 
 	/**
 	 * @type {{[key in PolyhedronSequenceEnumType]: [number, number, number]}}
 	 */
 	const rangeByFrequency = {
-		[PolyhedronSequenceEnum.Enter]: [0, 1, 1],
-		[PolyhedronSequenceEnum.Idle]: [1, 6, Infinity],
-		[PolyhedronSequenceEnum.Exit]: [6, 7, 1]
+		[PolyhedronSequenceEnum.EnterPyramid]: [0, 1, 1],
+		[PolyhedronSequenceEnum.IdlePyramid]: [1, 6, Infinity],
+		[PolyhedronSequenceEnum.ExitPyramid]: [6, 7.5, 1]
 	};
 
 	export { PolyhedronSequenceEnum };

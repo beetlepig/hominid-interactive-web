@@ -16,18 +16,18 @@
 	/**
 	 * @type {import('./PolyhedronSequence.svelte').PolyhedronSequenceEnumType}
 	 */
-	let targetObjectSequence = $state(PolyhedronSequenceEnum.Enter);
+	let targetObjectSequence = $state(PolyhedronSequenceEnum.EnterPyramid);
 
 	onMount(() => {
 		setTimeout(() => {
-			targetObjectSequence = PolyhedronSequenceEnum.Idle;
+			targetObjectSequence = PolyhedronSequenceEnum.IdlePyramid;
 		}, 500);
 	});
 
 	$effect(() => {
 		switch (true) {
 			case scrollPosition() > 20 && scrollPosition() < 30: {
-				targetObjectSequence = PolyhedronSequenceEnum.Exit;
+				targetObjectSequence = PolyhedronSequenceEnum.ExitPyramid;
 				break;
 			}
 		}
@@ -49,7 +49,7 @@
 </SheetObject>
 
 <Pyramid />
-<!--<Octahedron />-->
+<Octahedron />
 
 <T.PerspectiveCamera
 	makeDefault

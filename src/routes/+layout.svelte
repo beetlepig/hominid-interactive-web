@@ -8,6 +8,7 @@
 	import { Canvas } from '@threlte/core';
 	import { useScrollStore } from './use-scroll-store';
 	import { Project, Sheet, Studio } from '@threlte/theatre';
+	import state from './default.theatre-project-state.json';
 
 	const setScrollPercentage = useScrollStore()[1];
 
@@ -44,7 +45,7 @@
 		>
 			<Studio enabled={dev} />
 			<Canvas>
-				<Project>
+				<Project config={{ state }}>
 					<Sheet>
 						<Scene />
 					</Sheet>
