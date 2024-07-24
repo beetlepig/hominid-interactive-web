@@ -5,36 +5,33 @@
 	import { interactivity } from '@threlte/extras';
 	import Pyramid from './Pyramid.svelte';
 	import { SheetObject } from '@threlte/theatre';
-	import PolyhedronSequence, { PolyhedronSequenceEnum } from './PolyhedronSequence.svelte';
+	import PolyhedronSequence, { AnimationSectionEnum } from './PolyhedronSequence.svelte';
 	import { useScrollStore } from './use-scroll-store.js';
-	import { onMount } from 'svelte';
 
 	interactivity();
 
 	const [scrollPosition] = useScrollStore();
 
 	/**
-	 * @type {import('./PolyhedronSequence.svelte').PolyhedronSequenceEnumType}
+	 * @type {import('./PolyhedronSequence.svelte').AnimationSectionEnumType}
 	 */
-	let targetObjectSequence = $state(PolyhedronSequenceEnum.EnterPyramid);
-
-	onMount(() => {
-		setTimeout(() => {
-			targetObjectSequence = PolyhedronSequenceEnum.IdlePyramid;
-		}, 500);
-	});
+	let targetAnimationSection = $state(AnimationSectionEnum.Pyramid);
 
 	$effect(() => {
 		switch (true) {
+			case scrollPosition() >= 0 && scrollPosition() <= 20: {
+				targetAnimationSection = AnimationSectionEnum.Pyramid;
+				break;
+			}
 			case scrollPosition() > 20 && scrollPosition() < 30: {
-				targetObjectSequence = PolyhedronSequenceEnum.ExitPyramid;
+				targetAnimationSection = AnimationSectionEnum.Octahedron;
 				break;
 			}
 		}
 	});
 </script>
 
-<PolyhedronSequence bind:targetObjectSequence />
+<PolyhedronSequence {targetAnimationSection} />
 
 <SheetObject key="Light" let:Transform>
 	<Transform>
