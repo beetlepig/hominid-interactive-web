@@ -55,9 +55,7 @@
 
 		<div
 			class={css({
-				w: 'full',
-				position: 'relative',
-				pointerEvents: 'none'
+				w: 'full'
 			})}
 		>
 			<slot />
