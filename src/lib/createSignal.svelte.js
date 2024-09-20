@@ -1,15 +1,15 @@
 /**
  * @template T
- * @param {T} initial - the initial percentage
+ * @param {T} initial - the initial value
  * @returns {[() => T, (newScrollPercentage: T) => void]} return signal's getter and setter
  */
 const createSignal = (initial) => {
-	let scrollPercentage = $state(initial);
+	let value = $state(initial);
 
 	return [
-		() => scrollPercentage,
-		(newScrollPercentage) => {
-			scrollPercentage = newScrollPercentage;
+		() => value,
+		(newValue) => {
+			value = newValue;
 		}
 	];
 };

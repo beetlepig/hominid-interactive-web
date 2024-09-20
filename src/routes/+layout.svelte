@@ -32,6 +32,7 @@
 <main class={css({ h: '[100lvh]' })}>
 	<div
 		onscroll={handleScroll}
+		id={'main-target'}
 		class={css({ position: 'relative', h: 'full', overflow: 'auto', w: 'full' })}
 	>
 		<div

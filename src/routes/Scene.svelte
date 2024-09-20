@@ -1,5 +1,5 @@
 <script>
-	import { T } from '@threlte/core';
+	import { T, useThrelte } from '@threlte/core';
 	import { OrbitControls } from '@threlte/extras';
 	import Octahedron from './Octahedron.svelte';
 	import { interactivity } from '@threlte/extras';
@@ -7,8 +7,29 @@
 	import { SheetObject } from '@threlte/theatre';
 	import PolyhedronSequence, { AnimationSectionEnum } from './PolyhedronSequence.svelte';
 	import { useScrollStore } from './use-scroll-store.js';
+	import { Vector2 } from 'three';
 
-	interactivity();
+	const { camera } = useThrelte();
+
+	/**
+	 * @type {HTMLElement | undefined}
+	 */
+	const target = document.getElementById('main-target') ?? undefined;
+
+	interactivity({
+		target: target,
+		compute: (event, state) => {
+			state.pointer.update(
+				() =>
+					new Vector2(
+						(event.clientX / (target?.clientWidth ?? window.innerWidth)) * 2 - 1,
+						-(event.clientY / (target?.clientHeight ?? window.innerHeight)) * 2 + 1
+					)
+			);
+
+			state.raycaster.setFromCamera(state.pointer.current, camera.current);
+		}
+	});
 
 	const [scrollPosition] = useScrollStore();
 

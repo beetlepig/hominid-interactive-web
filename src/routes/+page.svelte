@@ -2,8 +2,8 @@
 	import { css } from 'styled-system/css';
 </script>
 
-<div class={css({ display: 'contents' })}>
-	<div class={css({ position: 'relative', height: '[250vh]', bgColor: 'amber.50/50' })}>
+<div class={css({ position: 'relative' })}>
+	<div class={css({ height: '[250vh]', bgColor: 'amber.50/50' })}>
 		<div
 			class={css({
 				position: 'sticky',
@@ -17,7 +17,7 @@
 			<p class={css({ textAlign: 'center' })}>Hominid Interactive</p>
 		</div>
 	</div>
-	<div class={css({ position: 'relative', padding: '32' })}>
+	<div class={css({ padding: '32' })}>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae scelerisque erat.
 			Phasellus ex metus, volutpat et varius eget, pellentesque quis quam. Suspendisse sed blandit
@@ -30,7 +30,6 @@
 	<div
 		class={css({
 			bgColor: 'red.400/30',
-			position: 'relative',
 			display: 'flex'
 		})}
 	>
@@ -146,10 +145,10 @@
 			</div>
 		</div>
 	</div>
-	<div class={css({ position: 'relative', height: '[100vh]', bgColor: 'green.200/50' })}>
+	<div class={css({ height: '[100vh]', bgColor: 'green.200/50' })}>
 		<p>carrousel</p>
 	</div>
-	<div class={css({ position: 'relative', height: '[100vh]', bgColor: 'indigo.950/50' })}>
+	<div class={css({ height: '[100vh]', bgColor: 'indigo.950/50' })}>
 		<p>chat</p>
 	</div>
 </div>
