@@ -1,6 +1,5 @@
 <script>
 	import { T, useThrelte } from '@threlte/core';
-	import { OrbitControls } from '@threlte/extras';
 	import Octahedron from './Octahedron.svelte';
 	import { interactivity } from '@threlte/extras';
 	import Pyramid from './Pyramid.svelte';
@@ -54,16 +53,20 @@
 
 <PolyhedronSequence {targetAnimationSection} />
 
-<SheetObject key="Light" let:Transform>
-	<Transform>
-		<T.PointLight args={[0xffffff, 80, 100]} castShadow />
-	</Transform>
+<SheetObject key="Light">
+	{#snippet children({ Transform })}
+		<Transform>
+			<T.PointLight args={[0xffffff, 80, 100]} castShadow />
+		</Transform>
+	{/snippet}
 </SheetObject>
 
-<SheetObject key="Light Two" let:Transform>
-	<Transform>
-		<T.PointLight args={[0xffffff, 80, 100]} castShadow />
-	</Transform>
+<SheetObject key="Light Two">
+	{#snippet children({ Transform })}
+		<Transform>
+			<T.PointLight args={[0xffffff, 80, 100]} castShadow />
+		</Transform>
+	{/snippet}
 </SheetObject>
 
 <Pyramid />
@@ -76,6 +79,4 @@
 		ref.lookAt(0, 0, 0);
 	}}
 	fov={30}
->
-	<OrbitControls enableDamping />
-</T.PerspectiveCamera>
+></T.PerspectiveCamera>

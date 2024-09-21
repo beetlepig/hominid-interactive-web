@@ -24,24 +24,26 @@
 	const [scaleAnim, setScaleAnim] = createSignal(1);
 </script>
 
-<SheetObject key="Pyramid" let:Transform let:Sync>
-	<Transform>
-		<T.Mesh
-			castShadow
-			receiveShadow
-			position.y={-0.5}
-			scale={scaleAnim()}
-			on:pointerenter={() => {
-				setScaleAnim(1.2);
-			}}
-			on:pointerleave={() => {
-				setScaleAnim(1);
-			}}
-		>
-			<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
-			<T.MeshStandardMaterial>
-				<Sync color emissive />
-			</T.MeshStandardMaterial>
-		</T.Mesh>
-	</Transform>
+<SheetObject key="Pyramid">
+	{#snippet children({ Transform, Sync })}
+		<Transform>
+			<T.Mesh
+				castShadow
+				receiveShadow
+				position.y={-0.5}
+				scale={scaleAnim()}
+				on:pointerenter={() => {
+					setScaleAnim(1.2);
+				}}
+				on:pointerleave={() => {
+					setScaleAnim(1);
+				}}
+			>
+				<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
+				<T.MeshStandardMaterial>
+					<Sync color emissive />
+				</T.MeshStandardMaterial>
+			</T.Mesh>
+		</Transform>
+	{/snippet}
 </SheetObject>

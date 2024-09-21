@@ -46,7 +46,7 @@
 		>
 			<Studio enabled={dev} />
 			<Canvas>
-				<Project config={{ state }}>
+				<Project name="main" config={{ state }}>
 					<Sheet>
 						<Scene />
 					</Sheet>
