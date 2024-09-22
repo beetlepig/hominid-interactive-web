@@ -72,11 +72,4 @@
 <Pyramid />
 <Octahedron />
 
-<T.PerspectiveCamera
-	makeDefault
-	position={[0, 0, 8]}
-	on:create={({ ref }) => {
-		ref.lookAt(0, 0, 0);
-	}}
-	fov={30}
-></T.PerspectiveCamera>
+<T.PerspectiveCamera makeDefault position={[0, 0, 8]} fov={30}></T.PerspectiveCamera>

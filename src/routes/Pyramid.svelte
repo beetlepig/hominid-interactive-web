@@ -32,10 +32,10 @@
 				receiveShadow
 				position.y={-0.5}
 				scale={scaleAnim()}
-				on:pointerenter={() => {
+				onpointerenter={() => {
 					setScaleAnim(1.2);
 				}}
-				on:pointerleave={() => {
+				onpointerleave={() => {
 					setScaleAnim(1);
 				}}
 			>
