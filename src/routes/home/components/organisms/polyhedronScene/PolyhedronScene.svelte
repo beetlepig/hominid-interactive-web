@@ -1,4 +1,6 @@
 <script>
+	/** @import { AnimationSectionEnumType } from './PolyhedronSequence.svelte' */
+
 	import { T, useThrelte } from '@threlte/core';
 	import Octahedron from '../../atoms/octahedron/Octahedron.svelte';
 	import { interactivity } from '@threlte/extras';
@@ -36,9 +38,9 @@
 	const [scrollPosition] = useScrollStore();
 
 	const [targetAnimationSection, setTargetAnimationSection] =
-		/** @type {typeof createSignal<import('./PolyhedronSequence.svelte').AnimationSectionEnumType>} */ (
-			createSignal
-		)(AnimationSectionEnum.Pyramid);
+		/** @type {typeof createSignal<AnimationSectionEnumType>} */ (createSignal)(
+			AnimationSectionEnum.Pyramid
+		);
 
 	$effect(() => {
 		switch (true) {

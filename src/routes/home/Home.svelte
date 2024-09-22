@@ -1,4 +1,6 @@
 <script>
+	/** @import { UIEventHandler } from 'svelte/elements' */
+
 	import { css } from 'styled-system/css';
 	import PolyhedronScene from './components/organisms/polyhedronScene/PolyhedronScene.svelte';
 	import { useScrollStore } from './utils/hooks/use-scroll-store.js';
@@ -7,7 +9,7 @@
 	const setScrollPercentage = useScrollStore()[1];
 
 	/**
-	 * @type {import('svelte/elements').UIEventHandler<HTMLDivElement>}
+	 * @type {UIEventHandler<HTMLDivElement>}
 	 */
 	const handleScroll = (event) => {
 		const scrollTop = event.currentTarget.scrollTop;
