@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
 	/**
 	 * @typedef {keyof AnimationSectionEnum} AnimationSectionEnumType
 	 */
@@ -67,7 +67,7 @@
 	let currentAnimationSection = $state(targetAnimationSection);
 
 	/**
-	 * @type {import('./types').Writeable<AnimationStateEnumType>}
+	 * @type {import('../../../types.d.ts').Writeable<AnimationStateEnumType>}
 	 */
 	let currentAnimationState = $state(AnimationStateEnum.Enter);
 
