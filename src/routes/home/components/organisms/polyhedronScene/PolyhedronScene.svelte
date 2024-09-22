@@ -8,7 +8,7 @@
 	import { useScrollStore } from '../../../utils/hooks/use-scroll-store.js';
 	import { Vector2 } from 'three';
 	import { dev } from '$app/environment';
-	import projectState from './default.theatre-project-state.json';
+	import projectState from './main.theatre-project-state.json';
 	import { createSignal } from '$lib';
 
 	const { camera } = useThrelte();

@@ -40,6 +40,7 @@
 
 <script>
 	import { Sequence } from '@threlte/theatre';
+	import { createSignal } from '$lib';
 
 	/**
 	 * @type {((opts?: {}) => Promise<boolean>) | undefined}
@@ -61,20 +62,22 @@
 	 */
 	const { targetAnimationSection } = $props();
 
-	/**
-	 * @type {AnimationSectionEnumType}
-	 */
-	let currentAnimationSection = $state(targetAnimationSection);
+	let [currentAnimationSection, setCurrentAnimationSection] =
+		/** @type {typeof createSignal<AnimationSectionEnumType>} */ (createSignal)(
+			targetAnimationSection
+		);
 
-	/**
-	 * @type {import('../../../types.d.ts').Writeable<AnimationStateEnumType>}
-	 */
-	let currentAnimationState = $state(AnimationStateEnum.Enter);
+	let [currentAnimationState, setCurrentAnimationState] =
+		/** @type {typeof createSignal<AnimationStateEnumType>} */ (createSignal)(
+			AnimationStateEnum.Enter
+		);
 
 	/**
 	 * @type {RangeType}
 	 */
-	const currentRange = $derived(AnimationSection[currentAnimationSection][currentAnimationState]);
+	const currentRange = $derived(
+		AnimationSection[currentAnimationSection()][currentAnimationState()]
+	);
 
 	/**
 	 * @type {[number, number]}
@@ -87,7 +90,7 @@
 	let iterationCount = $state(1);
 
 	$effect(() => {
-		if (currentAnimationSection !== targetAnimationSection) {
+		if (currentAnimationSection() !== targetAnimationSection) {
 			iterationCount = 1;
 		} else {
 			iterationCount = currentRange[2];
@@ -96,18 +99,18 @@
 
 	$effect(() => {
 		if (iterationCount === 1 && !playing && position === currentAnimationRange[1]) {
-			switch (currentAnimationState) {
+			switch (currentAnimationState()) {
 				case AnimationStateEnum.Enter: {
-					currentAnimationState = AnimationStateEnum.Idle;
+					setCurrentAnimationState(AnimationStateEnum.Idle);
 					break;
 				}
 				case AnimationStateEnum.Idle: {
-					currentAnimationState = AnimationStateEnum.Exit;
+					setCurrentAnimationState(AnimationStateEnum.Exit);
 					break;
 				}
 				case AnimationStateEnum.Exit: {
-					currentAnimationSection = targetAnimationSection;
-					currentAnimationState = AnimationStateEnum.Enter;
+					setCurrentAnimationSection(targetAnimationSection);
+					setCurrentAnimationState(AnimationStateEnum.Enter);
 					break;
 				}
 			}
