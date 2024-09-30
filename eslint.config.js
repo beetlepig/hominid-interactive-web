@@ -18,6 +18,12 @@ export default [
 		}
 	},
 	{
-		ignores: ['build/', '.svelte-kit/', 'dist/']
+		ignores: [
+			'build/',
+			'.svelte-kit/',
+			'dist/',
+			'styled-system/',
+			'src/lib/create-signal.svelte.js'
+		]
 	}
 ];

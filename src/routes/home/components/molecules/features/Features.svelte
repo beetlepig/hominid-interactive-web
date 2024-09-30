@@ -1,5 +1,9 @@
 <script>
 	import { css } from 'styled-system/css';
+	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action';
+
+	/** @type {{ onVisible: () => void }} */
+	let { onVisible } = $props();
 </script>
 
 <div
@@ -7,6 +11,7 @@
 		bgColor: 'red.400/30',
 		display: 'flex'
 	})}
+	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.3] }}
 >
 	<div
 		class={css({

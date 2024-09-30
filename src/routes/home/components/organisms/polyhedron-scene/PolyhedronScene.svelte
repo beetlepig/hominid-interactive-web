@@ -6,12 +6,13 @@
 	import { interactivity } from '@threlte/extras';
 	import Pyramid from '../../atoms/pyramid/Pyramid.svelte';
 	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
-	import PolyhedronSequence, { AnimationSectionEnum } from './PolyhedronSequence.svelte';
-	import { useScrollStore } from '../../../utils/hooks/use-scroll-store.js';
+	import PolyhedronSequence from './PolyhedronSequence.svelte';
 	import { Vector2 } from 'three';
 	import { dev } from '$app/environment';
 	import projectState from './main.theatre-project-state.json';
-	import { createSignal } from '$lib';
+
+	/** @type {{ targetAnimationSection: AnimationSectionEnumType }} */
+	let { targetAnimationSection } = $props();
 
 	const { camera } = useThrelte();
 
@@ -34,33 +35,15 @@
 			state.raycaster.setFromCamera(state.pointer.current, camera.current);
 		}
 	});
-
-	const [scrollPosition] = useScrollStore();
-
-	const [targetAnimationSection, setTargetAnimationSection] =
-		/** @type {typeof createSignal<AnimationSectionEnumType>} */ (createSignal)(
-			AnimationSectionEnum.Pyramid
-		);
-
-	$effect(() => {
-		switch (true) {
-			case scrollPosition() >= 0 && scrollPosition() <= 20: {
-				setTargetAnimationSection(AnimationSectionEnum.Pyramid);
-				break;
-			}
-			case scrollPosition() > 20 && scrollPosition() < 30: {
-				setTargetAnimationSection(AnimationSectionEnum.Octahedron);
-				break;
-			}
-		}
-	});
 </script>
 
 <Studio enabled={dev} />
 
 <Project name="main" config={{ state: projectState }}>
 	<Sheet>
-		<PolyhedronSequence targetAnimationSection={targetAnimationSection()} />
+		<PolyhedronSequence {targetAnimationSection} />
+
+		<T.PerspectiveCamera makeDefault position={[0, 0, 8]} fov={30} />
 
 		<SheetObject key="Light">
 			{#snippet children({ Transform })}
@@ -80,8 +63,5 @@
 
 		<Pyramid />
 		<Octahedron />
-		<Octahedron />
-
-		<T.PerspectiveCamera makeDefault position={[0, 0, 8]} fov={30} />
 	</Sheet>
 </Project>
