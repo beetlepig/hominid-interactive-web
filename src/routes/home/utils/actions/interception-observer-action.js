@@ -1,3 +1,5 @@
+/** @import { Action } from 'svelte/action' */
+
 /**
  * @description A closure function used to set up interception observer callbacks.
  * @param {() => void} interceptedCallback - A callback indicating when an interception happens.
@@ -23,8 +25,8 @@ const handleInterception = (interceptedCallback, intersectionObserverCallback) =
  */
 
 /**
- * @description Action to listen the interception of the current element against root.
- * @type {import('svelte/action').Action<HTMLElement, InterceptionObserverActionParams>}
+ * @description Action to listen to the interception of the current element against root.
+ * @type {Action<HTMLElement, InterceptionObserverActionParams>}
  * @param {HTMLElement} node - Node Element.
  * @param {InterceptionObserverActionParams} params - Action Params.
  * @returns {{ update?: (params: InterceptionObserverActionParams) => void, destroy?: () => void }}

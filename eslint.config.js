@@ -23,7 +23,8 @@ export default [
 			'.svelte-kit/',
 			'dist/',
 			'styled-system/',
-			'src/lib/create-signal.svelte.js'
+			'src/lib/create-signal.svelte.js',
+			'src/lib/scroll-action.svelte.js'
 		]
 	}
 ];
