@@ -12,7 +12,14 @@ export default defineConfig({
 
 	// Useful for theme customization
 	theme: {
-		extend: {}
+		extend: {
+			keyframes: {
+				fadein: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				}
+			}
+		}
 	},
 
 	// The output directory for your css system

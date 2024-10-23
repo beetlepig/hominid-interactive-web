@@ -41,13 +41,12 @@ const calculateScrollProgress = (target) => {
 
 /**
  * @description Action to calculate the scrollYProgress of the selected target.
- * @type { Action<HTMLElement> }
- * @param { HTMLElement } node - Node Element.
+ * @type { Action<HTMLElement, undefined, {scrollprogress: (e: CustomEvent<{scrollYProgress: number}>) => void}> }
  */
 const scrollAction = (node) => {
 	const handleScroll = () => {
 		node.dispatchEvent(
-			new CustomEvent('emit', {
+			new CustomEvent('scrollprogress', {
 				detail: { scrollYProgress: calculateScrollProgress(node) }
 			})
 		);

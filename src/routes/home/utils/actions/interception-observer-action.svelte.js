@@ -27,8 +27,6 @@ const handleInterception = (interceptedCallback, intersectionObserverCallback) =
 /**
  * @description Action to listen to the interception of the current element against root.
  * @type {Action<HTMLElement, InterceptionObserverActionParams>}
- * @param {HTMLElement} node - Node Element.
- * @param {InterceptionObserverActionParams} params - Action Params.
  */
 const interceptionObserverAction = (
 	node,
@@ -46,7 +44,6 @@ const interceptionObserverAction = (
 		interceptionObserver.observe(node);
 
 		return () => {
-			console.log('remove observer');
 			interceptionObserver.disconnect();
 		};
 	});
