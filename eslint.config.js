@@ -1,6 +1,6 @@
+import prettier from 'eslint-config-prettier';
 import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
-import prettier from 'eslint-config-prettier';
 import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -18,13 +18,6 @@ export default [
 		}
 	},
 	{
-		ignores: [
-			'build/',
-			'.svelte-kit/',
-			'dist/',
-			'styled-system/',
-			'src/lib/create-signal.svelte.js',
-			'src/lib/scroll-action.svelte.js'
-		]
+		ignores: ['build/', '.svelte-kit/', 'dist/', 'styled-system/']
 	}
 ];

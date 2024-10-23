@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/vim,emacs,linux,macos,svelte,vercel,windows,webstorm+all,visualstudiocode,react,remix
-# Edit at https://www.toptal.com/developers/gitignore?templates=vim,emacs,linux,macos,svelte,vercel,windows,webstorm+all,visualstudiocode,react,remix
+# Created by https://www.toptal.com/developers/gitignore/api/vim,emacs,linux,macos,react,remix,svelte,vercel,windows,webstorm+all,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim,emacs,linux,macos,react,remix,svelte,vercel,windows,webstorm+all,visualstudiocode
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
@@ -284,7 +284,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/vim,emacs,linux,macos,svelte,vercel,windows,webstorm+all,visualstudiocode,react,remix
+# End of https://www.toptal.com/developers/gitignore/api/vim,emacs,linux,macos,react,remix,svelte,vercel,windows,webstorm+all,visualstudiocode
 
 ## Panda
 styled-system
