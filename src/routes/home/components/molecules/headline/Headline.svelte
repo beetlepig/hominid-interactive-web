@@ -7,7 +7,10 @@
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
 
-	let animatedOpacity = spring(0);
+	const animatedOpacity = tweened(1, { delay: 20, duration: 200 });
+	const animatedPosition = tweened(0, { delay: 20, duration: 200 });
+	const animatedNameOpacity = tweened(0, { delay: 20, duration: 200 });
+	const animatedNamePosition = tweened(0, { delay: 20, duration: 200 });
 
 	/** @type {(event: CustomEvent<{scrollYProgress: number}>) => void} */
 	const handleScrollProgress = (event) => {
