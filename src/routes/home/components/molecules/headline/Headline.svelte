@@ -1,7 +1,7 @@
 <script>
 	import { css } from 'styled-system/css';
-	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action';
-	import { scrollAction } from '$lib/scroll-action.svelte.js';
+	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
+	import { scrollAction } from '$lib';
 	import { spring } from 'svelte/motion';
 
 	/** @type {{ onVisible: () => void }} */

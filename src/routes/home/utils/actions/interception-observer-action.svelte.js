@@ -29,41 +29,27 @@ const handleInterception = (interceptedCallback, intersectionObserverCallback) =
  * @type {Action<HTMLElement, InterceptionObserverActionParams>}
  * @param {HTMLElement} node - Node Element.
  * @param {InterceptionObserverActionParams} params - Action Params.
- * @returns {{ update?: (params: InterceptionObserverActionParams) => void, destroy?: () => void }}
  */
 const interceptionObserverAction = (
 	node,
 	{ onIntercepted, intersectionObserverCallback, threshold }
 ) => {
-	let interceptionObserver = new IntersectionObserver(
-		handleInterception(onIntercepted, intersectionObserverCallback),
-		{
-			root: null,
-			threshold: threshold
-		}
-	);
+	$effect(() => {
+		let interceptionObserver = new IntersectionObserver(
+			handleInterception(onIntercepted, intersectionObserverCallback),
+			{
+				root: null,
+				threshold: threshold
+			}
+		);
 
-	interceptionObserver.observe(node);
+		interceptionObserver.observe(node);
 
-	return {
-		update({ onIntercepted, intersectionObserverCallback, threshold }) {
+		return () => {
+			console.log('remove observer');
 			interceptionObserver.disconnect();
-
-			interceptionObserver = new IntersectionObserver(
-				handleInterception(onIntercepted, intersectionObserverCallback),
-				{
-					root: null,
-					threshold: threshold
-				}
-			);
-
-			interceptionObserver.observe(node);
-		},
-
-		destroy() {
-			interceptionObserver.disconnect();
-		}
-	};
+		};
+	});
 };
 
 export { interceptionObserverAction };

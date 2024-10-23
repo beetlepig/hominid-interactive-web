@@ -1,6 +1,6 @@
 <script>
 	import { css } from 'styled-system/css';
-	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action';
+	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
