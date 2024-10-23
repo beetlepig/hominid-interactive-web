@@ -2,3 +2,5 @@
 
 export * from './create-signal.svelte.js';
 export * from './scroll-action.svelte.js';
+export * from './map-num-range.js';
+export * from './clamp.js';

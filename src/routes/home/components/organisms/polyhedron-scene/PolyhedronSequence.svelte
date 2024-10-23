@@ -125,7 +125,7 @@
 	bind:play
 	bind:playing
 	range={currentAnimationRange}
-	delay={1000}
+	delay={100}
 	{iterationCount}
 	autoplay
 />

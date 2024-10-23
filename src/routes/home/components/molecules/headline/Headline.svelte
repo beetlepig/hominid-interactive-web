@@ -1,18 +1,22 @@
 <script>
 	import { css } from 'styled-system/css';
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
-	import { scrollAction } from '$lib';
-	import { spring } from 'svelte/motion';
+	import { mapNumRange, scrollAction } from '$lib';
+	import { tweened } from 'svelte/motion';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
 
-	let animatedOpacity = spring(0);
+	const animatedOpacity = tweened(1, { delay: 20, duration: 200 });
+	const animatedPosition = tweened(0, { delay: 20, duration: 200 });
 
 	/** @type {(event: CustomEvent<{scrollYProgress: number}>) => void} */
 	const handleEmit = (event) => {
-		console.log('emit', event.detail.scrollYProgress);
-		animatedOpacity.update(() => event.detail.scrollYProgress, { soft: 1 });
+		const opacity = mapNumRange(event.detail.scrollYProgress, 0, 0.2, 1, 0);
+		const position = mapNumRange(event.detail.scrollYProgress, 0, 0.2, 0, -50);
+
+		animatedOpacity.update(() => opacity);
+		animatedPosition.update(() => position);
 	};
 </script>
 
@@ -33,7 +37,10 @@
 			height: '[100vh]'
 		})}
 	>
-		<p style="opacity: {$animatedOpacity}" class={css({ textAlign: 'center' })}>
+		<p
+			style="opacity: {$animatedOpacity}; transform: translateY({$animatedPosition}px)"
+			class={css({ textAlign: 'center' })}
+		>
 			Hominid Interactive
 		</p>
 	</div>

@@ -1,5 +1,7 @@
 /** @import { Action } from 'svelte/action' */
 
+import { mapNumRange } from '$lib/map-num-range';
+
 /**
  * @description Check if the element has a scroll and it is visible.
  * @param { HTMLElement } ele - The target node.
@@ -33,18 +35,6 @@ const getScrollableParent = (ele) => {
  */
 const calculateScrollProgress = (target) => {
 	const rect = target.getBoundingClientRect();
-
-	/**
-	 * @description Maps a number from one range to another.
-	 * @param { number } num - The number to map.
-	 * @param { number } inMin - The lower bound of the input range.
-	 * @param { number } inMax - The upper bound of the input range.
-	 * @param { number } outMin - The lower bound of the output range.
-	 * @param { number } outMax - The upper bound of the output range.
-	 * @returns { number } The mapped number in the output range.
-	 */
-	const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
-		((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
 
 	return Math.max(0, Math.min(1, mapNumRange(rect.bottom, 0, rect.height, 1, 0)));
 };
