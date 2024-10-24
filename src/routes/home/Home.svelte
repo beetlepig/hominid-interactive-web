@@ -1,6 +1,5 @@
 <script>
 	/** @import { AnimationSectionEnumType } from './components/organisms/polyhedron-scene/PolyhedronSequence.svelte' */
-	/** @import { ScrollYProgressEventType } from '$lib' */
 
 	import { css } from 'styled-system/css';
 	import PolyhedronScene from './components/organisms/polyhedron-scene/PolyhedronScene.svelte';
@@ -13,13 +12,13 @@
 	import Chat from './components/molecules/chat/Chat.svelte';
 	import { createSignal } from '$lib';
 
+	/** @type {HTMLElement} */
+	let headlineContainerRef;
+
 	const [targetAnimationSection, setTargetAnimationSection] =
 		/** @type {typeof createSignal<AnimationSectionEnumType>} */ (createSignal)(
 			AnimationSectionEnum.Pyramid
 		);
-
-	/** @type {ScrollYProgressEventType} */
-	let onscrollprogress;
 
 	const setPyramidTarget = () => {
 		setTargetAnimationSection(AnimationSectionEnum.Pyramid);
@@ -40,7 +39,7 @@
 		})}
 	>
 		<Canvas>
-			<PolyhedronScene bind:onscrollprogress targetAnimationSection={targetAnimationSection()} />
+			<PolyhedronScene {headlineContainerRef} targetAnimationSection={targetAnimationSection()} />
 		</Canvas>
 	</div>
 
@@ -52,7 +51,7 @@
 			overflow: 'auto'
 		})}
 	>
-		<Headline {onscrollprogress} onVisible={setPyramidTarget} />
+		<Headline bind:headlineContainerRef onVisible={setPyramidTarget} />
 		<Introduction onVisible={setOctahedronTarget} />
 		<Features onVisible={setOctahedronTarget} />
 		<Projects onVisible={setOctahedronTarget} />

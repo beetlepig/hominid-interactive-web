@@ -1,6 +1,5 @@
 <script>
 	/** @import { AnimationSectionEnumType } from './PolyhedronSequence.svelte' */
-	/** @import { ScrollYProgressEventType } from '$lib' */
 
 	import { T, useThrelte } from '@threlte/core';
 	import Octahedron from '../../atoms/octahedron/Octahedron.svelte';
@@ -11,8 +10,8 @@
 	import { Vector2 } from 'three';
 	import projectState from './main.theatre-project-state.json';
 
-	/** @type {{ targetAnimationSection: AnimationSectionEnumType, onscrollprogress: ScrollYProgressEventType  }} */
-	let { targetAnimationSection, onscrollprogress = $bindable() } = $props();
+	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement }} */
+	const { targetAnimationSection, headlineContainerRef } = $props();
 
 	const { camera } = useThrelte();
 
@@ -61,7 +60,7 @@
 			{/snippet}
 		</SheetObject>
 
-		<Pyramid bind:onscrollprogress />
+		<Pyramid {headlineContainerRef} />
 		<Octahedron />
 	</Sheet>
 </Project>

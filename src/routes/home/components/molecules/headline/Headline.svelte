@@ -1,39 +1,34 @@
 <script>
-	/** @import { ScrollYProgressEventType } from '$lib' */
-
 	import { css } from 'styled-system/css';
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
-	import { mapNumRange, scrollAction } from '$lib';
+	import { mapNumRange, useScroll } from '$lib';
 	import { tweened } from 'svelte/motion';
 
-	/** @type {{ onVisible: () => void, onscrollprogress: ScrollYProgressEventType }} */
-	let { onVisible, onscrollprogress } = $props();
+	/** @type {{ onVisible: () => void, headlineContainerRef: HTMLElement }} */
+	let { onVisible, headlineContainerRef = $bindable() } = $props();
 
 	const animatedOpacity = tweened(0.9, { delay: 20, duration: 200 });
 	const animatedPosition = tweened(0, { delay: 20, duration: 200 });
 	const animatedNameOpacity = tweened(0, { delay: 20, duration: 200 });
 	const animatedNamePosition = tweened(0, { delay: 20, duration: 200 });
 
-	/** @type {ScrollYProgressEventType} */
-	const handleScrollProgress = (event) => {
-		const opacity = mapNumRange(event.detail.scrollYProgress, 0, 0.2, 0.9, 0);
-		const position = mapNumRange(event.detail.scrollYProgress, 0, 0.2, 0, -40);
-		const nameOpacity = mapNumRange(event.detail.scrollYProgress, 0.2, 0.4, 0, 0.9);
-		const namePosition = mapNumRange(event.detail.scrollYProgress, 0.1, 0.25, 0, -25);
+	const { scrollYProgress } = $derived(useScroll({ target: headlineContainerRef }));
+	$effect(() => {
+		const opacity = mapNumRange(scrollYProgress(), 0, 0.2, 0.9, 0);
+		const position = mapNumRange(scrollYProgress(), 0, 0.2, 0, -40);
+		const nameOpacity = mapNumRange(scrollYProgress(), 0.2, 0.4, 0, 0.9);
+		const namePosition = mapNumRange(scrollYProgress(), 0.1, 0.25, 0, -25);
 
 		animatedOpacity.update(() => opacity);
 		animatedPosition.update(() => position);
 		animatedNameOpacity.update(() => nameOpacity);
 		animatedNamePosition.update(() => namePosition);
-
-		onscrollprogress(event);
-	};
+	});
 </script>
 
 <div
-	onscrollprogress={handleScrollProgress}
 	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.4] }}
-	use:scrollAction
+	bind:this={headlineContainerRef}
 	class={css({ height: '[250vh]' })}
 >
 	<div

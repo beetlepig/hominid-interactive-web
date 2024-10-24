@@ -1,6 +1,7 @@
 /** @import { Action } from 'svelte/action' */
 
 import { mapNumRange } from '$lib/map-num-range';
+import { createSignal } from '$lib/create-signal.svelte.js';
 
 /**
  * @description Check if the element has a scroll and it is visible.
@@ -40,30 +41,26 @@ const calculateScrollProgress = (target) => {
 };
 
 /**
- * @typedef {(event: CustomEvent<{scrollYProgress: number}>) => void} ScrollYProgressEventType
- */
-
-/**
  * @description Action to calculate the scrollYProgress of the selected target.
- * @type { Action<HTMLElement, undefined, {scrollprogress: ScrollYProgressEventType}> }
+ * @param {{target: HTMLElement}} args
  */
-const scrollAction = (node) => {
-	const handleScroll = () => {
-		node.dispatchEvent(
-			new CustomEvent('scrollprogress', {
-				detail: { scrollYProgress: calculateScrollProgress(node) }
-			})
-		);
-	};
+const useScroll = ({ target }) => {
+	const [scrollYProgress, setScrollYProgress] = createSignal(0);
 
 	$effect(() => {
-		const container = getScrollableParent(node);
+		const handleScroll = () => {
+			setScrollYProgress(calculateScrollProgress(target));
+		};
+
+		const container = getScrollableParent(target);
 		container.addEventListener('scroll', handleScroll);
 
 		return () => {
 			container.removeEventListener('scroll', handleScroll);
 		};
 	});
+
+	return { scrollYProgress };
 };
 
-export { scrollAction };
+export { useScroll };
