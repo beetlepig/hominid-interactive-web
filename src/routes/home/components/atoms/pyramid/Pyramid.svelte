@@ -1,7 +1,10 @@
 <script>
+	/** @import { ScrollYProgressEventType } from '$lib' */
+
 	import { T } from '@threlte/core';
 	import { SheetObject } from '@threlte/theatre';
-	import { createSignal } from '$lib';
+	import { tweened } from 'svelte/motion';
+	import { mapNumRange } from '$lib';
 
 	// prettier-ignore
 	const verticesOfPyramid = [
@@ -21,24 +24,26 @@
 		4, 3, 0
 	];
 
-	const [scaleAnim, setScaleAnim] = createSignal(1);
+	/** @type {{ onscrollprogress: ScrollYProgressEventType  }} */
+	let { onscrollprogress = $bindable() } = $props();
+
+	const animatedScale = tweened(1.4, { delay: 20, duration: 200 });
+	const animatedPosition = tweened(-0.7, { delay: 20, duration: 200 });
+
+	/** @type {{ onscrollprogress: ScrollYProgressEventType  }} */
+	onscrollprogress = (event) => {
+		const scale = mapNumRange(event.detail.scrollYProgress, 0.1, 0.2, 1.4, 1);
+		const position = mapNumRange(event.detail.scrollYProgress, 0.1, 0.2, -0.7, -0.5);
+
+		animatedScale.update(() => scale);
+		animatedPosition.update(() => position);
+	};
 </script>
 
 <SheetObject key="Pyramid">
 	{#snippet children({ Transform, Sync })}
 		<Transform>
-			<T.Mesh
-				castShadow
-				receiveShadow
-				position.y={-0.5}
-				scale={scaleAnim()}
-				onpointerenter={() => {
-					setScaleAnim(1.2);
-				}}
-				onpointerleave={() => {
-					setScaleAnim(1);
-				}}
-			>
+			<T.Mesh castShadow receiveShadow position.y={$animatedPosition} scale={$animatedScale}>
 				<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
 				<T.MeshStandardMaterial>
 					<Sync color emissive />

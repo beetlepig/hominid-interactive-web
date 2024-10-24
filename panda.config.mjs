@@ -18,8 +18,19 @@ export default defineConfig({
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' }
 				}
+			},
+			tokens: {
+				fonts: {
+					'raleway': {value: 'var(--font-raleway)'},
+					'oswald': {value: 'var(--font-oswald)'},
+				}
 			}
 		}
+	},
+
+	globalVars: {
+		'--font-raleway': 'Raleway Variable, sans-serif',
+		'--font-oswald': 'Oswald Variable, sans-serif',
 	},
 
 	// The output directory for your css system

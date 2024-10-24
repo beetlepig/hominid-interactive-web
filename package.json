@@ -37,6 +37,8 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
+		"@fontsource-variable/oswald": "^5.1.0",
+		"@fontsource-variable/raleway": "^5.1.0",
 		"@inlang/paraglide-sveltekit": "^0.11.1",
 		"@theatre/core": "^0.7.2",
 		"@threlte/core": "^8.0.0-next.21",

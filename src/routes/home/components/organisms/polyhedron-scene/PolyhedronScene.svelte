@@ -1,5 +1,6 @@
 <script>
 	/** @import { AnimationSectionEnumType } from './PolyhedronSequence.svelte' */
+	/** @import { ScrollYProgressEventType } from '$lib' */
 
 	import { T, useThrelte } from '@threlte/core';
 	import Octahedron from '../../atoms/octahedron/Octahedron.svelte';
@@ -8,11 +9,10 @@
 	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
 	import PolyhedronSequence from './PolyhedronSequence.svelte';
 	import { Vector2 } from 'three';
-	import { dev } from '$app/environment';
 	import projectState from './main.theatre-project-state.json';
 
-	/** @type {{ targetAnimationSection: AnimationSectionEnumType }} */
-	let { targetAnimationSection } = $props();
+	/** @type {{ targetAnimationSection: AnimationSectionEnumType, onscrollprogress: ScrollYProgressEventType  }} */
+	let { targetAnimationSection, onscrollprogress = $bindable() } = $props();
 
 	const { camera } = useThrelte();
 
@@ -37,13 +37,13 @@
 	});
 </script>
 
-<Studio enabled={dev} />
+<Studio enabled={false} />
 
 <Project name="main" config={{ state: projectState }}>
 	<Sheet>
 		<PolyhedronSequence {targetAnimationSection} />
 
-		<T.PerspectiveCamera makeDefault position={[0, 0, 8]} fov={30} />
+		<T.PerspectiveCamera makeDefault position={[0, 0, 6]} fov={30} />
 
 		<SheetObject key="Light">
 			{#snippet children({ Transform })}
@@ -61,7 +61,7 @@
 			{/snippet}
 		</SheetObject>
 
-		<Pyramid />
+		<Pyramid bind:onscrollprogress />
 		<Octahedron />
 	</Sheet>
 </Project>
