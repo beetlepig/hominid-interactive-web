@@ -27,6 +27,7 @@
 </script>
 
 <div
+	id="home"
 	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.4] }}
 	bind:this={headlineContainerRef}
 	class={css({ height: '[250vh]' })}

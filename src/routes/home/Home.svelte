@@ -10,6 +10,7 @@
 	import Features from './components/molecules/features/Features.svelte';
 	import Projects from './components/molecules/projects/Projects.svelte';
 	import Chat from './components/molecules/chat/Chat.svelte';
+	import { replaceState } from '$app/navigation';
 	import { createSignal } from '$lib';
 
 	/** @type {HTMLElement} */
@@ -51,8 +52,19 @@
 			overflow: 'auto'
 		})}
 	>
-		<Headline bind:headlineContainerRef onVisible={setPyramidTarget} />
-		<Introduction onVisible={setOctahedronTarget} />
+		<Headline
+			bind:headlineContainerRef
+			onVisible={() => {
+				setPyramidTarget();
+				replaceState('#home', { hash: '#home' });
+			}}
+		/>
+		<Introduction
+			onVisible={() => {
+				setOctahedronTarget();
+				replaceState('#about-me', { hash: '#about-me' });
+			}}
+		/>
 		<Features onVisible={setOctahedronTarget} />
 		<Projects onVisible={setOctahedronTarget} />
 		<Chat onVisible={setOctahedronTarget} />

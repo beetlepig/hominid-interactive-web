@@ -7,6 +7,7 @@
 </script>
 
 <div
+	id="about-me"
 	class={css({ padding: '32' })}
 	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [1] }}
 >
