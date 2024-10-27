@@ -12,6 +12,7 @@
 	import Chat from './components/molecules/chat/Chat.svelte';
 	import { replaceState } from '$app/navigation';
 	import { createSignal } from '$lib';
+	import { sections } from '$lib/constans/index.js';
 
 	/** @type {HTMLElement} */
 	let headlineContainerRef;
@@ -56,17 +57,32 @@
 			bind:headlineContainerRef
 			onVisible={() => {
 				setPyramidTarget();
-				replaceState('#home', { hash: '#home' });
+				replaceState(sections.home.href, { hash: sections.home.href });
 			}}
 		/>
 		<Introduction
 			onVisible={() => {
 				setOctahedronTarget();
-				replaceState('#about-me', { hash: '#about-me' });
+				replaceState(sections.aboutMe.href, { hash: sections.aboutMe.href });
 			}}
 		/>
-		<Features onVisible={setOctahedronTarget} />
-		<Projects onVisible={setOctahedronTarget} />
-		<Chat onVisible={setOctahedronTarget} />
+		<Features
+			onVisible={() => {
+				setOctahedronTarget();
+				replaceState(sections.skills.href, { hash: sections.skills.href });
+			}}
+		/>
+		<Projects
+			onVisible={() => {
+				setOctahedronTarget();
+				replaceState(sections.projects.href, { hash: sections.projects.href });
+			}}
+		/>
+		<Chat
+			onVisible={() => {
+				setOctahedronTarget();
+				replaceState(sections.chat.href, { hash: sections.chat.href });
+			}}
+		/>
 	</div>
 </div>

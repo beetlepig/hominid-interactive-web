@@ -1,13 +1,14 @@
 <script>
 	import { css } from 'styled-system/css';
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
+	import { sections } from '$lib/constans/index.js';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
 </script>
 
 <div
-	id="about-me"
+	id={sections.aboutMe.id}
 	class={css({ padding: '32' })}
 	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [1] }}
 >

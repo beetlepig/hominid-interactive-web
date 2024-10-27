@@ -1,12 +1,14 @@
 <script>
 	import { css } from 'styled-system/css';
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
+	import { sections } from '$lib/constans/index.js';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
 </script>
 
 <div
+	id={sections.skills.id}
 	class={css({
 		bgColor: 'red.400/30',
 		display: 'flex'

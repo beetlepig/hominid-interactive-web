@@ -3,6 +3,7 @@
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
 	import { mapNumRange, useScroll } from '$lib';
 	import { tweened } from 'svelte/motion';
+	import { sections } from '$lib/constans/index.js';
 
 	/** @type {{ onVisible: () => void, headlineContainerRef: HTMLElement }} */
 	let { onVisible, headlineContainerRef = $bindable() } = $props();
@@ -27,7 +28,7 @@
 </script>
 
 <div
-	id="home"
+	id={sections.home.id}
 	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.4] }}
 	bind:this={headlineContainerRef}
 	class={css({ height: '[250vh]' })}
