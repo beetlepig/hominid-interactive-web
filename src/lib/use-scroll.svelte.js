@@ -42,25 +42,29 @@ const calculateScrollProgress = (target) => {
 
 /**
  * @description Action to calculate the scrollYProgress of the selected target.
- * @param {{target: HTMLElement}} args
+ * @param {{target: HTMLElement | null, container: HTMLElement | null}} args
  */
-const useScroll = ({ target }) => {
+const useScroll = ({ target, container }) => {
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
+	const [scrollY, setScrollY] = createSignal(0);
 
 	$effect(() => {
+		const currentContainer = container ?? getScrollableParent(target);
+
+		/** @type {(event: Event) => void} */
 		const handleScroll = () => {
-			setScrollYProgress(calculateScrollProgress(target));
+			setScrollYProgress(target ? calculateScrollProgress(target) : 0);
+			setScrollY(currentContainer.scrollTop);
 		};
 
-		const container = getScrollableParent(target);
-		container.addEventListener('scroll', handleScroll);
+		currentContainer.addEventListener('scroll', handleScroll);
 
 		return () => {
-			container.removeEventListener('scroll', handleScroll);
+			currentContainer.removeEventListener('scroll', handleScroll);
 		};
 	});
 
-	return { scrollYProgress };
+	return { scrollYProgress, scrollY };
 };
 
 export { useScroll };

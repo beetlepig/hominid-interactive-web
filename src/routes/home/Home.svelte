@@ -46,6 +46,7 @@
 	</div>
 
 	<div
+		id="overflow-container"
 		class={css({
 			position: 'relative',
 			w: 'full',

@@ -13,7 +13,9 @@
 	const animatedNameOpacity = tweened(0, { delay: 20, duration: 200 });
 	const animatedNamePosition = tweened(0, { delay: 20, duration: 200 });
 
-	const { scrollYProgress } = $derived(useScroll({ target: headlineContainerRef }));
+	const { scrollYProgress } = $derived(
+		useScroll({ target: headlineContainerRef, container: null })
+	);
 	$effect(() => {
 		const opacity = mapNumRange(scrollYProgress(), 0, 0.2, 0.9, 0);
 		const position = mapNumRange(scrollYProgress(), 0, 0.2, 0, -40);

@@ -29,7 +29,9 @@
 	const animatedScale = tweened(1.4, { delay: 20, duration: 200 });
 	const animatedPosition = tweened(-0.7, { delay: 20, duration: 200 });
 
-	const { scrollYProgress } = $derived(useScroll({ target: headlineContainerRef }));
+	const { scrollYProgress } = $derived(
+		useScroll({ target: headlineContainerRef, container: null })
+	);
 	$effect(() => {
 		const scale = mapNumRange(scrollYProgress(), 0.1, 0.2, 1.4, 1);
 		const position = mapNumRange(scrollYProgress(), 0.1, 0.2, -0.7, -0.5);
