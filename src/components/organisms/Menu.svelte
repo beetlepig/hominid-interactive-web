@@ -2,26 +2,12 @@
 	import { css } from 'styled-system/css';
 	import { sections } from '$lib/constans';
 	import Logo from '../atoms/Logo.svelte';
-	import { createSignal, useScroll } from '$lib';
+	import { createSignal } from '$lib';
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
-
-	/**
-	 * @type {HTMLElement | null}
-	 */
-	const container = browser ? document.getElementById('overflow-container') : null;
-	/**
-	 * @type {HTMLElement | null}
-	 */
-	const target = browser ? document.getElementById(sections.aboutMe.id) : null;
-
-	const { scrollYProgress } = useScroll({
-		target,
-		container
-	});
-	const isScrolled = $derived(scrollYProgress() > 0);
 
 	const [currentSection, setCurrentSection] = createSignal(sections.home.href);
+
+	const isScrolled = $derived(currentSection() !== sections.home.href);
 
 	$effect(() => {
 		const stateHash = /** @type {{hash: string | undefined}} */ ($page.state);
@@ -54,7 +40,7 @@
 		padding: isScrolled ? '3' : '8',
 		transition: 'all',
 		transitionDuration: 'slowest',
-		bgColor: isScrolled ? 'white/60' : 'transparent',
+		bgColor: isScrolled ? 'gray.50/60' : 'transparent',
 		backdropFilter: isScrolled ? 'auto' : '[none]',
 		backdropBlur: 'md'
 	})}

@@ -63,7 +63,7 @@
 		/>
 		<Introduction
 			onVisible={() => {
-				setOctahedronTarget();
+				setPyramidTarget();
 				replaceState(sections.aboutMe.href, { hash: sections.aboutMe.href });
 			}}
 		/>
