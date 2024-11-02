@@ -4,6 +4,9 @@
 	import { mapNumRange, useScroll } from '$lib';
 	import { tweened } from 'svelte/motion';
 	import { sections } from '$lib/constans/index.js';
+	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
+	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
+	import { Canvas } from '@threlte/core';
 
 	/** @type {{ onVisible: () => void, headlineContainerRef: HTMLElement }} */
 	let { onVisible, headlineContainerRef = $bindable() } = $props();
@@ -17,10 +20,10 @@
 		useScroll({ target: headlineContainerRef, container: null })
 	);
 	$effect(() => {
-		const opacity = mapNumRange(scrollYProgress(), 0, 0.2, 0.9, 0);
-		const position = mapNumRange(scrollYProgress(), 0, 0.2, 0, -40);
-		const nameOpacity = mapNumRange(scrollYProgress(), 0.2, 0.4, 0, 0.9);
-		const namePosition = mapNumRange(scrollYProgress(), 0.1, 0.25, 0, -25);
+		const opacity = mapNumRange(scrollYProgress(), 0.2, 0.25, 0.9, 0);
+		const position = mapNumRange(scrollYProgress(), 0.15, 0.25, 0, -40);
+		const nameOpacity = mapNumRange(scrollYProgress(), 0.25, 0.35, 0, 0.9);
+		const namePosition = mapNumRange(scrollYProgress(), 0.3, 0.35, 0, -25);
 
 		animatedOpacity.update(() => opacity);
 		animatedPosition.update(() => position);
@@ -31,9 +34,12 @@
 
 <div
 	id={sections.home.id}
-	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.4] }}
+	use:interceptionObserverAction={{
+		onIntercepted: onVisible,
+		threshold: [0.2]
+	}}
 	bind:this={headlineContainerRef}
-	class={css({ height: '[250vh]' })}
+	class={css({ height: '[500vh]', bgColor: 'gray.50' })}
 >
 	<div
 		class={css({
@@ -43,14 +49,23 @@
 			flexDir: 'column',
 			justifyContent: 'center',
 			alignItems: 'center',
-			pb: '[10vh]',
-			height: '[100vh]',
-			animationName: 'fadein',
-			animationDuration: 'slowest',
-			animationTimingFunction: 'in'
+			height: '[100vh]'
 		})}
 	>
-		<p
+		<div
+			class={css({
+				pos: 'absolute',
+				inset: '0'
+			})}
+		>
+			<Canvas>
+				<PolyhedronScene
+					{headlineContainerRef}
+					targetAnimationSection={AnimationSectionEnum.Pyramid}
+				/>
+			</Canvas>
+		</div>
+		<h1
 			style="opacity: {$animatedOpacity}; transform: translateY({$animatedPosition}px)"
 			class={css({
 				position: 'absolute',
@@ -58,12 +73,15 @@
 				fontFamily: 'raleway',
 				fontWeight: 'black',
 				fontSize: '8xl',
-				lineHeight: 'tight'
+				lineHeight: 'tight',
+				animationName: 'fadein',
+				animationDuration: 'slowest',
+				animationTimingFunction: 'in'
 			})}
 		>
 			CARLOS <br /> GOMEZ
-		</p>
-		<p
+		</h1>
+		<h2
 			style="opacity: {$animatedNameOpacity}; transform: translateY({$animatedNamePosition}px)"
 			class={css({
 				position: 'absolute',
@@ -75,6 +93,6 @@
 		>
 			Developer's <br />
 			<span class={css({ fontSize: '6xl', fontWeight: 'medium' })}>PORTFOLIO</span>
-		</p>
+		</h2>
 	</div>
 </div>

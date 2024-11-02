@@ -14,33 +14,18 @@
 <section
 	id={sections.aboutMe.id}
 	class={css({
-		py: '28',
-		my: '12',
-		bgColor: 'white/50',
-		backdropFilter: 'auto',
-		backdropBlur: 'xl'
+		minHeight: 'screen',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		py: '28'
 	})}
-	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [1] }}
+	use:interceptionObserverAction={{
+		onIntercepted: onVisible,
+		threshold: [0.9]
+	}}
 >
-	<div class={css({ mx: 'auto', maxW: '5xl' })}>
-		<h3
-			class={css({
-				textAlign: 'center',
-				fontSize: '3xl',
-				fontFamily: 'raleway',
-				fontWeight: 'bold'
-			})}
-		>
-			Some companies I have collaborated with
-		</h3>
-		<div class={css({ my: '10', display: 'flex', justifyContent: 'center', spaceX: '4' })}>
-			<a href="https://www.connectrn.com" target="_blank">
-				<img alt="connectrn-logo" src="/icons/crn-icon.svg" width="50" />
-			</a>
-			<a href="https://www.venturit.com" target="_blank">
-				<img alt="venturit-logo" src="/icons/venturit-icon.svg" width="50" />
-			</a>
-		</div>
+	<div class={css({ maxW: '5xl' })}>
 		<h4
 			class={css({
 				textAlign: 'center',
@@ -59,5 +44,34 @@
 			{@render blackSpan('end-user')}
 			and their experience as a {@render blackSpan('top priority')}.
 		</h4>
+		<h3
+			class={css({
+				my: '10',
+				textAlign: 'center',
+				fontSize: '2xl',
+				fontFamily: 'raleway',
+				fontWeight: 'bold'
+			})}
+		>
+			Some companies I have collaborated with
+		</h3>
+		<div class={css({ display: 'flex', justifyContent: 'center', spaceX: '5' })}>
+			<a href="https://www.connectrn.com" target="_blank" class={css({ display: 'inline-flex' })}>
+				<img alt="connectrn-logo" src="/icons/crn-icon.svg" width="50" />
+			</a>
+			<a href="https://www.venturit.com" target="_blank">
+				<img alt="venturit-logo" src="/icons/venturit-icon.svg" width="50" />
+			</a>
+			<a
+				href="https://www.leangroup.com/solutions-and-services/technology"
+				target="_blank"
+				class={css({ display: 'inline-flex' })}
+			>
+				<img alt="lean-logo" src="/icons/lean-icon.svg" width="50" />
+			</a>
+			<a href="https://ottomoto.net" target="_blank" class={css({ display: 'inline-flex' })}>
+				<img alt="ottomoto-logo" src="/icons/ottomoto-icon.svg" width="50" />
+			</a>
+		</div>
 	</div>
 </section>

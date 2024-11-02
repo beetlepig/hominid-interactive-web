@@ -10,8 +10,9 @@
 <div
 	id={sections.skills.id}
 	class={css({
-		bgColor: 'red.400/30',
-		display: 'flex'
+		display: 'flex',
+		bgColor: 'gray.50',
+		blur: '2xl'
 	})}
 	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.3] }}
 >
@@ -23,8 +24,7 @@
 			flex: '1',
 			top: '0',
 			height: '[100vh]',
-			alignSelf: 'flex-start',
-			bgColor: 'yellow.50/70'
+			alignSelf: 'flex-start'
 		})}
 	>
 		<p class={css({ flex: '1', textAlign: 'center' })}>
@@ -35,7 +35,6 @@
 		<div
 			class={css({
 				height: '[100vh]',
-				bgColor: 'blue.50/50',
 				display: 'flex',
 				flexDir: 'column',
 				justifyContent: 'center'
@@ -66,7 +65,6 @@
 			class={css({
 				height: '[100vh]',
 				display: 'flex',
-				bgColor: 'pink.100/50',
 				flexDir: 'column',
 				justifyContent: 'center'
 			})}
@@ -95,7 +93,6 @@
 		<div
 			class={css({
 				height: '[100vh]',
-				bgColor: 'blue.50/50',
 				display: 'flex',
 				flexDir: 'column',
 				justifyContent: 'center'
