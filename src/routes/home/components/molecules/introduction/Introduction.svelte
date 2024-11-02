@@ -30,9 +30,13 @@
 			class={css({
 				textAlign: 'center',
 				fontFamily: 'raleway',
-				fontSize: 'xl',
+				fontSize: 'lg',
+				px: '8',
 				fontWeight: 'bold',
-				color: 'gray.500'
+				color: 'gray.500',
+				sm: {
+					fontSize: 'xl'
+				}
 			})}
 		>
 			I am a {@render blackSpan('frontend developer')} with over
@@ -48,9 +52,12 @@
 			class={css({
 				my: '10',
 				textAlign: 'center',
-				fontSize: '2xl',
+				fontSize: 'xl',
 				fontFamily: 'raleway',
-				fontWeight: 'bold'
+				fontWeight: 'bold',
+				sm: {
+					fontSize: '2xl'
+				}
 			})}
 		>
 			Some companies I have collaborated with

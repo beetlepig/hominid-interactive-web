@@ -72,11 +72,14 @@
 				textAlign: 'center',
 				fontFamily: 'raleway',
 				fontWeight: 'black',
-				fontSize: '8xl',
+				fontSize: '7xl',
 				lineHeight: 'tight',
 				animationName: 'fadein',
 				animationDuration: 'slowest',
-				animationTimingFunction: 'in'
+				animationTimingFunction: 'in',
+				sm: {
+					fontSize: '8xl'
+				}
 			})}
 		>
 			CARLOS <br /> GOMEZ
