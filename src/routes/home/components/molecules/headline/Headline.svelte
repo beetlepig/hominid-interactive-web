@@ -77,7 +77,7 @@
 				animationName: 'fadein',
 				animationDuration: 'slowest',
 				animationTimingFunction: 'in',
-				sm: {
+				md: {
 					fontSize: '8xl'
 				}
 			})}
