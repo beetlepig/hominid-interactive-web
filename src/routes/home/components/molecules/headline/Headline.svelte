@@ -1,24 +1,38 @@
 <script>
 	import { css } from 'styled-system/css';
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
-	import { mapNumRange, useScroll } from '$lib';
+	import { createSignal, mapNumRange } from '$lib';
 	import { tweened } from 'svelte/motion';
 	import { sections } from '$lib/constans/index.js';
 	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
+	import { scroll } from 'motion';
 
-	/** @type {{ onVisible: () => void, headlineContainerRef: HTMLElement }} */
-	let { onVisible, headlineContainerRef = $bindable() } = $props();
+	/** @type {{ onVisible: () => void }} */
+	let { onVisible } = $props();
+
+	/** @type {HTMLElement | null} */
+	let headlineContainerRef = $state(null);
 
 	const animatedOpacity = tweened(0.9, { delay: 20, duration: 200 });
 	const animatedPosition = tweened(0, { delay: 20, duration: 200 });
 	const animatedNameOpacity = tweened(0, { delay: 20, duration: 200 });
 	const animatedNamePosition = tweened(0, { delay: 20, duration: 200 });
 
-	const { scrollYProgress } = $derived(
-		useScroll({ target: headlineContainerRef, container: null })
-	);
+	const [scrollYProgress, setScrollYProgress] = createSignal(0);
+
+	$effect(() => {
+		/** @type {(progress: number) => void} */
+		const scrollCallback = (progress) => {
+			setScrollYProgress(progress);
+		};
+		scroll(scrollCallback, {
+			container: document.getElementById('main-target') ?? undefined,
+			target: headlineContainerRef ?? undefined
+		});
+	});
+
 	$effect(() => {
 		const opacity = mapNumRange(scrollYProgress(), 0.2, 0.25, 0.9, 0);
 		const position = mapNumRange(scrollYProgress(), 0.15, 0.25, 0, -40);

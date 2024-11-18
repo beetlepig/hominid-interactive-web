@@ -1,6 +1,4 @@
 <script>
-	/** @import { AnimationSectionEnumType } from './components/organisms/polyhedron-scene/PolyhedronSequence.svelte' */
-
 	import { css } from 'styled-system/css';
 	import Introduction from './components/molecules/introduction/Introduction.svelte';
 	import Headline from './components/molecules/headline/Headline.svelte';
@@ -10,9 +8,6 @@
 	import { replaceState } from '$app/navigation';
 	import { sections } from '$lib/constans/index.js';
 	import { createSignal } from '$lib';
-
-	/** @type {HTMLElement} */
-	let headlineContainerRef;
 
 	const [pageTitle, setPageTitle] = createSignal('Home');
 </script>
@@ -32,7 +27,6 @@
 	})}
 >
 	<Headline
-		bind:headlineContainerRef
 		onVisible={() => {
 			setPageTitle(sections.home.name);
 			replaceState(sections.home.href, { hash: sections.home.href });

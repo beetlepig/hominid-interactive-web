@@ -2,8 +2,8 @@
 	import { T } from '@threlte/core';
 	import { SheetObject } from '@threlte/theatre';
 	import { tweened } from 'svelte/motion';
-	import { mapNumRange } from '$lib';
-	import { useScroll } from '$lib';
+	import { createSignal, mapNumRange } from '$lib';
+	import { scroll } from 'motion';
 
 	/** @type {{ headlineContainerRef: HTMLElement | null }} */
 	const { headlineContainerRef } = $props();
@@ -32,9 +32,19 @@
 		duration: 200
 	});
 
-	const { scrollYProgress } = $derived(
-		useScroll({ target: headlineContainerRef, container: null })
-	);
+	const [scrollYProgress, setScrollYProgress] = createSignal(0);
+
+	$effect(() => {
+		/** @type {(progress: number) => void} */
+		const scrollCallback = (progress) => {
+			setScrollYProgress(progress);
+		};
+		scroll(scrollCallback, {
+			container: document.getElementById('main-target') ?? undefined,
+			target: headlineContainerRef ?? undefined
+		});
+	});
+
 	$effect(() => {
 		if (headlineContainerRef) {
 			const scale = mapNumRange(scrollYProgress(), 0.1, 0.2, 1.4, 1);

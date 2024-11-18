@@ -4,10 +4,11 @@
 	import { css } from 'styled-system/css';
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
 	import { sections } from '$lib/constans/index.js';
-	import { createSignal, useScroll } from '$lib';
+	import { createSignal } from '$lib';
 	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
+	import { scroll } from 'motion';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -20,9 +21,23 @@
 			AnimationSectionEnum.Pyramid
 		);
 
-	const { scrollYProgress } = $derived(
-		useScroll({ target: featuresContainerRef, container: null })
-	);
+	const [scrollYProgress, setScrollYProgress] = createSignal(0);
+
+	$effect(() => {
+		/** @type {(progress: number) => void} */
+		const scrollCallback = (progress) => {
+			setScrollYProgress(progress);
+		};
+		const cancel = scroll(scrollCallback, {
+			axis: 'y',
+			container: document.getElementById('main-target') ?? undefined,
+			target: featuresContainerRef ?? undefined
+		});
+
+		return () => {
+			cancel();
+		};
+	});
 
 	$effect(() => {
 		switch (true) {
@@ -40,8 +55,6 @@
 			}
 		}
 	});
-
-	$inspect(scrollYProgress());
 </script>
 
 {#snippet blackSpan(/** @type {string} */ text)}
