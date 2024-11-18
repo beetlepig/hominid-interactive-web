@@ -1,13 +1,12 @@
 <script>
 	import { css } from 'styled-system/css';
-	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
 	import { createSignal, mapNumRange } from '$lib';
 	import { tweened } from 'svelte/motion';
 	import { sections } from '$lib/constans/index.js';
 	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
-	import { scroll } from 'motion';
+	import { inView, scroll } from 'motion';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -34,6 +33,24 @@
 	});
 
 	$effect(() => {
+		if (headlineContainerRef) {
+			const stop = inView(
+				headlineContainerRef,
+				() => {
+					onVisible();
+
+					return () => {};
+				},
+				{ amount: 0.2 }
+			);
+
+			return () => {
+				stop();
+			};
+		}
+	});
+
+	$effect(() => {
 		const opacity = mapNumRange(scrollYProgress(), 0.2, 0.25, 0.9, 0);
 		const position = mapNumRange(scrollYProgress(), 0.15, 0.25, 0, -40);
 		const nameOpacity = mapNumRange(scrollYProgress(), 0.25, 0.35, 0, 0.9);
@@ -48,10 +65,6 @@
 
 <div
 	id={sections.home.id}
-	use:interceptionObserverAction={{
-		onIntercepted: onVisible,
-		threshold: [0.2]
-	}}
 	bind:this={headlineContainerRef}
 	class={css({ height: '[500vh]', bgColor: 'gray.50' })}
 >

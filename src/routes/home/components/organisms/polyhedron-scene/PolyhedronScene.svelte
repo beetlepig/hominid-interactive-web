@@ -36,7 +36,7 @@
 	});
 </script>
 
-<Studio enabled={true} />
+<Studio enabled={false} />
 
 <Project name={projectName} config={{ state: projectState }}>
 	<Sheet>

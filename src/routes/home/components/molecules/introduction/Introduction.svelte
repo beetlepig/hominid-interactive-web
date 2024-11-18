@@ -1,10 +1,31 @@
 <script>
 	import { css } from 'styled-system/css';
-	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
 	import { sections } from '$lib/constans/index.js';
+	import { inView } from 'motion';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
+
+	/** @type {HTMLElement | null} */
+	let introductionContainerRef = $state(null);
+
+	$effect(() => {
+		if (introductionContainerRef) {
+			const stop = inView(
+				introductionContainerRef,
+				() => {
+					onVisible();
+
+					return () => {};
+				},
+				{ amount: 0.9 }
+			);
+
+			return () => {
+				stop();
+			};
+		}
+	});
 </script>
 
 {#snippet blackSpan(/** @type {string} */ text)}
@@ -20,10 +41,7 @@
 		alignItems: 'center',
 		py: '28'
 	})}
-	use:interceptionObserverAction={{
-		onIntercepted: onVisible,
-		threshold: [0.9]
-	}}
+	bind:this={introductionContainerRef}
 >
 	<div class={css({ maxW: '5xl' })}>
 		<h4

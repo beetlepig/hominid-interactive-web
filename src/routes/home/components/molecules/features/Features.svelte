@@ -2,13 +2,12 @@
 	/** @import { AnimationSectionEnumType } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte' */
 
 	import { css } from 'styled-system/css';
-	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
 	import { sections } from '$lib/constans/index.js';
 	import { createSignal } from '$lib';
 	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
-	import { scroll } from 'motion';
+	import { inView, scroll } from 'motion';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -37,6 +36,24 @@
 		return () => {
 			cancel();
 		};
+	});
+
+	$effect(() => {
+		if (featuresContainerRef) {
+			const stop = inView(
+				featuresContainerRef,
+				() => {
+					onVisible();
+
+					return () => {};
+				},
+				{ amount: 0.3 }
+			);
+
+			return () => {
+				stop();
+			};
+		}
 	});
 
 	$effect(() => {
@@ -70,7 +87,6 @@
 		maxW: '7xl',
 		mx: 'auto'
 	})}
-	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.3] }}
 >
 	<div
 		class={css({
