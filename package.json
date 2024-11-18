@@ -44,6 +44,7 @@
 		"@threlte/core": "^8.0.0-next.21",
 		"@threlte/extras": "^9.0.0-next.28",
 		"@threlte/theatre": "^3.0.0-next.6",
+		"motion": "^11.11.17",
 		"three": "^0.169.0"
 	}
 }

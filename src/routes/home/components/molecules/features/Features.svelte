@@ -1,18 +1,61 @@
 <script>
+	/** @import { AnimationSectionEnumType } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte' */
+
 	import { css } from 'styled-system/css';
 	import { interceptionObserverAction } from '../../../utils/actions/interception-observer-action.svelte.js';
 	import { sections } from '$lib/constans/index.js';
+	import { createSignal, useScroll } from '$lib';
+	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
+	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
+	import { Canvas } from '@threlte/core';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
+
+	/** @type {HTMLElement | null} */
+	let featuresContainerRef = $state(null);
+
+	let [currentAnimationSection, setCurrentAnimationSection] =
+		/** @type {typeof createSignal<AnimationSectionEnumType>} */ (createSignal)(
+			AnimationSectionEnum.Pyramid
+		);
+
+	const { scrollYProgress } = $derived(
+		useScroll({ target: featuresContainerRef, container: null })
+	);
+
+	$effect(() => {
+		switch (true) {
+			case scrollYProgress() < 0.1: {
+				setCurrentAnimationSection(AnimationSectionEnum.Pyramid);
+				break;
+			}
+			case scrollYProgress() >= 0.1 && scrollYProgress() < 0.4: {
+				setCurrentAnimationSection(AnimationSectionEnum.Octahedron);
+				break;
+			}
+			case scrollYProgress() >= 0.4: {
+				setCurrentAnimationSection(AnimationSectionEnum.Octahedron);
+				break;
+			}
+		}
+	});
+
+	$inspect(scrollYProgress());
 </script>
+
+{#snippet blackSpan(/** @type {string} */ text)}
+	<span class={css({ color: 'black' })}>{text}</span>
+{/snippet}
 
 <div
 	id={sections.skills.id}
+	bind:this={featuresContainerRef}
 	class={css({
 		display: 'flex',
-		bgColor: 'gray.50',
-		blur: '2xl'
+		gap: '6',
+		maxW: '7xl',
+		mx: 'auto'
 	})}
 	use:interceptionObserverAction={{ onIntercepted: onVisible, threshold: [0.3] }}
 >
@@ -23,82 +66,94 @@
 			alignItems: 'center',
 			flex: '1',
 			top: '0',
-			height: '[100vh]',
+			height: 'screen',
 			alignSelf: 'flex-start'
 		})}
 	>
-		<p class={css({ flex: '1', textAlign: 'center' })}>
-			Lorem ipsum dolor sit amet, consectetur adipiscing.
-		</p>
+		<Canvas>
+			<PolyhedronScene
+				projectName="features"
+				headlineContainerRef={null}
+				targetAnimationSection={currentAnimationSection()}
+			/>
+		</Canvas>
 	</div>
-	<div class={css({ flex: '1' })}>
+	<div class={css({ flex: '1', paddingRight: '16' })}>
 		<div
 			class={css({
-				height: '[100vh]',
+				height: 'screen',
 				display: 'flex',
 				flexDir: 'column',
-				justifyContent: 'center'
+				justifyContent: 'center',
+				spaceY: '3'
 			})}
 		>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et posuere ipsum, nec ornare
-				dui. Pellentesque a nibh diam. Vivamus facilisis justo velit, venenatis consectetur quam
-				vehicula vel. Cras rutrum pulvinar nibh, sed porttitor nisl porttitor non. Cras eget rhoncus
-				nibh, sed congue lectus. Cras sodales ipsum et dui congue, quis viverra urna lacinia. Donec
-				dapibus facilisis rutrum. Vestibulum nec feugiat diam, et fermentum enim.
-			</p>
-			<p>
-				Nullam congue turpis vitae neque laoreet, at pulvinar urna tempor. Donec volutpat efficitur
-				nulla, nec laoreet mi dignissim vel. Curabitur fringilla erat sit amet scelerisque iaculis.
-				Fusce pretium augue nec lorem maximus, sed faucibus nisi laoreet. Donec egestas enim eget
-				eros feugiat imperdiet. In consectetur dictum mollis.
+			<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+				Reliable Frontend.
+			</h3>
+			<p
+				class={css({
+					fontSize: 'xl',
+					fontFamily: 'raleway',
+					fontWeight: 'semibold',
+					color: 'gray.500'
+				})}
+			>
+				Using {@render blackSpan('innovative')}, battle-tested {@render blackSpan(
+					'frontend technologies'
+				)}, along with best coding practices and appropriate {@render blackSpan('architectures')},
+				ensures reliable and {@render blackSpan('future-proof code')}.
 			</p>
 		</div>
 		<div
 			class={css({
-				height: '[100vh]',
+				height: 'screen',
 				display: 'flex',
 				flexDir: 'column',
-				justifyContent: 'center'
+				justifyContent: 'center',
+				spaceY: '3'
 			})}
 		>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et posuere ipsum, nec ornare
-				dui. Pellentesque a nibh diam. Vivamus facilisis justo velit, venenatis consectetur quam
-				vehicula vel. Cras rutrum pulvinar nibh, sed porttitor nisl porttitor non. Cras eget rhoncus
-				nibh, sed congue lectus. Cras sodales ipsum et dui congue, quis viverra urna lacinia. Donec
-				dapibus facilisis rutrum. Vestibulum nec feugiat diam, et fermentum enim. Mauris
-				sollicitudin mi ac tempor cursus. In hac habitasse platea dictumst.
-			</p>
-			<p>
-				Nullam congue turpis vitae neque laoreet, at pulvinar urna tempor. Donec volutpat efficitur
-				nulla, nec laoreet mi dignissim vel. Curabitur fringilla erat sit amet scelerisque iaculis.
-				Fusce pretium augue nec lorem maximus, sed faucibus nisi laoreet. Donec egestas enim eget
-				eros feugiat imperdiet. In consectetur dictum mollis.
+			<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+				Reliable Frontend.
+			</h3>
+			<p
+				class={css({
+					fontSize: 'xl',
+					fontFamily: 'raleway',
+					fontWeight: 'semibold',
+					color: 'gray.500'
+				})}
+			>
+				Using {@render blackSpan('innovative')}, battle-tested {@render blackSpan(
+					'frontend technologies'
+				)}, along with best coding practices and appropriate {@render blackSpan('architectures')},
+				ensures reliable and {@render blackSpan('future-proof code')}.
 			</p>
 		</div>
 		<div
 			class={css({
-				height: '[100vh]',
+				height: 'screen',
 				display: 'flex',
 				flexDir: 'column',
 				justifyContent: 'center'
 			})}
 		>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et posuere ipsum, nec ornare
-				dui. Pellentesque a nibh diam. Vivamus facilisis justo velit, venenatis consectetur quam
-				vehicula vel. Cras rutrum pulvinar nibh, sed porttitor nisl porttitor non. Cras eget rhoncus
-				nibh, sed congue lectus. Cras sodales ipsum et dui congue, quis viverra urna lacinia. Donec
-				dapibus facilisis rutrum. Vestibulum nec feugiat diam, et fermentum enim. Mauris
-				sollicitudin mi ac tempor cursus. In hac habitasse platea dictumst. Nunc vitae enim feugiat,
-				sagittis nunc sit amet, blandit dolor. In sit amet enim massa.
-			</p>
-			<p>
-				Nullam congue turpis vitae neque laoreet, at pulvinar urna tempor. Donec volutpat efficitur
-				nulla, nec laoreet mi dignissim vel. Curabitur fringilla erat sit amet scelerisque iaculis.
-				Fusce pretium augue nec lorem maximus, sed faucibus nisi laoreet. Donec egestas enim eget
-				eros feugiat imperdiet. In consectetur dictum mollis.
+			<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+				Reliable Frontend.
+			</h3>
+			<p
+				class={css({
+					fontSize: 'xl',
+					fontFamily: 'raleway',
+					fontWeight: 'semibold',
+					color: 'gray.500'
+				})}
+			>
+				Using {@render blackSpan('innovative')}, battle-tested {@render blackSpan(
+					'frontend technologies'
+				)}, along with best coding practices and appropriate {@render blackSpan('architectures')},
+				ensures reliable and {@render blackSpan('future-proof code')}.
 			</p>
 		</div>
 	</div>

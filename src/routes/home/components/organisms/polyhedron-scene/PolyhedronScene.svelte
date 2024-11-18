@@ -10,8 +10,8 @@
 	import { Vector2 } from 'three';
 	import projectState from './main.theatre-project-state.json';
 
-	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement }} */
-	const { targetAnimationSection, headlineContainerRef } = $props();
+	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: string }} */
+	const { targetAnimationSection, headlineContainerRef, projectName } = $props();
 
 	const { camera } = useThrelte();
 
@@ -36,9 +36,9 @@
 	});
 </script>
 
-<Studio enabled={false} />
+<Studio enabled={true} />
 
-<Project name="main" config={{ state: projectState }}>
+<Project name={projectName} config={{ state: projectState }}>
 	<Sheet>
 		<PolyhedronSequence {targetAnimationSection} />
 

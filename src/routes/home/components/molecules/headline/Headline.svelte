@@ -61,6 +61,7 @@
 			<Canvas>
 				<PolyhedronScene
 					{headlineContainerRef}
+					projectName="main"
 					targetAnimationSection={AnimationSectionEnum.Pyramid}
 				/>
 			</Canvas>

@@ -5,7 +5,7 @@
 	import { mapNumRange } from '$lib';
 	import { useScroll } from '$lib';
 
-	/** @type {{ headlineContainerRef: HTMLElement }} */
+	/** @type {{ headlineContainerRef: HTMLElement | null }} */
 	const { headlineContainerRef } = $props();
 
 	// prettier-ignore
@@ -26,18 +26,23 @@
 		4, 3, 0
 	];
 
-	const animatedScale = tweened(1.4, { delay: 20, duration: 200 });
-	const animatedPosition = tweened(-0.7, { delay: 20, duration: 200 });
+	const animatedScale = tweened(headlineContainerRef ? 1.4 : 1, { delay: 20, duration: 200 });
+	const animatedPosition = tweened(headlineContainerRef ? -0.7 : -0.5, {
+		delay: 20,
+		duration: 200
+	});
 
 	const { scrollYProgress } = $derived(
 		useScroll({ target: headlineContainerRef, container: null })
 	);
 	$effect(() => {
-		const scale = mapNumRange(scrollYProgress(), 0.1, 0.2, 1.4, 1);
-		const position = mapNumRange(scrollYProgress(), 0.1, 0.2, -0.7, -0.5);
+		if (headlineContainerRef) {
+			const scale = mapNumRange(scrollYProgress(), 0.1, 0.2, 1.4, 1);
+			const position = mapNumRange(scrollYProgress(), 0.1, 0.2, -0.7, -0.5);
 
-		animatedScale.update(() => scale);
-		animatedPosition.update(() => position);
+			animatedScale.update(() => scale);
+			animatedPosition.update(() => position);
+		}
 	});
 </script>
 
