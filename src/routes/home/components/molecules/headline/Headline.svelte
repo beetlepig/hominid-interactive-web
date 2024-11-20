@@ -97,6 +97,7 @@
 			style="opacity: {$animatedOpacity}; transform: translateY({$animatedPosition}px)"
 			class={css({
 				position: 'absolute',
+				pointerEvents: 'none',
 				textAlign: 'center',
 				fontFamily: 'raleway',
 				fontWeight: 'black',
@@ -116,6 +117,7 @@
 			style="opacity: {$animatedNameOpacity}; transform: translateY({$animatedNamePosition}px)"
 			class={css({
 				position: 'absolute',
+				pointerEvents: 'none',
 				textAlign: 'left',
 				fontFamily: 'oswald',
 				lineHeight: 'tight',
