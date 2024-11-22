@@ -39,11 +39,12 @@
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		py: '28'
+		py: '28',
+		bgColor: 'gray.50'
 	})}
 	bind:this={introductionContainerRef}
 >
-	<div class={css({ maxW: '5xl' })}>
+	<div class={css({ maxW: '5xl', bgColor: 'white', py: '28', rounded: 'xl', m: '9' })}>
 		<h4
 			class={css({
 				textAlign: 'center',

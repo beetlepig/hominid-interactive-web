@@ -28,10 +28,10 @@
 	});
 </script>
 
-<div
+<section
 	id={sections.projects.id}
 	class={css({ height: '[100vh]', bgColor: 'green.200/50' })}
 	bind:this={projectsContainerRef}
 >
 	<p>carrousel</p>
-</div>
+</section>

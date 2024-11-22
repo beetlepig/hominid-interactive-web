@@ -63,7 +63,7 @@
 	});
 </script>
 
-<div
+<section
 	id={sections.home.id}
 	bind:this={headlineContainerRef}
 	class={css({ height: '[500vh]', bgColor: 'gray.50' })}
@@ -103,9 +103,6 @@
 				fontWeight: 'black',
 				fontSize: '7xl',
 				lineHeight: 'tight',
-				animationName: 'fadein',
-				animationDuration: 'slowest',
-				animationTimingFunction: 'in',
 				md: {
 					fontSize: '8xl'
 				}
@@ -128,4 +125,4 @@
 			<span class={css({ fontSize: '6xl', fontWeight: 'medium' })}>PORTFOLIO</span>
 		</h2>
 	</div>
-</div>
+</section>

@@ -28,10 +28,10 @@
 	});
 </script>
 
-<div
+<section
 	id={sections.chat.id}
 	class={css({ height: '[100vh]', bgColor: 'indigo.950/50' })}
 	bind:this={chatContainerRef}
 >
 	<p>chat</p>
-</div>
+</section>
