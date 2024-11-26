@@ -14,12 +14,18 @@
 	/** @type {HTMLElement | null} */
 	let headlineContainerRef = $state(null);
 
+	/** @type {HTMLElement | null} */
+	let headlineCanvasContainerRef = $state(null);
+
 	const animatedOpacity = tweened(0.9, { delay: 20, duration: 200 });
 	const animatedPosition = tweened(0, { delay: 20, duration: 200 });
 	const animatedNameOpacity = tweened(0, { delay: 20, duration: 200 });
 	const animatedNamePosition = tweened(0, { delay: 20, duration: 200 });
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
+
+	const [canvasHeadlineRenderMode, setCanvasHeadlineRenderMode] =
+		/** @type {typeof createSignal<'on-demand' | 'manual'>} */ (createSignal)('manual');
 
 	$effect(() => {
 		/** @type {(progress: number) => void} */
@@ -42,6 +48,26 @@
 					return () => {};
 				},
 				{ amount: 0.2 }
+			);
+
+			return () => {
+				stop();
+			};
+		}
+	});
+
+	$effect(() => {
+		if (headlineCanvasContainerRef) {
+			const stop = inView(
+				headlineCanvasContainerRef,
+				() => {
+					setCanvasHeadlineRenderMode('on-demand');
+
+					return () => {
+						setCanvasHeadlineRenderMode('manual');
+					};
+				},
+				{ amount: 'some' }
 			);
 
 			return () => {
@@ -80,15 +106,16 @@
 		})}
 	>
 		<div
+			bind:this={headlineCanvasContainerRef}
 			class={css({
 				pos: 'absolute',
 				inset: '0'
 			})}
 		>
-			<Canvas>
+			<Canvas renderMode={canvasHeadlineRenderMode()}>
 				<PolyhedronScene
 					{headlineContainerRef}
-					projectName="main"
+					projectName="Headline"
 					targetAnimationSection={AnimationSectionEnum.Pyramid}
 				/>
 			</Canvas>

@@ -23,12 +23,33 @@
 	/** @type {HTMLElement | null} */
 	let featuresContentRef = $state(null);
 
+	/** @type {HTMLElement | null} */
+	let featuresCanvasContentRef = $state(null);
+
+	/** @type {HTMLElement | null} */
+	let reliableFrontendCanvasContentRef = $state(null);
+
+	/** @type {HTMLElement | null} */
+	let amazingTechnologiesCanvasContentRef = $state(null);
+
+	/** @type {HTMLElement | null} */
+	let flexibleDevelopmentCanvasContentRef = $state(null);
+
 	let [currentAnimationSection, setCurrentAnimationSection] =
 		/** @type {typeof createSignal<AnimationSectionEnumType>} */ (createSignal)(
-			AnimationSectionEnum.Pyramid
+			AnimationSectionEnum.Octahedron
 		);
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
+
+	const [canvasFeaturesRenderMode, setCanvasFeaturesRenderMode] =
+		/** @type {typeof createSignal<'on-demand' | 'manual'>} */ (createSignal)('manual');
+	const [canvasReliableFrontendRenderMode, setCanvasReliableFrontendRenderMode] =
+		/** @type {typeof createSignal<'on-demand' | 'manual'>} */ (createSignal)('manual');
+	const [canvasAmazingTechnologiesRenderMode, setCanvasAmazingTechnologiesRenderMode] =
+		/** @type {typeof createSignal<'on-demand' | 'manual'>} */ (createSignal)('manual');
+	const [canvasFlexibleDevelopmentRenderMode, setCanvasFlexibleDevelopmentRenderMode] =
+		/** @type {typeof createSignal<'on-demand' | 'manual'>} */ (createSignal)('manual');
 
 	$effect(() => {
 		/** @type {(progress: number) => void} */
@@ -117,6 +138,86 @@
 	});
 
 	$effect(() => {
+		if (featuresCanvasContentRef) {
+			const stop = inView(
+				featuresCanvasContentRef,
+				() => {
+					setCanvasFeaturesRenderMode('on-demand');
+
+					return () => {
+						setCanvasFeaturesRenderMode('manual');
+					};
+				},
+				{ amount: 'some' }
+			);
+
+			return () => {
+				stop();
+			};
+		}
+	});
+
+	$effect(() => {
+		if (reliableFrontendCanvasContentRef) {
+			const stop = inView(
+				reliableFrontendCanvasContentRef,
+				() => {
+					setCanvasReliableFrontendRenderMode('on-demand');
+
+					return () => {
+						setCanvasReliableFrontendRenderMode('manual');
+					};
+				},
+				{ amount: 'some' }
+			);
+
+			return () => {
+				stop();
+			};
+		}
+	});
+
+	$effect(() => {
+		if (amazingTechnologiesCanvasContentRef) {
+			const stop = inView(
+				amazingTechnologiesCanvasContentRef,
+				() => {
+					setCanvasAmazingTechnologiesRenderMode('on-demand');
+
+					return () => {
+						setCanvasAmazingTechnologiesRenderMode('manual');
+					};
+				},
+				{ amount: 'some' }
+			);
+
+			return () => {
+				stop();
+			};
+		}
+	});
+
+	$effect(() => {
+		if (flexibleDevelopmentCanvasContentRef) {
+			const stop = inView(
+				flexibleDevelopmentCanvasContentRef,
+				() => {
+					setCanvasFlexibleDevelopmentRenderMode('on-demand');
+
+					return () => {
+						setCanvasFlexibleDevelopmentRenderMode('manual');
+					};
+				},
+				{ amount: 'some' }
+			);
+
+			return () => {
+				stop();
+			};
+		}
+	});
+
+	$effect(() => {
 		switch (true) {
 			case scrollYProgress() < 0.1: {
 				setCurrentAnimationSection(AnimationSectionEnum.Octahedron);
@@ -142,16 +243,17 @@
 	id={sections.skills.id}
 	bind:this={featuresContainerRef}
 	class={css({
-		maxW: '6xl',
+		maxW: '7xl',
 		mx: 'auto',
 		py: '40'
 	})}
 >
 	<div
 		class={css({
+			marginX: '16',
 			lineHeight: 'tight',
 			display: 'flex',
-			justifyContent: 'center'
+			justifyContent: { base: 'center', lgDown: 'left' }
 		})}
 	>
 		<div bind:this={featuresHeadlineContainerRef} class={css({ opacity: 0 })}>
@@ -177,8 +279,19 @@
 			</h2>
 		</div>
 	</div>
-	<div bind:this={featuresContentRef} class={css({ display: 'flex', gap: '16', opacity: 0 })}>
+	<div
+		bind:this={featuresContentRef}
+		class={css({
+			marginX: '16',
+			opacity: 0,
+			lg: {
+				display: 'flex',
+				gap: '16'
+			}
+		})}
+	>
 		<div
+			bind:this={featuresCanvasContentRef}
 			class={css({
 				position: 'sticky',
 				display: 'flex',
@@ -186,10 +299,11 @@
 				flex: '1',
 				top: '0',
 				height: 'screen',
-				alignSelf: 'flex-start'
+				alignSelf: 'flex-start',
+				hideBelow: 'lg'
 			})}
 		>
-			<Canvas>
+			<Canvas renderMode={canvasFeaturesRenderMode()}>
 				<PolyhedronScene
 					projectName="features"
 					headlineContainerRef={null}
@@ -197,16 +311,25 @@
 				/>
 			</Canvas>
 		</div>
-		<div class={css({ flex: '1', paddingRight: '16' })}>
+		<div class={css({ flex: '1' })}>
 			<div
 				class={css({
-					height: 'screen',
+					height: { base: 'screen', lgDown: 'auto' },
 					display: 'flex',
 					flexDir: 'column',
 					justifyContent: 'center',
 					spaceY: '3'
 				})}
 			>
+				<div bind:this={reliableFrontendCanvasContentRef} class={css({ h: '96', hideFrom: 'lg' })}>
+					<Canvas renderMode={canvasReliableFrontendRenderMode()}>
+						<PolyhedronScene
+							projectName="reliableFrontend"
+							headlineContainerRef={null}
+							targetAnimationSection={AnimationSectionEnum.Octahedron}
+						/>
+					</Canvas>
+				</div>
 				<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
 					Reliable Frontend
 				</h3>
@@ -226,13 +349,25 @@
 			</div>
 			<div
 				class={css({
-					height: 'screen',
+					height: { base: 'screen', lgDown: 'auto' },
 					display: 'flex',
 					flexDir: 'column',
 					justifyContent: 'center',
 					spaceY: '3'
 				})}
 			>
+				<div
+					bind:this={amazingTechnologiesCanvasContentRef}
+					class={css({ h: '96', hideFrom: 'lg' })}
+				>
+					<Canvas renderMode={canvasAmazingTechnologiesRenderMode()}>
+						<PolyhedronScene
+							projectName="amazingTechnologies"
+							headlineContainerRef={null}
+							targetAnimationSection={AnimationSectionEnum.Octahedron}
+						/>
+					</Canvas>
+				</div>
 				<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
 					Amazing Technologies
 				</h3>
@@ -253,12 +388,25 @@
 			</div>
 			<div
 				class={css({
-					height: 'screen',
+					height: { base: 'screen', lgDown: 'auto' },
 					display: 'flex',
 					flexDir: 'column',
-					justifyContent: 'center'
+					justifyContent: 'center',
+					spaceY: '3'
 				})}
 			>
+				<div
+					bind:this={flexibleDevelopmentCanvasContentRef}
+					class={css({ h: '96', hideFrom: 'lg' })}
+				>
+					<Canvas renderMode={canvasFlexibleDevelopmentRenderMode()}>
+						<PolyhedronScene
+							projectName="flexibleDevelopment"
+							headlineContainerRef={null}
+							targetAnimationSection={AnimationSectionEnum.Octahedron}
+						/>
+					</Canvas>
+				</div>
 				<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
 					Flexible Development
 				</h3>
