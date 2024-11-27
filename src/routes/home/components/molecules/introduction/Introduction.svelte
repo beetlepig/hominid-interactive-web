@@ -44,7 +44,16 @@
 	})}
 	bind:this={introductionContainerRef}
 >
-	<div class={css({ maxW: '5xl', bgColor: 'white', py: '28', rounded: 'xl', m: '9' })}>
+	<div
+		class={css({
+			maxW: '5xl',
+			bgColor: 'white',
+			py: '28',
+			rounded: 'xl',
+			m: '9',
+			mdDown: { mx: '5' }
+		})}
+	>
 		<h4
 			class={css({
 				textAlign: 'center',
@@ -55,7 +64,8 @@
 				color: 'gray.500',
 				sm: {
 					fontSize: 'xl'
-				}
+				},
+				mdDown: { px: '5' }
 			})}
 		>
 			I am a {@render blackSpan('frontend developer')} with over

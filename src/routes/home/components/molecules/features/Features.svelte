@@ -250,10 +250,10 @@
 >
 	<div
 		class={css({
-			marginX: '16',
+			mx: '16',
 			lineHeight: 'tight',
 			display: 'flex',
-			justifyContent: { base: 'center', lgDown: 'left' }
+			justifyContent: 'center'
 		})}
 	>
 		<div bind:this={featuresHeadlineContainerRef} class={css({ opacity: 0 })}>
@@ -262,7 +262,10 @@
 					textAlign: 'left',
 					fontFamily: 'oswald',
 					fontSize: '2xl',
-					fontWeight: 'medium'
+					fontWeight: 'medium',
+					smDown: {
+						fontSize: 'lg'
+					}
 				})}
 			>
 				How I Generate
@@ -272,7 +275,10 @@
 					textAlign: 'center',
 					fontFamily: 'raleway',
 					fontSize: '8xl',
-					fontWeight: 'black'
+					fontWeight: 'black',
+					smDown: {
+						fontSize: '6xl'
+					}
 				})}
 			>
 				IMPACT
@@ -282,12 +288,13 @@
 	<div
 		bind:this={featuresContentRef}
 		class={css({
-			marginX: '16',
+			mx: '16',
 			opacity: 0,
 			lg: {
 				display: 'flex',
 				gap: '16'
-			}
+			},
+			mdDown: { mx: '10' }
 		})}
 	>
 		<div
