@@ -68,15 +68,15 @@
 	});
 
 	$effect(() => {
-		if (featuresContainerRef) {
+		if (featuresHeadlineContainerRef) {
 			const stop = inView(
-				featuresContainerRef,
+				featuresHeadlineContainerRef,
 				() => {
 					onVisible();
 
 					return () => {};
 				},
-				{ amount: 0.27 }
+				{ amount: 'some' }
 			);
 
 			return () => {

@@ -7,18 +7,18 @@
 	let { onVisible } = $props();
 
 	/** @type {HTMLElement | null} */
-	let introductionContainerRef = $state(null);
+	let introductionParagraphRef = $state(null);
 
 	$effect(() => {
-		if (introductionContainerRef) {
+		if (introductionParagraphRef) {
 			const stop = inView(
-				introductionContainerRef,
+				introductionParagraphRef,
 				() => {
 					onVisible();
 
 					return () => {};
 				},
-				{ amount: 0.9 }
+				{ amount: 'some' }
 			);
 
 			return () => {
@@ -42,7 +42,6 @@
 		py: '28',
 		bgColor: 'gray.50'
 	})}
-	bind:this={introductionContainerRef}
 >
 	<div
 		class={css({
@@ -55,6 +54,7 @@
 		})}
 	>
 		<h4
+			bind:this={introductionParagraphRef}
 			class={css({
 				textAlign: 'center',
 				fontFamily: 'raleway',

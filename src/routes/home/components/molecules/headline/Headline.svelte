@@ -15,6 +15,9 @@
 	let headlineContainerRef = $state(null);
 
 	/** @type {HTMLElement | null} */
+	let headlineHeadingRef = $state(null);
+
+	/** @type {HTMLElement | null} */
 	let headlineCanvasContainerRef = $state(null);
 
 	const animatedOpacity = tweened(0.9, { delay: 20, duration: 200 });
@@ -39,15 +42,15 @@
 	});
 
 	$effect(() => {
-		if (headlineContainerRef) {
+		if (headlineHeadingRef) {
 			const stop = inView(
-				headlineContainerRef,
+				headlineHeadingRef,
 				() => {
 					onVisible();
 
 					return () => {};
 				},
-				{ amount: 0.2 }
+				{ amount: 'some' }
 			);
 
 			return () => {
@@ -121,6 +124,7 @@
 			</Canvas>
 		</div>
 		<h1
+			bind:this={headlineHeadingRef}
 			style="opacity: {$animatedOpacity}; transform: translateY({$animatedPosition}px)"
 			class={css({
 				position: 'absolute',
