@@ -10,6 +10,8 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+    println!("handler function called");
+
     let current_dir = env::current_dir().unwrap();
 
     println!("{:?}", current_dir);
