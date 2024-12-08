@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::env;
 use serde_json::json;
 use vercel_runtime::{run, Body, Error, Request, Response, StatusCode};
 use kalosm::language::{Chat, ChatMarkers, FileSource, Llama, LlamaSource, TextStream};
@@ -10,11 +10,16 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+    let current_dir = env::current_dir().unwrap();
+
+    let model_path = current_dir.join("tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
+    let tokenizer_path = current_dir.join("tokenizer.json");
+
     let model = Llama::builder()
         .with_source(
             LlamaSource::new(
-                FileSource::Local(PathBuf::from("../tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf")),
-                FileSource::Local(PathBuf::from("../tokenizer.json")),
+                FileSource::Local(model_path),
+                FileSource::Local(tokenizer_path),
             )
                 .with_chat_markers(ChatMarkers {
                     system_prompt_marker: "<|system|>\n",
@@ -30,9 +35,7 @@ pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
         .await
         .unwrap();
 
-    let mut chat = Chat::builder(model)
-        .with_system_prompt("You are an AI assistant created by Hominid Interactive")
-        .build();
+    let mut chat = Chat::builder(model).build();
 
     let response = chat
         .add_message("What is your name and who is your creator?")
