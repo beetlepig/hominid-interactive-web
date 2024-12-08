@@ -2,7 +2,7 @@
   "functions": {
     "api/handler.rs": {
       "runtime": "vercel-rust@4.0.8",
-      "includeFiles": "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf"
+      "includeFiles": "tokenizer.json"
     }
   }
 }
