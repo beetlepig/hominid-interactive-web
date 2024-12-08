@@ -10,11 +10,9 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
-    panic!("handler function called");
-
     let current_dir = env::current_dir().unwrap();
 
-    eprintln!("{:?}", current_dir);
+    panic!("{:?}", current_dir);
 
     let model_path = current_dir.join("tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
     let tokenizer_path = current_dir.join("tokenizer.json");
