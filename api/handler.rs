@@ -14,7 +14,7 @@ pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
 
     let model_path = current_dir.join("util/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
 
-    panic!(model_path.metadata().unwrap());
+    panic!("{:?}", model_path.metadata().unwrap());
     let tokenizer_path = current_dir.join("util/tokenizer.json");
 
     let model = Llama::builder()
