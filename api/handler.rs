@@ -10,7 +10,7 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
-    eprintln!("handler function called");
+    panic!("handler function called");
 
     let current_dir = env::current_dir().unwrap();
 
