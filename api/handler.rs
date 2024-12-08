@@ -17,7 +17,7 @@ enum FileVec {
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
     // Leer el directorio actual
-    let paths = fs::read_dir("./")?;
+    let paths = fs::read_dir("../")?;
 
     // Crear un vector para almacenar los nombres de los archivos/directorios
     let mut file_names: Vec<FileVec> = Vec::new();
