@@ -13,8 +13,8 @@ pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
     let model = Llama::builder()
         .with_source(
             LlamaSource::new(
-                FileSource::Local(PathBuf::from("./tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf")),
-                FileSource::Local(PathBuf::from("./tokenizer.json")),
+                FileSource::Local(PathBuf::from("../tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf")),
+                FileSource::Local(PathBuf::from("../tokenizer.json")),
             )
                 .with_chat_markers(ChatMarkers {
                     system_prompt_marker: "<|system|>\n",
