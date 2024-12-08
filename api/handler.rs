@@ -10,15 +10,23 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+    // Leer el directorio actual
+    let paths = fs::read_dir("./")?;
+
+    // Crear un vector para almacenar los nombres de los archivos/directorios
+    let mut file_names: Vec<String> = Vec::new();
+
+    // Iterar sobre las entradas del directorio
+    for entry in paths {
+        let entry = entry?;
+        let file_name = entry.file_name();
+        let file_name_str = file_name.into_string().unwrap_or_else(|_| "Invalid Unicode".to_string());
+        file_names.push(file_name_str);
+    }
 
 
 
-
-    let current_dir = env::current_dir().unwrap();
-
-    let paths = fs::read_dir(current_dir).unwrap();
-
-    panic!("{:?}", paths);
+    panic!("{:?}", file_names);
 
     let model_path = current_dir.join("tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
     let tokenizer_path = current_dir.join("tokenizer.json");
