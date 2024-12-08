@@ -1,4 +1,4 @@
-use std::{env, fs};
+use std::env;
 use serde_json::json;
 use vercel_runtime::{run, Body, Error, Request, Response, StatusCode};
 use kalosm::language::{Chat, ChatMarkers, FileSource, Llama, LlamaSource, TextStream};
@@ -9,39 +9,11 @@ async fn main() -> Result<(), Error> {
     run(handler).await
 }
 
-#[derive(Debug)]
-enum FileVec {
-    Name(String),
-    IsFile(bool),
-}
-
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
-    // Leer el directorio actual
-    let paths = fs::read_dir("../../")?;
-
-    // Crear un vector para almacenar los nombres de los archivos/directorios
-    let mut file_names: Vec<FileVec> = Vec::new();
-
-    // Iterar sobre las entradas del directorio
-    for entry in paths {
-        let entry = entry?;
-        let file_name = entry.file_name();
-        let file_type = entry.file_type().unwrap();
-        let file_name_str = file_name.into_string().unwrap_or_else(|_| "Invalid Unicode".to_string());
-        let file_type_bool = file_type.is_file();
-
-        file_names.push(FileVec::Name(file_name_str));
-        file_names.push(FileVec::IsFile(file_type_bool));
-    }
-
-
-
-    panic!("{:?}", file_names);
-
     let current_dir = env::current_dir().unwrap();
 
-    let model_path = current_dir.join("tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
-    let tokenizer_path = current_dir.join("tokenizer.json");
+    let model_path = current_dir.join("util/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
+    let tokenizer_path = current_dir.join("util/tokenizer.json");
 
     let model = Llama::builder()
         .with_source(
