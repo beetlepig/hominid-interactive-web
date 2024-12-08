@@ -9,19 +9,29 @@ async fn main() -> Result<(), Error> {
     run(handler).await
 }
 
+#[derive(Debug)]
+enum FileVec {
+    Name(String),
+    IsFile(bool),
+}
+
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
     // Leer el directorio actual
     let paths = fs::read_dir("./")?;
 
     // Crear un vector para almacenar los nombres de los archivos/directorios
-    let mut file_names: Vec<String> = Vec::new();
+    let mut file_names: Vec<FileVec> = Vec::new();
 
     // Iterar sobre las entradas del directorio
     for entry in paths {
         let entry = entry?;
         let file_name = entry.file_name();
+        let file_type = entry.file_type().unwrap();
         let file_name_str = file_name.into_string().unwrap_or_else(|_| "Invalid Unicode".to_string());
-        file_names.push(file_name_str);
+        let file_type_bool = file_type.is_file();
+
+        file_names.push(FileVec::Name(file_name_str));
+        file_names.push(FileVec::IsFile(file_type_bool));
     }
 
 
