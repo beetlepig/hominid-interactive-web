@@ -1,4 +1,4 @@
-use std::env;
+use std::{env, fs};
 use serde_json::json;
 use vercel_runtime::{run, Body, Error, Request, Response, StatusCode};
 use kalosm::language::{Chat, ChatMarkers, FileSource, Llama, LlamaSource, TextStream};
@@ -10,6 +10,10 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+    let paths = fs::read_dir("./").unwrap();
+
+    panic!("{:?}", paths);
+
     let current_dir = env::current_dir().unwrap();
 
     let model_path = current_dir.join("tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
