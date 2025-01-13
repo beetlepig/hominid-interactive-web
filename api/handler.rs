@@ -10,6 +10,8 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+    /*
+
     let current_dir = env::current_dir().unwrap();
 
     let model_path = current_dir.join("util/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf");
@@ -43,6 +45,9 @@ pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
         .add_message("What is your name and who is your creator?")
         .all_text()
         .await;
+
+    */
+    let response = String::from("Hello from response");
 
     Ok(Response::builder()
         .status(StatusCode::OK)
