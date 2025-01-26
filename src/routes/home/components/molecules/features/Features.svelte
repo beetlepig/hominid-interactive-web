@@ -89,9 +89,9 @@
 		if (featuresHeadlineContainerRef) {
 			const stop = inView(
 				featuresHeadlineContainerRef,
-				({ target }) => {
+				(element) => {
 					animate(
-						target,
+						element,
 						{
 							opacity: [0, 1],
 							transform: [
@@ -117,9 +117,9 @@
 		if (featuresContentRef) {
 			const stop = inView(
 				featuresContentRef,
-				({ target }) => {
+				(element) => {
 					animate(
-						target,
+						element,
 						{
 							opacity: [0, 1]
 						},

@@ -21,8 +21,8 @@ export default defineConfig({
 			},
 			tokens: {
 				fonts: {
-					'raleway': {value: 'var(--font-raleway)'},
-					'oswald': {value: 'var(--font-oswald)'},
+					raleway: { value: 'var(--font-raleway)' },
+					oswald: { value: 'var(--font-oswald)' }
 				}
 			}
 		}
@@ -30,7 +30,7 @@ export default defineConfig({
 
 	globalVars: {
 		'--font-raleway': 'Raleway Variable, sans-serif',
-		'--font-oswald': 'Oswald Variable, sans-serif',
+		'--font-oswald': 'Oswald Variable, sans-serif'
 	},
 
 	// The output directory for your css system
