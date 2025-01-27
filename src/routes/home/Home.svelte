@@ -8,6 +8,7 @@
 	import { replaceState } from '$app/navigation';
 	import { sections } from '$lib/constans/index.js';
 	import { createSignal } from '$lib';
+	import Sponsors from './components/organisms/sponsors/Sponsors.svelte';
 
 	const [pageTitle, setPageTitle] = createSignal('Home');
 </script>
@@ -50,6 +51,7 @@
 			replaceState(sections.projects.href, { hash: sections.projects.href });
 		}}
 	/>
+	<Sponsors />
 	<Chat
 		onVisible={() => {
 			setPageTitle(sections.chat.name);

@@ -243,194 +243,206 @@
 	id={sections.skills.id}
 	bind:this={featuresContainerRef}
 	class={css({
-		maxW: '7xl',
-		mx: 'auto',
-		py: '40'
+		py: '40',
+		bgColor: 'gray.50'
 	})}
 >
 	<div
 		class={css({
-			mx: '16',
-			lineHeight: 'tight',
-			display: 'flex',
-			justifyContent: 'center'
-		})}
-	>
-		<div bind:this={featuresHeadlineContainerRef} class={css({ opacity: 0 })}>
-			<h2
-				class={css({
-					textAlign: 'left',
-					fontFamily: 'oswald',
-					fontSize: '2xl',
-					fontWeight: 'medium',
-					smDown: {
-						fontSize: 'lg'
-					}
-				})}
-			>
-				How I Generate
-			</h2>
-			<h2
-				class={css({
-					textAlign: 'center',
-					fontFamily: 'raleway',
-					fontSize: '8xl',
-					fontWeight: 'black',
-					smDown: {
-						fontSize: '6xl'
-					}
-				})}
-			>
-				IMPACT
-			</h2>
-		</div>
-	</div>
-	<div
-		bind:this={featuresContentRef}
-		class={css({
-			mx: '16',
-			opacity: 0,
-			lg: {
-				display: 'flex',
-				gap: '16'
-			},
-			mdDown: { mx: '10' }
+			mx: 'auto',
+			maxW: '7xl'
 		})}
 	>
 		<div
-			bind:this={featuresCanvasContentRef}
 			class={css({
-				position: 'sticky',
+				mx: '16',
+				lineHeight: 'tight',
 				display: 'flex',
-				alignItems: 'center',
-				flex: '1',
-				top: '0',
-				height: 'screen',
-				alignSelf: 'flex-start',
-				hideBelow: 'lg'
+				justifyContent: 'center'
 			})}
 		>
-			<Canvas renderMode={canvasFeaturesRenderMode()}>
-				<PolyhedronScene
-					projectName="features"
-					headlineContainerRef={null}
-					targetAnimationSection={currentAnimationSection()}
-				/>
-			</Canvas>
+			<div bind:this={featuresHeadlineContainerRef} class={css({ opacity: 0 })}>
+				<h2
+					class={css({
+						textAlign: 'left',
+						fontFamily: 'oswald',
+						fontSize: '2xl',
+						fontWeight: 'medium',
+						smDown: {
+							fontSize: 'lg'
+						}
+					})}
+				>
+					How I Generate
+				</h2>
+				<h2
+					class={css({
+						textAlign: 'center',
+						fontFamily: 'raleway',
+						fontSize: '8xl',
+						fontWeight: 'black',
+						smDown: {
+							fontSize: '6xl'
+						}
+					})}
+				>
+					IMPACT
+				</h2>
+			</div>
 		</div>
-		<div class={css({ flex: '1' })}>
-			<div
-				class={css({
-					height: { base: 'screen', lgDown: 'auto' },
+		<div
+			bind:this={featuresContentRef}
+			class={css({
+				mx: '16',
+				opacity: 0,
+				lg: {
 					display: 'flex',
-					flexDir: 'column',
-					justifyContent: 'center',
-					spaceY: '3'
+					gap: '16'
+				},
+				mdDown: { mx: '10' }
+			})}
+		>
+			<div
+				bind:this={featuresCanvasContentRef}
+				class={css({
+					position: 'sticky',
+					display: 'flex',
+					alignItems: 'center',
+					flex: '1',
+					top: '0',
+					height: 'screen',
+					alignSelf: 'flex-start',
+					hideBelow: 'lg'
 				})}
 			>
-				<div bind:this={reliableFrontendCanvasContentRef} class={css({ h: '96', hideFrom: 'lg' })}>
-					<Canvas renderMode={canvasReliableFrontendRenderMode()}>
-						<PolyhedronScene
-							projectName="reliableFrontend"
-							headlineContainerRef={null}
-							targetAnimationSection={AnimationSectionEnum.Octahedron}
-						/>
-					</Canvas>
-				</div>
-				<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
-					Reliable Frontend
-				</h3>
-				<p
-					class={css({
-						fontSize: 'xl',
-						fontFamily: 'raleway',
-						fontWeight: 'semibold',
-						color: 'gray.500'
-					})}
-				>
-					Using {@render blackSpan('innovative')}, battle-tested {@render blackSpan(
-						'frontend technologies'
-					)}, along with best coding practices and appropriate {@render blackSpan('architectures')},
-					ensures reliable and {@render blackSpan('future-proof code')}.
-				</p>
+				<Canvas renderMode={canvasFeaturesRenderMode()}>
+					<PolyhedronScene
+						projectName="features"
+						headlineContainerRef={null}
+						targetAnimationSection={currentAnimationSection()}
+					/>
+				</Canvas>
 			</div>
-			<div
-				class={css({
-					height: { base: 'screen', lgDown: 'auto' },
-					display: 'flex',
-					flexDir: 'column',
-					justifyContent: 'center',
-					spaceY: '3'
-				})}
-			>
+			<div class={css({ flex: '1' })}>
 				<div
-					bind:this={amazingTechnologiesCanvasContentRef}
-					class={css({ h: '96', hideFrom: 'lg' })}
-				>
-					<Canvas renderMode={canvasAmazingTechnologiesRenderMode()}>
-						<PolyhedronScene
-							projectName="amazingTechnologies"
-							headlineContainerRef={null}
-							targetAnimationSection={AnimationSectionEnum.Octahedron}
-						/>
-					</Canvas>
-				</div>
-				<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
-					Amazing Technologies
-				</h3>
-				<p
 					class={css({
-						fontSize: 'xl',
-						fontFamily: 'raleway',
-						fontWeight: 'semibold',
-						color: 'gray.500'
+						height: { base: 'screen', lgDown: 'auto' },
+						display: 'flex',
+						flexDir: 'column',
+						justifyContent: 'center',
+						spaceY: '3'
 					})}
 				>
-					I have extensive experience with widely used technologies like {@render blackSpan(
-						'TypeScript'
-					)}, {@render blackSpan('React')}, and {@render blackSpan('React Native')}, complemented by
-					explorations and proof-of-concept projects in {@render blackSpan('Svelte')} and
-					{@render blackSpan('Rust')}.
-				</p>
-			</div>
-			<div
-				class={css({
-					height: { base: 'screen', lgDown: 'auto' },
-					display: 'flex',
-					flexDir: 'column',
-					justifyContent: 'center',
-					spaceY: '3'
-				})}
-			>
-				<div
-					bind:this={flexibleDevelopmentCanvasContentRef}
-					class={css({ h: '96', hideFrom: 'lg' })}
-				>
-					<Canvas renderMode={canvasFlexibleDevelopmentRenderMode()}>
-						<PolyhedronScene
-							projectName="flexibleDevelopment"
-							headlineContainerRef={null}
-							targetAnimationSection={AnimationSectionEnum.Octahedron}
-						/>
-					</Canvas>
+					<div
+						bind:this={reliableFrontendCanvasContentRef}
+						class={css({ h: '96', hideFrom: 'lg' })}
+					>
+						<Canvas renderMode={canvasReliableFrontendRenderMode()}>
+							<PolyhedronScene
+								projectName="reliableFrontend"
+								headlineContainerRef={null}
+								targetAnimationSection={AnimationSectionEnum.Octahedron}
+							/>
+						</Canvas>
+					</div>
+					<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+						Reliable Frontend
+					</h3>
+					<p
+						class={css({
+							fontSize: 'xl',
+							fontFamily: 'raleway',
+							fontWeight: 'semibold',
+							color: 'gray.500'
+						})}
+					>
+						Using {@render blackSpan('innovative')}, battle-tested {@render blackSpan(
+							'frontend technologies'
+						)}, along with best coding practices and appropriate {@render blackSpan(
+							'architectures'
+						)}, ensures reliable and {@render blackSpan('future-proof code')}.
+					</p>
 				</div>
-				<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
-					Flexible Development
-				</h3>
-				<p
+				<div
 					class={css({
-						fontSize: 'xl',
-						fontFamily: 'raleway',
-						fontWeight: 'semibold',
-						color: 'gray.500'
+						height: { base: 'screen', lgDown: 'auto' },
+						display: 'flex',
+						flexDir: 'column',
+						justifyContent: 'center',
+						spaceY: '3'
 					})}
 				>
-					Highly adaptable to various development workflows, including {@render blackSpan('Scrum')},
-					{@render blackSpan('Kanban')}, and {@render blackSpan('Extreme Programming')}, along with
-					experience in {@render blackSpan('CI/CD')} processes. Skilled in communication and coordination
-					with {@render blackSpan('cross-functional teams')}, including design, product, and
-					business units.
-				</p>
+					<div
+						bind:this={amazingTechnologiesCanvasContentRef}
+						class={css({ h: '96', hideFrom: 'lg' })}
+					>
+						<Canvas renderMode={canvasAmazingTechnologiesRenderMode()}>
+							<PolyhedronScene
+								projectName="amazingTechnologies"
+								headlineContainerRef={null}
+								targetAnimationSection={AnimationSectionEnum.Octahedron}
+							/>
+						</Canvas>
+					</div>
+					<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+						Amazing Technologies
+					</h3>
+					<p
+						class={css({
+							fontSize: 'xl',
+							fontFamily: 'raleway',
+							fontWeight: 'semibold',
+							color: 'gray.500'
+						})}
+					>
+						I have extensive experience with widely used technologies like {@render blackSpan(
+							'TypeScript'
+						)}, {@render blackSpan('React')}, and {@render blackSpan('React Native')}, complemented
+						by explorations and proof-of-concept projects in {@render blackSpan('Svelte')} and
+						{@render blackSpan('Rust')}.
+					</p>
+				</div>
+				<div
+					class={css({
+						height: { base: 'screen', lgDown: 'auto' },
+						display: 'flex',
+						flexDir: 'column',
+						justifyContent: 'center',
+						spaceY: '3'
+					})}
+				>
+					<div
+						bind:this={flexibleDevelopmentCanvasContentRef}
+						class={css({ h: '96', hideFrom: 'lg' })}
+					>
+						<Canvas renderMode={canvasFlexibleDevelopmentRenderMode()}>
+							<PolyhedronScene
+								projectName="flexibleDevelopment"
+								headlineContainerRef={null}
+								targetAnimationSection={AnimationSectionEnum.Octahedron}
+							/>
+						</Canvas>
+					</div>
+					<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+						Flexible Development
+					</h3>
+					<p
+						class={css({
+							fontSize: 'xl',
+							fontFamily: 'raleway',
+							fontWeight: 'semibold',
+							color: 'gray.500'
+						})}
+					>
+						Highly adaptable to various development workflows, including {@render blackSpan(
+							'Scrum'
+						)},
+						{@render blackSpan('Kanban')}, and {@render blackSpan('Extreme Programming')}, along
+						with experience in {@render blackSpan('CI/CD')} processes. Skilled in communication and coordination
+						with {@render blackSpan('cross-functional teams')}, including design, product, and
+						business units.
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

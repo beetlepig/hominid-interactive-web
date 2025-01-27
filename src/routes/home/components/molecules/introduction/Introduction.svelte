@@ -43,27 +43,18 @@
 		bgColor: 'gray.50'
 	})}
 >
-	<div
-		class={css({
-			maxW: '5xl',
-			bgColor: 'white',
-			py: '28',
-			rounded: 'xl',
-			m: '9',
-			mdDown: { mx: '5' }
-		})}
-	>
+	<div class={css({ maxW: '7xl', spaceY: '28' })}>
 		<h4
 			bind:this={introductionParagraphRef}
 			class={css({
 				textAlign: 'center',
 				fontFamily: 'raleway',
-				fontSize: 'lg',
+				fontSize: '2xl',
 				px: '8',
 				fontWeight: 'bold',
 				color: 'gray.500',
 				sm: {
-					fontSize: 'xl'
+					fontSize: '3xl'
 				},
 				mdDown: { px: '5' }
 			})}
@@ -77,37 +68,5 @@
 			{@render blackSpan('end-user')}
 			and their experience as a {@render blackSpan('top priority')}.
 		</h4>
-		<h3
-			class={css({
-				my: '10',
-				textAlign: 'center',
-				fontSize: 'xl',
-				fontFamily: 'raleway',
-				fontWeight: 'bold',
-				sm: {
-					fontSize: '2xl'
-				}
-			})}
-		>
-			Some companies I have collaborated with
-		</h3>
-		<div class={css({ display: 'flex', justifyContent: 'center', spaceX: '5' })}>
-			<a href="https://www.connectrn.com" target="_blank" class={css({ display: 'inline-flex' })}>
-				<img alt="connectrn-logo" src="/icons/crn-icon.svg" width="50" />
-			</a>
-			<a href="https://www.venturit.com" target="_blank">
-				<img alt="venturit-logo" src="/icons/venturit-icon.svg" width="50" />
-			</a>
-			<a
-				href="https://www.leangroup.com/solutions-and-services/technology"
-				target="_blank"
-				class={css({ display: 'inline-flex' })}
-			>
-				<img alt="lean-logo" src="/icons/lean-icon.svg" width="50" />
-			</a>
-			<a href="https://ottomoto.net" target="_blank" class={css({ display: 'inline-flex' })}>
-				<img alt="ottomoto-logo" src="/icons/ottomoto-icon.svg" width="50" />
-			</a>
-		</div>
 	</div>
 </section>
