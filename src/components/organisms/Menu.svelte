@@ -82,7 +82,7 @@
 			maxW: '7xl'
 		})}
 	>
-		<a href={'#home'} title={'Home'}>
+		<a href="#home" title="Home">
 			<Logo size={4} />
 		</a>
 		<menu

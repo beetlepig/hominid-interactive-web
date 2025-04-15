@@ -19,7 +19,7 @@
 </svelte:head>
 
 <div
-	id={'main-target'}
+	id="main-target"
 	class={css({
 		position: 'relative',
 		h: 'screen',
