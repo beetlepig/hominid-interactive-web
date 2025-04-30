@@ -1,8 +1,0 @@
-{
-	"functions": {
-		"api/handler.rs": {
-			"runtime": "vercel-rust@4.0.8",
-			"includeFiles": "util/**"
-		}
-	}
-}
