@@ -339,7 +339,7 @@
 					>
 						<Canvas renderMode={canvasReliableFrontendRenderMode()}>
 							<PolyhedronScene
-								projectName="reliableFrontend"
+								projectName="ReliableFrontend"
 								headlineContainerRef={null}
 								targetAnimationSection={AnimationSectionEnum.Octahedron}
 							/>
@@ -378,9 +378,9 @@
 					>
 						<Canvas renderMode={canvasAmazingTechnologiesRenderMode()}>
 							<PolyhedronScene
-								projectName="amazingTechnologies"
+								projectName="AmazingTechnologies"
 								headlineContainerRef={null}
-								targetAnimationSection={AnimationSectionEnum.Octahedron}
+								targetAnimationSection={AnimationSectionEnum.Icosahedron}
 							/>
 						</Canvas>
 					</div>
@@ -417,7 +417,7 @@
 					>
 						<Canvas renderMode={canvasFlexibleDevelopmentRenderMode()}>
 							<PolyhedronScene
-								projectName="flexibleDevelopment"
+								projectName="FlexibleDevelopment"
 								headlineContainerRef={null}
 								targetAnimationSection={AnimationSectionEnum.Octahedron}
 							/>

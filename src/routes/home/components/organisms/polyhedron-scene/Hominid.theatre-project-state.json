@@ -58,7 +58,7 @@
 			},
 			"sequence": {
 				"subUnitsPerUnit": 30,
-				"length": 15.64,
+				"length": 13,
 				"type": "PositionalSequence",
 				"tracksByObject": {
 					"Pyramid": {
@@ -76,7 +76,12 @@
 										"id": "uLKZodFkKV",
 										"position": 0.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -84,7 +89,12 @@
 										"id": "Sid_r_t7JU",
 										"position": 3.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0.5
 									},
@@ -92,7 +102,12 @@
 										"id": "nejhplHLDK",
 										"position": 6.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									}
@@ -111,7 +126,12 @@
 										"id": "swfoBCzAMD",
 										"position": 0,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -119,7 +139,12 @@
 										"id": "hpFSCSrnNj",
 										"position": 0.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -127,7 +152,12 @@
 										"id": "7hPmPVQM5Z",
 										"position": 6.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -135,7 +165,12 @@
 										"id": "QQSKSi0HoO",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									}
@@ -149,7 +184,12 @@
 										"id": "loy1heKgPD",
 										"position": 0,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -157,7 +197,12 @@
 										"id": "LDHE0bJgim",
 										"position": 0.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -165,7 +210,12 @@
 										"id": "UDy41mpcG3",
 										"position": 6.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -173,7 +223,12 @@
 										"id": "SWprgGtrLS",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									}
@@ -187,7 +242,12 @@
 										"id": "l5vsYFDItz",
 										"position": 0,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -195,7 +255,12 @@
 										"id": "tRtL7hpCkN",
 										"position": 0.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -203,7 +268,12 @@
 										"id": "h7ahriNnwJ",
 										"position": 6.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -211,7 +281,12 @@
 										"id": "1IrOdlXTei",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									}
@@ -225,7 +300,12 @@
 										"id": "o8lTM0RS3Q",
 										"position": 0,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.35130111524163565, -0.16883439583353516],
+										"handles": [
+											0.5,
+											1,
+											0.35130111524163565,
+											-0.16883439583353516
+										],
 										"type": "bezier",
 										"value": -45
 									},
@@ -234,7 +314,9 @@
 										"position": 0.5,
 										"connectedRight": true,
 										"handles": [
-											0.7602230483271378, 0.15100077995828232, 0.1579925650557619,
+											0.7602230483271378,
+											0.15100077995828232,
+											0.1579925650557619,
 											1.4739209053594136
 										],
 										"type": "bezier",
@@ -245,7 +327,9 @@
 										"position": 3.5,
 										"connectedRight": true,
 										"handles": [
-											0.5793060718711277, 2.644133552548604, 0.41078066914498135,
+											0.5793060718711277,
+											2.644133552548604,
+											0.41078066914498135,
 											-1.2915266035483148
 										],
 										"type": "bezier",
@@ -256,7 +340,9 @@
 										"position": 6.5,
 										"connectedRight": true,
 										"handles": [
-											0.7230483271375465, -1.1215485574332393, 0.4876084262701363,
+											0.7230483271375465,
+											-1.1215485574332393,
+											0.4876084262701363,
 											0.7513047838814894
 										],
 										"type": "bezier",
@@ -266,7 +352,12 @@
 										"id": "dhuBV_ek3H",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.7973977695167287, 0.03636219664320395, 0.5, 0],
+										"handles": [
+											0.7973977695167287,
+											0.03636219664320395,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 180
 									}
@@ -339,12 +430,19 @@
 							"y": 1,
 							"z": 1
 						}
+					},
+					"Icosahedron": {
+						"scale": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						}
 					}
 				}
 			},
 			"sequence": {
 				"subUnitsPerUnit": 30,
-				"length": 15.64,
+				"length": 20,
 				"type": "PositionalSequence",
 				"tracksByObject": {
 					"Octahedron": {
@@ -357,7 +455,12 @@
 										"id": "IB0FzXhZtt",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -365,7 +468,12 @@
 										"id": "7j6xUvPATH",
 										"position": 7.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -373,7 +481,12 @@
 										"id": "eadNBdQoEh",
 										"position": 13.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -381,7 +494,12 @@
 										"id": "wZa2_qihMZ",
 										"position": 14,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									}
@@ -395,7 +513,12 @@
 										"id": "-szTNEAXOa",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -403,7 +526,12 @@
 										"id": "oE9tHT5uL4",
 										"position": 7.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -411,7 +539,12 @@
 										"id": "PFWpuO6IEl",
 										"position": 13.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -419,7 +552,12 @@
 										"id": "SbJs0icxWG",
 										"position": 14,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									}
@@ -433,7 +571,12 @@
 										"id": "V9COUJPO66",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -441,7 +584,12 @@
 										"id": "c-S0ZA9YgG",
 										"position": 7.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -449,7 +597,12 @@
 										"id": "EDBlOJ58Hr",
 										"position": 13.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 1
 									},
@@ -457,7 +610,12 @@
 										"id": "kjHOd5-M6a",
 										"position": 14,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.5, 0],
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": 0
 									}
@@ -471,7 +629,12 @@
 										"id": "yv093TNofH",
 										"position": 7.5,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.7298966540147964, 0.28411088838142107],
+										"handles": [
+											0.5,
+											1,
+											0.7298966540147964,
+											0.28411088838142107
+										],
 										"type": "bezier",
 										"value": 0
 									},
@@ -480,7 +643,10 @@
 										"position": 9.5,
 										"connectedRight": true,
 										"handles": [
-											0.2560544884903538, 0.6284032953643721, 0.7376255859538519, 0.2839856471068346
+											0.2560544884903538,
+											0.6284032953643721,
+											0.7376255859538519,
+											0.2839856471068346
 										],
 										"type": "bezier",
 										"value": 120
@@ -490,7 +656,9 @@
 										"position": 11.5,
 										"connectedRight": true,
 										"handles": [
-											0.2560544884903539, 0.6867899727880487, 0.7457211168526103,
+											0.2560544884903539,
+											0.6867899727880487,
+											0.7457211168526103,
 											0.27067515771015516
 										],
 										"type": "bezier",
@@ -501,7 +669,9 @@
 										"position": 13.5,
 										"connectedRight": true,
 										"handles": [
-											0.2494862855528348, 0.7794800939773636, 0.5396985029811894,
+											0.2494862855528348,
+											0.7794800939773636,
+											0.5396985029811894,
 											0.08727481391598044
 										],
 										"type": "bezier",
@@ -517,7 +687,12 @@
 										"id": "0DwNjWiqLi",
 										"position": 7,
 										"connectedRight": true,
-										"handles": [0.5, 1, 0.46693646303364, 0.03958942905892937],
+										"handles": [
+											0.5,
+											1,
+											0.46693646303364,
+											0.03958942905892937
+										],
 										"type": "bezier",
 										"value": 45
 									},
@@ -526,7 +701,9 @@
 										"position": 7.5,
 										"connectedRight": true,
 										"handles": [
-											0.45043370508054587, 0.8982726053193298, 0.7292441140024746,
+											0.45043370508054587,
+											0.8982726053193298,
+											0.7292441140024746,
 											0.29114398986517454
 										],
 										"type": "bezier",
@@ -537,7 +714,10 @@
 										"position": 9.5,
 										"connectedRight": true,
 										"handles": [
-											0.2521685254027268, 0.7148810039443095, 0.7354399008674095, 0.3777971198262217
+											0.2521685254027268,
+											0.7148810039443095,
+											0.7354399008674095,
+											0.3777971198262217
 										],
 										"type": "bezier",
 										"value": -120
@@ -547,7 +727,9 @@
 										"position": 11.5,
 										"connectedRight": true,
 										"handles": [
-											0.25216852540272916, 0.6187162623601382, 0.7334160181427173,
+											0.25216852540272916,
+											0.6187162623601382,
+											0.7334160181427173,
 											0.4639380219014593
 										],
 										"type": "bezier",
@@ -558,7 +740,10 @@
 										"position": 13.5,
 										"connectedRight": true,
 										"handles": [
-											0.23358116480793284, 0.6644138493531085, 0.578571876551875, 0.0926512132395006
+											0.23358116480793284,
+											0.6644138493531085,
+											0.578571876551875,
+											0.0926512132395006
 										],
 										"type": "bezier",
 										"value": -360
@@ -567,7 +752,12 @@
 										"id": "-vpG8MvtMW",
 										"position": 14,
 										"connectedRight": true,
-										"handles": [0.5280155310650639, 0.8676980866708182, 0.5, 0],
+										"handles": [
+											0.5280155310650639,
+											0.8676980866708182,
+											0.5,
+											0
+										],
 										"type": "bezier",
 										"value": -405
 									}
@@ -587,6 +777,391 @@
 							"[\"rotation\",\"y\"]": "U9CGu7QFf5",
 							"[\"rotation\",\"z\"]": "1gCeRJ-K4I"
 						}
+					},
+					"Icosahedron": {
+						"trackData": {
+							"kvncBiRvHE": {
+								"type": "BasicKeyframedTrack",
+								"__debugName": "Icosahedron:[\"scale\",\"x\"]",
+								"keyframes": [
+									{
+										"id": "ucTYDeOiWU",
+										"position": 14,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									},
+									{
+										"id": "WpeSqbjNZm",
+										"position": 14.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 1
+									},
+									{
+										"id": "fwYTcKuuHW",
+										"position": 18.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 1
+									},
+									{
+										"id": "D2ZIKaTNNm",
+										"position": 19,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									}
+								]
+							},
+							"sNeWyqTo-V": {
+								"type": "BasicKeyframedTrack",
+								"__debugName": "Icosahedron:[\"scale\",\"y\"]",
+								"keyframes": [
+									{
+										"id": "ipzj6GL05Z",
+										"position": 14,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									},
+									{
+										"id": "zsmRYBITGn",
+										"position": 14.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 1
+									},
+									{
+										"id": "epKfjBLHIf",
+										"position": 18.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 1
+									},
+									{
+										"id": "7lL9h5y6sW",
+										"position": 19,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									}
+								]
+							},
+							"EL26GUag52": {
+								"type": "BasicKeyframedTrack",
+								"__debugName": "Icosahedron:[\"scale\",\"z\"]",
+								"keyframes": [
+									{
+										"id": "9M29SJSi3H",
+										"position": 14,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									},
+									{
+										"id": "Bxq_fIoS14",
+										"position": 14.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 1
+									},
+									{
+										"id": "2wbn2vmevK",
+										"position": 18.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 1
+									},
+									{
+										"id": "-eLA7Ok1ir",
+										"position": 19,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									}
+								]
+							},
+							"spkMtCbfjO": {
+								"type": "BasicKeyframedTrack",
+								"__debugName": "Icosahedron:[\"rotation\",\"x\"]",
+								"keyframes": [
+									{
+										"id": "uBfa6Zh6gB",
+										"position": 13.967,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 45
+									},
+									{
+										"id": "NNpMu1J1uP",
+										"position": 14,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": -45
+									},
+									{
+										"id": "_uUkO5OWl-",
+										"position": 14.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									},
+									{
+										"id": "yxkwYLfeQC",
+										"position": 15.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 45
+									},
+									{
+										"id": "a9rgz5JllI",
+										"position": 16.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 90
+									},
+									{
+										"id": "hWyTMWp59p",
+										"position": 17.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 135
+									},
+									{
+										"id": "CmuVYIrPbQ",
+										"position": 18.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 180
+									},
+									{
+										"id": "HkY5Ffoj7N",
+										"position": 19,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 45
+									}
+								]
+							},
+							"vlhBxoXbGg": {
+								"type": "BasicKeyframedTrack",
+								"__debugName": "Icosahedron:[\"rotation\",\"y\"]",
+								"keyframes": [
+									{
+										"id": "TS5NPubp5q",
+										"position": 14.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									},
+									{
+										"id": "1mLOZS0ZX4",
+										"position": 15.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 20
+									},
+									{
+										"id": "Wh6WVga6Q7",
+										"position": 16.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": -40
+									},
+									{
+										"id": "2INI4WCJon",
+										"position": 17.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 60
+									},
+									{
+										"id": "KqhlIjdiyd",
+										"position": 18.5,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									},
+									{
+										"id": "3PlRd6aFqY",
+										"position": 19,
+										"connectedRight": true,
+										"handles": [
+											0.5,
+											1,
+											0.5,
+											0
+										],
+										"type": "bezier",
+										"value": 0
+									}
+								]
+							},
+							"SL3GUU_pCX": {
+								"type": "BasicKeyframedTrack",
+								"__debugName": "Icosahedron:[\"rotation\",\"z\"]",
+								"keyframes": []
+							}
+						},
+						"trackIdByPropPath": {
+							"[\"scale\",\"x\"]": "kvncBiRvHE",
+							"[\"scale\",\"y\"]": "sNeWyqTo-V",
+							"[\"scale\",\"z\"]": "EL26GUag52",
+							"[\"rotation\",\"x\"]": "spkMtCbfjO",
+							"[\"rotation\",\"y\"]": "vlhBxoXbGg",
+							"[\"rotation\",\"z\"]": "SL3GUU_pCX"
+						}
 					}
 				}
 			}
@@ -594,6 +1169,7 @@
 	},
 	"definitionVersion": "0.4.0",
 	"revisionHistory": [
+		"71SDGKP-QyIXju5x",
 		"4TwnUQzNaZ7lPem6",
 		"62VdNseKCOk4ES6l",
 		"bN254GoJSAsnU7Eg",

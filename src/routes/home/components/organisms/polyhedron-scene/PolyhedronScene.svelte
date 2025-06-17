@@ -45,6 +45,10 @@
 		{:else if projectName === 'Features'}
 			<Octahedron />
 			<Icosahedron />
+		{:else if projectName === 'ReliableFrontend'}
+			<Octahedron />
+		{:else if projectName === 'AmazingTechnologies'}
+			<Icosahedron />
 		{:else}
 			<Octahedron />
 		{/if}

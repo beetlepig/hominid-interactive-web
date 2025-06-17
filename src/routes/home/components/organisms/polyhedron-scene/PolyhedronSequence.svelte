@@ -36,8 +36,8 @@
 		},
 		[AnimationSectionEnum.Icosahedron]: {
 			[AnimationStateEnum.Enter]: [14, 14.5, 1],
-			[AnimationStateEnum.Idle]: [14.5, 17.5, Infinity],
-			[AnimationStateEnum.Exit]: [17.5, 18, 1]
+			[AnimationStateEnum.Idle]: [14.5, 18.5, Infinity],
+			[AnimationStateEnum.Exit]: [18.5, 19, 1]
 		}
 	};
 
