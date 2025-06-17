@@ -1,6 +1,6 @@
 {
 	"sheetsById": {
-		"default": {
+		"Headline": {
 			"staticOverrides": {
 				"byObject": {
 					"Light": {
@@ -282,7 +282,71 @@
 							"[\"scale\",\"z\"]": "gpUqPa5Ene",
 							"[\"rotation\",\"y\"]": "eCp7NpKJzL"
 						}
+					}
+				}
+			}
+		},
+		"Features": {
+			"staticOverrides": {
+				"byObject": {
+					"Light": {
+						"position": {
+							"x": 2.2133097383413305,
+							"y": -0.8076092465312161,
+							"z": 3.4392631102095983
+						},
+						"rotation": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"scale": {
+							"x": 1,
+							"y": 1,
+							"z": 1
+						}
 					},
+					"Light Two": {
+						"position": {
+							"x": -1.6941751148104336,
+							"y": 4.425035258842632,
+							"z": -2.1289840666868916
+						},
+						"rotation": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"scale": {
+							"x": 1,
+							"y": 1,
+							"z": 1
+						}
+					},
+					"Pyramid": {
+						"position": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"rotation": {
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"scale": {
+							"x": 1,
+							"y": 1,
+							"z": 1
+						}
+					}
+				}
+			},
+			"sequence": {
+				"subUnitsPerUnit": 30,
+				"length": 15.64,
+				"type": "PositionalSequence",
+				"tracksByObject": {
 					"Octahedron": {
 						"trackData": {
 							"qWpnIHRHVU": {

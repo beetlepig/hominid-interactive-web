@@ -219,16 +219,16 @@
 
 	$effect(() => {
 		switch (true) {
-			case scrollYProgress() < 0.1: {
+			case scrollYProgress() < 0.4: {
 				setCurrentAnimationSection(AnimationSectionEnum.Octahedron);
 				break;
 			}
-			case scrollYProgress() >= 0.1 && scrollYProgress() < 0.4: {
-				setCurrentAnimationSection(AnimationSectionEnum.Octahedron);
+			case scrollYProgress() >= 0.4 && scrollYProgress() < 0.7: {
+				setCurrentAnimationSection(AnimationSectionEnum.Icosahedron);
 				break;
 			}
-			case scrollYProgress() >= 0.4: {
-				setCurrentAnimationSection(AnimationSectionEnum.Octahedron);
+			case scrollYProgress() >= 0.7: {
+				setCurrentAnimationSection(AnimationSectionEnum.Icosahedron);
 				break;
 			}
 		}
@@ -317,7 +317,7 @@
 			>
 				<Canvas renderMode={canvasFeaturesRenderMode()}>
 					<PolyhedronScene
-						projectName="features"
+						projectName="Features"
 						headlineContainerRef={null}
 						targetAnimationSection={currentAnimationSection()}
 					/>

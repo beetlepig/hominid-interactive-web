@@ -4,7 +4,8 @@
 	 */
 	const AnimationSectionEnum = Object.freeze({
 		Pyramid: 'Pyramid',
-		Octahedron: 'Octahedron'
+		Octahedron: 'Octahedron',
+		Icosahedron: 'Icosahedron'
 	});
 
 	/**
@@ -32,6 +33,11 @@
 			[AnimationStateEnum.Enter]: [7, 7.5, 1],
 			[AnimationStateEnum.Idle]: [7.5, 13.5, Infinity],
 			[AnimationStateEnum.Exit]: [13.5, 14, 1]
+		},
+		[AnimationSectionEnum.Icosahedron]: {
+			[AnimationStateEnum.Enter]: [14, 14.5, 1],
+			[AnimationStateEnum.Idle]: [14.5, 17.5, Infinity],
+			[AnimationStateEnum.Exit]: [17.5, 18, 1]
 		}
 	};
 

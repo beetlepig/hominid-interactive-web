@@ -7,7 +7,8 @@
 	import Pyramid from '../../atoms/pyramid/Pyramid.svelte';
 	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
 	import PolyhedronSequence from './PolyhedronSequence.svelte';
-	import projectState from './main.theatre-project-state.json';
+	import projectState from './Hominid.theatre-project-state.json';
+	import Icosahedron from '../../atoms/icosahedron/Icosahedron.svelte';
 
 	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: string }} */
 	const { targetAnimationSection, headlineContainerRef, projectName } = $props();
@@ -15,10 +16,10 @@
 	interactivity();
 </script>
 
-<Studio enabled={false} />
+<Studio enabled={true} />
 
-<Project name={projectName} config={{ state: projectState }}>
-	<Sheet>
+<Project name="Hominid" config={{ state: projectState }}>
+	<Sheet name={projectName}>
 		<PolyhedronSequence {targetAnimationSection} />
 
 		<T.PerspectiveCamera makeDefault position={[0, 0, 6]} fov={30} />
@@ -39,7 +40,13 @@
 			{/snippet}
 		</SheetObject>
 
-		<Pyramid {headlineContainerRef} />
-		<Octahedron />
+		{#if projectName === 'Headline'}
+			<Pyramid {headlineContainerRef} />
+		{:else if projectName === 'Features'}
+			<Octahedron />
+			<Icosahedron />
+		{:else}
+			<Octahedron />
+		{/if}
 	</Sheet>
 </Project>
