@@ -9,8 +9,9 @@
 	import PolyhedronSequence from './PolyhedronSequence.svelte';
 	import projectState from './Hominid.theatre-project-state.json';
 	import Icosahedron from '../../atoms/icosahedron/Icosahedron.svelte';
+	import Dodecahedron from '../../atoms/dodecahedron/Dodecahedron.svelte';
 
-	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: string }} */
+	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: "Headline" | "Features" | "ReliableFrontend" | "AmazingTechnologies" | "FlexibleDevelopment" }} */
 	const { targetAnimationSection, headlineContainerRef, projectName } = $props();
 
 	interactivity();
@@ -44,13 +45,14 @@
 			<Pyramid {headlineContainerRef} />
 		{:else if projectName === 'Features'}
 			<Octahedron />
+			<Dodecahedron />
 			<Icosahedron />
 		{:else if projectName === 'ReliableFrontend'}
 			<Octahedron />
 		{:else if projectName === 'AmazingTechnologies'}
+			<Dodecahedron />
+		{:else if projectName === 'FlexibleDevelopment'}
 			<Icosahedron />
-		{:else}
-			<Octahedron />
 		{/if}
 	</Sheet>
 </Project>
