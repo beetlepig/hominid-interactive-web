@@ -228,7 +228,7 @@
 				break;
 			}
 			case scrollYProgress() >= 0.7: {
-				setCurrentAnimationSection(AnimationSectionEnum.Icosahedron);
+				setCurrentAnimationSection(AnimationSectionEnum.Dodecahedron);
 				break;
 			}
 		}
