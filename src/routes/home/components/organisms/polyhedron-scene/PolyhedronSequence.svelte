@@ -35,12 +35,12 @@
 			[AnimationStateEnum.Idle]: [7.5, 13.5, Infinity],
 			[AnimationStateEnum.Exit]: [13.5, 14, 1]
 		},
-		[AnimationSectionEnum.Icosahedron]: {
+		[AnimationSectionEnum.Dodecahedron]: {
 			[AnimationStateEnum.Enter]: [14, 14.5, 1],
 			[AnimationStateEnum.Idle]: [14.5, 18.5, Infinity],
 			[AnimationStateEnum.Exit]: [18.5, 19, 1]
 		},
-		[AnimationSectionEnum.Dodecahedron]: {
+		[AnimationSectionEnum.Icosahedron]: {
 			[AnimationStateEnum.Enter]: [19, 19.5, 1],
 			[AnimationStateEnum.Idle]: [19.5, 23.5, Infinity],
 			[AnimationStateEnum.Exit]: [23.5, 24, 1]

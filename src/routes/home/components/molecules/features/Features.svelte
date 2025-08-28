@@ -224,11 +224,11 @@
 				break;
 			}
 			case scrollYProgress() >= 0.4 && scrollYProgress() < 0.7: {
-				setCurrentAnimationSection(AnimationSectionEnum.Icosahedron);
+				setCurrentAnimationSection(AnimationSectionEnum.Dodecahedron);
 				break;
 			}
 			case scrollYProgress() >= 0.7: {
-				setCurrentAnimationSection(AnimationSectionEnum.Dodecahedron);
+				setCurrentAnimationSection(AnimationSectionEnum.Icosahedron);
 				break;
 			}
 		}
@@ -380,7 +380,7 @@
 							<PolyhedronScene
 								projectName="AmazingTechnologies"
 								headlineContainerRef={null}
-								targetAnimationSection={AnimationSectionEnum.Icosahedron}
+								targetAnimationSection={AnimationSectionEnum.Dodecahedron}
 							/>
 						</Canvas>
 					</div>
@@ -419,7 +419,7 @@
 							<PolyhedronScene
 								projectName="FlexibleDevelopment"
 								headlineContainerRef={null}
-								targetAnimationSection={AnimationSectionEnum.Octahedron}
+								targetAnimationSection={AnimationSectionEnum.Icosahedron}
 							/>
 						</Canvas>
 					</div>
