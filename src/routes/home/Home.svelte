@@ -4,7 +4,6 @@
 	import Headline from './components/molecules/headline/Headline.svelte';
 	import Features from './components/molecules/features/Features.svelte';
 	import Projects from './components/molecules/projects/Projects.svelte';
-	import Chat from './components/molecules/chat/Chat.svelte';
 	import { replaceState } from '$app/navigation';
 	import { sections } from '$lib/constans/index.js';
 	import { createSignal } from '$lib';
@@ -52,10 +51,9 @@
 		}}
 	/>
 	<Sponsors />
-	<Chat
+	<!-- <Chat
 		onVisible={() => {
 			setPageTitle(sections.chat.name);
 			replaceState(sections.chat.href, { hash: sections.chat.href });
-		}}
-	/>
+		}} 	/> -->
 </div>
