@@ -398,7 +398,7 @@
 						I have extensive experience with widely used technologies like {@render blackSpan(
 							'TypeScript'
 						)}, {@render blackSpan('React')}, and {@render blackSpan('React Native')}, complemented
-						by explorations and proof-of-concept projects in {@render blackSpan('Svelte')} and
+						by explorations and personal projects in {@render blackSpan('Svelte')} and
 						{@render blackSpan('Rust')}.
 					</p>
 				</div>

@@ -17,7 +17,7 @@
 	interactivity();
 </script>
 
-<Studio enabled={true} />
+<Studio enabled={false} />
 
 <Project name="Hominid" config={{ state: projectState }}>
 	<Sheet name={projectName}>

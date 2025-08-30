@@ -47,8 +47,9 @@
 
 	$effect(() => {
 		if (headlineContainerRef) {
-			const scale = mapNumRange(scrollYProgress(), 0.1, 0.2, 1.4, 1);
-			const position = mapNumRange(scrollYProgress(), 0.1, 0.2, -0.7, -0.5);
+			console.log(scrollYProgress());
+			const scale = mapNumRange(scrollYProgress(), 0, 0.2, 1.4, 1);
+			const position = mapNumRange(scrollYProgress(), 0, 0.2, -0.7, -0.5);
 
 			animatedScale.update(() => scale);
 			animatedPosition.update(() => position);

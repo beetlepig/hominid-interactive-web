@@ -80,8 +80,8 @@
 	});
 
 	$effect(() => {
-		const opacity = mapNumRange(scrollYProgress(), 0.2, 0.25, 0.9, 0);
-		const position = mapNumRange(scrollYProgress(), 0.15, 0.25, 0, -40);
+		const opacity = mapNumRange(scrollYProgress(), 0.05, 0.25, 0.9, 0);
+		const position = mapNumRange(scrollYProgress(), 0, 0.25, 0, -40);
 		const nameOpacity = mapNumRange(scrollYProgress(), 0.25, 0.35, 0, 0.9);
 		const namePosition = mapNumRange(scrollYProgress(), 0.3, 0.35, 0, -25);
 
@@ -95,7 +95,7 @@
 <section
 	id={sections.home.id}
 	bind:this={headlineContainerRef}
-	class={css({ height: '[500vh]', bgColor: 'gray.50' })}
+	class={css({ height: '[300dvh]', bgColor: 'gray.50' })}
 >
 	<div
 		class={css({

@@ -4,10 +4,10 @@
 	import Headline from './components/molecules/headline/Headline.svelte';
 	import Features from './components/molecules/features/Features.svelte';
 	import Projects from './components/molecules/projects/Projects.svelte';
+	import Companies from './components/organisms/companies/Companies.svelte';
 	import { replaceState } from '$app/navigation';
 	import { sections } from '$lib/constans/index.js';
 	import { createSignal } from '$lib';
-	import Sponsors from './components/organisms/sponsors/Sponsors.svelte';
 
 	const [pageTitle, setPageTitle] = createSignal('Home');
 </script>
@@ -50,10 +50,17 @@
 			replaceState(sections.projects.href, { hash: sections.projects.href });
 		}}
 	/>
-	<Sponsors />
-	<!-- <Chat
+	<Companies
+		onVisible={() => {
+			setPageTitle(sections.companies.name);
+			replaceState(sections.companies.href, { hash: sections.companies.href });
+		}}
+	/>
+	<!--
+	<Chat
 		onVisible={() => {
 			setPageTitle(sections.chat.name);
 			replaceState(sections.chat.href, { hash: sections.chat.href });
-		}} 	/> -->
+		}}
+	/> -->
 </div>

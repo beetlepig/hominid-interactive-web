@@ -98,7 +98,7 @@
 			{@render anchor(sections.aboutMe.href, sections.aboutMe.name)}
 			{@render anchor(sections.skills.href, sections.skills.name)}
 			{@render anchor(sections.projects.href, sections.projects.name)}
-			{@render anchor(sections.chat.href, sections.chat.name)}
+			{@render anchor(sections.companies.href, sections.companies.name)}
 		</menu>
 		<div class={css({ hideFrom: 'md', display: 'flex', justifyContent: 'center' })}>
 			<button
@@ -179,7 +179,7 @@
 			{@render anchorResponsive(sections.aboutMe.href, sections.aboutMe.name)}
 			{@render anchorResponsive(sections.skills.href, sections.skills.name)}
 			{@render anchorResponsive(sections.projects.href, sections.projects.name)}
-			{@render anchorResponsive(sections.chat.href, sections.chat.name)}
+			{@render anchorResponsive(sections.companies.href, sections.companies.name)}
 		</menu>
 	{/if}
 </nav>
