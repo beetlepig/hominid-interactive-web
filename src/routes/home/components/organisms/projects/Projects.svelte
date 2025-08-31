@@ -18,7 +18,7 @@
 
 					return () => {};
 				},
-				{ amount: 0.9 }
+				{ amount: 0.7 }
 			);
 
 			return () => {
@@ -32,50 +32,65 @@
 	id={sections.projects.id}
 	class={css({
 		bgColor: 'gray.50',
-		height: '[100dvh]',
-		display: 'flex',
-		alignItems: 'center'
+		py: '20',
+		minH: '[100dvh]'
 	})}
 	bind:this={projectsContainerRef}
 >
-	<ul
-		class={css({
-			margin: '0',
-			display: 'flex',
-			flex: '1',
-			overflowX: 'scroll',
-			gap: '5',
-			maxH: '2xl',
-			h: 'full',
-			paddingX: '[max(6.25vw,(100vw - 1680px)/2)]',
-			scrollSnapType: '[x mandatory]',
-			scrollbarWidth: '[none]',
-			boxSizing: 'content-box'
-		})}
-	>
-		<li
+	<div class={css({ height: 'full', spaceY: '20' })}>
+		<h2
 			class={css({
-				scrollSnapAlign: 'center',
-				flex: '[0 0 min(max(87.5vw,280px),1680px)]',
-				rounded: '3xl',
-				bgColor: 'white'
+				textAlign: 'center',
+				fontFamily: 'raleway',
+				fontWeight: 'black',
+				fontSize: '6xl',
+				md: {
+					fontSize: '8xl'
+				}
 			})}
-		></li>
-		<li
+		>
+			Projects
+		</h2>
+		<ul
 			class={css({
-				scrollSnapAlign: 'center',
-				flex: '[0 0 min(max(87.5vw,280px),1680px)]',
-				rounded: '3xl',
-				bgColor: 'white'
+				margin: '0',
+				display: 'flex',
+				flex: '1',
+				overflowX: 'scroll',
+				gap: '5',
+				minH: 'xl',
+				maxH: '2xl',
+				h: 'full',
+				paddingX: '[max(6.25vw,(100vw - 1680px)/2)]',
+				scrollSnapType: '[x mandatory]',
+				scrollbarWidth: '[none]',
+				boxSizing: 'content-box'
 			})}
-		></li>
-		<li
-			class={css({
-				scrollSnapAlign: 'center',
-				flex: '[0 0 min(max(87.5vw,280px),1680px)]',
-				rounded: '3xl',
-				bgColor: 'white'
-			})}
-		></li>
-	</ul>
+		>
+			<li
+				class={css({
+					scrollSnapAlign: 'center',
+					flex: '[0 0 min(max(87.5vw,280px),1680px)]',
+					rounded: '3xl',
+					bgColor: 'white'
+				})}
+			></li>
+			<li
+				class={css({
+					scrollSnapAlign: 'center',
+					flex: '[0 0 min(max(87.5vw,280px),1680px)]',
+					rounded: '3xl',
+					bgColor: 'white'
+				})}
+			></li>
+			<li
+				class={css({
+					scrollSnapAlign: 'center',
+					flex: '[0 0 min(max(87.5vw,280px),1680px)]',
+					rounded: '3xl',
+					bgColor: 'white'
+				})}
+			></li>
+		</ul>
+	</div>
 </section>

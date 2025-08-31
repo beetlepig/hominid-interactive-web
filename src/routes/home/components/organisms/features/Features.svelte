@@ -242,7 +242,7 @@
 	id={sections.skills.id}
 	bind:this={featuresContainerRef}
 	class={css({
-		py: '40',
+		py: '20',
 		bgColor: 'gray.50'
 	})}
 >
@@ -264,28 +264,28 @@
 				<h2
 					class={css({
 						textAlign: 'left',
-						fontFamily: 'oswald',
-						fontSize: '2xl',
-						fontWeight: 'medium',
-						smDown: {
-							fontSize: 'lg'
+						fontFamily: 'raleway',
+						fontWeight: 'black',
+						fontSize: '6xl',
+						md: {
+							fontSize: '8xl'
 						}
 					})}
 				>
-					How I Generate
+					How I Create
 				</h2>
 				<h2
 					class={css({
 						textAlign: 'center',
 						fontFamily: 'raleway',
-						fontSize: '8xl',
 						fontWeight: 'black',
-						smDown: {
-							fontSize: '6xl'
+						fontSize: '6xl',
+						md: {
+							fontSize: '8xl'
 						}
 					})}
 				>
-					IMPACT
+					Impact
 				</h2>
 			</div>
 		</div>
@@ -344,7 +344,7 @@
 							/>
 						</Canvas>
 					</div>
-					<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+					<h3 class={css({ fontFamily: 'oswald', fontSize: '4xl', fontWeight: 'medium' })}>
 						Reliable Frontend
 					</h3>
 					<p
@@ -383,7 +383,7 @@
 							/>
 						</Canvas>
 					</div>
-					<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+					<h3 class={css({ fontFamily: 'oswald', fontSize: '4xl', fontWeight: 'medium' })}>
 						Amazing Technologies
 					</h3>
 					<p
@@ -422,7 +422,7 @@
 							/>
 						</Canvas>
 					</div>
-					<h3 class={css({ fontFamily: 'raleway', fontSize: '4xl', fontWeight: 'bold' })}>
+					<h3 class={css({ fontFamily: 'oswald', fontSize: '4xl', fontWeight: 'medium' })}>
 						Flexible Development
 					</h3>
 					<p

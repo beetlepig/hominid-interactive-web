@@ -132,7 +132,7 @@
 				textAlign: 'center',
 				fontFamily: 'raleway',
 				fontWeight: 'black',
-				fontSize: '7xl',
+				fontSize: '6xl',
 				lineHeight: 'tight',
 				md: {
 					fontSize: '8xl'
@@ -149,11 +149,22 @@
 				textAlign: 'left',
 				fontFamily: 'oswald',
 				lineHeight: 'tight',
-				fontSize: 'lg'
+				fontSize: 'md',
+				md: {
+					fontSize: 'lg'
+				}
 			})}
 		>
 			Developer's <br />
-			<span class={css({ fontSize: '6xl', fontWeight: 'medium' })}>PORTFOLIO</span>
+			<span
+				class={css({
+					fontSize: '5xl',
+					fontWeight: 'medium',
+					md: {
+						fontSize: '6xl'
+					}
+				})}>PORTFOLIO</span
+			>
 		</h2>
 	</div>
 </section>

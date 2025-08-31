@@ -39,7 +39,8 @@
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		py: '28',
+		minH: '[100dvh]',
+		py: '20',
 		bgColor: 'gray.50'
 	})}
 >
@@ -60,7 +61,7 @@
 			})}
 		>
 			I am a {@render blackSpan('frontend developer')} with over
-			{@render blackSpan('5 years of experience')}
+			{@render blackSpan('6 years of experience')}
 			collaborating with companies to bring their products to market. I have led and been part of both
 			large and small teams, from startups to established companies. My focus is on
 			{@render blackSpan('efficiency and maintainability')}
