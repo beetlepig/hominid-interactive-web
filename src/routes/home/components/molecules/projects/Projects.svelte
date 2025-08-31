@@ -31,6 +31,7 @@
 <section
 	id={sections.projects.id}
 	class={css({
+		bgColor: 'gray.50',
 		height: '[100dvh]',
 		display: 'flex',
 		alignItems: 'center'
@@ -54,36 +55,27 @@
 	>
 		<li
 			class={css({
-				margin: '0',
-				padding: '0',
 				scrollSnapAlign: 'center',
 				flex: '[0 0 min(max(87.5vw,280px),1680px)]',
-				bgColor: 'blue.400/50'
+				rounded: '3xl',
+				bgColor: 'white'
 			})}
-		>
-			<div>1</div>
-		</li>
+		></li>
 		<li
 			class={css({
-				margin: '0',
-				padding: '0',
 				scrollSnapAlign: 'center',
 				flex: '[0 0 min(max(87.5vw,280px),1680px)]',
-				bgColor: 'blue.400/50'
+				rounded: '3xl',
+				bgColor: 'white'
 			})}
-		>
-			<div>2</div>
-		</li>
+		></li>
 		<li
 			class={css({
-				margin: '0',
-				padding: '0',
 				scrollSnapAlign: 'center',
 				flex: '[0 0 min(max(87.5vw,280px),1680px)]',
-				bgColor: 'blue.400/50'
+				rounded: '3xl',
+				bgColor: 'white'
 			})}
-		>
-			<div>3</div>
-		</li>
+		></li>
 	</ul>
 </section>
