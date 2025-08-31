@@ -43,13 +43,7 @@
 	/** @type {string} */ src,
 	/** @type {() => void} */ onEnter
 )}
-	<div
-		class={css({
-			borderRadius: 'xl',
-			display: 'flex',
-			alignItems: 'center'
-		})}
-	>
+	<div>
 		<a
 			{href}
 			target="_blank"
@@ -64,7 +58,7 @@
 
 <section
 	id={sections.companies.id}
-	class={css({ bgColor: 'gray.50', height: '[100dvh]', display: 'flex', alignItems: 'center' })}
+	class={css({ bgColor: 'gray.50', minH: '[100dvh]', display: 'flex', alignItems: 'center' })}
 	bind:this={projectsContainerRef}
 >
 	<div
@@ -92,8 +86,10 @@
 		<div
 			class={css({
 				display: 'flex',
+				flexWrap: 'wrap',
 				justifyContent: 'center',
-				flexWrap: 'wrap'
+				alignItems: 'center',
+				gap: '14'
 			})}
 		>
 			{@render sponsorEntry(
