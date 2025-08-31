@@ -1,9 +1,9 @@
 <script>
-	import { css } from 'styled-system/css';
+	import { page } from '$app/stores';
+	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans';
 	import Logo from '../atoms/Logo.svelte';
-	import { createSignal } from '$lib';
-	import { page } from '$app/stores';
+	import { css } from 'styled-system/css';
 	import { fade } from 'svelte/transition';
 
 	const [currentSection, setCurrentSection] = createSignal(sections.home.href);

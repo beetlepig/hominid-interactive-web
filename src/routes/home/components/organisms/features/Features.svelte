@@ -1,14 +1,13 @@
 <script>
 	/** @import { AnimationSectionEnumType } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte' */
-
-	import { css } from 'styled-system/css';
-	import { sections } from '$lib/constans/index.js';
 	import { createSignal } from '$lib';
+	import { sections } from '$lib/constans/index.js';
 	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
-	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
+	import { AnimationSectionEnum } from '../polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
 	import { animate } from 'motion/mini';
+	import { css } from 'styled-system/css';
 	import { token } from 'styled-system/tokens';
 
 	/** @type {{ onVisible: () => void }} */

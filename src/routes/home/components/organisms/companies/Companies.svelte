@@ -1,9 +1,9 @@
 <script>
-	import { css } from 'styled-system/css';
 	import { createSignal } from '$lib';
-	import { fade } from 'svelte/transition';
 	import { sections } from '$lib/constans/index.js';
 	import { inView } from 'motion';
+	import { css } from 'styled-system/css';
+	import { fade } from 'svelte/transition';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -43,12 +43,12 @@
 	/** @type {string} */ src,
 	/** @type {() => void} */ onEnter
 )}
-	<div>
+	<div class={css({ _hover: { opacity: 0.8 } })}>
 		<a
 			{href}
 			target="_blank"
 			onmouseenter={() => onEnter()}
-			class={css({ _hover: { opacity: 0.8 }, p: '14' })}
+			class={css({ p: '14' })}
 			onmouseleave={() => setCompanyDescription(initialDescription)}
 		>
 			<img {alt} {src} width="70" />

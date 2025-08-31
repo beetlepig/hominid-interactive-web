@@ -1,9 +1,9 @@
 <script>
+	import { createSignal, mapNumRange } from '$lib';
 	import { T } from '@threlte/core';
 	import { SheetObject } from '@threlte/theatre';
-	import { tweened } from 'svelte/motion';
-	import { createSignal, mapNumRange } from '$lib';
 	import { scroll } from 'motion';
+	import { tweened } from 'svelte/motion';
 
 	/** @type {{ headlineContainerRef: HTMLElement | null }} */
 	const { headlineContainerRef } = $props();

@@ -1,12 +1,12 @@
 <script>
-	import { css } from 'styled-system/css';
 	import { createSignal, mapNumRange } from '$lib';
-	import { tweened } from 'svelte/motion';
 	import { sections } from '$lib/constans/index.js';
 	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
-	import { AnimationSectionEnum } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte';
+	import { AnimationSectionEnum } from '../polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
+	import { css } from 'styled-system/css';
+	import { tweened } from 'svelte/motion';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();

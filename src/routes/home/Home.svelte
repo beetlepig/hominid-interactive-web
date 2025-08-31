@@ -1,19 +1,19 @@
 <script>
-	import { css } from 'styled-system/css';
-	import Introduction from './components/molecules/introduction/Introduction.svelte';
-	import Headline from './components/molecules/headline/Headline.svelte';
-	import Features from './components/molecules/features/Features.svelte';
-	import Projects from './components/molecules/projects/Projects.svelte';
-	import Companies from './components/organisms/companies/Companies.svelte';
 	import { replaceState } from '$app/navigation';
-	import { sections } from '$lib/constans/index.js';
 	import { createSignal } from '$lib';
+	import { sections } from '$lib/constans/index.js';
+	import Companies from './components/organisms/companies/Companies.svelte';
+	import Features from './components/organisms/features/Features.svelte';
+	import Headline from './components/organisms/headline/Headline.svelte';
+	import Introduction from './components/organisms/introduction/Introduction.svelte';
+	import Projects from './components/organisms/projects/Projects.svelte';
+	import { css } from 'styled-system/css';
 
 	const [pageTitle, setPageTitle] = createSignal('Home');
 </script>
 
 <svelte:head>
-	<title>Hominid Interactive - {pageTitle()}</title>
+	<title>Carlos Gomez - {pageTitle()}</title>
 	<meta name="description" content="This is where the description goes for SEO" />
 </svelte:head>
 

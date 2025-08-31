@@ -1,7 +1,7 @@
 <script>
-	import { css } from 'styled-system/css';
 	import { sections } from '$lib/constans';
 	import { inView } from 'motion';
+	import { css } from 'styled-system/css';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();

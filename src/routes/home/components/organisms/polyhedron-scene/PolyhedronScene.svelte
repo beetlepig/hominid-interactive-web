@@ -1,15 +1,14 @@
 <script>
 	/** @import { AnimationSectionEnumType } from './PolyhedronSequence.svelte' */
-
-	import { T } from '@threlte/core';
-	import Octahedron from '../../atoms/octahedron/Octahedron.svelte';
-	import { interactivity } from '@threlte/extras';
-	import Pyramid from '../../atoms/pyramid/Pyramid.svelte';
-	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
-	import PolyhedronSequence from './PolyhedronSequence.svelte';
-	import projectState from './Hominid.theatre-project-state.json';
-	import Icosahedron from '../../atoms/icosahedron/Icosahedron.svelte';
 	import Dodecahedron from '../../atoms/dodecahedron/Dodecahedron.svelte';
+	import Icosahedron from '../../atoms/icosahedron/Icosahedron.svelte';
+	import Octahedron from '../../atoms/octahedron/Octahedron.svelte';
+	import Pyramid from '../../atoms/pyramid/Pyramid.svelte';
+	import projectState from './Hominid.theatre-project-state.json';
+	import PolyhedronSequence from './PolyhedronSequence.svelte';
+	import { T } from '@threlte/core';
+	import { interactivity } from '@threlte/extras';
+	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
 
 	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: "Headline" | "Features" | "ReliableFrontend" | "AmazingTechnologies" | "FlexibleDevelopment" }} */
 	const { targetAnimationSection, headlineContainerRef, projectName } = $props();

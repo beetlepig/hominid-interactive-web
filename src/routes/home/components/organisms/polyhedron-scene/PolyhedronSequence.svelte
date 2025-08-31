@@ -51,8 +51,8 @@
 </script>
 
 <script>
-	import { Sequence } from '@threlte/theatre';
 	import { createSignal } from '$lib';
+	import { Sequence } from '@threlte/theatre';
 
 	/**
 	 * @type {((opts?: {}) => Promise<boolean>) | undefined}
