@@ -1,9 +1,9 @@
 <script>
-	/** @import { AnimationSectionEnumType } from '../../organisms/polyhedron-scene/PolyhedronSequence.svelte' */
+	/** @import { AnimationSectionEnumType } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte' */
 	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans/index.js';
-	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
-	import { AnimationSectionEnum } from '../polyhedron-scene/PolyhedronSequence.svelte';
+	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
+	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
 	import { animate } from 'motion/mini';

@@ -1,8 +1,8 @@
 <script>
 	import { createSignal, mapNumRange } from '$lib';
 	import { sections } from '$lib/constans/index.js';
-	import PolyhedronScene from '../../organisms/polyhedron-scene/PolyhedronScene.svelte';
-	import { AnimationSectionEnum } from '../polyhedron-scene/PolyhedronSequence.svelte';
+	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
+	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
 	import { css } from 'styled-system/css';
