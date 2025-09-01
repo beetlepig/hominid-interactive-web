@@ -1,5 +1,6 @@
 <script>
 	/** @import { AnimationSectionEnumType } from './PolyhedronSequence.svelte' */
+	import { dev, building } from '$app/environment';
 	import Dodecahedron from '../../atoms/dodecahedron/Dodecahedron.svelte';
 	import Icosahedron from '../../atoms/icosahedron/Icosahedron.svelte';
 	import Octahedron from '../../atoms/octahedron/Octahedron.svelte';
@@ -29,7 +30,9 @@
 	interactivity();
 </script>
 
-<Studio enabled={false} />
+{#if dev && !building}
+	<Studio enabled={true} />
+{/if}
 
 <Project name="Hominid" config={{ state: projectState }}>
 	<Sheet name={projectName}>
