@@ -3,6 +3,7 @@
 	import { sections } from '$lib/constans';
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
+	import IconUIKitten from '~icons/arcticons/landofkittens';
 	import IconStyledComponents from '~icons/bxl/css3';
 	import IconFirebase from '~icons/bxl/firebase';
 	import IconGoogle from '~icons/bxl/google';
@@ -13,9 +14,11 @@
 	import IconJest from '~icons/devicon-plain/jest';
 	import IconPlaywright from '~icons/devicon-plain/playwright';
 	import IconZustand from '~icons/devicon-plain/zustand';
+	import IconCare from '~icons/iconoir/healthcare';
 	import IconCar from '~icons/material-symbols/car-tag-outline';
 	import IconAntd from '~icons/simple-icons/antdesign';
 	import IconTanStackQuery from '~icons/simple-icons/reactquery';
+	import IconSendgrid from '~icons/simple-icons/sendgrid';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -79,7 +82,7 @@
 			display: 'flex',
 			scrollSnapAlign: 'center',
 			padding: '10',
-			flex: '[0 0 min(calc(max(87.5vw,280px) - 30px),1680px)]',
+			flex: '[0 0 min(calc(max(87.5vw,280px) - 25px),1680px)]',
 			flexDir: 'column',
 			gap: '10',
 			rounded: '3xl',
@@ -105,6 +108,18 @@
 				</h5>
 			</div>
 
+			<div
+				class={css({
+					flex: '1',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					md: { display: 'none' }
+				})}
+			>
+				{@render projectImage()}
+			</div>
+
 			<div class={css({ spaceY: '3' })}>
 				<p class={css({ fontFamily: 'raleway', fontSize: 'lg', fontWeight: 'normal' })}>
 					{@render projectDescription()}
@@ -122,9 +137,10 @@
 		<div
 			class={css({
 				flex: '1',
-				display: 'flex',
+				display: 'none',
 				justifyContent: 'center',
-				alignItems: 'center'
+				alignItems: 'center',
+				md: { display: 'flex' }
 			})}
 		>
 			{@render projectImage()}
@@ -294,6 +310,60 @@
 				prodigosProjectDisclaimer,
 				prodigosProjectTechIcons,
 				prodigosProjectImage
+			)}
+
+			{#snippet connectrnProjectType()}
+				Mobile and Web Application
+			{/snippet}
+			{#snippet connectrnProjectName()}
+				ConnectRN
+			{/snippet}
+			{#snippet connectrnProjectDescription()}
+				A platform that connects nurses and healthcare staff with clinics and hospitals, enabling
+				<strong>shift postings</strong>, <strong>scheduling management</strong>, geolocation, and
+				<strong>digital signatures</strong>. I contributed to the development and refactoring of
+				multiple modules across both the
+				<strong>admin dashboard and the mobile application</strong>.
+			{/snippet}
+			{#snippet connectrnProjectDisclaimer()}
+				Product owned by connectRN Inc.
+			{/snippet}
+			{#snippet connectrnProjectTechIcons()}
+				{#snippet reactIcon()}
+					<IconReact /> React
+				{/snippet}
+				{@render technologyTag(reactIcon)}
+
+				{#snippet reactNativeIcon()}
+					<IconReact /> React Native
+				{/snippet}
+				{@render technologyTag(reactNativeIcon)}
+
+				{#snippet reduxIcon()}
+					<IconRedux /> Redux
+				{/snippet}
+				{@render technologyTag(reduxIcon)}
+
+				{#snippet UIKittenIcon()}
+					<IconUIKitten /> UI Kitten
+				{/snippet}
+				{@render technologyTag(UIKittenIcon)}
+
+				{#snippet sendgridIcon()}
+					<IconSendgrid /> SendGrid
+				{/snippet}
+				{@render technologyTag(sendgridIcon)}
+			{/snippet}
+			{#snippet connectrnProjectImage()}
+				<p class={css({ fontSize: '9xl' })}><IconCare /></p>
+			{/snippet}
+			{@render projectCard(
+				connectrnProjectType,
+				connectrnProjectName,
+				connectrnProjectDescription,
+				connectrnProjectDisclaimer,
+				connectrnProjectTechIcons,
+				connectrnProjectImage
 			)}
 		</ul>
 	</div>
