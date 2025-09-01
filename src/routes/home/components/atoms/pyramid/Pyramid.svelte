@@ -3,10 +3,10 @@
 	import { T } from '@threlte/core';
 	import { SheetObject } from '@threlte/theatre';
 	import { scroll } from 'motion';
-	import { tweened } from 'svelte/motion';
+	import { Tween } from 'svelte/motion';
 
-	/** @type {{ headlineContainerRef: HTMLElement | null }} */
-	const { headlineContainerRef } = $props();
+	/** @type {{ headlineContainerRef: HTMLElement | null, smBreakPoint: boolean }} */
+	const { headlineContainerRef, smBreakPoint } = $props();
 
 	// prettier-ignore
 	const verticesOfPyramid = [
@@ -26,8 +26,8 @@
 		4, 3, 0
 	];
 
-	const animatedScale = tweened(headlineContainerRef ? 1.4 : 1, { delay: 20, duration: 200 });
-	const animatedPosition = tweened(headlineContainerRef ? -0.7 : -0.5, {
+	const animatedScale = new Tween(headlineContainerRef ? 1.4 : 1, { delay: 20, duration: 200 });
+	const animatedPosition = new Tween(headlineContainerRef ? -0.7 : -0.5, {
 		delay: 20,
 		duration: 200
 	});
@@ -47,12 +47,12 @@
 
 	$effect(() => {
 		if (headlineContainerRef) {
-			console.log(scrollYProgress());
-			const scale = mapNumRange(scrollYProgress(), 0, 0.2, 1.4, 1);
+			const multiplier = smBreakPoint ? 0.8 : 1;
+			const scale = mapNumRange(scrollYProgress(), 0, 0.2, 1.4 * multiplier, 1 * multiplier);
 			const position = mapNumRange(scrollYProgress(), 0, 0.2, -0.7, -0.5);
 
-			animatedScale.update(() => scale);
-			animatedPosition.update(() => position);
+			animatedScale.target = scale;
+			animatedPosition.target = position;
 		}
 	});
 </script>
@@ -60,7 +60,12 @@
 <SheetObject key="Pyramid">
 	{#snippet children({ Transform, Sync })}
 		<Transform>
-			<T.Mesh castShadow receiveShadow position.y={$animatedPosition} scale={$animatedScale}>
+			<T.Mesh
+				castShadow
+				receiveShadow
+				position.y={animatedPosition.current}
+				scale={animatedScale.current}
+			>
 				<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
 				<T.MeshStandardMaterial>
 					<Sync color emissive />

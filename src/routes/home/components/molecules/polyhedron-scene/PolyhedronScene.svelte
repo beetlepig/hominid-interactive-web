@@ -10,8 +10,8 @@
 	import { interactivity } from '@threlte/extras';
 	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
 
-	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: "Headline" | "Features" | "ReliableFrontend" | "AmazingTechnologies" | "FlexibleDevelopment" }} */
-	const { targetAnimationSection, headlineContainerRef, projectName } = $props();
+	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: "Headline" | "Features" | "ReliableFrontend" | "AmazingTechnologies" | "FlexibleDevelopment", smBreakPoint: boolean }} */
+	const { targetAnimationSection, headlineContainerRef, projectName, smBreakPoint } = $props();
 
 	interactivity();
 </script>
@@ -41,7 +41,7 @@
 		</SheetObject>
 
 		{#if projectName === 'Headline'}
-			<Pyramid {headlineContainerRef} />
+			<Pyramid {headlineContainerRef} {smBreakPoint} />
 		{:else if projectName === 'Features'}
 			<Octahedron />
 			<Dodecahedron />

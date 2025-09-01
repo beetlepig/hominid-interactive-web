@@ -6,7 +6,7 @@
 	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
 	import { css } from 'styled-system/css';
-	import { tweened } from 'svelte/motion';
+	import { Tween } from 'svelte/motion';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -20,15 +20,19 @@
 	/** @type {HTMLElement | null} */
 	let headlineCanvasContainerRef = $state(null);
 
-	const animatedOpacity = tweened(0.9, { delay: 20, duration: 200 });
-	const animatedPosition = tweened(0, { delay: 20, duration: 200 });
-	const animatedNameOpacity = tweened(0, { delay: 20, duration: 200 });
-	const animatedNamePosition = tweened(0, { delay: 20, duration: 200 });
+	/** @type {number | null} */
+	let sectionWidth = $state(null);
+	const smBreakPoint = $derived((sectionWidth ?? 0) <= 768);
+
+	const animatedOpacity = new Tween(0.9, { delay: 20, duration: 200 });
+	const animatedPosition = new Tween(0, { delay: 20, duration: 200 });
+	const animatedNameOpacity = new Tween(0, { delay: 20, duration: 200 });
+	const animatedNamePosition = new Tween(0, { delay: 20, duration: 200 });
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
 
-	const [canvasHeadlineRenderMode, setCanvasHeadlineRenderMode] =
-		/** @type {typeof createSignal<'on-demand' | 'manual'>} */ (createSignal)('manual');
+	const [canvasHeadlineRender, setCanvasHeadlineRender] =
+		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
 
 	$effect(() => {
 		/** @type {(progress: number) => void} */
@@ -64,10 +68,10 @@
 			const stop = inView(
 				headlineCanvasContainerRef,
 				() => {
-					setCanvasHeadlineRenderMode('on-demand');
+					setCanvasHeadlineRender(true);
 
 					return () => {
-						setCanvasHeadlineRenderMode('manual');
+						setCanvasHeadlineRender(false);
 					};
 				},
 				{ amount: 'some' }
@@ -85,17 +89,18 @@
 		const nameOpacity = mapNumRange(scrollYProgress(), 0.25, 0.35, 0, 0.9);
 		const namePosition = mapNumRange(scrollYProgress(), 0.3, 0.35, 0, -25);
 
-		animatedOpacity.update(() => opacity);
-		animatedPosition.update(() => position);
-		animatedNameOpacity.update(() => nameOpacity);
-		animatedNamePosition.update(() => namePosition);
+		animatedOpacity.target = opacity;
+		animatedPosition.target = position;
+		animatedNameOpacity.target = nameOpacity;
+		animatedNamePosition.target = namePosition;
 	});
 </script>
 
 <section
 	id={sections.home.id}
 	bind:this={headlineContainerRef}
-	class={css({ height: '[300dvh]', bgColor: 'gray.50' })}
+	bind:clientWidth={sectionWidth}
+	class={css({ height: '[250dvh]', bgColor: 'gray.50' })}
 >
 	<div
 		class={css({
@@ -115,24 +120,27 @@
 				inset: '0'
 			})}
 		>
-			<Canvas renderMode={canvasHeadlineRenderMode()}>
-				<PolyhedronScene
-					{headlineContainerRef}
-					projectName="Headline"
-					targetAnimationSection={AnimationSectionEnum.Pyramid}
-				/>
-			</Canvas>
+			{#if canvasHeadlineRender()}
+				<Canvas>
+					<PolyhedronScene
+						{smBreakPoint}
+						{headlineContainerRef}
+						projectName="Headline"
+						targetAnimationSection={AnimationSectionEnum.Pyramid}
+					/>
+				</Canvas>
+			{/if}
 		</div>
 		<h1
 			bind:this={headlineHeadingRef}
-			style="opacity: {$animatedOpacity}; transform: translateY({$animatedPosition}px)"
+			style="opacity: {animatedOpacity.current}; transform: translateY({animatedPosition.current}px)"
 			class={css({
 				position: 'absolute',
 				pointerEvents: 'none',
 				textAlign: 'center',
 				fontFamily: 'raleway',
 				fontWeight: 'black',
-				fontSize: '6xl',
+				fontSize: '7xl',
 				lineHeight: 'tight',
 				md: {
 					fontSize: '8xl'
@@ -142,27 +150,21 @@
 			CARLOS <br /> GOMEZ
 		</h1>
 		<h2
-			style="opacity: {$animatedNameOpacity}; transform: translateY({$animatedNamePosition}px)"
+			style="opacity: {animatedNameOpacity.current}; transform: translateY({animatedNamePosition.current}px)"
 			class={css({
 				position: 'absolute',
 				pointerEvents: 'none',
 				textAlign: 'left',
 				fontFamily: 'oswald',
 				lineHeight: 'tight',
-				fontSize: 'md',
-				md: {
-					fontSize: 'lg'
-				}
+				fontSize: 'lg'
 			})}
 		>
 			Developer's <br />
 			<span
 				class={css({
-					fontSize: '5xl',
-					fontWeight: 'medium',
-					md: {
-						fontSize: '6xl'
-					}
+					fontSize: '6xl',
+					fontWeight: 'medium'
 				})}>PORTFOLIO</span
 			>
 		</h2>
