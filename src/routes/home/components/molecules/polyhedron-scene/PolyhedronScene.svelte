@@ -10,8 +10,21 @@
 	import { interactivity } from '@threlte/extras';
 	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
 
-	/** @type {{ targetAnimationSection: AnimationSectionEnumType, headlineContainerRef: HTMLElement | null, projectName: "Headline" | "Features" | "ReliableFrontend" | "AmazingTechnologies" | "FlexibleDevelopment", smBreakPoint: boolean }} */
-	const { targetAnimationSection, headlineContainerRef, projectName, smBreakPoint } = $props();
+	/**
+	 * @typedef {object} PolyhedronSceneProps
+	 * @property {AnimationSectionEnumType} targetAnimationSection
+	 * @property {HTMLElement | null} headlineContainerRef
+	 * @property {"Headline" | "Features" | "ReliableFrontend" | "AmazingTechnologies" | "FlexibleDevelopment"} projectName
+	 * @property {boolean} [smBreakPoint]
+	 */
+
+	/** @type {PolyhedronSceneProps} */
+	const {
+		targetAnimationSection,
+		headlineContainerRef,
+		projectName,
+		smBreakPoint = false
+	} = $props();
 
 	interactivity();
 </script>
