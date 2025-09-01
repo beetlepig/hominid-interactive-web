@@ -75,7 +75,7 @@
 
 					return () => {};
 				},
-				{ amount: 'some' }
+				{ amount: 0.5 }
 			);
 
 			return () => {

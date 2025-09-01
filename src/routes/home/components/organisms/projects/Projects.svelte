@@ -42,7 +42,7 @@
 
 					return () => {};
 				},
-				{ amount: 0.7 }
+				{ amount: 0.5 }
 			);
 
 			return () => {
@@ -88,7 +88,7 @@
 		class={css({
 			display: 'flex',
 			scrollSnapAlign: 'center',
-			padding: '10',
+			padding: '8',
 			flex: '[0 0 min(calc(max(87.5vw,280px) - 25px),1680px)]',
 			flexDir: 'column',
 			gap: '10',
@@ -162,7 +162,6 @@
 		py: '20',
 		minH: '[100dvh]'
 	})}
-	bind:this={projectsContainerRef}
 >
 	<div class={css({ height: 'full', spaceY: '20' })}>
 		<h2
@@ -179,6 +178,7 @@
 			Projects
 		</h2>
 		<ul
+			bind:this={projectsContainerRef}
 			class={css({
 				margin: '0',
 				display: 'flex',
@@ -234,7 +234,7 @@
 				{@render technologyTag(tanStackQueryIcon)}
 
 				{#snippet socketioIcon()}
-					<IconSocketio fill="white" /> Socket.io
+					<IconSocketio fill="white" /> Socket.IO
 				{/snippet}
 				{@render technologyTag(socketioIcon)}
 
