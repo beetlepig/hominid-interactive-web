@@ -263,7 +263,7 @@
 			<div bind:this={featuresHeadlineContainerRef} class={css({ opacity: 0 })}>
 				<h2
 					class={css({
-						textAlign: 'left',
+						textAlign: 'center',
 						fontFamily: 'raleway',
 						fontWeight: 'black',
 						fontSize: '6xl',
@@ -344,7 +344,7 @@
 							/>
 						</Canvas>
 					</div>
-					<h3 class={css({ fontFamily: 'oswald', fontSize: '4xl', fontWeight: 'medium' })}>
+					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
 						Reliable Frontend
 					</h3>
 					<p
@@ -383,7 +383,7 @@
 							/>
 						</Canvas>
 					</div>
-					<h3 class={css({ fontFamily: 'oswald', fontSize: '4xl', fontWeight: 'medium' })}>
+					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
 						Amazing Technologies
 					</h3>
 					<p
@@ -422,7 +422,7 @@
 							/>
 						</Canvas>
 					</div>
-					<h3 class={css({ fontFamily: 'oswald', fontSize: '4xl', fontWeight: 'medium' })}>
+					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
 						Flexible Development
 					</h3>
 					<p
