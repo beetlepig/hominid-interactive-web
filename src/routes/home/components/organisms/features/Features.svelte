@@ -437,9 +437,10 @@
 							'Scrum'
 						)},
 						{@render blackSpan('Kanban')}, and {@render blackSpan('Extreme Programming')}, along
-						with experience in {@render blackSpan('CI/CD')} processes. Skilled in communication and coordination
-						with {@render blackSpan('cross-functional teams')}, including design, product, and
-						business units.
+						with experience in {@render blackSpan('CI/CD')} processes and {@render blackSpan('E2E')}
+						testing. Skilled in communication and coordination with {@render blackSpan(
+							'cross-functional teams'
+						)}, including design, product, and business units.
 					</p>
 				</div>
 			</div>

@@ -4,7 +4,7 @@
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
 	import IconUIKitten from '~icons/arcticons/landofkittens';
-	import IconStyledComponents from '~icons/bxl/css3';
+	import IconCSS from '~icons/bxl/css3';
 	import IconFirebase from '~icons/bxl/firebase';
 	import IconGoogle from '~icons/bxl/google';
 	import IconReact from '~icons/bxl/react';
@@ -13,12 +13,19 @@
 	import IconCaregiver from '~icons/carbon/airline-passenger-care';
 	import IconJest from '~icons/devicon-plain/jest';
 	import IconPlaywright from '~icons/devicon-plain/playwright';
+	import IconStyledComponents from '~icons/devicon-plain/styledcomponents';
+	import IconTypescript from '~icons/devicon-plain/typescript';
 	import IconZustand from '~icons/devicon-plain/zustand';
 	import IconCare from '~icons/iconoir/healthcare';
 	import IconCar from '~icons/material-symbols/car-tag-outline';
+	import IconOnesignal from '~icons/mdi/radar';
+	import IconAuction from '~icons/ri/auction-line';
 	import IconAntd from '~icons/simple-icons/antdesign';
+	import IconExpo from '~icons/simple-icons/expo';
+	import IconI18next from '~icons/simple-icons/i18next';
 	import IconTanStackQuery from '~icons/simple-icons/reactquery';
 	import IconSendgrid from '~icons/simple-icons/sendgrid';
+	import IconSocketio from '~icons/simple-icons/socketdotio';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -206,6 +213,11 @@
 				Product owned by OttoMoto®
 			{/snippet}
 			{#snippet ottomotoProjectTechIcons()}
+				{#snippet typescriptIcon()}
+					<IconTypescript /> TypeScript
+				{/snippet}
+				{@render technologyTag(typescriptIcon)}
+
 				{#snippet reactIcon()}
 					<IconReact /> React
 				{/snippet}
@@ -220,6 +232,11 @@
 					<IconTanStackQuery /> TanStack Query
 				{/snippet}
 				{@render technologyTag(tanStackQueryIcon)}
+
+				{#snippet socketioIcon()}
+					<IconSocketio fill="white" /> Socket.io
+				{/snippet}
+				{@render technologyTag(socketioIcon)}
 
 				{#snippet tailwindIcon()}
 					<IconTailwind /> Tailwind
@@ -253,6 +270,129 @@
 				ottomotoProjectImage
 			)}
 
+			{#snippet sylndrProjectType()}
+				Mobile Application
+			{/snippet}
+			{#snippet sylndrProjectName()}
+				Sylndr
+			{/snippet}
+			{#snippet sylndrProjectDescription()}
+				A mobile application for buying and <strong>auctioning used vehicles</strong>. It features a
+				listings feed, detailed vehicle profiles with <strong>media galleries</strong> and engine
+				<strong>sound previews</strong>, a full purchase and bidding flow,
+				<strong>push notifications</strong>, <strong>multilingual support</strong> with
+				<strong>LTR/RTL</strong> layouts, and an integrated <strong>document viewer</strong>.
+			{/snippet}
+			{#snippet sylndrProjectDisclaimer()}
+				Product owned by Sylndr.
+			{/snippet}
+			{#snippet sylndrProjectTechIcons()}
+				{#snippet typescriptIcon()}
+					<IconTypescript /> TypeScript
+				{/snippet}
+				{@render technologyTag(typescriptIcon)}
+
+				{#snippet reactNativeIcon()}
+					<IconReact /> React Native
+				{/snippet}
+				{@render technologyTag(reactNativeIcon)}
+
+				{#snippet expoIcon()}
+					<IconExpo /> Expo
+				{/snippet}
+				{@render technologyTag(expoIcon)}
+
+				{#snippet tanStackQueryIcon()}
+					<IconTanStackQuery /> TanStack Query
+				{/snippet}
+				{@render technologyTag(tanStackQueryIcon)}
+
+				{#snippet emotionCSSIcon()}
+					<IconCSS /> Emotion CSS
+				{/snippet}
+				{@render technologyTag(emotionCSSIcon)}
+
+				{#snippet i18nextIcon()}
+					<IconI18next /> I18next
+				{/snippet}
+				{@render technologyTag(i18nextIcon)}
+
+				{#snippet oneSignalIcon()}
+					<IconOnesignal /> OneSignal
+				{/snippet}
+				{@render technologyTag(oneSignalIcon)}
+			{/snippet}
+			{#snippet sylndrProjectImage()}
+				<p class={css({ fontSize: '9xl' })}><IconAuction /></p>
+			{/snippet}
+			{@render projectCard(
+				sylndrProjectType,
+				sylndrProjectName,
+				sylndrProjectDescription,
+				sylndrProjectDisclaimer,
+				sylndrProjectTechIcons,
+				sylndrProjectImage
+			)}
+
+			{#snippet connectrnProjectType()}
+				Mobile and Web Application
+			{/snippet}
+			{#snippet connectrnProjectName()}
+				ConnectRN
+			{/snippet}
+			{#snippet connectrnProjectDescription()}
+				A platform that connects nurses and healthcare staff with clinics and hospitals, enabling
+				<strong>shift postings</strong>, <strong>scheduling management</strong>, geolocation, and
+				<strong>digital signatures</strong>. I contributed to the development and refactoring of
+				multiple modules across both the
+				<strong>admin dashboard and the mobile application</strong>.
+			{/snippet}
+			{#snippet connectrnProjectDisclaimer()}
+				Product owned by connectRN Inc.
+			{/snippet}
+			{#snippet connectrnProjectTechIcons()}
+				{#snippet typescriptIcon()}
+					<IconTypescript /> TypeScript
+				{/snippet}
+				{@render technologyTag(typescriptIcon)}
+
+				{#snippet reactIcon()}
+					<IconReact /> React
+				{/snippet}
+				{@render technologyTag(reactIcon)}
+
+				{#snippet reactNativeIcon()}
+					<IconReact /> React Native
+				{/snippet}
+				{@render technologyTag(reactNativeIcon)}
+
+				{#snippet reduxIcon()}
+					<IconRedux /> Redux
+				{/snippet}
+				{@render technologyTag(reduxIcon)}
+
+				{#snippet UIKittenIcon()}
+					<IconUIKitten /> UI Kitten
+				{/snippet}
+				{@render technologyTag(UIKittenIcon)}
+
+				{#snippet sendgridIcon()}
+					<IconSendgrid /> SendGrid
+				{/snippet}
+				{@render technologyTag(sendgridIcon)}
+			{/snippet}
+			{#snippet connectrnProjectImage()}
+				<p class={css({ fontSize: '9xl' })}><IconCare /></p>
+			{/snippet}
+			{@render projectCard(
+				connectrnProjectType,
+				connectrnProjectName,
+				connectrnProjectDescription,
+				connectrnProjectDisclaimer,
+				connectrnProjectTechIcons,
+				connectrnProjectImage
+			)}
+
 			{#snippet prodigosProjectType()}
 				Mobile and Web Application
 			{/snippet}
@@ -270,6 +410,11 @@
 				Product owned by Prodigos S.A.S.
 			{/snippet}
 			{#snippet prodigosProjectTechIcons()}
+				{#snippet typescriptIcon()}
+					<IconTypescript /> TypeScript
+				{/snippet}
+				{@render technologyTag(typescriptIcon)}
+
 				{#snippet reactIcon()}
 					<IconReact /> React
 				{/snippet}
@@ -310,60 +455,6 @@
 				prodigosProjectDisclaimer,
 				prodigosProjectTechIcons,
 				prodigosProjectImage
-			)}
-
-			{#snippet connectrnProjectType()}
-				Mobile and Web Application
-			{/snippet}
-			{#snippet connectrnProjectName()}
-				ConnectRN
-			{/snippet}
-			{#snippet connectrnProjectDescription()}
-				A platform that connects nurses and healthcare staff with clinics and hospitals, enabling
-				<strong>shift postings</strong>, <strong>scheduling management</strong>, geolocation, and
-				<strong>digital signatures</strong>. I contributed to the development and refactoring of
-				multiple modules across both the
-				<strong>admin dashboard and the mobile application</strong>.
-			{/snippet}
-			{#snippet connectrnProjectDisclaimer()}
-				Product owned by connectRN Inc.
-			{/snippet}
-			{#snippet connectrnProjectTechIcons()}
-				{#snippet reactIcon()}
-					<IconReact /> React
-				{/snippet}
-				{@render technologyTag(reactIcon)}
-
-				{#snippet reactNativeIcon()}
-					<IconReact /> React Native
-				{/snippet}
-				{@render technologyTag(reactNativeIcon)}
-
-				{#snippet reduxIcon()}
-					<IconRedux /> Redux
-				{/snippet}
-				{@render technologyTag(reduxIcon)}
-
-				{#snippet UIKittenIcon()}
-					<IconUIKitten /> UI Kitten
-				{/snippet}
-				{@render technologyTag(UIKittenIcon)}
-
-				{#snippet sendgridIcon()}
-					<IconSendgrid /> SendGrid
-				{/snippet}
-				{@render technologyTag(sendgridIcon)}
-			{/snippet}
-			{#snippet connectrnProjectImage()}
-				<p class={css({ fontSize: '9xl' })}><IconCare /></p>
-			{/snippet}
-			{@render projectCard(
-				connectrnProjectType,
-				connectrnProjectName,
-				connectrnProjectDescription,
-				connectrnProjectDisclaimer,
-				connectrnProjectTechIcons,
-				connectrnProjectImage
 			)}
 		</ul>
 	</div>
