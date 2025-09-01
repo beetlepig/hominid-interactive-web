@@ -11,14 +11,18 @@
 	import IconRedux from '~icons/bxl/redux';
 	import IconTailwind from '~icons/bxl/tailwind-css';
 	import IconCaregiver from '~icons/carbon/airline-passenger-care';
+	import IconLinux from '~icons/cib/linux';
 	import IconJest from '~icons/devicon-plain/jest';
 	import IconPlaywright from '~icons/devicon-plain/playwright';
+	import IconRust from '~icons/devicon-plain/rust';
 	import IconStyledComponents from '~icons/devicon-plain/styledcomponents';
 	import IconTypescript from '~icons/devicon-plain/typescript';
 	import IconZustand from '~icons/devicon-plain/zustand';
 	import IconCare from '~icons/iconoir/healthcare';
+	import IconOpen from '~icons/material-symbols-light/open-in-new';
 	import IconCar from '~icons/material-symbols/car-tag-outline';
 	import IconOnesignal from '~icons/mdi/radar';
+	import IconRaspberry from '~icons/mdi/raspberry-pi';
 	import IconAuction from '~icons/ri/auction-line';
 	import IconAntd from '~icons/simple-icons/antdesign';
 	import IconExpo from '~icons/simple-icons/expo';
@@ -455,6 +459,57 @@
 				prodigosProjectDisclaimer,
 				prodigosProjectTechIcons,
 				prodigosProjectImage
+			)}
+
+			{#snippet argonProjectType()}
+				System Service
+			{/snippet}
+			{#snippet argonProjectName()}
+				<a
+					class={css({
+						display: 'flex',
+						alignItems: 'center',
+						gap: '2',
+						_hover: { textDecoration: 'underline' }
+					})}
+					href="https://github.com/beetlepig/argon-one-v2-services"
+					target="_blank"
+				>
+					Argon ONE System Service <IconOpen />
+				</a>
+			{/snippet}
+			{#snippet argonProjectDescription()}
+				A lightweight <strong>Rust system service</strong> for the Argon ONE V2 Raspberry Pi case.
+				It handles <strong>fan speed</strong> with smooth, <strong>temperature-based curves</strong>
+				and lets you customize the <strong>power button actions</strong> for shutdown or reboot.
+				Built on <strong>systemd</strong> and configured with a simple YAML file, it runs fast, clean,
+				and without extra dependencies. I built this project to gain practical experience with Rust.
+			{/snippet}
+			{#snippet argonProjectDisclaimer()}
+				Project developed independently, not affiliated with the company. Argon One is a registered
+				trademark of Argon 40 Technologies.
+			{/snippet}
+			{#snippet argonProjectTechIcons()}
+				{#snippet rustIcon()}
+					<IconRust /> Rust
+				{/snippet}
+				{@render technologyTag(rustIcon)}
+
+				{#snippet linuxIcon()}
+					<IconLinux /> Linux
+				{/snippet}
+				{@render technologyTag(linuxIcon)}
+			{/snippet}
+			{#snippet argonProjectImage()}
+				<p class={css({ fontSize: '9xl' })}><IconRaspberry /></p>
+			{/snippet}
+			{@render projectCard(
+				argonProjectType,
+				argonProjectName,
+				argonProjectDescription,
+				argonProjectDisclaimer,
+				argonProjectTechIcons,
+				argonProjectImage
 			)}
 		</ul>
 	</div>
