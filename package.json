@@ -35,7 +35,7 @@
 		"globals": "^16.0.0",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
-		"svelte": "^5.0.0",
+		"svelte": "^5.38.6",
 		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
 		"unplugin-icons": "^22.2.0",
@@ -51,6 +51,7 @@
 		"@threlte/core": "^8.1.5",
 		"@threlte/extras": "^9.5.2",
 		"@threlte/theatre": "^3.0.7",
+		"bits-ui": "^2.9.4",
 		"motion": "^12.23.12",
 		"three": "^0.179.1"
 	},

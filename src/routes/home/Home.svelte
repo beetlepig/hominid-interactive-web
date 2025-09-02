@@ -56,11 +56,4 @@
 			replaceState(sections.companies.href, { hash: sections.companies.href });
 		}}
 	/>
-	<!--
-	<Chat
-		onVisible={() => {
-			setPageTitle(sections.chat.name);
-			replaceState(sections.chat.href, { hash: sections.chat.href });
-		}}
-	/> -->
 </div>
