@@ -4,7 +4,7 @@ const sections = {
 	skills: { name: 'Skills', href: '#skills', id: 'skills' },
 	projects: { name: 'Projects', href: '#projects', id: 'projects' },
 	chat: { name: 'Chat', href: '#chat', id: 'chat' },
-	companies: { name: 'Collaborations', href: '#collaborations', id: 'collaborations' }
+	contact: { name: 'Contact', href: '#contact', id: 'contact' }
 };
 
 export { sections };

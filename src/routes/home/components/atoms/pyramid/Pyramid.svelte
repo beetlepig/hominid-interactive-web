@@ -48,11 +48,20 @@
 	$effect(() => {
 		if (headlineContainerRef) {
 			const multiplier = smBreakPoint ? 0.8 : 1;
-			const scale = mapNumRange(scrollYProgress(), 0, 0.2, 1.4 * multiplier, 1 * multiplier);
-			const position = mapNumRange(scrollYProgress(), 0, 0.2, -0.7, -0.5);
+			const initialScale = 1.4 * multiplier;
+			const finalScale = 1 * multiplier;
+			const initialPosition = -0.7;
+			const finalPosition = -0.5;
+			const scale = mapNumRange(scrollYProgress(), 0.05, 0.25, initialScale, finalScale);
+			const position = mapNumRange(scrollYProgress(), 0.05, 0.25, initialPosition, finalPosition);
 
-			animatedScale.target = scale;
-			animatedPosition.target = position;
+			if (scale === initialScale || scale === finalScale) {
+				animatedScale.target = scale;
+			}
+
+			if (position === initialPosition || position === finalPosition) {
+				animatedPosition.target = position;
+			}
 		}
 	});
 </script>

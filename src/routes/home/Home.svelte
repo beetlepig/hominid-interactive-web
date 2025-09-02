@@ -3,6 +3,7 @@
 	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans/index.js';
 	import Companies from './components/organisms/companies/Companies.svelte';
+	import Contact from './components/organisms/contact/Contact.svelte';
 	import Features from './components/organisms/features/Features.svelte';
 	import Headline from './components/organisms/headline/Headline.svelte';
 	import Introduction from './components/organisms/introduction/Introduction.svelte';
@@ -50,10 +51,14 @@
 			replaceState(sections.projects.href, { hash: sections.projects.href });
 		}}
 	/>
-	<Companies
-		onVisible={() => {
-			setPageTitle(sections.companies.name);
-			replaceState(sections.companies.href, { hash: sections.companies.href });
-		}}
-	/>
+	<Companies>
+		{#snippet contact()}
+			<Contact
+				onVisible={() => {
+					setPageTitle(sections.contact.name);
+					replaceState(sections.contact.href, { hash: sections.contact.href });
+				}}
+			/>
+		{/snippet}
+	</Companies>
 </div>
