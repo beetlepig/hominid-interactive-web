@@ -93,12 +93,11 @@
 			display: 'flex',
 			scrollSnapAlign: 'center',
 			padding: '8',
-			flex: '[0 0 min(calc(max(87.5vw,280px) - 25px),1680px)]',
+			flex: '[0 0 min(calc(max(87.5vw,280px) - 20px),1680px)]',
 			flexDir: 'column',
 			gap: '10',
 			rounded: '3xl',
 			bgColor: 'white',
-			sm: { flex: '[0 0 min(calc(max(87.5vw,280px) - 20px),1680px)]' },
 			md: { p: '20', flexDir: 'row', flex: '[0 0 min(calc(max(87.5vw,280px)),1680px)]' }
 		})}
 	>
