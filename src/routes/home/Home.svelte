@@ -22,7 +22,7 @@
 	id="main-target"
 	class={css({
 		position: 'relative',
-		h: 'screen',
+		h: '[100dvh]',
 		w: 'full',
 		overflow: 'auto'
 	})}

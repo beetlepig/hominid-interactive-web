@@ -25,19 +25,22 @@
 
 <section
 	class={css({
+		display: 'flex',
+		flexDirection: 'column',
 		bgColor: 'gray.50',
 		pt: '20',
-		md: { pb: '10' }
+		md: { pb: '10' },
+		minH: '[100dvh]'
 	})}
 >
 	<div
 		class={css({
+			flex: '1',
 			mx: 'auto',
 			maxW: '7xl',
 			display: 'flex',
 			flexDir: 'column',
-			justifyContent: 'center',
-			minH: '[100dvh]'
+			justifyContent: 'center'
 		})}
 	>
 		<div class={css({ px: '6', spaceY: '12', marginTop: 'auto' })}>
