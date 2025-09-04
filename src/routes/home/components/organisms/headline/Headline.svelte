@@ -1,6 +1,7 @@
 <script>
 	import { createSignal, mapNumRange } from '$lib';
 	import { sections } from '$lib/constans/index.js';
+	import { m } from '$lib/paraglide/messages.js';
 	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
@@ -160,12 +161,12 @@
 				fontSize: 'lg'
 			})}
 		>
-			Developer's <br />
+			{m.headline_developer()} <br />
 			<span
 				class={css({
 					fontSize: '6xl',
 					fontWeight: 'medium'
-				})}>PORTFOLIO</span
+				})}>{m.headline_portfolio()}</span
 			>
 		</h2>
 	</div>

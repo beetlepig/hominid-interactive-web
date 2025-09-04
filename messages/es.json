@@ -1,4 +1,21 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from es!"
+	"menu_home": "Inicio",
+    "menu_about_me": "Sobre mí",
+    "menu_skills": "Competencias",
+    "menu_projects": "Proyectos",
+    "menu_chat": "Chat",
+    "menu_contact": "Contacto",
+    "headline_developer": "Desarrollador",
+    "headline_portfolio": "PORTAFOLIO",
+    "introduction_im": "Soy",
+    "introduction_fe": "desarrollador frontend",
+    "introduction_over": "con más de",
+    "introduction_experience": "6 años de experiencia",
+    "introduction_collaborating": "colaborando en diferentes empresas para llevar sus productos al mercado. He liderado y formado parte tanto de equipos grandes como pequeños, desde startups hasta compañías consolidadas. Mi enfoque está en la",
+    "introduction_efficiency": "eficiencia y mantenibilidad",
+    "introduction_emphasis": "durante el desarrollo, con un fuerte énfasis en el",
+    "introduction_end_user": "usuario final",
+    "introduction_their_experience": "y su experiencia como una",
+    "introduction_top_priority": "prioridad"
 }
