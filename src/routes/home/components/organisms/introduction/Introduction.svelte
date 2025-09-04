@@ -1,5 +1,6 @@
 <script>
 	import { sections } from '$lib/constans/index.js';
+	import { m } from '$lib/paraglide/messages.js';
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
 
@@ -60,14 +61,16 @@
 				mdDown: { px: '5' }
 			})}
 		>
-			I am a {@render blackSpan('frontend developer')} with over
-			{@render blackSpan('6 years of experience')}
-			collaborating with companies to bring their products to market. I have led and been part of both
-			large and small teams, from startups to established companies. My focus is on
-			{@render blackSpan('efficiency and maintainability')}
-			in development, with a strong emphasis on the
-			{@render blackSpan('end-user')}
-			and their experience as a {@render blackSpan('top priority')}.
+			{m.introduction_im()}
+			{@render blackSpan(m.introduction_fe())}
+			{m.introduction_over()}
+			{@render blackSpan(m.introduction_experience())}
+			{m.introduction_collaborating()}
+			{@render blackSpan(m.introduction_efficiency())}
+			{m.introduction_emphasis()}
+			{@render blackSpan(m.introduction_end_user())}
+			{m.introduction_their_experience()}
+			{@render blackSpan(m.introduction_top_priority())}.
 		</h4>
 	</div>
 </section>
