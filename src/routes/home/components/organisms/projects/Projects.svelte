@@ -56,6 +56,10 @@
 	);
 
 	$effect(() => {
+		console.log(currentSlide());
+	});
+
+	$effect(() => {
 		if (projectsContainerRef) {
 			const stop = inView(
 				projectsContainerRef,
@@ -167,39 +171,26 @@
 	 * Scroll parent so child is visible.
 	 * @param {HTMLElement} parent - scrollable container
 	 * @param {HTMLElement} child  - element inside parent to scroll to
-	 * @param {'start'|'center'|'end'} align - vertical alignment inside parent
-	 * @param {boolean} smooth - use smooth scrolling
 	 */
-	function scrollParentToChild(parent, child, align = 'start', smooth = true) {
-		if (!parent || !child) return;
-
+	function scrollParentToChild(parent, child) {
+		// bounding rects for robust relative position (handles transforms, margins, etc.)
 		const parentRect = parent.getBoundingClientRect();
 		const childRect = child.getBoundingClientRect();
 
-		// child's top relative to parent's content + current scrollTop:
-		let top = childRect.top - parentRect.top + parent.scrollTop;
-		let left = childRect.left - parentRect.left + parent.scrollLeft;
+		// child's left within parent's scrollable content:
+		const childLeftWithinParent = childRect.left - parentRect.left + parent.scrollLeft;
 
-		// Align options:
-		if (align === 'center') {
-			top = top - (parent.clientHeight - child.offsetHeight) / 2;
-			left = left - (parent.clientWidth - child.offsetWidth) / 2;
-		} else if (align === 'end') {
-			top = top - (parent.clientHeight - child.offsetHeight);
-			left = left - (parent.clientWidth - child.offsetWidth);
-		} // default 'start' leaves top/left as-is
+		let targetScrollLeft;
 
-		// clamp to valid scroll ranges
-		const maxTop = parent.scrollHeight - parent.clientHeight;
-		const maxLeft = parent.scrollWidth - parent.clientWidth;
-		top = Math.max(0, Math.min(maxTop, Math.round(top)));
-		left = Math.max(0, Math.min(maxLeft, Math.round(left)));
+		targetScrollLeft = childLeftWithinParent - (parent.clientWidth - child.offsetWidth) / 2;
 
-		parent.scrollTo({
-			top,
-			left,
-			behavior: smooth ? 'smooth' : 'auto'
-		});
+		// clamp to valid range:
+		targetScrollLeft = Math.max(
+			0,
+			Math.min(targetScrollLeft, parent.scrollWidth - parent.clientWidth)
+		);
+
+		parent.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
 	}
 
 	/**
@@ -220,6 +211,7 @@
 					break;
 				}
 				case 2: {
+					console.log('go to 2');
 					scrollParentToChild(projectsContainerRef, secondSlideRef);
 					break;
 				}
@@ -267,12 +259,19 @@
 <section
 	id={sections.projects.id}
 	class={css({
+		display: 'flex',
+		flexDir: 'column',
+		justifyContent: 'center',
 		bgColor: 'gray.50',
 		py: '20',
 		minH: '[100dvh]'
 	})}
 >
-	<div class={css({ height: 'full', spaceY: '10' })}>
+	<div
+		class={css({
+			spaceY: '10'
+		})}
+	>
 		<h2
 			class={css({
 				textAlign: 'center',
@@ -289,17 +288,12 @@
 		<ul
 			bind:this={projectsContainerRef}
 			class={css({
-				margin: '0',
 				display: 'flex',
-				flex: '1',
 				overflowX: 'scroll',
 				gap: '5',
-				minH: 'xl',
-				h: 'full',
 				paddingX: '[max(6.25vw,(100vw - 1680px)/2)]',
 				scrollSnapType: '[x mandatory]',
-				scrollbarWidth: '[none]',
-				boxSizing: 'content-box'
+				scrollbarWidth: '[none]'
 			})}
 		>
 			<ProjectElement bind:ref={firstSlideRef}>
