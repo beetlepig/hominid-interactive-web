@@ -2,6 +2,7 @@
 	/** @import { AnimationSectionEnumType } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte' */
 	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans/index.js';
+	import { m } from '$lib/paraglide/messages.js';
 	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
@@ -272,7 +273,7 @@
 						}
 					})}
 				>
-					How I Create
+					{m.features_how()}
 				</h2>
 				<h2
 					class={css({
@@ -285,7 +286,7 @@
 						}
 					})}
 				>
-					Impact
+					{m.features_impact()}
 				</h2>
 			</div>
 		</div>
@@ -357,7 +358,7 @@
 						{/if}
 					</div>
 					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
-						Reliable Frontend
+						{m.features_reilable_title()}
 					</h3>
 					<p
 						class={css({
@@ -367,11 +368,14 @@
 							color: 'gray.500'
 						})}
 					>
-						Using {@render blackSpan('innovative')}, battle-tested {@render blackSpan(
-							'frontend technologies'
-						)}, along with best coding practices and appropriate {@render blackSpan(
-							'architectures'
-						)}, ensures reliable and {@render blackSpan('future-proof code')}.
+						{m.features_reilable_description_using()}
+						{@render blackSpan(m.features_reilable_description_innovative())}
+						{m.features_reilable_description_battle()}
+						{@render blackSpan(m.features_reilable_description_fe())}
+						{m.features_reilable_description_best()}
+						{@render blackSpan(m.features_reilable_description_arch())}
+						{m.features_reilable_description_ensures()}
+						{@render blackSpan(m.features_reilable_description_future())}.
 					</p>
 				</div>
 				<div
