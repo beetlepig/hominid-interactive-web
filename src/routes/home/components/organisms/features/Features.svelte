@@ -289,6 +289,7 @@
 				</h2>
 			</div>
 		</div>
+
 		<div
 			bind:this={featuresContentRef}
 			class={css({
@@ -304,25 +305,32 @@
 			<div
 				bind:this={featuresCanvasContentRef}
 				class={css({
-					position: 'sticky',
 					display: 'flex',
-					alignItems: 'center',
+					flexDirection: 'column',
+					position: 'sticky',
 					flex: '1',
 					top: '0',
-					height: 'screen',
-					alignSelf: 'flex-start',
+					height: '[100dvh]',
 					hideBelow: 'lg'
 				})}
 			>
-				{#if canvasFeaturesRender()}
-					<Canvas>
-						<PolyhedronScene
-							projectName="Features"
-							headlineContainerRef={null}
-							targetAnimationSection={currentAnimationSection()}
-						/>
-					</Canvas>
-				{/if}
+				<div
+					class={css({
+						my: 'auto',
+						h: 'full',
+						maxHeight: '3xl'
+					})}
+				>
+					{#if canvasFeaturesRender()}
+						<Canvas>
+							<PolyhedronScene
+								projectName="Features"
+								headlineContainerRef={null}
+								targetAnimationSection={currentAnimationSection()}
+							/>
+						</Canvas>
+					{/if}
+				</div>
 			</div>
 			<div class={css({ flex: '1' })}>
 				<div
