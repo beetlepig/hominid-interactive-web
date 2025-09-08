@@ -17,7 +17,7 @@
 	/** @type {string} */ src
 )}
 	<div class={css({ _hover: { opacity: 0.8 } })}>
-		<a {href} target="_blank" class={css({ p: '14' })}>
+		<a {href} target="_blank">
 			<img {alt} {src} width="70" />
 		</a>
 	</div>
@@ -26,24 +26,31 @@
 <section
 	class={css({
 		display: 'flex',
-		flexDirection: 'column',
+		justifyContent: 'center',
 		bgColor: 'gray.50',
 		pt: '20',
-		md: { pb: '10' },
+		md: { py: '10' },
 		minH: '[100dvh]'
 	})}
 >
 	<div
 		class={css({
-			flex: '1',
-			mx: 'auto',
-			maxW: '7xl',
 			display: 'flex',
 			flexDir: 'column',
+			gap: '14',
 			justifyContent: 'center'
 		})}
 	>
-		<div class={css({ px: '6', spaceY: '12', marginTop: 'auto' })}>
+		<div
+			class={css({
+				flex: '1',
+				display: 'flex',
+				flexDir: 'column',
+				justifyContent: 'center',
+				px: '6',
+				spaceY: '12'
+			})}
+		>
 			<div>
 				<h3
 					class={css({
