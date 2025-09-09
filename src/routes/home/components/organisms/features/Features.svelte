@@ -402,7 +402,7 @@
 						{/if}
 					</div>
 					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
-						Amazing Technologies
+						{m.features_amazing_title()}
 					</h3>
 					<p
 						class={css({
@@ -412,10 +412,12 @@
 							color: 'gray.500'
 						})}
 					>
-						I have extensive experience with widely used technologies like {@render blackSpan(
-							'TypeScript'
-						)}, {@render blackSpan('React')}, and {@render blackSpan('React Native')}, complemented
-						by explorations and personal projects in {@render blackSpan('Svelte')} and
+						{m.features_amazing_description_extensive()}
+						{@render blackSpan('TypeScript')}, {@render blackSpan('React')}
+						{m.features_amazing_description_and()}
+						{@render blackSpan('React Native')}, {m.features_amazing_description_complemented()}
+						{@render blackSpan('Svelte')}
+						{m.features_amazing_description_and()}
 						{@render blackSpan('Rust')}.
 					</p>
 				</div>
