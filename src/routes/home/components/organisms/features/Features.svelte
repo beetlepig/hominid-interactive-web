@@ -445,7 +445,7 @@
 						{/if}
 					</div>
 					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
-						Flexible Development
+						{m.features_flexible_title()}
 					</h3>
 					<p
 						class={css({
@@ -455,14 +455,16 @@
 							color: 'gray.500'
 						})}
 					>
-						Highly adaptable to various development workflows, including {@render blackSpan(
-							'Scrum'
-						)},
-						{@render blackSpan('Kanban')}, and {@render blackSpan('Extreme Programming')}, along
-						with experience in {@render blackSpan('CI/CD')} processes and {@render blackSpan('E2E')}
-						testing. Skilled in communication and coordination with {@render blackSpan(
-							'cross-functional teams'
-						)}, including design, product, and business units.
+						{m.features_flexible_description_adaptable()}
+						{@render blackSpan('Scrum')},
+						{@render blackSpan('Kanban')}{m.features_flexible_description_and()}
+						{@render blackSpan('Extreme Programming')}, {m.features_flexible_description_along()}
+						{@render blackSpan('CI/CD')}
+						{m.features_flexible_description_processes()}
+						{m.features_flexible_description_and_testing()}
+						{@render blackSpan(m.features_flexible_description_e2e())}
+						{m.features_flexible_description_skilled()}
+						{@render blackSpan(m.features_flexible_description_cross())}, {m.features_flexible_description_including()}
 					</p>
 				</div>
 			</div>
