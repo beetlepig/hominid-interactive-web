@@ -1,16 +1,35 @@
 <script>
+	/** @import { Locale } from '$lib/paraglide/runtime' */
 	import { page } from '$app/stores';
 	import { createSignal } from '$lib';
+	import { LanguageSwitcher } from '$lib/components/ui/language-switcher';
 	import { sections } from '$lib/constans';
+	import {
+		getLocale,
+		setLocale,
+		locales as availableLocales,
+		isLocale
+	} from '$lib/paraglide/runtime';
 	import Logo from '../atoms/Logo.svelte';
 	import { css } from 'styled-system/css';
 	import { fade } from 'svelte/transition';
+
+	/** @type {Partial<Record<Locale, string>>} */
+	const languageLabels = {
+		en: 'English',
+		es: 'Español'
+	};
+	const languages = availableLocales.map((code) => ({
+		code,
+		label: languageLabels[code] ?? code.toUpperCase()
+	}));
 
 	const [currentSection, setCurrentSection] = createSignal(sections.home.href);
 	const [showMenu, setShowMenu] = createSignal(false);
 	const [menuHeight, setMenuHeight] = createSignal(false);
 
 	const isScrolled = $derived(currentSection() !== sections.home.href);
+	let currentLang = $derived(getLocale());
 
 	$effect(() => {
 		const stateHash = /** @type {{hash: string | undefined}} */ ($page.state);
@@ -85,6 +104,7 @@
 		<a href="#home" title="Home">
 			<Logo size={4} />
 		</a>
+
 		<menu
 			class={css({
 				display: 'flex',
@@ -99,7 +119,18 @@
 			{@render anchor(sections.skills.href, sections.skills.name)}
 			{@render anchor(sections.projects.href, sections.projects.name)}
 			{@render anchor(sections.contact.href, sections.contact.name)}
+			<LanguageSwitcher
+				{languages}
+				variant="ghost"
+				bind:value={currentLang}
+				onChange={(code) => {
+					if (isLocale(code)) {
+						setLocale(code);
+					}
+				}}
+			/>
 		</menu>
+
 		<div class={css({ hideFrom: 'md', display: 'flex', justifyContent: 'center' })}>
 			<button
 				aria-label="Menu"
@@ -173,13 +204,32 @@
 			onintrostart={() => {
 				setMenuHeight(true);
 			}}
-			class={css({ hideFrom: 'md', h: 'full', spaceY: '6', py: '12' })}
+			class={css({
+				display: 'flex',
+				flexDir: 'column',
+				justifyContent: 'center',
+				hideFrom: 'md',
+				h: 'full',
+				gap: '6',
+				py: '12'
+			})}
 		>
 			{@render anchorResponsive(sections.home.href, sections.home.name)}
 			{@render anchorResponsive(sections.aboutMe.href, sections.aboutMe.name)}
 			{@render anchorResponsive(sections.skills.href, sections.skills.name)}
 			{@render anchorResponsive(sections.projects.href, sections.projects.name)}
 			{@render anchorResponsive(sections.contact.href, sections.contact.name)}
+			<LanguageSwitcher
+				{languages}
+				class="mt-auto self-start"
+				align="start"
+				bind:value={currentLang}
+				onChange={(code) => {
+					if (isLocale(code)) {
+						setLocale(code);
+					}
+				}}
+			/>
 		</menu>
 	{/if}
 </nav>
