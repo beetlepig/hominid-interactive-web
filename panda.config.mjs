@@ -40,11 +40,6 @@ export default defineConfig({
 		}
 	},
 
-	globalVars: {
-		'--font-raleway': 'Raleway Variable, sans-serif',
-		'--font-oswald': 'Oswald Variable, sans-serif'
-	},
-
 	// The output directory for your css system
 	outdir: 'styled-system',
 

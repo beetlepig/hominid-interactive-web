@@ -10,8 +10,10 @@
 		locales as availableLocales,
 		isLocale
 	} from '$lib/paraglide/runtime';
+	import { cn } from '$lib/utils.js';
 	import Logo from '../atoms/Logo.svelte';
-	import { css } from 'styled-system/css';
+	import MenuIcon from '@lucide/svelte/icons/menu';
+	import CloseIcon from '@lucide/svelte/icons/x';
 	import { fade } from 'svelte/transition';
 
 	/** @type {Partial<Record<Locale, string>>} */
@@ -44,12 +46,10 @@
 	<li>
 		<a
 			{href}
-			class={css({
-				textDecoration: currentSection() === href ? 'underline' : 'none',
-				textUnderlineOffset: '6',
-				fontFamily: 'raleway',
-				fontWeight: 'light'
-			})}>{name}</a
+			class={cn(
+				'font-raleway font-light underline-offset-6',
+				currentSection() === href ? 'underline' : 'no-underline'
+			)}>{name}</a
 		>
 	</li>
 {/snippet}
@@ -58,13 +58,10 @@
 	<li>
 		<a
 			{href}
-			class={css({
-				textDecoration: currentSection() === href ? 'underline' : 'none',
-				textUnderlineOffset: '6',
-				fontFamily: 'raleway',
-				fontWeight: 'light',
-				fontSize: '2xl'
-			})}
+			class={cn(
+				'font-raleway text-2xl font-light underline-offset-6',
+				currentSection() === href ? 'underline' : 'no-underline'
+			)}
 			onclick={() => {
 				setShowMenu(false);
 			}}>{name}</a
@@ -73,47 +70,20 @@
 {/snippet}
 
 <nav
-	class={css({
-		position: 'fixed',
-		zIndex: '1',
-		width: 'full',
-		paddingY: isScrolled ? '3' : '8',
-		paddingX: '8',
-		transition: 'all',
-		transitionDuration: 'normal',
-		bgColor: showMenu() ? 'white' : isScrolled ? 'gray.50/60' : 'transparent',
-		backdropFilter: isScrolled ? 'auto' : '[none]',
-		backdropBlur: 'md',
-		height: menuHeight() ? 'full' : 'auto',
-		md: {
-			height: 'auto',
-			bgColor: isScrolled ? 'gray.50/60' : 'transparent',
-			transitionDuration: 'slow'
-		}
-	})}
+	class={cn(
+		'fixed z-10 w-full px-8 transition-all duration-200 md:duration-400',
+		isScrolled ? 'py-3' : 'py-8',
+		showMenu() ? 'bg-background' : isScrolled ? 'md:bg-gray-50/60' : 'transparent',
+		isScrolled ? 'backdrop-blur-md' : 'backdrop-blur-none',
+		menuHeight() ? 'h-full md:h-auto' : 'h-auto'
+	)}
 >
-	<div
-		class={css({
-			mx: 'auto',
-			display: 'flex',
-			justifyContent: 'space-between',
-			alignItems: 'center',
-			maxW: '7xl'
-		})}
-	>
+	<div class="mx-auto flex max-w-7xl items-center justify-between">
 		<a href="#home" title="Home">
 			<Logo size={4} />
 		</a>
 
-		<menu
-			class={css({
-				display: 'flex',
-				spaceX: '6',
-				justifyContent: 'space-between',
-				alignItems: 'center',
-				hideBelow: 'md'
-			})}
-		>
+		<menu class="hidden items-center justify-between space-x-6 md:flex">
 			{@render anchor(sections.home.href, sections.home.name)}
 			{@render anchor(sections.aboutMe.href, sections.aboutMe.name)}
 			{@render anchor(sections.skills.href, sections.skills.name)}
@@ -131,7 +101,7 @@
 			/>
 		</menu>
 
-		<div class={css({ hideFrom: 'md', display: 'flex', justifyContent: 'center' })}>
+		<div class="flex justify-center md:hidden">
 			<button
 				aria-label="Menu"
 				onclick={() => {
@@ -139,57 +109,13 @@
 				}}
 			>
 				{#if showMenu()}
-					<svg
-						in:fade
-						width="24px"
-						height="24px"
-						stroke-width="1.5"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						color="#000000"
-					>
-						<path
-							d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
-							stroke="#000000"
-							stroke-width="1.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
-					</svg>
+					<div in:fade>
+						<CloseIcon />
+					</div>
 				{:else}
-					<svg
-						in:fade
-						width="24px"
-						height="24px"
-						stroke-width="1.5"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						color="#000000"
-					>
-						<path
-							d="M3 5H21"
-							stroke="#000000"
-							stroke-width="1.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
-						<path
-							d="M3 12H21"
-							stroke="#000000"
-							stroke-width="1.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
-						<path
-							d="M3 19H21"
-							stroke="#000000"
-							stroke-width="1.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
-					</svg>
+					<div in:fade>
+						<MenuIcon />
+					</div>
 				{/if}
 			</button>
 		</div>
@@ -204,15 +130,7 @@
 			onintrostart={() => {
 				setMenuHeight(true);
 			}}
-			class={css({
-				display: 'flex',
-				flexDir: 'column',
-				justifyContent: 'center',
-				hideFrom: 'md',
-				h: 'full',
-				gap: '6',
-				py: '12'
-			})}
+			class="flex h-full flex-col justify-center gap-6 py-12 md:hidden"
 		>
 			{@render anchorResponsive(sections.home.href, sections.home.name)}
 			{@render anchorResponsive(sections.aboutMe.href, sections.aboutMe.name)}

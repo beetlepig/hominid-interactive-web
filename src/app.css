@@ -75,6 +75,11 @@
 	--sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@theme {
+	--font-raleway: Raleway Variable, sans-serif;
+	--font-oswald: Oswald Variable, sans-serif;
+}
+
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
