@@ -69,5 +69,14 @@
     "projects_sylndr_description_with": "con diseños",
     "projects_sylndr_description_integrated": "y un",
     "projects_sylndr_description_viewer": "visor de documentos integrado",
-    "projects_sylndr_description_owned": "Producto perteneciente a Sylndr"
+    "projects_sylndr_description_owned": "Producto perteneciente a Sylndr",
+    "collaborations_title": "Colaboraciones",
+    "collaborations_title_short": "Colabs",
+    "collaborations_description_one": "Estas compañías han confiado en mis habilidades",
+    "collaborations_description_two": "para desarrollar software a medida, ya sea para sus clientes o para sus necesidades corporativas.",
+    "contact_button": "Contacto",
+    "contact_modal_header": "Redes y contacto",
+    "contact_modal_description": "Descubre más de mi trabajo o ponte en contacto conmigo por estos medios.",
+    "contact_modal_cv": "Descargar CV",
+    "contact_modal_close": "Cerrar"
 }

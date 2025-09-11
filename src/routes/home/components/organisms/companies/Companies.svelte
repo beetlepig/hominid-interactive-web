@@ -1,13 +1,14 @@
 <script>
 	/** @import { Snippet } from 'svelte' */
+	import { m } from '$lib/paraglide/messages.js';
 	import { css } from 'styled-system/css';
 
 	/** @type {{ contact: Snippet }} */
 	let { contact } = $props();
 
 	const initialDescription = [
-		'These companies have trusted my skills',
-		'to develop custom software for their clients or corporate requirements.'
+		m.collaborations_description_one(),
+		m.collaborations_description_two()
 	];
 </script>
 
@@ -63,8 +64,12 @@
 						}
 					})}
 				>
-					<span class={css({ display: { base: 'block', md: 'none' } })}>Collabs</span>
-					<span class={css({ display: { base: 'none', md: 'block' } })}>Collaborations</span>
+					<span class={css({ display: { base: 'block', md: 'none' } })}
+						>{m.collaborations_title_short()}</span
+					>
+					<span class={css({ display: { base: 'none', md: 'block' } })}
+						>{m.collaborations_title()}</span
+					>
 				</h3>
 				<p
 					class={css({
@@ -87,18 +92,18 @@
 					gap: '14'
 				})}
 			>
-				{@render sponsorEntry('https://www.connectrn.com', 'connectrn-logo', '/icons/crn-icon.svg')}
-				{@render sponsorEntry(
-					'https://www.venturit.com',
-					'venturit-logo',
-					'/icons/venturit-icon.svg'
-				)}
 				{@render sponsorEntry(
 					'https://www.leangroup.com/solutions-and-services/technology',
 					'lean-logo',
 					'/icons/lean-icon.svg'
 				)}
 				{@render sponsorEntry('https://ottomoto.net', 'ottomoto-logo', '/icons/ottomoto-icon.svg')}
+				{@render sponsorEntry(
+					'https://www.venturit.com',
+					'venturit-logo',
+					'/icons/venturit-icon.svg'
+				)}
+				{@render sponsorEntry('https://www.connectrn.com', 'connectrn-logo', '/icons/crn-icon.svg')}
 			</div>
 		</div>
 		{@render contact()}

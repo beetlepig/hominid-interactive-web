@@ -1,6 +1,7 @@
 <script>
 	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans/index.js';
+	import { m } from '$lib/paraglide/messages.js';
 	import { Dialog, Separator, Button } from 'bits-ui';
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
@@ -61,7 +62,8 @@
 			setDialogVisible(true);
 		}}
 	>
-		Contact <IconArrow />
+		{m.contact_button()}
+		<IconArrow />
 	</Button.Root>
 	<Dialog.Root bind:open={dialogVisible, setDialogVisible}>
 		<Dialog.Portal>
@@ -106,7 +108,7 @@
 						letterSpacing: 'tight'
 					})}
 				>
-					Contact Links
+					{m.contact_modal_header()}
 				</Dialog.Title>
 				<Separator.Root
 					class={css({
@@ -124,7 +126,7 @@
 						fontSize: 'md'
 					})}
 				>
-					You can explore more of my work or reach out to me through the following channels.
+					{m.contact_modal_description()}
 				</Dialog.Description>
 				<div
 					class={css({
@@ -157,7 +159,7 @@
 						rel="noopener noreferrer"
 						class={css({ fontWeight: 'medium' })}
 					>
-						Download CV
+						{m.contact_modal_cv()}
 					</a>
 				</div>
 
@@ -171,7 +173,7 @@
 				>
 					<div class={css({ fontSize: 'xl' })}>
 						<IconClose />
-						<span class={css({ srOnly: true })}>Close</span>
+						<span class={css({ srOnly: true })}>{m.contact_modal_close()}</span>
 					</div>
 				</Dialog.Close>
 			</Dialog.Content>

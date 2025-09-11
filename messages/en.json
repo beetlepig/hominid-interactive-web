@@ -69,5 +69,14 @@
     "projects_sylndr_description_with": "with",
     "projects_sylndr_description_integrated": "layouts, and an integrated",
     "projects_sylndr_description_viewer": "document viewer",
-    "projects_sylndr_description_owned": "Product owned by Sylndr"
+    "projects_sylndr_description_owned": "Product owned by Sylndr",
+    "collaborations_title": "Collaborations",
+    "collaborations_title_short": "Collabs",
+    "collaborations_description_one": "These companies have trusted my skills",
+    "collaborations_description_two": "to develop custom software for their clients or corporate requirements.",
+    "contact_button": "Contact",
+    "contact_modal_header": "Contact Links",
+    "contact_modal_description": "You can explore more of my work or reach out to me through the following channels.",
+    "contact_modal_cv": "Download CV",
+    "contact_modal_close": "Close"
 }
