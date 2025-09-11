@@ -42,5 +42,19 @@
     "features_flexible_description_processes": "processes",
     "features_flexible_description_skilled": "testing. Skilled in communication and coordination with",
     "features_flexible_description_cross": "cross-functional teams",
-    "features_flexible_description_including": "including design, product, and business units."
+    "features_flexible_description_including": "including design, product, and business units.",
+    "projects_title": "Projects",
+    "projects_ottomoto_description_web": "Web application for",
+    "projects_ottomoto_description_applications": "credit applications",
+    "projects_ottomoto_description_designed": "designed for dealers, lenders, and individuals to streamline the loan and lease process in vehicle acquisition. I contributed by integrating and maintaining providers for",
+    "projects_ottomoto_description_reports": "credit reports",
+    "projects_ottomoto_description_valuation": "vehicle valuation, identity verification",
+    "projects_ottomoto_description_insurance": "insurance, and warranties",
+    "projects_ottomoto_description_developing": "developing a",
+    "projects_ottomoto_description_module": "payments module",
+    "projects_ottomoto_description_creating": "creating",
+    "projects_ottomoto_description_e2e": "end-to-end (E2E) tests",
+    "projects_ottomoto_description_modules": "refactoring and maintaining several modules; and improving the overall",
+    "projects_ottomoto_description_architecture": "system architecture",
+    "projects_ottomoto_description_owned": "Product owned by OttoMoto®"
 }

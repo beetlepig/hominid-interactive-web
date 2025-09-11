@@ -2,6 +2,7 @@
 	/** @import { Snippet } from 'svelte' */
 	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans';
+	import { m } from '$lib/paraglide/messages.js';
 	import ProjectElement from './ProjectElement.svelte';
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
@@ -54,10 +55,6 @@
 	const [currentSlide, setCurrentSlide] = /** @type {typeof createSignal<number>} */ (createSignal)(
 		1
 	);
-
-	$effect(() => {
-		console.log(currentSlide());
-	});
 
 	$effect(() => {
 		if (projectsContainerRef) {
@@ -283,7 +280,7 @@
 				}
 			})}
 		>
-			Projects
+			{m.projects_title()}
 		</h2>
 		<ul
 			bind:this={projectsContainerRef}
@@ -304,17 +301,17 @@
 					Ottomoto
 				{/snippet}
 				{#snippet projectDescription()}
-					Web application for <strong>credit applications</strong> designed for dealers, lenders,
-					and individuals to streamline the loan and lease process in vehicle acquisition. I
-					contributed by integrating and maintaining providers for
-					<strong>credit reports</strong>, vehicle valuation, identity verification,
-					<strong>insurance, and warranties</strong>; developing a
-					<strong>payments module</strong>; creating
-					<strong>end-to-end (E2E) tests</strong>; refactoring and maintaining several modules; and
-					improving the overall <strong>system architecture</strong>.
+					{m.projects_ottomoto_description_web()}
+					<strong>{m.projects_ottomoto_description_applications()}</strong>
+					{m.projects_ottomoto_description_designed()}
+					<strong>{m.projects_ottomoto_description_reports()}</strong>, {m.projects_ottomoto_description_valuation()},
+					<strong>{m.projects_ottomoto_description_insurance()}</strong>; {m.projects_ottomoto_description_developing()}
+					<strong>{m.projects_ottomoto_description_module()}</strong>; {m.projects_ottomoto_description_creating()}
+					<strong>{m.projects_ottomoto_description_e2e()}</strong>; {m.projects_ottomoto_description_modules()}
+					<strong>{m.projects_ottomoto_description_architecture()}</strong>.
 				{/snippet}
 				{#snippet projectDisclaimer()}
-					Product owned by OttoMoto®
+					{m.projects_ottomoto_description_owned()}
 				{/snippet}
 				{#snippet projectTechIcons()}
 					{#snippet typescriptIcon()}

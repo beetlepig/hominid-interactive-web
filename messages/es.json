@@ -42,5 +42,19 @@
     "features_flexible_description_processes": "",
     "features_flexible_description_skilled": "Además, soy hábil en la comunicación y coordinación con",
     "features_flexible_description_cross": "equipos interdisciplinarios",
-    "features_flexible_description_including": "como diseño, producto y áreas de negocio."
+    "features_flexible_description_including": "como diseño, producto y áreas de negocio.",
+    "projects_title":  "Proyectos",
+    "projects_ottomoto_description_web": "Aplicación web para",
+    "projects_ottomoto_description_applications": "solicitudes de crédito",
+    "projects_ottomoto_description_designed": "diseñada para concesionarios, prestamistas e individuos, con el objetivo de agilizar el proceso de préstamos y arrendamientos en la adquisición de vehículos. Contribuí integrando y manteniendo proveedores de",
+    "projects_ottomoto_description_reports": "informes crediticios",
+    "projects_ottomoto_description_valuation": "valoración de vehículos, verificación de identidad",
+    "projects_ottomoto_description_insurance": "seguros y garantías",
+    "projects_ottomoto_description_developing": "desarrollando un",
+    "projects_ottomoto_description_module": "módulo de pagos",
+    "projects_ottomoto_description_creating": "creando",
+    "projects_ottomoto_description_e2e": "pruebas end-to-end (E2E)",
+    "projects_ottomoto_description_modules": "refactorizando y manteniendo varios módulos; y mejorando la",
+    "projects_ottomoto_description_architecture": "arquitectura general del sistema",
+    "projects_ottomoto_description_owned": "Producto perteneciente a OttoMoto®"
 }
