@@ -1,8 +1,8 @@
-@layer reset, base, tokens, recipes, utilities;
-
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
+
+@layer panda_reset, panda_base, panda_tokens, panda_recipes, panda_utilities;
 
 @custom-variant dark (&:is(.dark *));
 
