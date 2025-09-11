@@ -54,7 +54,20 @@
     "projects_ottomoto_description_module": "módulo de pagos",
     "projects_ottomoto_description_creating": "creando",
     "projects_ottomoto_description_e2e": "pruebas end-to-end (E2E)",
-    "projects_ottomoto_description_modules": "refactorizando y manteniendo varios módulos; y mejorando la",
+    "projects_ottomoto_description_modules": "refactorizando y manteniendo diversos módulos; y optimizando la",
     "projects_ottomoto_description_architecture": "arquitectura general del sistema",
-    "projects_ottomoto_description_owned": "Producto perteneciente a OttoMoto®"
+    "projects_ottomoto_description_owned": "Producto perteneciente a OttoMoto®",
+    "projects_sylndr_description_buying": "Aplicación móvil para la compra y",
+    "projects_sylndr_description_auctioning": "subasta de vehículos usados",
+    "projects_sylndr_description_features": "Ofrece un feed de anuncios, perfiles detallados de vehículos con",
+    "projects_sylndr_description_media": "galerías multimedia",
+    "projects_sylndr_description_engine": "y previsualización del",
+    "projects_sylndr_description_sound": "sonido del motor",
+    "projects_sylndr_description_bidding": "un flujo completo de compra y puja",
+    "projects_sylndr_description_push": "notificaciones push",
+    "projects_sylndr_description_multilingual": "soporte multilingüe",
+    "projects_sylndr_description_with": "con diseños",
+    "projects_sylndr_description_integrated": "y un",
+    "projects_sylndr_description_viewer": "visor de documentos integrado",
+    "projects_sylndr_description_owned": "Producto perteneciente a Sylndr"
 }

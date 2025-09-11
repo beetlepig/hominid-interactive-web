@@ -372,17 +372,20 @@
 					Sylndr
 				{/snippet}
 				{#snippet projectDescription()}
-					A mobile application for buying and <strong>auctioning used vehicles</strong>. It features
-					a listings feed, detailed vehicle profiles with <strong>media galleries</strong> and
-					engine
-					<strong>sound previews</strong>, a full purchase and bidding flow,
-					<strong>push notifications</strong>,
-					<strong>multilingual support</strong>
-					with
-					<strong>LTR/RTL</strong> layouts, and an integrated <strong>document viewer</strong>.
+					{m.projects_sylndr_description_buying()}
+					<strong>{m.projects_sylndr_description_auctioning()}</strong>. {m.projects_sylndr_description_features()}
+					<strong>{m.projects_sylndr_description_media()}</strong>
+					{m.projects_sylndr_description_engine()}
+					<strong>{m.projects_sylndr_description_sound()}</strong>, {m.projects_sylndr_description_bidding()},
+					<strong>{m.projects_sylndr_description_push()}</strong>,
+					<strong>{m.projects_sylndr_description_multilingual()}</strong>
+					{m.projects_sylndr_description_with()}
+					<strong>LTR/RTL</strong>
+					{m.projects_sylndr_description_integrated()}
+					<strong>{m.projects_sylndr_description_viewer()}</strong>.
 				{/snippet}
 				{#snippet projectDisclaimer()}
-					Product owned by Sylndr.
+					{m.projects_sylndr_description_owned()}
 				{/snippet}
 				{#snippet projectTechIcons()}
 					{#snippet typescriptIcon()}

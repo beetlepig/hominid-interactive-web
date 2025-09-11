@@ -56,5 +56,18 @@
     "projects_ottomoto_description_e2e": "end-to-end (E2E) tests",
     "projects_ottomoto_description_modules": "refactoring and maintaining several modules; and improving the overall",
     "projects_ottomoto_description_architecture": "system architecture",
-    "projects_ottomoto_description_owned": "Product owned by OttoMoto®"
+    "projects_ottomoto_description_owned": "Product owned by OttoMoto®",
+    "projects_sylndr_description_buying": "A mobile application for buying and",
+    "projects_sylndr_description_auctioning": "auctioning used vehicles",
+    "projects_sylndr_description_features": "It features a listings feed, detailed vehicle profiles with",
+    "projects_sylndr_description_media": "media galleries",
+    "projects_sylndr_description_engine": "and engine",
+    "projects_sylndr_description_sound": "sound previews",
+    "projects_sylndr_description_bidding": "a full purchase and bidding flow",
+    "projects_sylndr_description_push": "push notifications",
+    "projects_sylndr_description_multilingual": "multilingual support",
+    "projects_sylndr_description_with": "with",
+    "projects_sylndr_description_integrated": "layouts, and an integrated",
+    "projects_sylndr_description_viewer": "document viewer",
+    "projects_sylndr_description_owned": "Product owned by Sylndr"
 }
