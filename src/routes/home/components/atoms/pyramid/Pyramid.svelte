@@ -3,7 +3,7 @@
 	import { T } from '@threlte/core';
 	import { SheetObject } from '@threlte/theatre';
 	import { resize, scroll } from 'motion';
-	import { Tween } from 'svelte/motion';
+	import { Spring } from 'svelte/motion';
 
 	/** @type {{ headlineContainerRef: HTMLElement | null }} */
 	const { headlineContainerRef } = $props();
@@ -26,10 +26,13 @@
 		4, 3, 0
 	];
 
-	const animatedScale = new Tween(headlineContainerRef ? 1.4 : 1, { delay: 20, duration: 200 });
-	const animatedPosition = new Tween(headlineContainerRef ? -0.7 : -0.5, {
-		delay: 20,
-		duration: 200
+	const animatedScale = new Spring(headlineContainerRef ? 1.4 : 1, {
+		stiffness: 0.08,
+		damping: 0.2
+	});
+	const animatedPosition = new Spring(headlineContainerRef ? -0.7 : -0.5, {
+		stiffness: 0.08,
+		damping: 0.2
 	});
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
@@ -58,21 +61,16 @@
 
 	$effect(() => {
 		if (headlineContainerRef) {
-			const multiplier = smBreakPoint() ? 0.6 : 1;
-			const initialScale = 1.4 * multiplier;
-			const finalScale = 1 * multiplier;
+			const multiplier = smBreakPoint() ? 0.5 : 1;
+			const initialScale = 1.5 * multiplier;
+			const finalScale = 0.5 * multiplier;
 			const initialPosition = -0.7;
 			const finalPosition = -0.5;
-			const scale = mapNumRange(scrollYProgress(), 0.05, 0.25, initialScale, finalScale);
-			const position = mapNumRange(scrollYProgress(), 0.05, 0.25, initialPosition, finalPosition);
+			const scale = mapNumRange(scrollYProgress(), 0, 0.9, initialScale, finalScale);
+			const position = mapNumRange(scrollYProgress(), 0, 0.9, initialPosition, finalPosition);
 
-			if (scale === initialScale || scale === finalScale) {
-				animatedScale.target = scale;
-			}
-
-			if (position === initialPosition || position === finalPosition) {
-				animatedPosition.target = position;
-			}
+			animatedScale.target = scale;
+			animatedPosition.target = position;
 		}
 	});
 </script>

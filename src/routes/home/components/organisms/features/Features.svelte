@@ -3,9 +3,9 @@
 	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';
+	import Canvas from '../../../../../components/atoms/Canvas.svelte';
 	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
-	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
 	import { animate } from 'motion';
 	import { css } from 'styled-system/css';
@@ -23,33 +23,12 @@
 	/** @type {HTMLElement | null} */
 	let featuresContentRef = $state(null);
 
-	/** @type {HTMLElement | null} */
-	let featuresCanvasContentRef = $state(null);
-
-	/** @type {HTMLElement | null} */
-	let reliableFrontendCanvasContentRef = $state(null);
-
-	/** @type {HTMLElement | null} */
-	let amazingTechnologiesCanvasContentRef = $state(null);
-
-	/** @type {HTMLElement | null} */
-	let flexibleDevelopmentCanvasContentRef = $state(null);
-
 	let [currentAnimationSection, setCurrentAnimationSection] =
 		/** @type {typeof createSignal<AnimationSectionEnumType>} */ (createSignal)(
 			AnimationSectionEnum.Octahedron
 		);
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
-
-	const [canvasFeaturesRender, setCanvasFeaturesRender] =
-		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
-	const [canvasReliableFrontendRender, setCanvasReliableFrontendRender] =
-		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
-	const [canvasAmazingTechnologiesRender, setCanvasAmazingTechnologiesRender] =
-		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
-	const [canvasFlexibleDevelopmentRender, setCanvasFlexibleDevelopmentRender] =
-		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
 
 	/**
 	 * @param {AnimationSectionEnumType} section
@@ -156,86 +135,6 @@
 	});
 
 	$effect(() => {
-		if (featuresCanvasContentRef) {
-			const stop = inView(
-				featuresCanvasContentRef,
-				() => {
-					setCanvasFeaturesRender(true);
-
-					return () => {
-						setCanvasFeaturesRender(false);
-					};
-				},
-				{ amount: 'some' }
-			);
-
-			return () => {
-				stop();
-			};
-		}
-	});
-
-	$effect(() => {
-		if (reliableFrontendCanvasContentRef) {
-			const stop = inView(
-				reliableFrontendCanvasContentRef,
-				() => {
-					setCanvasReliableFrontendRender(true);
-
-					return () => {
-						setCanvasReliableFrontendRender(false);
-					};
-				},
-				{ amount: 'some' }
-			);
-
-			return () => {
-				stop();
-			};
-		}
-	});
-
-	$effect(() => {
-		if (amazingTechnologiesCanvasContentRef) {
-			const stop = inView(
-				amazingTechnologiesCanvasContentRef,
-				() => {
-					setCanvasAmazingTechnologiesRender(true);
-
-					return () => {
-						setCanvasAmazingTechnologiesRender(false);
-					};
-				},
-				{ amount: 'some' }
-			);
-
-			return () => {
-				stop();
-			};
-		}
-	});
-
-	$effect(() => {
-		if (flexibleDevelopmentCanvasContentRef) {
-			const stop = inView(
-				flexibleDevelopmentCanvasContentRef,
-				() => {
-					setCanvasFlexibleDevelopmentRender(true);
-
-					return () => {
-						setCanvasFlexibleDevelopmentRender(false);
-					};
-				},
-				{ amount: 'some' }
-			);
-
-			return () => {
-				stop();
-			};
-		}
-	});
-
-	$effect(() => {
 		switch (true) {
 			case scrollYProgress() < 0.4: {
 				setCurrentAnimationSection(AnimationSectionEnum.Octahedron);
@@ -322,7 +221,6 @@
 			})}
 		>
 			<div
-				bind:this={featuresCanvasContentRef}
 				class={css({
 					display: 'flex',
 					flexDirection: 'column',
@@ -340,15 +238,13 @@
 						maxHeight: '3xl'
 					})}
 				>
-					{#if canvasFeaturesRender()}
-						<Canvas>
-							<PolyhedronScene
-								projectName="Features"
-								targetAnimationSection={currentAnimationSection()}
-								lightColor={getLightColor(currentAnimationSection())}
-							/>
-						</Canvas>
-					{/if}
+					<Canvas>
+						<PolyhedronScene
+							projectName="Features"
+							targetAnimationSection={currentAnimationSection()}
+							lightColor={getLightColor(currentAnimationSection())}
+						/>
+					</Canvas>
 				</div>
 			</div>
 			<div class={css({ flex: '1' })}>
@@ -361,20 +257,14 @@
 						spaceY: '3'
 					})}
 				>
-					<div
-						bind:this={reliableFrontendCanvasContentRef}
-						class={css({ h: '96', hideFrom: 'lg' })}
-					>
-						{#if canvasReliableFrontendRender()}
-							<Canvas>
-								<PolyhedronScene
-									projectName="ReliableFrontend"
-									headlineContainerRef={null}
-									targetAnimationSection={AnimationSectionEnum.Octahedron}
-									lightColor={getLightColor(AnimationSectionEnum.Octahedron)}
-								/>
-							</Canvas>
-						{/if}
+					<div class={css({ h: '96', hideFrom: 'lg' })}>
+						<Canvas>
+							<PolyhedronScene
+								projectName="ReliableFrontend"
+								targetAnimationSection={AnimationSectionEnum.Octahedron}
+								lightColor={getLightColor(AnimationSectionEnum.Octahedron)}
+							/>
+						</Canvas>
 					</div>
 					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
 						{m.features_reilable_title()}
@@ -406,20 +296,14 @@
 						spaceY: '3'
 					})}
 				>
-					<div
-						bind:this={amazingTechnologiesCanvasContentRef}
-						class={css({ h: '96', hideFrom: 'lg' })}
-					>
-						{#if canvasAmazingTechnologiesRender()}
-							<Canvas>
-								<PolyhedronScene
-									projectName="AmazingTechnologies"
-									headlineContainerRef={null}
-									targetAnimationSection={AnimationSectionEnum.Dodecahedron}
-									lightColor={getLightColor(AnimationSectionEnum.Dodecahedron)}
-								/>
-							</Canvas>
-						{/if}
+					<div class={css({ h: '96', hideFrom: 'lg' })}>
+						<Canvas>
+							<PolyhedronScene
+								projectName="AmazingTechnologies"
+								targetAnimationSection={AnimationSectionEnum.Dodecahedron}
+								lightColor={getLightColor(AnimationSectionEnum.Dodecahedron)}
+							/>
+						</Canvas>
 					</div>
 					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
 						{m.features_amazing_title()}
@@ -450,20 +334,14 @@
 						spaceY: '3'
 					})}
 				>
-					<div
-						bind:this={flexibleDevelopmentCanvasContentRef}
-						class={css({ h: '96', hideFrom: 'lg' })}
-					>
-						{#if canvasFlexibleDevelopmentRender()}
-							<Canvas>
-								<PolyhedronScene
-									projectName="FlexibleDevelopment"
-									headlineContainerRef={null}
-									targetAnimationSection={AnimationSectionEnum.Icosahedron}
-									lightColor={getLightColor(AnimationSectionEnum.Icosahedron)}
-								/>
-							</Canvas>
-						{/if}
+					<div class={css({ h: '96', hideFrom: 'lg' })}>
+						<Canvas>
+							<PolyhedronScene
+								projectName="FlexibleDevelopment"
+								targetAnimationSection={AnimationSectionEnum.Icosahedron}
+								lightColor={getLightColor(AnimationSectionEnum.Icosahedron)}
+							/>
+						</Canvas>
 					</div>
 					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
 						{m.features_flexible_title()}

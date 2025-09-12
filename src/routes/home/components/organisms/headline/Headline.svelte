@@ -2,13 +2,12 @@
 	import { createSignal, mapNumRange } from '$lib';
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';
+	import Canvas from '../../../../../components/atoms/Canvas.svelte';
 	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
-	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
 	import { css } from 'styled-system/css';
 	import { Tween } from 'svelte/motion';
-	import { WebGPURenderer } from 'three/webgpu';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -19,18 +18,12 @@
 	/** @type {HTMLElement | null} */
 	let headlineHeadingRef = $state(null);
 
-	/** @type {HTMLElement | null} */
-	let headlineCanvasContainerRef = $state(null);
-
 	const animatedOpacity = new Tween(0.9, { delay: 20, duration: 200 });
 	const animatedPosition = new Tween(0, { delay: 20, duration: 200 });
 	const animatedNameOpacity = new Tween(0, { delay: 20, duration: 200 });
 	const animatedNamePosition = new Tween(0, { delay: 20, duration: 200 });
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
-
-	const [canvasHeadlineRenderMode, setCanvasHeadlineRenderMode] =
-		/** @type {typeof createSignal<'always' | 'on-demand' | 'manual'>} */ (createSignal)('manual');
 
 	$effect(() => {
 		/** @type {(progress: number) => void} */
@@ -51,26 +44,6 @@
 					onVisible();
 
 					return () => {};
-				},
-				{ amount: 'some' }
-			);
-
-			return () => {
-				stop();
-			};
-		}
-	});
-
-	$effect(() => {
-		if (headlineCanvasContainerRef) {
-			const stop = inView(
-				headlineCanvasContainerRef,
-				() => {
-					setCanvasHeadlineRenderMode('on-demand');
-
-					return () => {
-						setCanvasHeadlineRenderMode('manual');
-					};
 				},
 				{ amount: 'some' }
 			);
@@ -110,23 +83,8 @@
 			height: '[100vh]'
 		})}
 	>
-		<div
-			bind:this={headlineCanvasContainerRef}
-			class={css({
-				pos: 'absolute',
-				inset: '0'
-			})}
-		>
-			<Canvas
-				renderMode={canvasHeadlineRenderMode()}
-				createRenderer={(canvas) => {
-					return new WebGPURenderer({
-						canvas,
-						antialias: true,
-						forceWebGL: false
-					});
-				}}
-			>
+		<div class={css({ pos: 'absolute', inset: '0' })}>
+			<Canvas>
 				<PolyhedronScene
 					{headlineContainerRef}
 					projectName="Headline"
