@@ -44,13 +44,11 @@
 </script>
 
 <SheetObject key="Dodecahedron">
-	{#snippet children({ Transform, Sync })}
+	{#snippet children({ Transform })}
 		<Transform>
-			<T.Mesh receiveShadow castShadow>
+			<T.Mesh>
 				<T.PolyhedronGeometry args={[verticesOfDodecahedron, indicesOfFaces, 1, 0]} />
-				<T.MeshStandardMaterial>
-					<Sync color emissive />
-				</T.MeshStandardMaterial>
+				<T.MeshStandardMaterial />
 			</T.Mesh>
 		</Transform>
 	{/snippet}

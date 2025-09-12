@@ -21,10 +21,6 @@
 	/** @type {HTMLElement | null} */
 	let headlineCanvasContainerRef = $state(null);
 
-	/** @type {number | null} */
-	let sectionWidth = $state(null);
-	const smBreakPoint = $derived((sectionWidth ?? 0) <= 768);
-
 	const animatedOpacity = new Tween(0.9, { delay: 20, duration: 200 });
 	const animatedPosition = new Tween(0, { delay: 20, duration: 200 });
 	const animatedNameOpacity = new Tween(0, { delay: 20, duration: 200 });
@@ -100,7 +96,6 @@
 <section
 	id={sections.home.id}
 	bind:this={headlineContainerRef}
-	bind:clientWidth={sectionWidth}
 	class={css({ height: '[250dvh]', bgColor: 'gray.50' })}
 >
 	<div
@@ -124,7 +119,6 @@
 			{#if canvasHeadlineRender()}
 				<Canvas>
 					<PolyhedronScene
-						{smBreakPoint}
 						{headlineContainerRef}
 						projectName="Headline"
 						targetAnimationSection={AnimationSectionEnum.Pyramid}

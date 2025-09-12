@@ -20,13 +20,11 @@
 </script>
 
 <SheetObject key="Icosahedron">
-	{#snippet children({ Transform, Sync })}
+	{#snippet children({ Transform })}
 		<Transform>
-			<T.Mesh receiveShadow castShadow>
+			<T.Mesh>
 				<T.PolyhedronGeometry args={[verticesOfIcosahedron, indicesOfFaces, 1, 0]} />
-				<T.MeshStandardMaterial>
-					<Sync color emissive />
-				</T.MeshStandardMaterial>
+				<T.MeshStandardMaterial />
 			</T.Mesh>
 		</Transform>
 	{/snippet}

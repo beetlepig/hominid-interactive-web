@@ -7,7 +7,7 @@
 	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
 	import { Canvas } from '@threlte/core';
 	import { inView, scroll } from 'motion';
-	import { animate } from 'motion/mini';
+	import { animate } from 'motion';
 	import { css } from 'styled-system/css';
 	import { token } from 'styled-system/tokens';
 
@@ -50,6 +50,27 @@
 		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
 	const [canvasFlexibleDevelopmentRender, setCanvasFlexibleDevelopmentRender] =
 		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
+
+	/**
+	 * @param {AnimationSectionEnumType} section
+	 * @returns {number}
+	 */
+	const getLightColor = (section) => {
+		switch (section) {
+			case AnimationSectionEnum.Octahedron: {
+				return 0xfee2e2;
+			}
+			case AnimationSectionEnum.Dodecahedron: {
+				return 0xdcfce7;
+			}
+			case AnimationSectionEnum.Icosahedron: {
+				return 0xdbeafe;
+			}
+			default: {
+				return 0xffffff;
+			}
+		}
+	};
 
 	$effect(() => {
 		/** @type {(progress: number) => void} */
@@ -94,10 +115,7 @@
 						element,
 						{
 							opacity: [0, 1],
-							transform: [
-								`translateX(${token('spacing.-12')})`,
-								`translateX(${token('spacing.0')})`
-							]
+							x: [token('spacing.-12'), token('spacing.0')]
 						},
 						{
 							duration: 0.4
@@ -326,8 +344,8 @@
 						<Canvas>
 							<PolyhedronScene
 								projectName="Features"
-								headlineContainerRef={null}
 								targetAnimationSection={currentAnimationSection()}
+								lightColor={getLightColor(currentAnimationSection())}
 							/>
 						</Canvas>
 					{/if}
@@ -353,6 +371,7 @@
 									projectName="ReliableFrontend"
 									headlineContainerRef={null}
 									targetAnimationSection={AnimationSectionEnum.Octahedron}
+									lightColor={getLightColor(AnimationSectionEnum.Octahedron)}
 								/>
 							</Canvas>
 						{/if}
@@ -397,6 +416,7 @@
 									projectName="AmazingTechnologies"
 									headlineContainerRef={null}
 									targetAnimationSection={AnimationSectionEnum.Dodecahedron}
+									lightColor={getLightColor(AnimationSectionEnum.Dodecahedron)}
 								/>
 							</Canvas>
 						{/if}
@@ -440,6 +460,7 @@
 									projectName="FlexibleDevelopment"
 									headlineContainerRef={null}
 									targetAnimationSection={AnimationSectionEnum.Icosahedron}
+									lightColor={getLightColor(AnimationSectionEnum.Icosahedron)}
 								/>
 							</Canvas>
 						{/if}

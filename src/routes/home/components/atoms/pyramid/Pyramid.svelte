@@ -2,11 +2,11 @@
 	import { createSignal, mapNumRange } from '$lib';
 	import { T } from '@threlte/core';
 	import { SheetObject } from '@threlte/theatre';
-	import { scroll } from 'motion';
+	import { resize, scroll } from 'motion';
 	import { Tween } from 'svelte/motion';
 
-	/** @type {{ headlineContainerRef: HTMLElement | null, smBreakPoint: boolean }} */
-	const { headlineContainerRef, smBreakPoint } = $props();
+	/** @type {{ headlineContainerRef: HTMLElement | null }} */
+	const { headlineContainerRef } = $props();
 
 	// prettier-ignore
 	const verticesOfPyramid = [
@@ -33,6 +33,7 @@
 	});
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
+	const [smBreakPoint, setSmBreakPoint] = createSignal(window.innerWidth <= 768);
 
 	$effect(() => {
 		/** @type {(progress: number) => void} */
@@ -43,11 +44,21 @@
 			container: document.getElementById('main-target') ?? undefined,
 			target: headlineContainerRef ?? undefined
 		});
+
+		$effect(() => {
+			const stop = resize(({ width }) => {
+				setSmBreakPoint(width <= 768);
+			});
+
+			return () => {
+				stop();
+			};
+		});
 	});
 
 	$effect(() => {
 		if (headlineContainerRef) {
-			const multiplier = smBreakPoint ? 0.8 : 1;
+			const multiplier = smBreakPoint() ? 0.6 : 1;
 			const initialScale = 1.4 * multiplier;
 			const finalScale = 1 * multiplier;
 			const initialPosition = -0.7;
@@ -67,18 +78,11 @@
 </script>
 
 <SheetObject key="Pyramid">
-	{#snippet children({ Transform, Sync })}
+	{#snippet children({ Transform })}
 		<Transform>
-			<T.Mesh
-				castShadow
-				receiveShadow
-				position.y={animatedPosition.current}
-				scale={animatedScale.current}
-			>
+			<T.Mesh position.y={animatedPosition.current} scale={animatedScale.current}>
 				<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
-				<T.MeshStandardMaterial>
-					<Sync color emissive />
-				</T.MeshStandardMaterial>
+				<T.MeshStandardMaterial />
 			</T.Mesh>
 		</Transform>
 	{/snippet}
