@@ -436,15 +436,14 @@
 					ConnectRN
 				{/snippet}
 				{#snippet projectDescription()}
-					A platform that connects nurses and healthcare staff with clinics and hospitals, enabling
-					<strong>shift postings</strong>,
-					<strong>scheduling management</strong>, geolocation, and
-					<strong>digital signatures</strong>. I contributed to the development and refactoring of
-					multiple modules across both the
-					<strong>admin dashboard and the mobile application</strong>.
+					{m.projects_connectrn_description_connects()}
+					<strong>{m.projects_connectrn_description_shift()}</strong>,
+					<strong>{m.projects_connectrn_description_scheduling()}</strong>, {m.projects_connectrn_description_geolocation()}
+					<strong>{m.projects_connectrn_description_signatures()}</strong>. {m.projects_connectrn_description_modules()}
+					<strong>{m.projects_connectrn_description_dashboard()}</strong>.
 				{/snippet}
 				{#snippet projectDisclaimer()}
-					Product owned by connectRN Inc.
+					{m.projects_connectrn_description_owned()}
 				{/snippet}
 				{#snippet projectTechIcons()}
 					{#snippet typescriptIcon()}
@@ -490,15 +489,14 @@
 					Pródigos App
 				{/snippet}
 				{#snippet projectDescription()}
-					<strong>Matchmaking Healthcare App.</strong> A mobile and web application that connects
-					nurses with older adults and their families to provide healthcare and caregiving services.
-					I contributed by integrating the
-					<strong>payment system</strong>, <strong>scheduling module</strong>,
-					<strong>live map tracking</strong>, an administrative dashboard, and the mobile
-					application.
+					<strong>{m.projects_prodigos_description_app()}</strong>
+					{m.projects_prodigos_description_nurses()}
+					<strong>{m.projects_prodigos_description_payment()}</strong>,
+					<strong>{m.projects_prodigos_description_scheduling()}</strong>,
+					<strong>{m.projects_prodigos_description_map()}</strong>, {m.projects_prodigos_description_dashboard()}
 				{/snippet}
 				{#snippet projectDisclaimer()}
-					Product owned by Prodigos S.A.S.
+					{m.projects_prodigos_description_owned()}
 				{/snippet}
 				{#snippet projectTechIcons()}
 					{#snippet typescriptIcon()}

@@ -61,11 +61,11 @@
 
 	$effect(() => {
 		if (headlineContainerRef) {
-			const multiplier = smBreakPoint() ? 0.5 : 1;
+			const multiplier = smBreakPoint() ? 0.6 : 1;
 			const initialScale = 1.5 * multiplier;
-			const finalScale = 0.5 * multiplier;
-			const initialPosition = -0.7;
-			const finalPosition = -0.5;
+			const finalScale = 0.6 * multiplier;
+			const initialPosition = -0.75;
+			const finalPosition = -1.15;
 			const scale = mapNumRange(scrollYProgress(), 0, 0.9, initialScale, finalScale);
 			const position = mapNumRange(scrollYProgress(), 0, 0.9, initialPosition, finalPosition);
 
