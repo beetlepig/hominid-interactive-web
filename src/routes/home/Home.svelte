@@ -8,7 +8,23 @@
 	import Headline from './components/organisms/headline/Headline.svelte';
 	import Introduction from './components/organisms/introduction/Introduction.svelte';
 	import Projects from './components/organisms/projects/Projects.svelte';
+	import { extend } from '@threlte/core';
 	import { css } from 'styled-system/css';
+	import {
+		PointLight,
+		PolyhedronGeometry,
+		MeshStandardMaterial,
+		PerspectiveCamera,
+		PlaneGeometry
+	} from 'three/webgpu';
+
+	extend({
+		PointLight,
+		PolyhedronGeometry,
+		MeshStandardMaterial,
+		PerspectiveCamera,
+		PlaneGeometry
+	});
 
 	const [pageTitle, setPageTitle] = createSignal('Home');
 </script>

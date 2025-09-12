@@ -8,6 +8,7 @@
 	import { inView, scroll } from 'motion';
 	import { css } from 'styled-system/css';
 	import { Tween } from 'svelte/motion';
+	import { WebGPURenderer } from 'three/webgpu';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -28,8 +29,8 @@
 
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
 
-	const [canvasHeadlineRender, setCanvasHeadlineRender] =
-		/** @type {typeof createSignal<boolean>} */ (createSignal)(false);
+	const [canvasHeadlineRenderMode, setCanvasHeadlineRenderMode] =
+		/** @type {typeof createSignal<'always' | 'on-demand' | 'manual'>} */ (createSignal)('manual');
 
 	$effect(() => {
 		/** @type {(progress: number) => void} */
@@ -65,10 +66,10 @@
 			const stop = inView(
 				headlineCanvasContainerRef,
 				() => {
-					setCanvasHeadlineRender(true);
+					setCanvasHeadlineRenderMode('on-demand');
 
 					return () => {
-						setCanvasHeadlineRender(false);
+						setCanvasHeadlineRenderMode('manual');
 					};
 				},
 				{ amount: 'some' }
@@ -116,15 +117,22 @@
 				inset: '0'
 			})}
 		>
-			{#if canvasHeadlineRender()}
-				<Canvas>
-					<PolyhedronScene
-						{headlineContainerRef}
-						projectName="Headline"
-						targetAnimationSection={AnimationSectionEnum.Pyramid}
-					/>
-				</Canvas>
-			{/if}
+			<Canvas
+				renderMode={canvasHeadlineRenderMode()}
+				createRenderer={(canvas) => {
+					return new WebGPURenderer({
+						canvas,
+						antialias: true,
+						forceWebGL: false
+					});
+				}}
+			>
+				<PolyhedronScene
+					{headlineContainerRef}
+					projectName="Headline"
+					targetAnimationSection={AnimationSectionEnum.Pyramid}
+				/>
+			</Canvas>
 		</div>
 		<h1
 			bind:this={headlineHeadingRef}

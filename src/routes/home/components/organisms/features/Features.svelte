@@ -58,13 +58,13 @@
 	const getLightColor = (section) => {
 		switch (section) {
 			case AnimationSectionEnum.Octahedron: {
-				return 0xfee2e2;
+				return 0xffffff;
 			}
 			case AnimationSectionEnum.Dodecahedron: {
-				return 0xdcfce7;
+				return 0xffffff;
 			}
 			case AnimationSectionEnum.Icosahedron: {
-				return 0xdbeafe;
+				return 0xffffff;
 			}
 			default: {
 				return 0xffffff;
