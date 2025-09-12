@@ -558,16 +558,19 @@
 					</a>
 				{/snippet}
 				{#snippet projectDescription()}
-					A lightweight <strong>Rust system service</strong> for the Argon ONE V2 Raspberry Pi case.
-					It handles <strong>fan speed</strong> with smooth,
-					<strong>temperature-based curves</strong>
-					and lets you customize the <strong>power button actions</strong> for shutdown or reboot.
-					Built on <strong>systemd</strong> and configured with a simple YAML file, it runs fast, clean,
-					and without extra dependencies. I built this project to gain practical experience with Rust.
+					{m.projects_argon_description_lightweight()}
+					<strong>{m.projects_argon_description_service()}</strong>
+					{m.projects_argon_description_case()}
+					<strong>{m.projects_argon_description_fan()}</strong>
+					{m.projects_argon_description_smooth()}
+					<strong>{m.projects_argon_description_temperature()}</strong>
+					{m.projects_argon_description_customize()}
+					<strong>{m.projects_argon_description_button()}</strong>
+					{m.projects_argon_description_shutdown()} <strong>systemd</strong>
+					{m.projects_argon_description_built()}
 				{/snippet}
 				{#snippet projectDisclaimer()}
-					Project developed independently, not affiliated with the company. Argon One is a
-					registered trademark of Argon 40 Technologies.
+					{m.projects_argon_description_owned()}
 				{/snippet}
 				{#snippet projectTechIcons()}
 					{#snippet rustIcon()}
