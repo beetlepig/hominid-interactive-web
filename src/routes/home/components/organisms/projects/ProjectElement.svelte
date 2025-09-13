@@ -10,7 +10,6 @@
 	 * @property {Snippet} projectDescription
 	 * @property {Snippet} projectDisclaimer
 	 * @property {Snippet} projectTechIcons
-	 * @property {Snippet} projectImage
 	 */
 
 	/** @type {ProjectElementProps} */
@@ -20,26 +19,15 @@
 		projectName,
 		projectDescription,
 		projectDisclaimer,
-		projectTechIcons,
-		projectImage
+		projectTechIcons
 	} = $props();
 </script>
 
 <li
 	bind:this={ref}
-	class={css({
-		display: 'flex',
-		scrollSnapAlign: 'center',
-		padding: '8',
-		flex: '[0 0 min(calc(max(87.5vw,280px) - 20px),1680px)]',
-		flexDir: 'column',
-		gap: '10',
-		rounded: '3xl',
-		bgColor: 'white',
-		md: { p: '20', flexDir: 'row', flex: '[0 0 min(calc(max(87.5vw,280px)),1680px)]' }
-	})}
+	class="w-[82vw] snap-center rounded-3xl bg-background p-8 shadow-sm md:w-xl md:p-20"
 >
-	<div class={css({ flex: '1', spaceY: '5' })}>
+	<div class="flex h-full flex-col justify-around gap-6">
 		<div>
 			<h5
 				class={css({
@@ -56,18 +44,6 @@
 			</h5>
 		</div>
 
-		<div
-			class={css({
-				flex: '1',
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				md: { display: 'none' }
-			})}
-		>
-			{@render projectImage()}
-		</div>
-
 		<div class={css({ spaceY: '3' })}>
 			<p class={css({ fontFamily: 'raleway', fontSize: 'lg', fontWeight: 'normal' })}>
 				{@render projectDescription()}
@@ -80,17 +56,5 @@
 		<div class={css({ spaceY: '4' })}>
 			{@render projectTechIcons()}
 		</div>
-	</div>
-
-	<div
-		class={css({
-			flex: '1',
-			display: 'none',
-			justifyContent: 'center',
-			alignItems: 'center',
-			md: { display: 'flex' }
-		})}
-	>
-		{@render projectImage()}
 	</div>
 </li>

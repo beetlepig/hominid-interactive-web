@@ -1,11 +1,15 @@
 <script>
 	/** @import { Snippet } from 'svelte' */
 	import { createSignal } from '$lib';
+	import { Button } from '$lib/components/ui/button/index.js';
 	import { sections } from '$lib/constans';
 	import { m } from '$lib/paraglide/messages.js';
 	import ProjectElement from './ProjectElement.svelte';
+	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
+	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
+	import { SvelteSet } from 'svelte/reactivity';
 	import IconUIKitten from '~icons/arcticons/landofkittens';
 	import IconCSS from '~icons/bxl/css3';
 	import IconFirebase from '~icons/bxl/firebase';
@@ -13,7 +17,6 @@
 	import IconReact from '~icons/bxl/react';
 	import IconRedux from '~icons/bxl/redux';
 	import IconTailwind from '~icons/bxl/tailwind-css';
-	import IconCaregiver from '~icons/carbon/airline-passenger-care';
 	import IconLinux from '~icons/cib/linux';
 	import IconJest from '~icons/devicon-plain/jest';
 	import IconPlaywright from '~icons/devicon-plain/playwright';
@@ -21,13 +24,8 @@
 	import IconStyledComponents from '~icons/devicon-plain/styledcomponents';
 	import IconTypescript from '~icons/devicon-plain/typescript';
 	import IconZustand from '~icons/devicon-plain/zustand';
-	import IconCare from '~icons/iconoir/healthcare';
 	import IconOpen from '~icons/material-symbols-light/open-in-new';
-	import IconArrowBackward from '~icons/material-symbols/arrow-back-ios';
-	import IconCar from '~icons/material-symbols/car-tag-outline';
 	import IconOnesignal from '~icons/mdi/radar';
-	import IconRaspberry from '~icons/mdi/raspberry-pi';
-	import IconAuction from '~icons/ri/auction-line';
 	import IconAntd from '~icons/simple-icons/antdesign';
 	import IconExpo from '~icons/simple-icons/expo';
 	import IconI18next from '~icons/simple-icons/i18next';
@@ -52,9 +50,31 @@
 	/** @type {HTMLElement | null} */
 	let fifthSlideRef = $state(null);
 
-	const [currentSlide, setCurrentSlide] = /** @type {typeof createSignal<number>} */ (createSignal)(
-		1
+	const [visibleCards] = /** @type {typeof createSignal<SvelteSet<number>>} */ (createSignal)(
+		new SvelteSet()
 	);
+
+	const minMaxCardNumbers = $derived.by(() => {
+		/**
+		 * Get the minimum and maximum values in a set.
+		 * @param {SvelteSet<number>} set
+		 */
+		function minMaxInSet(set) {
+			if (set.size === 0) return { min: null, max: null };
+
+			let min = Infinity;
+			let max = -Infinity;
+
+			for (const v of set) {
+				if (v < min) min = v;
+				if (v > max) max = v;
+			}
+
+			return min === Infinity ? { min: null, max: null } : { min, max };
+		}
+
+		return minMaxInSet(visibleCards());
+	});
 
 	$effect(() => {
 		if (projectsContainerRef) {
@@ -79,9 +99,11 @@
 			const stop = inView(
 				firstSlideRef,
 				() => {
-					setCurrentSlide(1);
+					visibleCards().add(1);
 
-					return () => {};
+					return () => {
+						visibleCards().delete(1);
+					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
 			);
@@ -97,9 +119,11 @@
 			const stop = inView(
 				secondSlideRef,
 				() => {
-					setCurrentSlide(2);
+					visibleCards().add(2);
 
-					return () => {};
+					return () => {
+						visibleCards().delete(2);
+					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
 			);
@@ -115,9 +139,11 @@
 			const stop = inView(
 				thirdSlideRef,
 				() => {
-					setCurrentSlide(3);
+					visibleCards().add(3);
 
-					return () => {};
+					return () => {
+						visibleCards().delete(3);
+					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
 			);
@@ -133,9 +159,11 @@
 			const stop = inView(
 				fourthSlideRef,
 				() => {
-					setCurrentSlide(4);
+					visibleCards().add(4);
 
-					return () => {};
+					return () => {
+						visibleCards().delete(4);
+					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
 			);
@@ -151,9 +179,11 @@
 			const stop = inView(
 				fifthSlideRef,
 				() => {
-					setCurrentSlide(5);
+					visibleCards().add(5);
 
-					return () => {};
+					return () => {
+						visibleCards().delete(5);
+					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
 			);
@@ -163,32 +193,6 @@
 			};
 		}
 	});
-
-	/**
-	 * Scroll parent so child is visible.
-	 * @param {HTMLElement} parent - scrollable container
-	 * @param {HTMLElement} child  - element inside parent to scroll to
-	 */
-	function scrollParentToChild(parent, child) {
-		// bounding rects for robust relative position (handles transforms, margins, etc.)
-		const parentRect = parent.getBoundingClientRect();
-		const childRect = child.getBoundingClientRect();
-
-		// child's left within parent's scrollable content:
-		const childLeftWithinParent = childRect.left - parentRect.left + parent.scrollLeft;
-
-		let targetScrollLeft;
-
-		targetScrollLeft = childLeftWithinParent - (parent.clientWidth - child.offsetWidth) / 2;
-
-		// clamp to valid range:
-		targetScrollLeft = Math.max(
-			0,
-			Math.min(targetScrollLeft, parent.scrollWidth - parent.clientWidth)
-		);
-
-		parent.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
-	}
 
 	/**
 	 * @param {'back' | 'forward'} type - scrollable container
@@ -202,13 +206,43 @@
 			fourthSlideRef &&
 			fifthSlideRef
 		) {
-			switch (type === 'back' ? currentSlide() - 1 : currentSlide() + 1) {
+			/**
+			 * Scroll parent so child is visible.
+			 * @param {HTMLElement} parent - scrollable container
+			 * @param {HTMLElement} child  - element inside parent to scroll to
+			 */
+			function scrollParentToChild(parent, child) {
+				const parentRect = parent.getBoundingClientRect();
+				const childRect = child.getBoundingClientRect();
+
+				const childLeftWithinParent = childRect.left - parentRect.left + parent.scrollLeft;
+
+				let targetScrollLeft;
+
+				targetScrollLeft = childLeftWithinParent - (parent.clientWidth - child.offsetWidth) / 2;
+
+				targetScrollLeft = Math.max(
+					0,
+					Math.min(targetScrollLeft, parent.scrollWidth - parent.clientWidth)
+				);
+
+				parent.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
+			}
+
+			switch (
+				type === 'back'
+					? minMaxCardNumbers.min
+						? minMaxCardNumbers.min - 1
+						: 1
+					: minMaxCardNumbers.max
+						? minMaxCardNumbers.max + 1
+						: 5
+			) {
 				case 1: {
 					scrollParentToChild(projectsContainerRef, firstSlideRef);
 					break;
 				}
 				case 2: {
-					console.log('go to 2');
 					scrollParentToChild(projectsContainerRef, secondSlideRef);
 					break;
 				}
@@ -223,6 +257,9 @@
 				case 5: {
 					scrollParentToChild(projectsContainerRef, fifthSlideRef);
 					break;
+				}
+				default: {
+					scrollParentToChild(projectsContainerRef, firstSlideRef);
 				}
 			}
 		}
@@ -282,312 +319,294 @@
 		>
 			{m.projects_title()}
 		</h2>
-		<ul
+		<div
 			bind:this={projectsContainerRef}
-			class={css({
-				display: 'flex',
-				overflowX: 'scroll',
-				gap: '5',
-				paddingX: '[max(6.25vw,(100vw - 1680px)/2)]',
-				scrollSnapType: '[x mandatory]',
-				scrollbarWidth: '[none]'
-			})}
+			class="scrollbar-hide snap-x snap-mandatory overflow-x-scroll"
 		>
-			<ProjectElement bind:ref={firstSlideRef}>
-				{#snippet projectType()}
-					Web Application
-				{/snippet}
-				{#snippet projectName()}
-					Ottomoto
-				{/snippet}
-				{#snippet projectDescription()}
-					{m.projects_ottomoto_description_web()}
-					<strong>{m.projects_ottomoto_description_applications()}</strong>
-					{m.projects_ottomoto_description_designed()}
-					<strong>{m.projects_ottomoto_description_reports()}</strong>, {m.projects_ottomoto_description_valuation()},
-					<strong>{m.projects_ottomoto_description_insurance()}</strong>; {m.projects_ottomoto_description_developing()}
-					<strong>{m.projects_ottomoto_description_module()}</strong>; {m.projects_ottomoto_description_creating()}
-					<strong>{m.projects_ottomoto_description_e2e()}</strong>; {m.projects_ottomoto_description_modules()}
-					<strong>{m.projects_ottomoto_description_architecture()}</strong>.
-				{/snippet}
-				{#snippet projectDisclaimer()}
-					{m.projects_ottomoto_description_owned()}
-				{/snippet}
-				{#snippet projectTechIcons()}
-					{#snippet typescriptIcon()}
-						<IconTypescript /> TypeScript
+			<ul
+				class="grid min-w-fit grid-flow-col gap-x-6 px-[calc(50%-min(460px,87.5%)/2)] py-2 md:px-[calc(50%-min(1260px,87.5%)/2)]"
+			>
+				<ProjectElement bind:ref={firstSlideRef}>
+					{#snippet projectType()}
+						Web Application
 					{/snippet}
-					{@render technologyTag(typescriptIcon)}
+					{#snippet projectName()}
+						Ottomoto
+					{/snippet}
+					{#snippet projectDescription()}
+						{m.projects_ottomoto_description_web()}
+						<strong>{m.projects_ottomoto_description_applications()}</strong>
+						{m.projects_ottomoto_description_designed()}
+						<strong>{m.projects_ottomoto_description_reports()}</strong>, {m.projects_ottomoto_description_valuation()},
+						<strong>{m.projects_ottomoto_description_insurance()}</strong>; {m.projects_ottomoto_description_developing()}
+						<strong>{m.projects_ottomoto_description_module()}</strong>; {m.projects_ottomoto_description_creating()}
+						<strong>{m.projects_ottomoto_description_e2e()}</strong>; {m.projects_ottomoto_description_modules()}
+						<strong>{m.projects_ottomoto_description_architecture()}</strong>.
+					{/snippet}
+					{#snippet projectDisclaimer()}
+						{m.projects_ottomoto_description_owned()}
+					{/snippet}
+					{#snippet projectTechIcons()}
+						{#snippet typescriptIcon()}
+							<IconTypescript /> TypeScript
+						{/snippet}
+						{@render technologyTag(typescriptIcon)}
 
-					{#snippet reactIcon()}
-						<IconReact /> React
-					{/snippet}
-					{@render technologyTag(reactIcon)}
+						{#snippet reactIcon()}
+							<IconReact /> React
+						{/snippet}
+						{@render technologyTag(reactIcon)}
 
-					{#snippet zustandIcon()}
-						<IconZustand /> Zustand
-					{/snippet}
-					{@render technologyTag(zustandIcon)}
+						{#snippet zustandIcon()}
+							<IconZustand /> Zustand
+						{/snippet}
+						{@render technologyTag(zustandIcon)}
 
-					{#snippet tanStackQueryIcon()}
-						<IconTanStackQuery /> TanStack Query
-					{/snippet}
-					{@render technologyTag(tanStackQueryIcon)}
+						{#snippet tanStackQueryIcon()}
+							<IconTanStackQuery /> TanStack Query
+						{/snippet}
+						{@render technologyTag(tanStackQueryIcon)}
 
-					{#snippet socketioIcon()}
-						<IconSocketio fill="white" /> Socket.IO
-					{/snippet}
-					{@render technologyTag(socketioIcon)}
+						{#snippet socketioIcon()}
+							<IconSocketio fill="white" /> Socket.IO
+						{/snippet}
+						{@render technologyTag(socketioIcon)}
 
-					{#snippet tailwindIcon()}
-						<IconTailwind /> Tailwind
-					{/snippet}
-					{@render technologyTag(tailwindIcon)}
+						{#snippet tailwindIcon()}
+							<IconTailwind /> Tailwind
+						{/snippet}
+						{@render technologyTag(tailwindIcon)}
 
-					{#snippet antdIcon()}
-						<IconAntd /> Ant Design
-					{/snippet}
-					{@render technologyTag(antdIcon)}
+						{#snippet antdIcon()}
+							<IconAntd /> Ant Design
+						{/snippet}
+						{@render technologyTag(antdIcon)}
 
-					{#snippet playwrightIcon()}
-						<IconPlaywright /> Playwright
-					{/snippet}
-					{@render technologyTag(playwrightIcon)}
+						{#snippet playwrightIcon()}
+							<IconPlaywright /> Playwright
+						{/snippet}
+						{@render technologyTag(playwrightIcon)}
 
-					{#snippet jestIcon()}
-						<IconJest /> Jest
+						{#snippet jestIcon()}
+							<IconJest /> Jest
+						{/snippet}
+						{@render technologyTag(jestIcon)}
 					{/snippet}
-					{@render technologyTag(jestIcon)}
-				{/snippet}
-				{#snippet projectImage()}
-					<p class={css({ fontSize: '9xl' })}><IconCar /></p>
-				{/snippet}
-			</ProjectElement>
+				</ProjectElement>
 
-			<ProjectElement bind:ref={secondSlideRef}>
-				{#snippet projectType()}
-					<span>Mobile Application</span>
-				{/snippet}
-				{#snippet projectName()}
-					Sylndr
-				{/snippet}
-				{#snippet projectDescription()}
-					{m.projects_sylndr_description_buying()}
-					<strong>{m.projects_sylndr_description_auctioning()}</strong>. {m.projects_sylndr_description_features()}
-					<strong>{m.projects_sylndr_description_media()}</strong>
-					{m.projects_sylndr_description_engine()}
-					<strong>{m.projects_sylndr_description_sound()}</strong>, {m.projects_sylndr_description_bidding()},
-					<strong>{m.projects_sylndr_description_push()}</strong>,
-					<strong>{m.projects_sylndr_description_multilingual()}</strong>
-					{m.projects_sylndr_description_with()}
-					<strong>LTR/RTL</strong>
-					{m.projects_sylndr_description_integrated()}
-					<strong>{m.projects_sylndr_description_viewer()}</strong>.
-				{/snippet}
-				{#snippet projectDisclaimer()}
-					{m.projects_sylndr_description_owned()}
-				{/snippet}
-				{#snippet projectTechIcons()}
-					{#snippet typescriptIcon()}
-						<IconTypescript /> TypeScript
+				<ProjectElement bind:ref={secondSlideRef}>
+					{#snippet projectType()}
+						<span>Mobile Application</span>
 					{/snippet}
-					{@render technologyTag(typescriptIcon)}
+					{#snippet projectName()}
+						Sylndr
+					{/snippet}
+					{#snippet projectDescription()}
+						{m.projects_sylndr_description_buying()}
+						<strong>{m.projects_sylndr_description_auctioning()}</strong>. {m.projects_sylndr_description_features()}
+						<strong>{m.projects_sylndr_description_media()}</strong>
+						{m.projects_sylndr_description_engine()}
+						<strong>{m.projects_sylndr_description_sound()}</strong>, {m.projects_sylndr_description_bidding()},
+						<strong>{m.projects_sylndr_description_push()}</strong>,
+						<strong>{m.projects_sylndr_description_multilingual()}</strong>
+						{m.projects_sylndr_description_with()}
+						<strong>LTR/RTL</strong>
+						{m.projects_sylndr_description_integrated()}
+						<strong>{m.projects_sylndr_description_viewer()}</strong>.
+					{/snippet}
+					{#snippet projectDisclaimer()}
+						{m.projects_sylndr_description_owned()}
+					{/snippet}
+					{#snippet projectTechIcons()}
+						{#snippet typescriptIcon()}
+							<IconTypescript /> TypeScript
+						{/snippet}
+						{@render technologyTag(typescriptIcon)}
 
-					{#snippet reactNativeIcon()}
-						<IconReact /> React Native
-					{/snippet}
-					{@render technologyTag(reactNativeIcon)}
+						{#snippet reactNativeIcon()}
+							<IconReact /> React Native
+						{/snippet}
+						{@render technologyTag(reactNativeIcon)}
 
-					{#snippet expoIcon()}
-						<IconExpo /> Expo
-					{/snippet}
-					{@render technologyTag(expoIcon)}
+						{#snippet expoIcon()}
+							<IconExpo /> Expo
+						{/snippet}
+						{@render technologyTag(expoIcon)}
 
-					{#snippet tanStackQueryIcon()}
-						<IconTanStackQuery /> TanStack Query
-					{/snippet}
-					{@render technologyTag(tanStackQueryIcon)}
+						{#snippet tanStackQueryIcon()}
+							<IconTanStackQuery /> TanStack Query
+						{/snippet}
+						{@render technologyTag(tanStackQueryIcon)}
 
-					{#snippet emotionCSSIcon()}
-						<IconCSS /> Emotion CSS
-					{/snippet}
-					{@render technologyTag(emotionCSSIcon)}
+						{#snippet emotionCSSIcon()}
+							<IconCSS /> Emotion CSS
+						{/snippet}
+						{@render technologyTag(emotionCSSIcon)}
 
-					{#snippet i18nextIcon()}
-						<IconI18next /> I18next
-					{/snippet}
-					{@render technologyTag(i18nextIcon)}
+						{#snippet i18nextIcon()}
+							<IconI18next /> I18next
+						{/snippet}
+						{@render technologyTag(i18nextIcon)}
 
-					{#snippet oneSignalIcon()}
-						<IconOnesignal /> OneSignal
+						{#snippet oneSignalIcon()}
+							<IconOnesignal /> OneSignal
+						{/snippet}
+						{@render technologyTag(oneSignalIcon)}
 					{/snippet}
-					{@render technologyTag(oneSignalIcon)}
-				{/snippet}
-				{#snippet projectImage()}
-					<p class={css({ fontSize: '9xl' })}><IconAuction /></p>
-				{/snippet}
-			</ProjectElement>
+				</ProjectElement>
 
-			<ProjectElement bind:ref={thirdSlideRef}>
-				{#snippet projectType()}
-					Mobile and Web Application
-				{/snippet}
-				{#snippet projectName()}
-					ConnectRN
-				{/snippet}
-				{#snippet projectDescription()}
-					{m.projects_connectrn_description_connects()}
-					<strong>{m.projects_connectrn_description_shift()}</strong>,
-					<strong>{m.projects_connectrn_description_scheduling()}</strong>, {m.projects_connectrn_description_geolocation()}
-					<strong>{m.projects_connectrn_description_signatures()}</strong>. {m.projects_connectrn_description_modules()}
-					<strong>{m.projects_connectrn_description_dashboard()}</strong>.
-				{/snippet}
-				{#snippet projectDisclaimer()}
-					{m.projects_connectrn_description_owned()}
-				{/snippet}
-				{#snippet projectTechIcons()}
-					{#snippet typescriptIcon()}
-						<IconTypescript /> TypeScript
+				<ProjectElement bind:ref={thirdSlideRef}>
+					{#snippet projectType()}
+						Mobile and Web Application
 					{/snippet}
-					{@render technologyTag(typescriptIcon)}
+					{#snippet projectName()}
+						ConnectRN
+					{/snippet}
+					{#snippet projectDescription()}
+						{m.projects_connectrn_description_connects()}
+						<strong>{m.projects_connectrn_description_shift()}</strong>,
+						<strong>{m.projects_connectrn_description_scheduling()}</strong>, {m.projects_connectrn_description_geolocation()}
+						<strong>{m.projects_connectrn_description_signatures()}</strong>. {m.projects_connectrn_description_modules()}
+						<strong>{m.projects_connectrn_description_dashboard()}</strong>.
+					{/snippet}
+					{#snippet projectDisclaimer()}
+						{m.projects_connectrn_description_owned()}
+					{/snippet}
+					{#snippet projectTechIcons()}
+						{#snippet typescriptIcon()}
+							<IconTypescript /> TypeScript
+						{/snippet}
+						{@render technologyTag(typescriptIcon)}
 
-					{#snippet reactIcon()}
-						<IconReact /> React
-					{/snippet}
-					{@render technologyTag(reactIcon)}
+						{#snippet reactIcon()}
+							<IconReact /> React
+						{/snippet}
+						{@render technologyTag(reactIcon)}
 
-					{#snippet reactNativeIcon()}
-						<IconReact /> React Native
-					{/snippet}
-					{@render technologyTag(reactNativeIcon)}
+						{#snippet reactNativeIcon()}
+							<IconReact /> React Native
+						{/snippet}
+						{@render technologyTag(reactNativeIcon)}
 
-					{#snippet reduxIcon()}
-						<IconRedux /> Redux
-					{/snippet}
-					{@render technologyTag(reduxIcon)}
+						{#snippet reduxIcon()}
+							<IconRedux /> Redux
+						{/snippet}
+						{@render technologyTag(reduxIcon)}
 
-					{#snippet UIKittenIcon()}
-						<IconUIKitten /> UI Kitten
-					{/snippet}
-					{@render technologyTag(UIKittenIcon)}
+						{#snippet UIKittenIcon()}
+							<IconUIKitten /> UI Kitten
+						{/snippet}
+						{@render technologyTag(UIKittenIcon)}
 
-					{#snippet sendgridIcon()}
-						<IconSendgrid /> SendGrid
+						{#snippet sendgridIcon()}
+							<IconSendgrid /> SendGrid
+						{/snippet}
+						{@render technologyTag(sendgridIcon)}
 					{/snippet}
-					{@render technologyTag(sendgridIcon)}
-				{/snippet}
-				{#snippet projectImage()}
-					<p class={css({ fontSize: '9xl' })}><IconCare /></p>
-				{/snippet}
-			</ProjectElement>
+				</ProjectElement>
 
-			<ProjectElement bind:ref={fourthSlideRef}>
-				{#snippet projectType()}
-					Mobile and Web Application
-				{/snippet}
-				{#snippet projectName()}
-					Pródigos App
-				{/snippet}
-				{#snippet projectDescription()}
-					<strong>{m.projects_prodigos_description_app()}</strong>
-					{m.projects_prodigos_description_nurses()}
-					<strong>{m.projects_prodigos_description_payment()}</strong>,
-					<strong>{m.projects_prodigos_description_scheduling()}</strong>,
-					<strong>{m.projects_prodigos_description_map()}</strong>, {m.projects_prodigos_description_dashboard()}
-				{/snippet}
-				{#snippet projectDisclaimer()}
-					{m.projects_prodigos_description_owned()}
-				{/snippet}
-				{#snippet projectTechIcons()}
-					{#snippet typescriptIcon()}
-						<IconTypescript /> TypeScript
+				<ProjectElement bind:ref={fourthSlideRef}>
+					{#snippet projectType()}
+						Mobile and Web Application
 					{/snippet}
-					{@render technologyTag(typescriptIcon)}
+					{#snippet projectName()}
+						Pródigos App
+					{/snippet}
+					{#snippet projectDescription()}
+						<strong>{m.projects_prodigos_description_app()}</strong>
+						{m.projects_prodigos_description_nurses()}
+						<strong>{m.projects_prodigos_description_payment()}</strong>,
+						<strong>{m.projects_prodigos_description_scheduling()}</strong>,
+						<strong>{m.projects_prodigos_description_map()}</strong>, {m.projects_prodigos_description_dashboard()}
+					{/snippet}
+					{#snippet projectDisclaimer()}
+						{m.projects_prodigos_description_owned()}
+					{/snippet}
+					{#snippet projectTechIcons()}
+						{#snippet typescriptIcon()}
+							<IconTypescript /> TypeScript
+						{/snippet}
+						{@render technologyTag(typescriptIcon)}
 
-					{#snippet reactIcon()}
-						<IconReact /> React
-					{/snippet}
-					{@render technologyTag(reactIcon)}
+						{#snippet reactIcon()}
+							<IconReact /> React
+						{/snippet}
+						{@render technologyTag(reactIcon)}
 
-					{#snippet reactNativeIcon()}
-						<IconReact /> React Native
-					{/snippet}
-					{@render technologyTag(reactNativeIcon)}
+						{#snippet reactNativeIcon()}
+							<IconReact /> React Native
+						{/snippet}
+						{@render technologyTag(reactNativeIcon)}
 
-					{#snippet reduxIcon()}
-						<IconRedux /> Redux
-					{/snippet}
-					{@render technologyTag(reduxIcon)}
+						{#snippet reduxIcon()}
+							<IconRedux /> Redux
+						{/snippet}
+						{@render technologyTag(reduxIcon)}
 
-					{#snippet firebaseIcon()}
-						<IconFirebase /> Firebase
-					{/snippet}
-					{@render technologyTag(firebaseIcon)}
+						{#snippet firebaseIcon()}
+							<IconFirebase /> Firebase
+						{/snippet}
+						{@render technologyTag(firebaseIcon)}
 
-					{#snippet styledComponentsIcon()}
-						<IconStyledComponents /> Styled Components
-					{/snippet}
-					{@render technologyTag(styledComponentsIcon)}
+						{#snippet styledComponentsIcon()}
+							<IconStyledComponents /> Styled Components
+						{/snippet}
+						{@render technologyTag(styledComponentsIcon)}
 
-					{#snippet mapsIcon()}
-						<IconGoogle /> Maps
+						{#snippet mapsIcon()}
+							<IconGoogle /> Maps
+						{/snippet}
+						{@render technologyTag(mapsIcon)}
 					{/snippet}
-					{@render technologyTag(mapsIcon)}
-				{/snippet}
-				{#snippet projectImage()}
-					<p class={css({ fontSize: '9xl' })}><IconCaregiver /></p>
-				{/snippet}
-			</ProjectElement>
+				</ProjectElement>
 
-			<ProjectElement bind:ref={fifthSlideRef}>
-				{#snippet projectType()}
-					System Service
-				{/snippet}
-				{#snippet projectName()}
-					<a
-						class={css({
-							display: 'flex',
-							alignItems: 'center',
-							gap: '2',
-							_hover: { textDecoration: 'underline' }
-						})}
-						href="https://github.com/beetlepig/argon-one-v2-services"
-						target="_blank"
-					>
-						Argon ONE System Service <IconOpen />
-					</a>
-				{/snippet}
-				{#snippet projectDescription()}
-					{m.projects_argon_description_lightweight()}
-					<strong>{m.projects_argon_description_service()}</strong>
-					{m.projects_argon_description_case()}
-					<strong>{m.projects_argon_description_fan()}</strong>
-					{m.projects_argon_description_smooth()}
-					<strong>{m.projects_argon_description_temperature()}</strong>
-					{m.projects_argon_description_customize()}
-					<strong>{m.projects_argon_description_button()}</strong>
-					{m.projects_argon_description_shutdown()} <strong>systemd</strong>
-					{m.projects_argon_description_built()}
-				{/snippet}
-				{#snippet projectDisclaimer()}
-					{m.projects_argon_description_owned()}
-				{/snippet}
-				{#snippet projectTechIcons()}
-					{#snippet rustIcon()}
-						<IconRust /> Rust
+				<ProjectElement bind:ref={fifthSlideRef}>
+					{#snippet projectType()}
+						System Service
 					{/snippet}
-					{@render technologyTag(rustIcon)}
+					{#snippet projectName()}
+						<a
+							class={css({
+								display: 'flex',
+								alignItems: 'center',
+								gap: '2',
+								_hover: { textDecoration: 'underline' }
+							})}
+							href="https://github.com/beetlepig/argon-one-v2-services"
+							target="_blank"
+						>
+							Argon ONE System Service <IconOpen />
+						</a>
+					{/snippet}
+					{#snippet projectDescription()}
+						{m.projects_argon_description_lightweight()}
+						<strong>{m.projects_argon_description_service()}</strong>
+						{m.projects_argon_description_case()}
+						<strong>{m.projects_argon_description_fan()}</strong>
+						{m.projects_argon_description_smooth()}
+						<strong>{m.projects_argon_description_temperature()}</strong>
+						{m.projects_argon_description_customize()}
+						<strong>{m.projects_argon_description_button()}</strong>
+						{m.projects_argon_description_shutdown()} <strong>systemd</strong>
+						{m.projects_argon_description_built()}
+					{/snippet}
+					{#snippet projectDisclaimer()}
+						{m.projects_argon_description_owned()}
+					{/snippet}
+					{#snippet projectTechIcons()}
+						{#snippet rustIcon()}
+							<IconRust /> Rust
+						{/snippet}
+						{@render technologyTag(rustIcon)}
 
-					{#snippet linuxIcon()}
-						<IconLinux /> Linux
+						{#snippet linuxIcon()}
+							<IconLinux /> Linux
+						{/snippet}
+						{@render technologyTag(linuxIcon)}
 					{/snippet}
-					{@render technologyTag(linuxIcon)}
-				{/snippet}
-				{#snippet projectImage()}
-					<p class={css({ fontSize: '9xl' })}><IconRaspberry /></p>
-				{/snippet}
-			</ProjectElement>
-		</ul>
+				</ProjectElement>
+			</ul>
+		</div>
 		<div
 			class={css({
 				mx: 'auto',
@@ -598,38 +617,25 @@
 				justifyContent: 'end'
 			})}
 		>
-			<button
-				class={css({
-					p: '3',
-					fontSize: '2xl',
-					rounded: 'full',
-					bgColor: 'gray.200',
-					color: 'gray.600',
-					opacity: currentSlide() <= 1 ? '0.6' : '1',
-					_hover: currentSlide() <= 1 ? {} : { bgColor: 'gray.200/70', cursor: 'pointer' },
-					_active: currentSlide() <= 1 ? {} : { scale: '[0.95]', transition: 'all' }
-				})}
-				disabled={currentSlide() <= 1}
+			<Button
+				variant="default"
+				size="icon"
+				class="size-16 rounded-full"
+				disabled={minMaxCardNumbers.min ? minMaxCardNumbers.min <= 1 : false}
 				onclick={() => onClickArrowButton('back')}
 			>
-				<IconArrowBackward class={css({ pl: '2' })} />
-			</button>
-			<button
-				class={css({
-					p: '3',
-					fontSize: '2xl',
-					rounded: 'full',
-					bgColor: 'gray.200',
-					color: 'gray.600',
-					opacity: currentSlide() >= 5 ? '0.6' : '1',
-					_hover: currentSlide() >= 5 ? {} : { bgColor: 'gray.200/70', cursor: 'pointer' },
-					_active: currentSlide() >= 5 ? {} : { scale: '[0.95]', transition: 'all' }
-				})}
-				disabled={currentSlide() >= 5}
+				<ChevronLeftIcon class="size-8" />
+			</Button>
+
+			<Button
+				variant="default"
+				size="icon"
+				class="size-16 rounded-full"
+				disabled={minMaxCardNumbers.max ? minMaxCardNumbers.max >= 5 : false}
 				onclick={() => onClickArrowButton('forward')}
 			>
-				<IconArrowBackward class={css({ pl: '2', transform: 'rotate(180deg)' })} />
-			</button>
+				<ChevronRightIcon class="size-8" />
+			</Button>
 		</div>
 	</div>
 </section>

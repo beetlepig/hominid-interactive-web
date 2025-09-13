@@ -63,7 +63,7 @@
 		if (headlineContainerRef) {
 			const multiplier = smBreakPoint() ? 0.6 : 1;
 			const initialScale = 1.5 * multiplier;
-			const finalScale = 0.6 * multiplier;
+			const finalScale = 0.7 * multiplier;
 			const initialPosition = -0.75;
 			const finalPosition = -1.15;
 			const scale = mapNumRange(scrollYProgress(), 0, 0.9, initialScale, finalScale);

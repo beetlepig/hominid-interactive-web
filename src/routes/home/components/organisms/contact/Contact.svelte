@@ -1,8 +1,9 @@
 <script>
 	import { createSignal } from '$lib';
+	import { Button } from '$lib/components/ui/button';
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';
-	import { Dialog, Separator, Button } from 'bits-ui';
+	import { Dialog, Separator } from 'bits-ui';
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
 	import IconArrow from '~icons/material-symbols/arrow-forward-ios';
@@ -25,7 +26,7 @@
 
 					return () => {};
 				},
-				{ amount: 'all' }
+				{ amount: 0.5 }
 			);
 
 			return () => {
@@ -40,31 +41,17 @@
 	id={sections.contact.id}
 	class={css({ alignSelf: 'stretch', marginTop: 'auto', md: { alignSelf: 'center' } })}
 >
-	<Button.Root
-		class={css({
-			display: 'inline-flex',
-			justifyContent: 'center',
-			alignItems: 'center',
-			gap: '2',
-			bgColor: 'zinc.800',
-			color: 'white',
-			shadow: 'sm',
-			fontFamily: 'raleway',
-			fontWeight: 'semibold',
-			px: '5',
-			py: '3',
-			w: 'full',
-			md: { rounded: '3xl', w: 'fit' },
-			_hover: { bgColor: 'zinc.800/90' },
-			_active: { scale: '[0.95]', transition: 'all' }
-		})}
+	<Button
+		variant="default"
+		size="xl"
+		class="w-full font-raleway text-base font-semibold max-md:rounded-none"
 		onclick={() => {
 			setDialogVisible(true);
 		}}
 	>
 		{m.contact_button()}
 		<IconArrow />
-	</Button.Root>
+	</Button>
 	<Dialog.Root bind:open={dialogVisible, setDialogVisible}>
 		<Dialog.Portal>
 			<Dialog.Overlay
