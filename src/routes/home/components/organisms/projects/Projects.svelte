@@ -319,294 +319,292 @@
 		>
 			{m.projects_title()}
 		</h2>
-		<div
+
+		<ul
 			bind:this={projectsContainerRef}
-			class="scrollbar-hide snap-x snap-mandatory overflow-x-scroll"
+			class="scrollbar-hide grid snap-x snap-mandatory grid-flow-col gap-x-6 overflow-x-scroll px-[calc(50%-min(460px,87.5%)/2)] py-2 md:px-[calc(50%-min(1260px,87.5%)/2)]"
 		>
-			<ul
-				class="grid min-w-fit grid-flow-col gap-x-6 px-[calc(50%-min(460px,87.5%)/2)] py-2 md:px-[calc(50%-min(1260px,87.5%)/2)]"
-			>
-				<ProjectElement bind:ref={firstSlideRef}>
-					{#snippet projectType()}
-						Web Application
+			<ProjectElement bind:ref={firstSlideRef}>
+				{#snippet projectType()}
+					Web Application
+				{/snippet}
+				{#snippet projectName()}
+					Ottomoto
+				{/snippet}
+				{#snippet projectDescription()}
+					{m.projects_ottomoto_description_web()}
+					<strong>{m.projects_ottomoto_description_applications()}</strong>
+					{m.projects_ottomoto_description_designed()}
+					<strong>{m.projects_ottomoto_description_reports()}</strong>, {m.projects_ottomoto_description_valuation()},
+					<strong>{m.projects_ottomoto_description_insurance()}</strong>; {m.projects_ottomoto_description_developing()}
+					<strong>{m.projects_ottomoto_description_module()}</strong>; {m.projects_ottomoto_description_creating()}
+					<strong>{m.projects_ottomoto_description_e2e()}</strong>; {m.projects_ottomoto_description_modules()}
+					<strong>{m.projects_ottomoto_description_architecture()}</strong>.
+				{/snippet}
+				{#snippet projectDisclaimer()}
+					{m.projects_ottomoto_description_owned()}
+				{/snippet}
+				{#snippet projectTechIcons()}
+					{#snippet typescriptIcon()}
+						<IconTypescript /> TypeScript
 					{/snippet}
-					{#snippet projectName()}
-						Ottomoto
+					{@render technologyTag(typescriptIcon)}
+
+					{#snippet reactIcon()}
+						<IconReact /> React
 					{/snippet}
-					{#snippet projectDescription()}
-						{m.projects_ottomoto_description_web()}
-						<strong>{m.projects_ottomoto_description_applications()}</strong>
-						{m.projects_ottomoto_description_designed()}
-						<strong>{m.projects_ottomoto_description_reports()}</strong>, {m.projects_ottomoto_description_valuation()},
-						<strong>{m.projects_ottomoto_description_insurance()}</strong>; {m.projects_ottomoto_description_developing()}
-						<strong>{m.projects_ottomoto_description_module()}</strong>; {m.projects_ottomoto_description_creating()}
-						<strong>{m.projects_ottomoto_description_e2e()}</strong>; {m.projects_ottomoto_description_modules()}
-						<strong>{m.projects_ottomoto_description_architecture()}</strong>.
+					{@render technologyTag(reactIcon)}
+
+					{#snippet zustandIcon()}
+						<IconZustand /> Zustand
 					{/snippet}
-					{#snippet projectDisclaimer()}
-						{m.projects_ottomoto_description_owned()}
+					{@render technologyTag(zustandIcon)}
+
+					{#snippet tanStackQueryIcon()}
+						<IconTanStackQuery /> TanStack Query
 					{/snippet}
-					{#snippet projectTechIcons()}
-						{#snippet typescriptIcon()}
-							<IconTypescript /> TypeScript
-						{/snippet}
-						{@render technologyTag(typescriptIcon)}
+					{@render technologyTag(tanStackQueryIcon)}
 
-						{#snippet reactIcon()}
-							<IconReact /> React
-						{/snippet}
-						{@render technologyTag(reactIcon)}
-
-						{#snippet zustandIcon()}
-							<IconZustand /> Zustand
-						{/snippet}
-						{@render technologyTag(zustandIcon)}
-
-						{#snippet tanStackQueryIcon()}
-							<IconTanStackQuery /> TanStack Query
-						{/snippet}
-						{@render technologyTag(tanStackQueryIcon)}
-
-						{#snippet socketioIcon()}
-							<IconSocketio fill="white" /> Socket.IO
-						{/snippet}
-						{@render technologyTag(socketioIcon)}
-
-						{#snippet tailwindIcon()}
-							<IconTailwind /> Tailwind
-						{/snippet}
-						{@render technologyTag(tailwindIcon)}
-
-						{#snippet antdIcon()}
-							<IconAntd /> Ant Design
-						{/snippet}
-						{@render technologyTag(antdIcon)}
-
-						{#snippet playwrightIcon()}
-							<IconPlaywright /> Playwright
-						{/snippet}
-						{@render technologyTag(playwrightIcon)}
-
-						{#snippet jestIcon()}
-							<IconJest /> Jest
-						{/snippet}
-						{@render technologyTag(jestIcon)}
+					{#snippet socketioIcon()}
+						<IconSocketio fill="white" /> Socket.IO
 					{/snippet}
-				</ProjectElement>
+					{@render technologyTag(socketioIcon)}
 
-				<ProjectElement bind:ref={secondSlideRef}>
-					{#snippet projectType()}
-						<span>Mobile Application</span>
+					{#snippet tailwindIcon()}
+						<IconTailwind /> Tailwind
 					{/snippet}
-					{#snippet projectName()}
-						Sylndr
+					{@render technologyTag(tailwindIcon)}
+
+					{#snippet antdIcon()}
+						<IconAntd /> Ant Design
 					{/snippet}
-					{#snippet projectDescription()}
-						{m.projects_sylndr_description_buying()}
-						<strong>{m.projects_sylndr_description_auctioning()}</strong>. {m.projects_sylndr_description_features()}
-						<strong>{m.projects_sylndr_description_media()}</strong>
-						{m.projects_sylndr_description_engine()}
-						<strong>{m.projects_sylndr_description_sound()}</strong>, {m.projects_sylndr_description_bidding()},
-						<strong>{m.projects_sylndr_description_push()}</strong>,
-						<strong>{m.projects_sylndr_description_multilingual()}</strong>
-						{m.projects_sylndr_description_with()}
-						<strong>LTR/RTL</strong>
-						{m.projects_sylndr_description_integrated()}
-						<strong>{m.projects_sylndr_description_viewer()}</strong>.
+					{@render technologyTag(antdIcon)}
+
+					{#snippet playwrightIcon()}
+						<IconPlaywright /> Playwright
 					{/snippet}
-					{#snippet projectDisclaimer()}
-						{m.projects_sylndr_description_owned()}
+					{@render technologyTag(playwrightIcon)}
+
+					{#snippet jestIcon()}
+						<IconJest /> Jest
 					{/snippet}
-					{#snippet projectTechIcons()}
-						{#snippet typescriptIcon()}
-							<IconTypescript /> TypeScript
-						{/snippet}
-						{@render technologyTag(typescriptIcon)}
+					{@render technologyTag(jestIcon)}
+				{/snippet}
+			</ProjectElement>
 
-						{#snippet reactNativeIcon()}
-							<IconReact /> React Native
-						{/snippet}
-						{@render technologyTag(reactNativeIcon)}
-
-						{#snippet expoIcon()}
-							<IconExpo /> Expo
-						{/snippet}
-						{@render technologyTag(expoIcon)}
-
-						{#snippet tanStackQueryIcon()}
-							<IconTanStackQuery /> TanStack Query
-						{/snippet}
-						{@render technologyTag(tanStackQueryIcon)}
-
-						{#snippet emotionCSSIcon()}
-							<IconCSS /> Emotion CSS
-						{/snippet}
-						{@render technologyTag(emotionCSSIcon)}
-
-						{#snippet i18nextIcon()}
-							<IconI18next /> I18next
-						{/snippet}
-						{@render technologyTag(i18nextIcon)}
-
-						{#snippet oneSignalIcon()}
-							<IconOnesignal /> OneSignal
-						{/snippet}
-						{@render technologyTag(oneSignalIcon)}
+			<ProjectElement bind:ref={secondSlideRef}>
+				{#snippet projectType()}
+					<span>Mobile Application</span>
+				{/snippet}
+				{#snippet projectName()}
+					Sylndr
+				{/snippet}
+				{#snippet projectDescription()}
+					{m.projects_sylndr_description_buying()}
+					<strong>{m.projects_sylndr_description_auctioning()}</strong>. {m.projects_sylndr_description_features()}
+					<strong>{m.projects_sylndr_description_media()}</strong>
+					{m.projects_sylndr_description_engine()}
+					<strong>{m.projects_sylndr_description_sound()}</strong>, {m.projects_sylndr_description_bidding()},
+					<strong>{m.projects_sylndr_description_push()}</strong>,
+					<strong>{m.projects_sylndr_description_multilingual()}</strong>
+					{m.projects_sylndr_description_with()}
+					<strong>LTR/RTL</strong>
+					{m.projects_sylndr_description_integrated()}
+					<strong>{m.projects_sylndr_description_viewer()}</strong>.
+				{/snippet}
+				{#snippet projectDisclaimer()}
+					{m.projects_sylndr_description_owned()}
+				{/snippet}
+				{#snippet projectTechIcons()}
+					{#snippet typescriptIcon()}
+						<IconTypescript /> TypeScript
 					{/snippet}
-				</ProjectElement>
+					{@render technologyTag(typescriptIcon)}
 
-				<ProjectElement bind:ref={thirdSlideRef}>
-					{#snippet projectType()}
-						Mobile and Web Application
+					{#snippet reactNativeIcon()}
+						<IconReact /> React Native
 					{/snippet}
-					{#snippet projectName()}
-						ConnectRN
-					{/snippet}
-					{#snippet projectDescription()}
-						{m.projects_connectrn_description_connects()}
-						<strong>{m.projects_connectrn_description_shift()}</strong>,
-						<strong>{m.projects_connectrn_description_scheduling()}</strong>, {m.projects_connectrn_description_geolocation()}
-						<strong>{m.projects_connectrn_description_signatures()}</strong>. {m.projects_connectrn_description_modules()}
-						<strong>{m.projects_connectrn_description_dashboard()}</strong>.
-					{/snippet}
-					{#snippet projectDisclaimer()}
-						{m.projects_connectrn_description_owned()}
-					{/snippet}
-					{#snippet projectTechIcons()}
-						{#snippet typescriptIcon()}
-							<IconTypescript /> TypeScript
-						{/snippet}
-						{@render technologyTag(typescriptIcon)}
+					{@render technologyTag(reactNativeIcon)}
 
-						{#snippet reactIcon()}
-							<IconReact /> React
-						{/snippet}
-						{@render technologyTag(reactIcon)}
-
-						{#snippet reactNativeIcon()}
-							<IconReact /> React Native
-						{/snippet}
-						{@render technologyTag(reactNativeIcon)}
-
-						{#snippet reduxIcon()}
-							<IconRedux /> Redux
-						{/snippet}
-						{@render technologyTag(reduxIcon)}
-
-						{#snippet UIKittenIcon()}
-							<IconUIKitten /> UI Kitten
-						{/snippet}
-						{@render technologyTag(UIKittenIcon)}
-
-						{#snippet sendgridIcon()}
-							<IconSendgrid /> SendGrid
-						{/snippet}
-						{@render technologyTag(sendgridIcon)}
+					{#snippet expoIcon()}
+						<IconExpo /> Expo
 					{/snippet}
-				</ProjectElement>
+					{@render technologyTag(expoIcon)}
 
-				<ProjectElement bind:ref={fourthSlideRef}>
-					{#snippet projectType()}
-						Mobile and Web Application
+					{#snippet tanStackQueryIcon()}
+						<IconTanStackQuery /> TanStack Query
 					{/snippet}
-					{#snippet projectName()}
-						Pródigos App
-					{/snippet}
-					{#snippet projectDescription()}
-						<strong>{m.projects_prodigos_description_app()}</strong>
-						{m.projects_prodigos_description_nurses()}
-						<strong>{m.projects_prodigos_description_payment()}</strong>,
-						<strong>{m.projects_prodigos_description_scheduling()}</strong>,
-						<strong>{m.projects_prodigos_description_map()}</strong>, {m.projects_prodigos_description_dashboard()}
-					{/snippet}
-					{#snippet projectDisclaimer()}
-						{m.projects_prodigos_description_owned()}
-					{/snippet}
-					{#snippet projectTechIcons()}
-						{#snippet typescriptIcon()}
-							<IconTypescript /> TypeScript
-						{/snippet}
-						{@render technologyTag(typescriptIcon)}
+					{@render technologyTag(tanStackQueryIcon)}
 
-						{#snippet reactIcon()}
-							<IconReact /> React
-						{/snippet}
-						{@render technologyTag(reactIcon)}
-
-						{#snippet reactNativeIcon()}
-							<IconReact /> React Native
-						{/snippet}
-						{@render technologyTag(reactNativeIcon)}
-
-						{#snippet reduxIcon()}
-							<IconRedux /> Redux
-						{/snippet}
-						{@render technologyTag(reduxIcon)}
-
-						{#snippet firebaseIcon()}
-							<IconFirebase /> Firebase
-						{/snippet}
-						{@render technologyTag(firebaseIcon)}
-
-						{#snippet styledComponentsIcon()}
-							<IconStyledComponents /> Styled Components
-						{/snippet}
-						{@render technologyTag(styledComponentsIcon)}
-
-						{#snippet mapsIcon()}
-							<IconGoogle /> Maps
-						{/snippet}
-						{@render technologyTag(mapsIcon)}
+					{#snippet emotionCSSIcon()}
+						<IconCSS /> Emotion CSS
 					{/snippet}
-				</ProjectElement>
+					{@render technologyTag(emotionCSSIcon)}
 
-				<ProjectElement bind:ref={fifthSlideRef}>
-					{#snippet projectType()}
-						System Service
+					{#snippet i18nextIcon()}
+						<IconI18next /> I18next
 					{/snippet}
-					{#snippet projectName()}
-						<a
-							class={css({
-								display: 'flex',
-								alignItems: 'center',
-								gap: '2',
-								_hover: { textDecoration: 'underline' }
-							})}
-							href="https://github.com/beetlepig/argon-one-v2-services"
-							target="_blank"
-						>
-							Argon ONE System Service <IconOpen />
-						</a>
-					{/snippet}
-					{#snippet projectDescription()}
-						{m.projects_argon_description_lightweight()}
-						<strong>{m.projects_argon_description_service()}</strong>
-						{m.projects_argon_description_case()}
-						<strong>{m.projects_argon_description_fan()}</strong>
-						{m.projects_argon_description_smooth()}
-						<strong>{m.projects_argon_description_temperature()}</strong>
-						{m.projects_argon_description_customize()}
-						<strong>{m.projects_argon_description_button()}</strong>
-						{m.projects_argon_description_shutdown()} <strong>systemd</strong>
-						{m.projects_argon_description_built()}
-					{/snippet}
-					{#snippet projectDisclaimer()}
-						{m.projects_argon_description_owned()}
-					{/snippet}
-					{#snippet projectTechIcons()}
-						{#snippet rustIcon()}
-							<IconRust /> Rust
-						{/snippet}
-						{@render technologyTag(rustIcon)}
+					{@render technologyTag(i18nextIcon)}
 
-						{#snippet linuxIcon()}
-							<IconLinux /> Linux
-						{/snippet}
-						{@render technologyTag(linuxIcon)}
+					{#snippet oneSignalIcon()}
+						<IconOnesignal /> OneSignal
 					{/snippet}
-				</ProjectElement>
-			</ul>
-		</div>
+					{@render technologyTag(oneSignalIcon)}
+				{/snippet}
+			</ProjectElement>
+
+			<ProjectElement bind:ref={thirdSlideRef}>
+				{#snippet projectType()}
+					Mobile and Web Application
+				{/snippet}
+				{#snippet projectName()}
+					ConnectRN
+				{/snippet}
+				{#snippet projectDescription()}
+					{m.projects_connectrn_description_connects()}
+					<strong>{m.projects_connectrn_description_shift()}</strong>,
+					<strong>{m.projects_connectrn_description_scheduling()}</strong>, {m.projects_connectrn_description_geolocation()}
+					<strong>{m.projects_connectrn_description_signatures()}</strong>. {m.projects_connectrn_description_modules()}
+					<strong>{m.projects_connectrn_description_dashboard()}</strong>.
+				{/snippet}
+				{#snippet projectDisclaimer()}
+					{m.projects_connectrn_description_owned()}
+				{/snippet}
+				{#snippet projectTechIcons()}
+					{#snippet typescriptIcon()}
+						<IconTypescript /> TypeScript
+					{/snippet}
+					{@render technologyTag(typescriptIcon)}
+
+					{#snippet reactIcon()}
+						<IconReact /> React
+					{/snippet}
+					{@render technologyTag(reactIcon)}
+
+					{#snippet reactNativeIcon()}
+						<IconReact /> React Native
+					{/snippet}
+					{@render technologyTag(reactNativeIcon)}
+
+					{#snippet reduxIcon()}
+						<IconRedux /> Redux
+					{/snippet}
+					{@render technologyTag(reduxIcon)}
+
+					{#snippet UIKittenIcon()}
+						<IconUIKitten /> UI Kitten
+					{/snippet}
+					{@render technologyTag(UIKittenIcon)}
+
+					{#snippet sendgridIcon()}
+						<IconSendgrid /> SendGrid
+					{/snippet}
+					{@render technologyTag(sendgridIcon)}
+				{/snippet}
+			</ProjectElement>
+
+			<ProjectElement bind:ref={fourthSlideRef}>
+				{#snippet projectType()}
+					Mobile and Web Application
+				{/snippet}
+				{#snippet projectName()}
+					Pródigos App
+				{/snippet}
+				{#snippet projectDescription()}
+					<strong>{m.projects_prodigos_description_app()}</strong>
+					{m.projects_prodigos_description_nurses()}
+					<strong>{m.projects_prodigos_description_payment()}</strong>,
+					<strong>{m.projects_prodigos_description_scheduling()}</strong>,
+					<strong>{m.projects_prodigos_description_map()}</strong>, {m.projects_prodigos_description_dashboard()}
+				{/snippet}
+				{#snippet projectDisclaimer()}
+					{m.projects_prodigos_description_owned()}
+				{/snippet}
+				{#snippet projectTechIcons()}
+					{#snippet typescriptIcon()}
+						<IconTypescript /> TypeScript
+					{/snippet}
+					{@render technologyTag(typescriptIcon)}
+
+					{#snippet reactIcon()}
+						<IconReact /> React
+					{/snippet}
+					{@render technologyTag(reactIcon)}
+
+					{#snippet reactNativeIcon()}
+						<IconReact /> React Native
+					{/snippet}
+					{@render technologyTag(reactNativeIcon)}
+
+					{#snippet reduxIcon()}
+						<IconRedux /> Redux
+					{/snippet}
+					{@render technologyTag(reduxIcon)}
+
+					{#snippet firebaseIcon()}
+						<IconFirebase /> Firebase
+					{/snippet}
+					{@render technologyTag(firebaseIcon)}
+
+					{#snippet styledComponentsIcon()}
+						<IconStyledComponents /> Styled Components
+					{/snippet}
+					{@render technologyTag(styledComponentsIcon)}
+
+					{#snippet mapsIcon()}
+						<IconGoogle /> Maps
+					{/snippet}
+					{@render technologyTag(mapsIcon)}
+				{/snippet}
+			</ProjectElement>
+
+			<ProjectElement bind:ref={fifthSlideRef}>
+				{#snippet projectType()}
+					System Service
+				{/snippet}
+				{#snippet projectName()}
+					<a
+						class={css({
+							display: 'flex',
+							alignItems: 'center',
+							gap: '2',
+							_hover: { textDecoration: 'underline' }
+						})}
+						href="https://github.com/beetlepig/argon-one-v2-services"
+						target="_blank"
+					>
+						Argon ONE System Service <IconOpen />
+					</a>
+				{/snippet}
+				{#snippet projectDescription()}
+					{m.projects_argon_description_lightweight()}
+					<strong>{m.projects_argon_description_service()}</strong>
+					{m.projects_argon_description_case()}
+					<strong>{m.projects_argon_description_fan()}</strong>
+					{m.projects_argon_description_smooth()}
+					<strong>{m.projects_argon_description_temperature()}</strong>
+					{m.projects_argon_description_customize()}
+					<strong>{m.projects_argon_description_button()}</strong>
+					{m.projects_argon_description_shutdown()} <strong>systemd</strong>
+					{m.projects_argon_description_built()}
+				{/snippet}
+				{#snippet projectDisclaimer()}
+					{m.projects_argon_description_owned()}
+				{/snippet}
+				{#snippet projectTechIcons()}
+					{#snippet rustIcon()}
+						<IconRust /> Rust
+					{/snippet}
+					{@render technologyTag(rustIcon)}
+
+					{#snippet linuxIcon()}
+						<IconLinux /> Linux
+					{/snippet}
+					{@render technologyTag(linuxIcon)}
+				{/snippet}
+			</ProjectElement>
+		</ul>
+
 		<div
 			class={css({
 				mx: 'auto',
