@@ -24,10 +24,6 @@
 				lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
 				xl: 'h-12 rounded-md px-10 has-[>svg]:px-6.5',
 				icon: 'size-9'
-			},
-			state: {
-				active: '',
-				disabled: 'opacity-10 disabled:opacity-20'
 			}
 		},
 		defaultVariants: {
@@ -82,10 +78,7 @@
 	<button
 		bind:this={ref}
 		data-slot="button"
-		class={cn(
-			buttonVariants({ variant, size, state: disabled ? 'disabled' : 'active' }),
-			className
-		)}
+		class={cn(buttonVariants({ variant, size }), className)}
 		{type}
 		{disabled}
 		{...restProps}

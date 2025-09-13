@@ -615,22 +615,15 @@
 				justifyContent: 'end'
 			})}
 		>
-			<button
-				class={css({
-					p: '3',
-					fontSize: '2xl',
-					rounded: 'full',
-					bgColor: 'gray.200',
-					color: 'gray.600',
-					opacity: minMaxCardNumbers.min ? (minMaxCardNumbers.min <= 1 ? '0.6' : '1') : '1',
-					_hover: { bgColor: 'gray.200/70', cursor: 'pointer' },
-					_active: { scale: '[0.95]', transition: 'all' }
-				})}
+			<Button
+				variant="default"
+				size="icon"
+				class="size-16 rounded-full"
 				disabled={minMaxCardNumbers.min ? minMaxCardNumbers.min <= 1 : false}
 				onclick={() => onClickArrowButton('back')}
 			>
 				<ChevronLeftIcon class="size-8" />
-			</button>
+			</Button>
 
 			<Button
 				variant="default"
