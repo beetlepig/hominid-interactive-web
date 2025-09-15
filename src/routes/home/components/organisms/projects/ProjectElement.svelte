@@ -27,7 +27,7 @@
 	bind:this={ref}
 	class="w-[82vw] snap-center rounded-3xl bg-background p-8 shadow-sm md:w-xl md:p-20"
 >
-	<div class="flex h-full flex-col justify-around gap-6">
+	<div class="flex h-full flex-col justify-between gap-6">
 		<div>
 			<h5
 				class={css({

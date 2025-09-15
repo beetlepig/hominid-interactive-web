@@ -3,6 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';
+	import { getLocale } from '$lib/paraglide/runtime';
 	import { Dialog, Separator } from 'bits-ui';
 	import { inView } from 'motion';
 	import { css } from 'styled-system/css';
@@ -141,7 +142,9 @@
 					</a>
 					<a href="mailto:devpig@icloud.com" class={css({ fontWeight: 'medium' })}>Email</a>
 					<a
-						href="/assets/Carlos_Gomez_CV.pdf"
+						href={getLocale() === 'es'
+							? '/assets/Carlos_Gomez_CV_v2_1_es.pdf'
+							: '/assets/Carlos_Gomez_CV_v2_1_en.pdf'}
 						target="_blank"
 						rel="noopener noreferrer"
 						class={css({ fontWeight: 'medium' })}
