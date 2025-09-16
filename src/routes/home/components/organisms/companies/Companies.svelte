@@ -1,7 +1,6 @@
 <script>
 	/** @import { Snippet } from 'svelte' */
 	import { m } from '$lib/paraglide/messages.js';
-	import { css } from 'styled-system/css';
 
 	/** @type {{ contact: Snippet }} */
 	let { contact } = $props();
@@ -17,81 +16,26 @@
 	/** @type {string} */ alt,
 	/** @type {string} */ src
 )}
-	<div class={css({ _hover: { opacity: 0.8 } })}>
+	<div class="hover:opacity-80">
 		<a {href} target="_blank">
 			<img {alt} {src} width="70" />
 		</a>
 	</div>
 {/snippet}
 
-<section
-	class={css({
-		display: 'flex',
-		justifyContent: 'center',
-		bgColor: 'gray.50',
-		pt: '20',
-		md: { py: '10' },
-		minH: '[100dvh]'
-	})}
->
-	<div
-		class={css({
-			display: 'flex',
-			flexDir: 'column',
-			gap: '14',
-			justifyContent: 'center'
-		})}
-	>
-		<div
-			class={css({
-				flex: '1',
-				display: 'flex',
-				flexDir: 'column',
-				justifyContent: 'center',
-				px: '6',
-				spaceY: '12'
-			})}
-		>
-			<div>
-				<h3
-					class={css({
-						textAlign: 'center',
-						fontFamily: 'raleway',
-						fontWeight: 'black',
-						fontSize: '6xl',
-						md: {
-							fontSize: '8xl'
-						}
-					})}
-				>
-					<span class={css({ display: { base: 'block', md: 'none' } })}
-						>{m.collaborations_title_short()}</span
-					>
-					<span class={css({ display: { base: 'none', md: 'block' } })}
-						>{m.collaborations_title()}</span
-					>
+<section class="flex min-h-dvh justify-center bg-gray-50 pt-20 md:py-10">
+	<div class="flex flex-col justify-center gap-14">
+		<div class="flex flex-1 flex-col justify-center space-y-12 px-6">
+			<div class="space-y-4">
+				<h3 class="text-center font-raleway text-6xl font-black md:text-8xl">
+					<span class="md:hidden">{m.collaborations_title_short()}</span>
+					<span class="hidden md:block">{m.collaborations_title()}</span>
 				</h3>
-				<p
-					class={css({
-						textAlign: 'center',
-						fontSize: 'xl',
-						fontFamily: 'raleway',
-						fontWeight: 'semibold',
-						color: 'gray.500'
-					})}
-				>
+				<p class="text-center font-raleway text-xl font-semibold text-gray-500">
 					{initialDescription[0]}<br />{initialDescription[1]}
 				</p>
 			</div>
-			<div
-				class={css({
-					display: 'flex',
-					flexWrap: 'wrap',
-					justifyContent: 'center',
-					alignItems: 'center',
-					gap: '14'
-				})}
-			>
+			<div class="flex flex-wrap items-center justify-center gap-14">
 				{@render sponsorEntry(
 					'https://www.leangroup.com/solutions-and-services/technology',
 					'lean-logo',

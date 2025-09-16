@@ -1,6 +1,5 @@
 <script>
 	/** @import { Snippet } from 'svelte' */
-	import { createSignal } from '$lib';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { sections } from '$lib/constans';
 	import { m } from '$lib/paraglide/messages.js';
@@ -50,9 +49,8 @@
 	/** @type {HTMLElement | null} */
 	let fifthSlideRef = $state(null);
 
-	const [visibleCards] = /** @type {typeof createSignal<SvelteSet<number>>} */ (createSignal)(
-		new SvelteSet()
-	);
+	/** @type {SvelteSet<number>} */
+	const visibleCards = new SvelteSet();
 
 	const minMaxCardNumbers = $derived.by(() => {
 		/**
@@ -73,7 +71,7 @@
 			return min === Infinity ? { min: null, max: null } : { min, max };
 		}
 
-		return minMaxInSet(visibleCards());
+		return minMaxInSet(visibleCards);
 	});
 
 	$effect(() => {
@@ -99,10 +97,10 @@
 			const stop = inView(
 				firstSlideRef,
 				() => {
-					visibleCards().add(1);
+					visibleCards.add(1);
 
 					return () => {
-						visibleCards().delete(1);
+						visibleCards.delete(1);
 					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
@@ -119,10 +117,10 @@
 			const stop = inView(
 				secondSlideRef,
 				() => {
-					visibleCards().add(2);
+					visibleCards.add(2);
 
 					return () => {
-						visibleCards().delete(2);
+						visibleCards.delete(2);
 					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
@@ -139,10 +137,10 @@
 			const stop = inView(
 				thirdSlideRef,
 				() => {
-					visibleCards().add(3);
+					visibleCards.add(3);
 
 					return () => {
-						visibleCards().delete(3);
+						visibleCards.delete(3);
 					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
@@ -159,10 +157,10 @@
 			const stop = inView(
 				fourthSlideRef,
 				() => {
-					visibleCards().add(4);
+					visibleCards.add(4);
 
 					return () => {
-						visibleCards().delete(4);
+						visibleCards.delete(4);
 					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }
@@ -179,10 +177,10 @@
 			const stop = inView(
 				fifthSlideRef,
 				() => {
-					visibleCards().add(5);
+					visibleCards.add(5);
 
 					return () => {
-						visibleCards().delete(5);
+						visibleCards.delete(5);
 					};
 				},
 				{ root: projectsContainerRef, amount: 'all' }

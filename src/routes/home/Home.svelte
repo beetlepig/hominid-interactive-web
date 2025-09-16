@@ -9,7 +9,6 @@
 	import Introduction from './components/organisms/introduction/Introduction.svelte';
 	import Projects from './components/organisms/projects/Projects.svelte';
 	import { extend } from '@threlte/core';
-	import { css } from 'styled-system/css';
 	import {
 		PointLight,
 		PolyhedronGeometry,
@@ -34,15 +33,7 @@
 	<meta name="description" content="This is where the description goes for SEO" />
 </svelte:head>
 
-<div
-	id="main-target"
-	class={css({
-		position: 'relative',
-		h: '[100dvh]',
-		w: 'full',
-		overflow: 'auto'
-	})}
->
+<div id="main-target" class="relative h-dvh w-full overflow-auto">
 	<Headline
 		onVisible={() => {
 			setPageTitle(sections.home.name);
