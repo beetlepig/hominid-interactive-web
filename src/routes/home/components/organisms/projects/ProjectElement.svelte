@@ -1,6 +1,5 @@
 <script>
 	/** @import { Snippet } from 'svelte' */
-	import { css } from 'styled-system/css';
 
 	/**
 	 * @typedef {object} ProjectElementProps
@@ -29,31 +28,24 @@
 >
 	<div class="flex h-full flex-col justify-between gap-6">
 		<div>
-			<h5
-				class={css({
-					fontFamily: 'raleway',
-					fontSize: 'md',
-					fontWeight: 'medium',
-					color: 'gray.500'
-				})}
-			>
+			<h5 class="font-raleway text-base font-medium text-gray-500">
 				{@render projectType()}
 			</h5>
-			<h5 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
+			<h5 class="font-raleway text-3xl font-bold">
 				{@render projectName()}
 			</h5>
 		</div>
 
-		<div class={css({ spaceY: '3' })}>
-			<p class={css({ fontFamily: 'raleway', fontSize: 'lg', fontWeight: 'normal' })}>
+		<div class="space-y-3">
+			<p class="font-raleway text-lg font-normal">
 				{@render projectDescription()}
 			</p>
-			<p class={css({ fontSize: 'sm', color: 'gray.500' })}>
+			<p class="text-sm text-gray-500">
 				{@render projectDisclaimer()}
 			</p>
 		</div>
 
-		<div class={css({ spaceY: '4' })}>
+		<div class="space-y-3">
 			{@render projectTechIcons()}
 		</div>
 	</div>

@@ -7,7 +7,6 @@
 	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
 	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
 	import { inView } from 'motion';
-	import { css } from 'styled-system/css';
 	import { SvelteSet } from 'svelte/reactivity';
 	import IconUIKitten from '~icons/arcticons/landofkittens';
 	import IconCSS from '~icons/bxl/css3';
@@ -265,56 +264,16 @@
 </script>
 
 {#snippet technologyTag(/** @type {Snippet} */ icon)}
-	<div
-		class={css({
-			bgColor: 'zinc.800',
-			paddingY: '1',
-			paddingX: '4',
-			display: 'inline-block',
-			rounded: '3xl'
-		})}
-	>
-		<p
-			class={css({
-				display: 'flex',
-				alignItems: 'center',
-				gap: '1',
-				fontSize: 'md',
-				color: 'white'
-			})}
-		>
+	<div class="inline-block rounded-3xl bg-zinc-800 px-4 py-1">
+		<p class="flex items-center gap-1 text-base text-white">
 			{@render icon()}
 		</p>
 	</div>
 {/snippet}
 
-<section
-	id={sections.projects.id}
-	class={css({
-		display: 'flex',
-		flexDir: 'column',
-		justifyContent: 'center',
-		bgColor: 'gray.50',
-		py: '20',
-		minH: '[100dvh]'
-	})}
->
-	<div
-		class={css({
-			spaceY: '10'
-		})}
-	>
-		<h2
-			class={css({
-				textAlign: 'center',
-				fontFamily: 'raleway',
-				fontWeight: 'black',
-				fontSize: '6xl',
-				md: {
-					fontSize: '8xl'
-				}
-			})}
-		>
+<section id={sections.projects.id} class="flex min-h-dvh flex-col justify-center bg-gray-50 py-20">
+	<div class="space-y-10">
+		<h2 class="text-center font-raleway text-6xl font-black md:text-8xl">
 			{m.projects_title()}
 		</h2>
 
@@ -562,12 +521,7 @@
 				{/snippet}
 				{#snippet projectName()}
 					<a
-						class={css({
-							display: 'flex',
-							alignItems: 'center',
-							gap: '2',
-							_hover: { textDecoration: 'underline' }
-						})}
+						class="flex items-center gap-2 hover:underline"
 						href="https://github.com/beetlepig/argon-one-v2-services"
 						target="_blank"
 					>
@@ -603,16 +557,7 @@
 			</ProjectElement>
 		</ul>
 
-		<div
-			class={css({
-				mx: 'auto',
-				maxW: '7xl',
-				display: 'flex',
-				gap: '5',
-				px: '3',
-				justifyContent: 'end'
-			})}
-		>
+		<div class="mx-auto flex max-w-7xl justify-end gap-5 px-3">
 			<Button
 				variant="default"
 				size="icon"

@@ -6,10 +6,9 @@
 	import Canvas from '../../../../../components/atoms/Canvas.svelte';
 	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
+	import FeatureElement from './FeatureElement.svelte';
 	import { inView, scroll } from 'motion';
 	import { animate } from 'motion';
-	import { css } from 'styled-system/css';
-	import { token } from 'styled-system/tokens';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -34,7 +33,7 @@
 	 * @param {AnimationSectionEnumType} section
 	 * @returns {number}
 	 */
-	const getLightColor = (section) => {
+	export const getLightColor = (section) => {
 		switch (section) {
 			case AnimationSectionEnum.Octahedron: {
 				return 0xffffff;
@@ -94,7 +93,7 @@
 						element,
 						{
 							opacity: [0, 1],
-							x: [token('spacing.-12'), token('spacing.0')]
+							x: [-48, 0]
 						},
 						{
 							duration: 0.4
@@ -153,91 +152,28 @@
 </script>
 
 {#snippet blackSpan(/** @type {string} */ text)}
-	<span class={css({ color: 'black' })}>{text}</span>
+	<span class="text-foreground">{text}</span>
 {/snippet}
 
-<section
-	id={sections.skills.id}
-	bind:this={featuresContainerRef}
-	class={css({
-		py: '20',
-		bgColor: 'gray.50'
-	})}
->
-	<div
-		class={css({
-			mx: 'auto',
-			maxW: '7xl'
-		})}
-	>
-		<div
-			class={css({
-				mx: '16',
-				lineHeight: 'tight',
-				display: 'flex',
-				justifyContent: 'center'
-			})}
-		>
-			<div bind:this={featuresHeadlineContainerRef} class={css({ opacity: 0 })}>
-				<h2
-					class={css({
-						textAlign: 'center',
-						fontFamily: 'raleway',
-						fontWeight: 'black',
-						fontSize: '6xl',
-						md: {
-							fontSize: '8xl'
-						}
-					})}
-				>
+<section id={sections.skills.id} bind:this={featuresContainerRef} class="bg-gray-50 py-20">
+	<div class="mx-auto max-w-7xl">
+		<div class="mx-16 flex justify-center leading-24">
+			<div
+				bind:this={featuresHeadlineContainerRef}
+				class="text-center font-raleway text-6xl font-black opacity-0 md:text-8xl"
+			>
+				<h2>
 					{m.features_how()}
 				</h2>
-				<h2
-					class={css({
-						textAlign: 'center',
-						fontFamily: 'raleway',
-						fontWeight: 'black',
-						fontSize: '6xl',
-						md: {
-							fontSize: '8xl'
-						}
-					})}
-				>
+				<h2>
 					{m.features_impact()}
 				</h2>
 			</div>
 		</div>
 
-		<div
-			bind:this={featuresContentRef}
-			class={css({
-				mx: '16',
-				opacity: 0,
-				lg: {
-					display: 'flex',
-					gap: '16'
-				},
-				mdDown: { mx: '10' }
-			})}
-		>
-			<div
-				class={css({
-					display: 'flex',
-					flexDirection: 'column',
-					position: 'sticky',
-					flex: '1',
-					top: '0',
-					height: '[100dvh]',
-					hideBelow: 'lg'
-				})}
-			>
-				<div
-					class={css({
-						my: 'auto',
-						h: 'full',
-						maxHeight: '3xl'
-					})}
-				>
+		<div bind:this={featuresContentRef} class="max-md:mx:10 mx-16 opacity-0 lg:flex lg:gap-16">
+			<div class="sticky top-0 flex h-dvh flex-1 flex-col max-lg:hidden">
+				<div class="my-auto h-full max-h-[50rem]">
 					<Canvas>
 						<PolyhedronScene
 							projectName="Features"
@@ -247,17 +183,9 @@
 					</Canvas>
 				</div>
 			</div>
-			<div class={css({ flex: '1' })}>
-				<div
-					class={css({
-						height: { base: 'screen', lgDown: 'auto' },
-						display: 'flex',
-						flexDir: 'column',
-						justifyContent: 'center',
-						spaceY: '3'
-					})}
-				>
-					<div class={css({ h: '96', hideFrom: 'lg' })}>
+			<div class="flex-1">
+				<FeatureElement title={m.features_reilable_title()}>
+					{#snippet canvasElement()}
 						<Canvas>
 							<PolyhedronScene
 								projectName="ReliableFrontend"
@@ -265,18 +193,8 @@
 								lightColor={getLightColor(AnimationSectionEnum.Octahedron)}
 							/>
 						</Canvas>
-					</div>
-					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
-						{m.features_reilable_title()}
-					</h3>
-					<p
-						class={css({
-							fontSize: 'xl',
-							fontFamily: 'raleway',
-							fontWeight: 'semibold',
-							color: 'gray.500'
-						})}
-					>
+					{/snippet}
+					{#snippet content()}
 						{m.features_reilable_description_using()}
 						{@render blackSpan(m.features_reilable_description_innovative())}
 						{m.features_reilable_description_battle()}
@@ -285,18 +203,11 @@
 						{@render blackSpan(m.features_reilable_description_arch())}
 						{m.features_reilable_description_ensures()}
 						{@render blackSpan(m.features_reilable_description_future())}.
-					</p>
-				</div>
-				<div
-					class={css({
-						height: { base: 'screen', lgDown: 'auto' },
-						display: 'flex',
-						flexDir: 'column',
-						justifyContent: 'center',
-						spaceY: '3'
-					})}
-				>
-					<div class={css({ h: '96', hideFrom: 'lg' })}>
+					{/snippet}
+				</FeatureElement>
+
+				<FeatureElement title={m.features_amazing_title()}>
+					{#snippet canvasElement()}
 						<Canvas>
 							<PolyhedronScene
 								projectName="AmazingTechnologies"
@@ -304,18 +215,8 @@
 								lightColor={getLightColor(AnimationSectionEnum.Dodecahedron)}
 							/>
 						</Canvas>
-					</div>
-					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
-						{m.features_amazing_title()}
-					</h3>
-					<p
-						class={css({
-							fontSize: 'xl',
-							fontFamily: 'raleway',
-							fontWeight: 'semibold',
-							color: 'gray.500'
-						})}
-					>
+					{/snippet}
+					{#snippet content()}
 						{m.features_amazing_description_extensive()}
 						{@render blackSpan('TypeScript')}, {@render blackSpan('React')}
 						{m.features_amazing_description_and()}
@@ -323,18 +224,11 @@
 						{@render blackSpan('Svelte')}
 						{m.features_amazing_description_and()}
 						{@render blackSpan('Rust')}.
-					</p>
-				</div>
-				<div
-					class={css({
-						height: { base: 'screen', lgDown: 'auto' },
-						display: 'flex',
-						flexDir: 'column',
-						justifyContent: 'center',
-						spaceY: '3'
-					})}
-				>
-					<div class={css({ h: '96', hideFrom: 'lg' })}>
+					{/snippet}
+				</FeatureElement>
+
+				<FeatureElement title={m.features_flexible_title()}>
+					{#snippet canvasElement()}
 						<Canvas>
 							<PolyhedronScene
 								projectName="FlexibleDevelopment"
@@ -342,18 +236,8 @@
 								lightColor={getLightColor(AnimationSectionEnum.Icosahedron)}
 							/>
 						</Canvas>
-					</div>
-					<h3 class={css({ fontFamily: 'raleway', fontSize: '3xl', fontWeight: 'bold' })}>
-						{m.features_flexible_title()}
-					</h3>
-					<p
-						class={css({
-							fontSize: 'xl',
-							fontFamily: 'raleway',
-							fontWeight: 'semibold',
-							color: 'gray.500'
-						})}
-					>
+					{/snippet}
+					{#snippet content()}
 						{m.features_flexible_description_adaptable()}
 						{@render blackSpan('Scrum')},
 						{@render blackSpan('Kanban')}{m.features_flexible_description_and()}
@@ -364,8 +248,8 @@
 						{@render blackSpan(m.features_flexible_description_e2e())}
 						{m.features_flexible_description_skilled()}
 						{@render blackSpan(m.features_flexible_description_cross())}, {m.features_flexible_description_including()}
-					</p>
-				</div>
+					{/snippet}
+				</FeatureElement>
 			</div>
 		</div>
 	</div>

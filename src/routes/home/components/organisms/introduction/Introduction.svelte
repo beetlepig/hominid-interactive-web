@@ -2,7 +2,6 @@
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';
 	import { inView } from 'motion';
-	import { css } from 'styled-system/css';
 
 	/** @type {{ onVisible: () => void }} */
 	let { onVisible } = $props();
@@ -30,36 +29,17 @@
 </script>
 
 {#snippet blackSpan(/** @type {string} */ text)}
-	<span class={css({ color: 'black' })}>{text}</span>
+	<span class="text-black">{text}</span>
 {/snippet}
 
 <section
 	id={sections.aboutMe.id}
-	class={css({
-		minHeight: 'screen',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		minH: '[100dvh]',
-		py: '20',
-		bgColor: 'gray.50'
-	})}
+	class="flex min-h-dvh items-center justify-center bg-gray-50 py-20"
 >
-	<div class={css({ maxW: '7xl', spaceY: '28' })}>
+	<div class="max-w-7xl">
 		<h4
 			bind:this={introductionParagraphRef}
-			class={css({
-				textAlign: 'center',
-				fontFamily: 'raleway',
-				fontSize: '2xl',
-				px: '8',
-				fontWeight: 'bold',
-				color: 'gray.500',
-				sm: {
-					fontSize: '3xl'
-				},
-				mdDown: { px: '5' }
-			})}
+			class="px-8 text-center font-raleway text-2xl leading-11 font-bold text-gray-500 max-md:px-5 sm:text-3xl"
 		>
 			{m.introduction_im()}
 			{@render blackSpan(m.introduction_fe())}

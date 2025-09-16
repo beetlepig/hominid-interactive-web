@@ -3,10 +3,11 @@
 	import { T } from '@threlte/core';
 	import { SheetObject } from '@threlte/theatre';
 	import { resize, scroll } from 'motion';
+	import { getContext } from 'svelte';
 	import { Spring } from 'svelte/motion';
 
-	/** @type {{ headlineContainerRef: HTMLElement | null }} */
-	const { headlineContainerRef } = $props();
+	/** @type {() => HTMLElement | null } */
+	const headlineContainerRef = getContext('headlineContainerRef');
 
 	// prettier-ignore
 	const verticesOfPyramid = [
@@ -26,11 +27,11 @@
 		4, 3, 0
 	];
 
-	const animatedScale = new Spring(headlineContainerRef ? 1.4 : 1, {
+	const animatedScale = new Spring(headlineContainerRef() ? 1.4 : 1, {
 		stiffness: 0.08,
 		damping: 0.2
 	});
-	const animatedPosition = new Spring(headlineContainerRef ? -0.7 : -0.5, {
+	const animatedPosition = new Spring(headlineContainerRef() ? -0.7 : -0.5, {
 		stiffness: 0.08,
 		damping: 0.2
 	});
@@ -45,7 +46,7 @@
 		};
 		scroll(scrollCallback, {
 			container: document.getElementById('main-target') ?? undefined,
-			target: headlineContainerRef ?? undefined
+			target: headlineContainerRef() ?? undefined
 		});
 
 		$effect(() => {
@@ -60,7 +61,7 @@
 	});
 
 	$effect(() => {
-		if (headlineContainerRef) {
+		if (headlineContainerRef()) {
 			const multiplier = smBreakPoint() ? 0.6 : 1;
 			const initialScale = 1.5 * multiplier;
 			const finalScale = 0.7 * multiplier;

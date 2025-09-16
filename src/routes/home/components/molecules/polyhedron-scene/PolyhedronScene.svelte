@@ -19,18 +19,12 @@
 	/**
 	 * @typedef {object} PolyhedronSceneProps
 	 * @property {AnimationSectionEnumType} targetAnimationSection
-	 * @property {HTMLElement | null} [headlineContainerRef]
 	 * @property {"Headline" | "Features" | "ReliableFrontend" | "AmazingTechnologies" | "FlexibleDevelopment"} projectName
 	 * @property {number} [lightColor]
 	 */
 
 	/** @type {PolyhedronSceneProps} */
-	const {
-		targetAnimationSection,
-		headlineContainerRef = null,
-		projectName,
-		lightColor = 0xffffff
-	} = $props();
+	const { targetAnimationSection, projectName, lightColor = 0xffffff } = $props();
 
 	/** @type {Spring<Vector3Tuple>} */
 	const cursorPosition = new Spring([0, 0, 0]);
@@ -84,7 +78,7 @@
 		/>
 
 		{#if projectName === 'Headline'}
-			<Pyramid {headlineContainerRef} />
+			<Pyramid />
 		{:else if projectName === 'Features'}
 			<Octahedron />
 			<Dodecahedron />

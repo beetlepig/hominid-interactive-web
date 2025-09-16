@@ -6,7 +6,7 @@
 	import PolyhedronScene from '../../molecules/polyhedron-scene/PolyhedronScene.svelte';
 	import { AnimationSectionEnum } from '../../molecules/polyhedron-scene/PolyhedronSequence.svelte';
 	import { inView, scroll } from 'motion';
-	import { css } from 'styled-system/css';
+	import { setContext } from 'svelte';
 	import { Tween } from 'svelte/motion';
 
 	/** @type {{ onVisible: () => void }} */
@@ -14,6 +14,8 @@
 
 	/** @type {HTMLElement | null} */
 	let headlineContainerRef = $state(null);
+
+	setContext('headlineContainerRef', () => headlineContainerRef);
 
 	/** @type {HTMLElement | null} */
 	let headlineHeadingRef = $state(null);
@@ -67,26 +69,11 @@
 	});
 </script>
 
-<section
-	id={sections.home.id}
-	bind:this={headlineContainerRef}
-	class={css({ height: '[250dvh]', bgColor: 'gray.50' })}
->
-	<div
-		class={css({
-			position: 'sticky',
-			display: 'flex',
-			top: '0',
-			flexDir: 'column',
-			justifyContent: 'center',
-			alignItems: 'center',
-			height: '[100vh]'
-		})}
-	>
-		<div class={css({ pos: 'absolute', inset: '0' })}>
+<section id={sections.home.id} bind:this={headlineContainerRef} class="h-[250dvh] bg-gray-50">
+	<div class="sticky top-0 flex h-dvh flex-col items-center justify-center">
+		<div class="absolute inset-0">
 			<Canvas>
 				<PolyhedronScene
-					{headlineContainerRef}
 					projectName="Headline"
 					targetAnimationSection={AnimationSectionEnum.Pyramid}
 				/>
@@ -95,39 +82,16 @@
 		<h1
 			bind:this={headlineHeadingRef}
 			style="opacity: {animatedOpacity.current}; transform: translateY({animatedPosition.current}px)"
-			class={css({
-				position: 'absolute',
-				pointerEvents: 'none',
-				textAlign: 'center',
-				fontFamily: 'raleway',
-				fontWeight: 'black',
-				fontSize: '7xl',
-				lineHeight: 'tight',
-				md: {
-					fontSize: '8xl'
-				}
-			})}
+			class="pointer-events-none absolute text-center font-raleway text-7xl leading-24 font-black md:text-8xl"
 		>
 			CARLOS <br /> GOMEZ
 		</h1>
 		<h2
 			style="opacity: {animatedNameOpacity.current}; transform: translateY({animatedNamePosition.current}px)"
-			class={css({
-				position: 'absolute',
-				pointerEvents: 'none',
-				textAlign: 'left',
-				fontFamily: 'oswald',
-				lineHeight: 'tight',
-				fontSize: 'lg'
-			})}
+			class="pointer-events-none absolute text-left font-oswald text-lg leading-5"
 		>
 			{m.headline_developer()} <br />
-			<span
-				class={css({
-					fontSize: '6xl',
-					fontWeight: 'medium'
-				})}>{m.headline_portfolio()}</span
-			>
+			<span class="text-6xl font-medium">{m.headline_portfolio()}</span>
 		</h2>
 	</div>
 </section>

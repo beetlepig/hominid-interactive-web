@@ -18,10 +18,5 @@ export default defineConfig({
 			outdir: './src/lib/paraglide',
 			strategy: ['url', 'localStorage', 'preferredLanguage', 'baseLocale']
 		})
-	],
-	server: {
-		fs: {
-			allow: ['styled-system']
-		}
-	}
+	]
 });
