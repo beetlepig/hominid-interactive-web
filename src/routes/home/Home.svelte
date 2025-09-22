@@ -1,13 +1,13 @@
 <script>
 	import { replaceState } from '$app/navigation';
-	import { createSignal } from '$lib';
 	import { sections } from '$lib/constans/index.js';
-	import Companies from './components/organisms/companies/Companies.svelte';
-	import Contact from './components/organisms/contact/Contact.svelte';
-	import Features from './components/organisms/features/Features.svelte';
-	import Headline from './components/organisms/headline/Headline.svelte';
-	import Introduction from './components/organisms/introduction/Introduction.svelte';
-	import Projects from './components/organisms/projects/Projects.svelte';
+	import { createSignal } from '$lib/utils';
+	import Companies from './components/ui/organisms/companies/Companies.svelte';
+	import Contact from './components/ui/organisms/contact/Contact.svelte';
+	import Features from './components/ui/organisms/features/Features.svelte';
+	import Headline from './components/ui/organisms/headline/Headline.svelte';
+	import Introduction from './components/ui/organisms/introduction/Introduction.svelte';
+	import Projects from './components/ui/organisms/projects/Projects.svelte';
 	import { extend } from '@threlte/core';
 	import {
 		PointLight,

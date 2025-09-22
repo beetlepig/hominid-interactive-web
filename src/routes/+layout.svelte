@@ -1,7 +1,7 @@
 <script>
+	import { Menu } from '$components/ui/organisms/menu';
 	import favicon from '$lib/assets/favicon.png';
 	import '../app.css';
-	import Menu from '../components/organisms/Menu.svelte';
 	import '@fontsource-variable/oswald';
 	import '@fontsource-variable/raleway';
 

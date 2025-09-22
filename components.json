@@ -5,9 +5,9 @@
 		"baseColor": "slate"
 	},
 	"aliases": {
-		"components": "$lib/components",
-		"utils": "$lib/utils",
-		"ui": "$lib/components/ui",
+		"components": "$components",
+		"utils": "$lib/utils/shadcn",
+		"ui": "$components/ui",
 		"hooks": "$lib/hooks",
 		"lib": "$lib"
 	},
