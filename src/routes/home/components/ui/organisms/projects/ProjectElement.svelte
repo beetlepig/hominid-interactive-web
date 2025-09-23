@@ -3,12 +3,15 @@
 
 	/**
 	 * @typedef {object} ProjectElementProps
-	 * @property {HTMLElement | null} [ref]
-	 * @property {Snippet} projectType
-	 * @property {Snippet} projectName
-	 * @property {Snippet} projectDescription
-	 * @property {Snippet} projectDisclaimer
-	 * @property {Snippet} projectTechIcons
+	 * @property {HTMLElement | null} [ref] - Optional reference to the root list item element.
+	 * @property {Snippet} projectType - Snippet that renders the project type label (e.g., Web, App).
+	 * @property {Snippet} projectName - Snippet that renders the name/title of the project.
+	 * @property {Snippet} projectDescription - Snippet that renders the main description text of the
+	 *   project.
+	 * @property {Snippet} projectDisclaimer - Snippet that renders a short disclaimer or note beneath
+	 *   the description.
+	 * @property {Snippet} projectTechIcons - Snippet that renders a list/group of technology icons
+	 *   used in the project.
 	 */
 
 	/** @type {ProjectElementProps} */

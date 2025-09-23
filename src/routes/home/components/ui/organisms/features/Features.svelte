@@ -30,8 +30,10 @@
 	const [scrollYProgress, setScrollYProgress] = createSignal(0);
 
 	/**
-	 * @param {AnimationSectionEnumType} section
-	 * @returns {number}
+	 * Get a light color (hex) for a given animation section.
+	 *
+	 * @param {AnimationSectionEnumType} section - The active animation section.
+	 * @returns {number} - Hex color to apply to the interactive light.
 	 */
 	export const getLightColor = (section) => {
 		switch (section) {

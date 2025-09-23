@@ -13,8 +13,10 @@
 		/** @type {typeof createSignal<'always' | 'on-demand' | 'manual'>} */ (createSignal)('manual');
 
 	/**
-	 * @param {HTMLCanvasElement} canvas
-	 * @returns {WebGPURenderer}
+	 * Create a Three.js WebGPU renderer bound to the provided canvas.
+	 *
+	 * @param {HTMLCanvasElement} canvas - The HTML canvas element to render into.
+	 * @returns {WebGPURenderer} - A configured WebGPURenderer instance.
 	 */
 	const createRenderer = (canvas) => {
 		return new WebGPURenderer({

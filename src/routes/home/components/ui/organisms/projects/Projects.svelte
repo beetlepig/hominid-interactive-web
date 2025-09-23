@@ -55,7 +55,9 @@
 		/**
 		 * Get the minimum and maximum values in a set.
 		 *
-		 * @param {SvelteSet<number>} set
+		 * @param {SvelteSet<number>} set - Set of numbers to analyze.
+		 * @returns {{ min: number | null; max: number | null }} - The min and max values, or nulls if
+		 *   empty.
 		 */
 		function minMaxInSet(set) {
 			if (set.size === 0) return { min: null, max: null };

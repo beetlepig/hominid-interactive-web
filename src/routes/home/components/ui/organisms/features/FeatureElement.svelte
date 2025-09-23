@@ -3,9 +3,9 @@
 
 	/**
 	 * @typedef {object} FeatureElementProps
-	 * @property {Snippet} canvasElement
-	 * @property {string} title
-	 * @property {Snippet} content
+	 * @property {Snippet} canvasElement - Snippet that renders the feature's canvas/visual element.
+	 * @property {string} title - The heading text displayed for the feature.
+	 * @property {Snippet} content - Snippet that renders the descriptive text for the feature.
 	 */
 
 	/** @type {FeatureElementProps} */

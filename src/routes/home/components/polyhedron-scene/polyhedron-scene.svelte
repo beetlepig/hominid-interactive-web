@@ -18,13 +18,16 @@
 
 	/**
 	 * @typedef {object} PolyhedronSceneProps
-	 * @property {AnimationSectionEnumType} targetAnimationSection
+	 * @property {AnimationSectionEnumType} targetAnimationSection - The animation section to drive
+	 *   the sequence state.
 	 * @property {'Headline'
 	 * 	| 'Features'
 	 * 	| 'ReliableFrontend'
 	 * 	| 'AmazingTechnologies'
 	 * 	| 'FlexibleDevelopment'} projectName
-	 * @property {number} [lightColor]
+	 *   - Which scene configuration to render.
+	 *
+	 * @property {number} [lightColor] - Hex color for the interactive point light.
 	 */
 
 	/** @type {PolyhedronSceneProps} */

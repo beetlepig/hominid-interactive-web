@@ -6,18 +6,20 @@
 
 	/**
 	 * @typedef {object} Language
-	 * @property {string} code
-	 * @property {string} label
+	 * @property {string} code - The unique locale code (e.g., "en", "de").
+	 * @property {string} label - The human-readable language name shown in the UI.
 	 */
 
 	/**
 	 * @typedef {object} LanguageSwitcherProps
-	 * @property {Language[]} languages
-	 * @property {string} [value]
-	 * @property {'start' | 'center' | 'end'} [align]
-	 * @property {'outline' | 'ghost'} [variant]
-	 * @property {(code: string) => void} [onChange]
-	 * @property {string} [class]
+	 * @property {Language[]} languages - The list of available languages to pick from.
+	 * @property {string} [value] - The currently selected language code.
+	 * @property {'start' | 'center' | 'end'} [align] - How the dropdown menu aligns relative to the
+	 *   trigger.
+	 * @property {'outline' | 'ghost'} [variant] - Button style variant used for the trigger.
+	 * @property {(code: string) => void} [onChange] - Callback invoked when a different language is
+	 *   selected.
+	 * @property {string} [class] - Additional CSS classes for the trigger button.
 	 */
 
 	/** @type {LanguageSwitcherProps} */

@@ -26,8 +26,10 @@ import { twMerge } from 'tailwind-merge';
  */
 
 /**
- * @param {...ClassValue} inputs
- * @returns {string}
+ * Merge class names with Tailwind merge strategy.
+ *
+ * @param {...ClassValue} inputs - One or more class values to combine.
+ * @returns {string} - The merged class name string.
  */
 function cn(...inputs) {
 	return twMerge(clsx(inputs));

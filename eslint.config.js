@@ -19,6 +19,10 @@ export default [
 	{
 		languageOptions: {
 			globals: { ...globals.browser, ...globals.node }
+		},
+		rules: {
+			// Disable tag-lines to avoid conflicts with Prettier formatting
+			'jsdoc/tag-lines': 'off'
 		}
 	},
 	{
