@@ -1,5 +1,5 @@
 <script>
-	/** @import { Snippet } from 'svelte' */
+	/** @import {Snippet} from 'svelte' */
 
 	/**
 	 * @typedef {object} ProjectElementProps

@@ -2,6 +2,7 @@ import svelteConfig from './svelte.config.js';
 import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
+import jsdoc from 'eslint-plugin-jsdoc';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
 import { fileURLToPath } from 'node:url';
@@ -12,6 +13,7 @@ export default [
 	includeIgnoreFile(gitignorePath),
 	js.configs.recommended,
 	...svelte.configs.recommended,
+	jsdoc.configs['flat/recommended-typescript-flavor'],
 	prettier,
 	...svelte.configs.prettier,
 	{
