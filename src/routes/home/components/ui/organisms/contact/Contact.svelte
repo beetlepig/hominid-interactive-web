@@ -85,6 +85,7 @@
 					GitHub
 				</a>
 				<a href="mailto:devpig@icloud.com" class="font-medium">Email</a>
+				<!-- eslint-disable svelte/no-navigation-without-resolve -->
 				<a
 					href={getLocale() === 'es'
 						? '/assets/Carlos_Gomez_CV_v2_1_es.pdf'
@@ -95,6 +96,7 @@
 				>
 					{m.contact_modal_cv()}
 				</a>
+				<!-- eslint-enable svelte/no-navigation-without-resolve -->
 			</div>
 		</DialogContent>
 	</Dialog>

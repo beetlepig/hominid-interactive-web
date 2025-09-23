@@ -1,17 +1,18 @@
 <script>
 	/** @import {Locale} from '$lib/paraglide/runtime' */
-	import { page } from '$app/stores';
-	import { LanguageSwitcher } from '$components/ui/molecules/language-switcher/index.js';
-	import { sections } from '$lib/constans/index.js';
+	import { page } from '$app/state';
+	import { LanguageSwitcher } from '$components/ui/molecules/language-switcher';
+	import { sections } from '$lib/constans';
 	import {
 		getLocale,
 		setLocale,
 		locales as availableLocales,
 		isLocale
-	} from '$lib/paraglide/runtime.js';
+	} from '$lib/paraglide/runtime';
 	import { createSignal } from '$lib/utils';
 	import { cn } from '$lib/utils';
-	import Logo from '../../atoms/logo/logo.svelte';
+	import { Logo } from '../../atoms/logo';
+	import { activeNavigationHashState } from './state.svelte.js';
 	import MenuIcon from '@lucide/svelte/icons/menu';
 	import CloseIcon from '@lucide/svelte/icons/x';
 	import { fade } from 'svelte/transition';
@@ -32,12 +33,16 @@
 
 	const isScrolled = $derived(currentSection() !== sections.home.href);
 	let currentLang = $derived(getLocale());
+	const [navigationHash] = activeNavigationHashState;
 
 	$effect(() => {
-		const stateHash = /** @type {{ hash: string | undefined }} */ ($page.state);
+		const pageStateHash = /** @type {{ hash: string | undefined }} */ (page.state).hash;
+		const navigationStateHash = navigationHash();
 
-		if (stateHash.hash) {
-			setCurrentSection(stateHash.hash);
+		if (navigationStateHash) {
+			setCurrentSection(navigationStateHash);
+		} else if (pageStateHash) {
+			setCurrentSection(pageStateHash);
 		}
 	});
 </script>
