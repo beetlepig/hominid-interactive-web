@@ -1,5 +1,6 @@
 <script>
 	/** @import {Snippet} from 'svelte' */
+	import * as HoverCard from '$components/ui/molecules/hover-card';
 	import { m } from '$lib/paraglide/messages.js';
 
 	/** @type {{ contact: Snippet }} */
@@ -36,18 +37,73 @@
 				</p>
 			</div>
 			<div class="flex flex-wrap items-center justify-center gap-14">
-				{@render sponsorEntry(
-					'https://www.leangroup.com/solutions-and-services/technology',
-					'lean-logo',
-					'/icons/lean-icon.svg'
-				)}
-				{@render sponsorEntry('https://ottomoto.net', 'ottomoto-logo', '/icons/ottomoto-icon.svg')}
-				{@render sponsorEntry(
-					'https://www.venturit.com',
-					'venturit-logo',
-					'/icons/venturit-icon.svg'
-				)}
-				{@render sponsorEntry('https://www.connectrn.com', 'connectrn-logo', '/icons/crn-icon.svg')}
+				<HoverCard.Root>
+					<HoverCard.Trigger>
+						{@render sponsorEntry(
+							'https://www.leangroup.com/solutions-and-services/technology',
+							'lean-logo',
+							'/icons/lean-icon.svg'
+						)}
+					</HoverCard.Trigger>
+					<HoverCard.Content>
+						<p class="font-raleway text-lg font-bold">Lean Tech</p>
+						<p class="font-raleway text-base text-foreground">
+							A company that provides nearshore and offshore software development staffing to help
+							businesses build efficient teams with bilingual talent from Latin America.
+						</p>
+					</HoverCard.Content>
+				</HoverCard.Root>
+
+				<HoverCard.Root>
+					<HoverCard.Trigger>
+						{@render sponsorEntry(
+							'https://ottomoto.net',
+							'ottomoto-logo',
+							'/icons/ottomoto-icon.svg'
+						)}
+					</HoverCard.Trigger>
+					<HoverCard.Content>
+						<p class="font-raleway text-lg font-bold">Ottomoto</p>
+						<p class="font-raleway text-base text-foreground">
+							A platform that helps car, RV, boat, and aircraft dealers make financing easier by
+							connecting sellers, lenders, and buyers in one place.
+						</p>
+					</HoverCard.Content>
+				</HoverCard.Root>
+
+				<HoverCard.Root>
+					<HoverCard.Trigger>
+						{@render sponsorEntry(
+							'https://www.venturit.com',
+							'venturit-logo',
+							'/icons/venturit-icon.svg'
+						)}
+					</HoverCard.Trigger>
+					<HoverCard.Content>
+						<p class="font-raleway text-lg font-bold">Venturit</p>
+						<p class="font-raleway text-base text-foreground">
+							A software company serving healthcare, finance, and education that drives innovation
+							with AI, blockchain, IoT, and full-stack solutions.
+						</p>
+					</HoverCard.Content>
+				</HoverCard.Root>
+
+				<HoverCard.Root>
+					<HoverCard.Trigger>
+						{@render sponsorEntry(
+							'https://www.connectrn.com',
+							'connectrn-logo',
+							'/icons/crn-icon.svg'
+						)}
+					</HoverCard.Trigger>
+					<HoverCard.Content>
+						<p class="font-raleway text-lg font-bold">Connectrn</p>
+						<p class="font-raleway text-base text-foreground">
+							A company in the healthcare industry that provides technology solutions for managing
+							health staff and nurses.
+						</p>
+					</HoverCard.Content>
+				</HoverCard.Root>
 			</div>
 		</div>
 		{@render contact()}

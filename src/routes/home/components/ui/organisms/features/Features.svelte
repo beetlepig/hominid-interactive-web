@@ -1,5 +1,6 @@
 <script>
 	/** @import {AnimationSectionEnumType} from '../../../polyhedron-scene/polyhedron-scene-sequence.svelte' */
+	/** @import {AnimationPlaybackControlsWithThen} from 'motion' */
 	import { Canvas } from '$components/canvas/index.js';
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';
@@ -88,10 +89,12 @@
 
 	$effect(() => {
 		if (featuresHeadlineContainerRef) {
+			/** @type {AnimationPlaybackControlsWithThen} */
+			let animation;
 			const stop = inView(
 				featuresHeadlineContainerRef,
 				(element) => {
-					animate(
+					animation = animate(
 						element,
 						{
 							opacity: [0, 1],
@@ -106,17 +109,20 @@
 			);
 
 			return () => {
+				animation.stop();
 				stop();
 			};
 		}
 	});
 
 	$effect(() => {
+		/** @type {AnimationPlaybackControlsWithThen} */
+		let animation;
 		if (featuresContentRef) {
 			const stop = inView(
 				featuresContentRef,
 				(element) => {
-					animate(
+					animation = animate(
 						element,
 						{
 							opacity: [0, 1]
@@ -130,6 +136,7 @@
 			);
 
 			return () => {
+				animation.stop();
 				stop();
 			};
 		}
