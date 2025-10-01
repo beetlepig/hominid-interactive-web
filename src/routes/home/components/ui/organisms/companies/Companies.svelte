@@ -1,6 +1,10 @@
 <script>
 	/** @import {Snippet} from 'svelte' */
-	import * as HoverCard from '$components/ui/molecules/hover-card';
+	import {
+		HoverCard,
+		HoverCardTrigger,
+		HoverCardContent
+	} from '$components/ui/molecules/hover-card';
 	import { m } from '$lib/paraglide/messages.js';
 
 	/** @type {{ contact: Snippet }} */
@@ -12,15 +16,9 @@
 	];
 </script>
 
-{#snippet sponsorEntry(
-	/** @type {string} */ href,
-	/** @type {string} */ alt,
-	/** @type {string} */ src
-)}
+{#snippet sponsorEntry(/** @type {string} */ alt, /** @type {string} */ src)}
 	<div class="hover:opacity-80">
-		<a {href} target="_blank">
-			<img {alt} {src} width="70" />
-		</a>
+		<img {alt} {src} width="70" />
 	</div>
 {/snippet}
 
@@ -37,73 +35,69 @@
 				</p>
 			</div>
 			<div class="flex flex-wrap items-center justify-center gap-14">
-				<HoverCard.Root>
-					<HoverCard.Trigger>
-						{@render sponsorEntry(
-							'https://www.leangroup.com/solutions-and-services/technology',
-							'lean-logo',
-							'/icons/lean-icon.svg'
-						)}
-					</HoverCard.Trigger>
-					<HoverCard.Content>
+				<HoverCard>
+					<HoverCardTrigger
+						href="https://www.leangroup.com/solutions-and-services/technology"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						{@render sponsorEntry('lean-logo', '/icons/lean-icon.svg')}
+					</HoverCardTrigger>
+					<HoverCardContent>
 						<p class="font-raleway text-lg font-bold">Lean Tech</p>
 						<p class="font-raleway text-base text-foreground">
 							A company that provides nearshore and offshore software development staffing to help
 							businesses build efficient teams with bilingual talent from Latin America.
 						</p>
-					</HoverCard.Content>
-				</HoverCard.Root>
+					</HoverCardContent>
+				</HoverCard>
 
-				<HoverCard.Root>
-					<HoverCard.Trigger>
-						{@render sponsorEntry(
-							'https://ottomoto.net',
-							'ottomoto-logo',
-							'/icons/ottomoto-icon.svg'
-						)}
-					</HoverCard.Trigger>
-					<HoverCard.Content>
+				<HoverCard>
+					<HoverCardTrigger href="https://ottomoto.net" target="_blank" rel="noreferrer noopener">
+						{@render sponsorEntry('ottomoto-logo', '/icons/ottomoto-icon.svg')}
+					</HoverCardTrigger>
+					<HoverCardContent>
 						<p class="font-raleway text-lg font-bold">Ottomoto</p>
 						<p class="font-raleway text-base text-foreground">
 							A platform that helps car, RV, boat, and aircraft dealers make financing easier by
 							connecting sellers, lenders, and buyers in one place.
 						</p>
-					</HoverCard.Content>
-				</HoverCard.Root>
+					</HoverCardContent>
+				</HoverCard>
 
-				<HoverCard.Root>
-					<HoverCard.Trigger>
-						{@render sponsorEntry(
-							'https://www.venturit.com',
-							'venturit-logo',
-							'/icons/venturit-icon.svg'
-						)}
-					</HoverCard.Trigger>
-					<HoverCard.Content>
+				<HoverCard>
+					<HoverCardTrigger
+						href="https://www.venturit.com"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						{@render sponsorEntry('venturit-logo', '/icons/venturit-icon.svg')}
+					</HoverCardTrigger>
+					<HoverCardContent>
 						<p class="font-raleway text-lg font-bold">Venturit</p>
 						<p class="font-raleway text-base text-foreground">
 							A software company serving healthcare, finance, and education that drives innovation
 							with AI, blockchain, IoT, and full-stack solutions.
 						</p>
-					</HoverCard.Content>
-				</HoverCard.Root>
+					</HoverCardContent>
+				</HoverCard>
 
-				<HoverCard.Root>
-					<HoverCard.Trigger>
-						{@render sponsorEntry(
-							'https://www.connectrn.com',
-							'connectrn-logo',
-							'/icons/crn-icon.svg'
-						)}
-					</HoverCard.Trigger>
-					<HoverCard.Content>
+				<HoverCard>
+					<HoverCardTrigger
+						href="https://www.connectrn.com"
+						target="_blank"
+						rel="noreferrer noopener"
+					>
+						{@render sponsorEntry('connectrn-logo', '/icons/crn-icon.svg')}
+					</HoverCardTrigger>
+					<HoverCardContent>
 						<p class="font-raleway text-lg font-bold">Connectrn</p>
 						<p class="font-raleway text-base text-foreground">
 							A company in the healthcare industry that provides technology solutions for managing
 							health staff and nurses.
 						</p>
-					</HoverCard.Content>
-				</HoverCard.Root>
+					</HoverCardContent>
+				</HoverCard>
 			</div>
 		</div>
 		{@render contact()}

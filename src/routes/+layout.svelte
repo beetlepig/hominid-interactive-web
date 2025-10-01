@@ -1,6 +1,6 @@
 <script>
 	import { Menu } from '$components/ui/organisms/menu';
-	import favicon from '$lib/assets/favicon.png';
+	import faviconSVG from '$lib/assets/favicon.svg';
 	import '../app.css';
 	import '@fontsource-variable/oswald';
 	import '@fontsource-variable/raleway';
@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href={faviconSVG} type="image/svg+xml" />
 </svelte:head>
 
 <Menu />
