@@ -8,22 +8,6 @@
 	import Headline from './components/ui/organisms/headline/Headline.svelte';
 	import Introduction from './components/ui/organisms/introduction/Introduction.svelte';
 	import Projects from './components/ui/organisms/projects/Projects.svelte';
-	import { extend } from '@threlte/core';
-	import {
-		PointLight,
-		PolyhedronGeometry,
-		MeshStandardMaterial,
-		PerspectiveCamera,
-		PlaneGeometry
-	} from 'three/webgpu';
-
-	extend({
-		PointLight,
-		PolyhedronGeometry,
-		MeshStandardMaterial,
-		PerspectiveCamera,
-		PlaneGeometry
-	});
 
 	const [pageTitle, setPageTitle] = createSignal('Home');
 	const [, setNavigationHash] = activeNavigationHashState;

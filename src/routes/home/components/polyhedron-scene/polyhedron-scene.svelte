@@ -1,8 +1,7 @@
 <script>
-	/** @import {Vector3Tuple} from 'three/webgpu' */
+	/** @import {Vector3Tuple} from 'three' */
 	/** @import {IntersectionEvent} from '@threlte/extras' */
 	/** @import {AnimationSectionEnumType} from './polyhedron-scene-sequence.svelte' */
-	import { dev, building } from '$app/environment';
 	import Dodecahedron from '../ui/atoms/dodecahedron/Dodecahedron.svelte';
 	import Icosahedron from '../ui/atoms/icosahedron/Icosahedron.svelte';
 	import Octahedron from '../ui/atoms/octahedron/Octahedron.svelte';
@@ -11,7 +10,7 @@
 	import PolyhedronSceneSequence from './polyhedron-scene-sequence.svelte';
 	import { T } from '@threlte/core';
 	import { interactivity } from '@threlte/extras';
-	import { Project, Sheet, SheetObject, Studio } from '@threlte/theatre';
+	import { Project, Sheet, SheetObject } from '@threlte/theatre';
 	import { Spring } from 'svelte/motion';
 
 	interactivity();
@@ -40,10 +39,6 @@
 		cursorPosition.target = event.point.toArray();
 	};
 </script>
-
-{#if dev && !building}
-	<Studio enabled={true} />
-{/if}
 
 <Project name="Hominid" config={{ state: projectState }}>
 	<Sheet name={projectName}>

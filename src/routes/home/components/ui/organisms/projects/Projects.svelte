@@ -356,7 +356,13 @@
 					<span>Mobile Application</span>
 				{/snippet}
 				{#snippet projectName()}
-					Sylndr
+					<a
+						class="flex items-center gap-2 hover:underline"
+						href="https://apps.apple.com/us/app/sylndr/id6472655250"
+						target="_blank"
+					>
+						Sylndr <IconOpen />
+					</a>
 				{/snippet}
 				{#snippet projectDescription()}
 					{m.projects_sylndr_description_buying()}
@@ -417,7 +423,13 @@
 					Mobile and Web Application
 				{/snippet}
 				{#snippet projectName()}
-					ConnectRN
+					<a
+						class="flex items-center gap-2 hover:underline"
+						href="https://apps.apple.com/us/app/connectrn/id989863718"
+						target="_blank"
+					>
+						ConnectRN <IconOpen />
+					</a>
 				{/snippet}
 				{#snippet projectDescription()}
 					{m.projects_connectrn_description_connects()}

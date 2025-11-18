@@ -28,10 +28,10 @@
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"@tailwindcss/vite": "^4.0.0",
-		"@theatre/studio": "^0.7.2",
+		"@threlte/studio": "^0.2.0",
 		"@trivago/prettier-plugin-sort-imports": "^5.2.2",
 		"@types/node": "^22",
-		"@types/three": "^0.180.0",
+		"@types/three": "^0.181.0",
 		"clsx": "^2.1.1",
 		"eslint": "^9.22.0",
 		"eslint-config-prettier": "^10.0.1",
@@ -50,19 +50,19 @@
 		"tw-animate-css": "^1.3.8",
 		"typescript": "^5.0.0",
 		"unplugin-icons": "^22.3.0",
-		"vite": "^7.0.4",
+		"vite": "^7.F.4",
 		"vite-plugin-devtools-json": "^1.0.0"
 	},
 	"dependencies": {
 		"@fontsource-variable/oswald": "^5.2.6",
 		"@fontsource-variable/raleway": "^5.2.6",
 		"@theatre/core": "^0.7.2",
-		"@threlte/core": "^8.1.5",
-		"@threlte/extras": "^9.5.4",
-		"@threlte/theatre": "^3.0.7",
+		"@threlte/core": "^8.3.0",
+		"@threlte/extras": "^9.7.0",
+		"@threlte/theatre": "^3.1.0",
 		"bits-ui": "^2.11.0",
 		"motion": "^12.23.18",
-		"three": "^0.180.0"
+		"three": "^0.181.1"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
