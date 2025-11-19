@@ -230,9 +230,10 @@
 						{@render blackSpan('TypeScript')}, {@render blackSpan('React')}
 						{m.features_amazing_description_and()}
 						{@render blackSpan('React Native')}, {m.features_amazing_description_complemented()}
+						{@render blackSpan('Next.js')},
 						{@render blackSpan('Svelte')}
 						{m.features_amazing_description_and()}
-						{@render blackSpan('Rust')}.
+						{@render blackSpan('Go')}.
 					{/snippet}
 				</FeatureElement>
 
