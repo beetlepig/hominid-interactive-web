@@ -1,38 +1,14 @@
-# sv
+# Hominid Interactive Portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+![Hominid Interactive Portfolio — Screenshot](static/assets/screenshot.png)
 
-## Creating a project
+This is my frontend developer portfolio built with [**SvelteKit**](https://svelte.dev/), **Threlte (Three.js)**, and **Motion**. The project serves as an exploration of the new Svelte 5 signal system, as well as SvelteKit’s server-side rendering optimizations such as **SSR** and **prerendering**. Threlte adds a clean, Svelte-friendly abstraction layer over Three.js, making it easier to work with 3D rendering and interactions in an idiomatic way.
 
-If you're seeing this, you've probably already done this step. Congrats!
+-   Smooth CSS animations powered by **[Motion](https://motion.dev/)**
 
-```bash
-# create a new project in the current directory
-npx sv create
+-   3D rendering and lighting interactions using **[Threlte](https://threlte.xyz/)**
 
-# create a new project in my-app
-npx sv create my-app
-```
+-   Internationalization handled with **[Paraglide](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)**
 
-## Developing
+-   Styling with **[Tailwind CSS](https://tailwindcss.com/)** and UI components from **[shadcn-svelte](https://www.shadcn-svelte.com/)**
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
