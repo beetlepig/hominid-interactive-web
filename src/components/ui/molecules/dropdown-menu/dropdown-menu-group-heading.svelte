@@ -1,5 +1,5 @@
 <script>
-	/** @import {ComponentProps} from 'svelte' */
+	/** @import {ComponentProps} from "svelte" */
 	import { cn } from '$lib/utils';
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 

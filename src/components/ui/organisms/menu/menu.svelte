@@ -1,5 +1,5 @@
 <script>
-	/** @import {Locale} from '$lib/paraglide/runtime' */
+	/** @import {Locale} from "$lib/paraglide/runtime" */
 	import { page } from '$app/state';
 	import { LanguageSwitcher } from '$components/ui/molecules/language-switcher';
 	import { sections } from '$lib/constans';
@@ -47,6 +47,7 @@
 	});
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
 {#snippet anchor(/** @type {string} */ href, /** @type {string} */ name)}
 	<li>
 		<a
@@ -73,10 +74,11 @@
 		>
 	</li>
 {/snippet}
+<!-- eslint-enable svelte/no-navigation-without-resolve -->
 
 <nav
 	class={cn(
-		'fixed z-10 w-full px-8 transition-all duration-200 md:duration-400',
+		'fixed z-1 w-full px-8 transition-all duration-200 md:duration-400',
 		isScrolled ? 'py-3' : 'py-8',
 		showMenu() ? 'bg-background' : isScrolled ? 'md:bg-gray-50/60' : 'transparent',
 		isScrolled ? 'backdrop-blur-md' : 'backdrop-blur-none',

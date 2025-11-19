@@ -1,6 +1,6 @@
 <script>
-	/** @import {HTMLAttributes} from 'svelte/elements' */
-	/** @import {WithElementRef} from '$lib/utils' */
+	/** @import {HTMLAttributes} from "svelte/elements" */
+	/** @import {WithElementRef} from "$lib/utils" */
 	import { cn } from '$lib/utils';
 
 	/** @type {WithElementRef<HTMLAttributes<HTMLDivElement>>} */

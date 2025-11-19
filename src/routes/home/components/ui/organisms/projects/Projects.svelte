@@ -1,5 +1,5 @@
 <script>
-	/** @import {Snippet} from 'svelte' */
+	/** @import {Snippet} from "svelte" */
 	import { Button } from '$components/ui/atoms/button/index.js';
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';

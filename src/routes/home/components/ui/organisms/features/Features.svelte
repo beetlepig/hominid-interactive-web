@@ -1,6 +1,6 @@
 <script>
-	/** @import {AnimationSectionEnumType} from '../../../polyhedron-scene/polyhedron-scene-sequence.svelte' */
-	/** @import {AnimationPlaybackControlsWithThen} from 'motion' */
+	/** @import {AnimationSectionEnumType} from "../../../polyhedron-scene/polyhedron-scene-sequence.svelte" */
+	/** @import {AnimationPlaybackControlsWithThen} from "motion" */
 	import { Canvas } from '$components/canvas/index.js';
 	import { sections } from '$lib/constans/index.js';
 	import { m } from '$lib/paraglide/messages.js';

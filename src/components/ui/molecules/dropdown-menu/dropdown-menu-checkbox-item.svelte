@@ -1,6 +1,6 @@
 <script>
-	/** @import {Snippet} from 'svelte' */
-	/** @import {WithoutChildrenOrChild} from '$lib/utils' */
+	/** @import {Snippet} from "svelte" */
+	/** @import {WithoutChildrenOrChild} from "$lib/utils" */
 	import { cn } from '$lib/utils';
 	import CheckIcon from '@lucide/svelte/icons/check';
 	import MinusIcon from '@lucide/svelte/icons/minus';

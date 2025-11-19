@@ -1,5 +1,5 @@
 <script>
-	/** @import {WithoutChild} from '$lib/utils' */
+	/** @import {WithoutChild} from "$lib/utils" */
 	import { cn } from '$lib/utils';
 	import CircleIcon from '@lucide/svelte/icons/circle';
 	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';

@@ -1,5 +1,4 @@
 <script>
-	import { dev, building } from '$app/environment';
 	import { createSignal } from '$lib/utils';
 	import { Canvas } from '@threlte/core';
 	import { inView } from 'motion';
@@ -37,14 +36,6 @@
 
 <div bind:this={canvasContainerRef} class="contents">
 	<Canvas renderMode={canvasRenderMode()}>
-		{#if dev && !building}
-			{#await import('@threlte/studio') then { Studio }}
-				<Studio>
-					{@render children?.()}
-				</Studio>
-			{/await}
-		{:else}
-			{@render children?.()}
-		{/if}
+		{@render children?.()}
 	</Canvas>
 </div>

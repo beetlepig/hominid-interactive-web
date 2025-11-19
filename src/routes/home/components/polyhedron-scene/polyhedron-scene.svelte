@@ -1,7 +1,7 @@
 <script>
-	/** @import {Vector3Tuple} from 'three' */
-	/** @import {IntersectionEvent} from '@threlte/extras' */
-	/** @import {AnimationSectionEnumType} from './polyhedron-scene-sequence.svelte' */
+	/** @import {Vector3Tuple} from "three" */
+	/** @import {IntersectionEvent} from "@threlte/extras" */
+	/** @import {AnimationSectionEnumType} from "./polyhedron-scene-sequence.svelte" */
 	import Dodecahedron from '../ui/atoms/dodecahedron/Dodecahedron.svelte';
 	import Icosahedron from '../ui/atoms/icosahedron/Icosahedron.svelte';
 	import Octahedron from '../ui/atoms/octahedron/Octahedron.svelte';

@@ -1,6 +1,6 @@
 <script>
-	/** @import {WithoutChildrenOrChild} from '$lib/utils' */
-	/** @import {Snippet} from 'svelte' */
+	/** @import {WithoutChildrenOrChild} from "$lib/utils" */
+	/** @import {Snippet} from "svelte" */
 	import { cn } from '$lib/utils';
 	import * as Dialog from './index.js';
 	import XIcon from '@lucide/svelte/icons/x';
