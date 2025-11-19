@@ -45,8 +45,6 @@
 	let thirdSlideRef = $state(null);
 	/** @type {HTMLElement | null} */
 	let fourthSlideRef = $state(null);
-	/** @type {HTMLElement | null} */
-	let fifthSlideRef = $state(null);
 
 	/** @type {SvelteSet<number>} */
 	const visibleCards = new SvelteSet();
@@ -174,26 +172,6 @@
 		}
 	});
 
-	$effect(() => {
-		if (fifthSlideRef && projectsContainerRef) {
-			const stop = inView(
-				fifthSlideRef,
-				() => {
-					visibleCards.add(5);
-
-					return () => {
-						visibleCards.delete(5);
-					};
-				},
-				{ root: projectsContainerRef, amount: 'all' }
-			);
-
-			return () => {
-				stop();
-			};
-		}
-	});
-
 	/** @param {'back' | 'forward'} type - Scrollable container */
 	function onClickArrowButton(type) {
 		if (
@@ -201,8 +179,7 @@
 			firstSlideRef &&
 			secondSlideRef &&
 			thirdSlideRef &&
-			fourthSlideRef &&
-			fifthSlideRef
+			fourthSlideRef
 		) {
 			/**
 			 * Scroll parent so child is visible.
@@ -251,10 +228,6 @@
 				}
 				case 4: {
 					scrollParentToChild(projectsContainerRef, fourthSlideRef);
-					break;
-				}
-				case 5: {
-					scrollParentToChild(projectsContainerRef, fifthSlideRef);
 					break;
 				}
 				default: {
@@ -546,7 +519,7 @@
 				variant="default"
 				size="icon"
 				class="size-16 rounded-full"
-				disabled={minMaxCardNumbers.max ? minMaxCardNumbers.max >= 5 : false}
+				disabled={minMaxCardNumbers.max ? minMaxCardNumbers.max >= 4 : false}
 				onclick={() => onClickArrowButton('forward')}
 				title={m.button_next_project()}
 			>
