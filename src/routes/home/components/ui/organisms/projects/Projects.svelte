@@ -528,47 +528,6 @@
 					{@render technologyTag(mapsIcon)}
 				{/snippet}
 			</ProjectElement>
-
-			<ProjectElement bind:ref={fifthSlideRef}>
-				{#snippet projectType()}
-					System Service
-				{/snippet}
-				{#snippet projectName()}
-					<a
-						class="flex items-center gap-2 hover:underline"
-						href="https://github.com/beetlepig/argon-one-v2-services"
-						target="_blank"
-					>
-						Argon ONE System Service <IconOpen />
-					</a>
-				{/snippet}
-				{#snippet projectDescription()}
-					{m.projects_argon_description_lightweight()}
-					<strong>{m.projects_argon_description_service()}</strong>
-					{m.projects_argon_description_case()}
-					<strong>{m.projects_argon_description_fan()}</strong>
-					{m.projects_argon_description_smooth()}
-					<strong>{m.projects_argon_description_temperature()}</strong>
-					{m.projects_argon_description_customize()}
-					<strong>{m.projects_argon_description_button()}</strong>
-					{m.projects_argon_description_shutdown()} <strong>systemd</strong>
-					{m.projects_argon_description_built()}
-				{/snippet}
-				{#snippet projectDisclaimer()}
-					{m.projects_argon_description_owned()}
-				{/snippet}
-				{#snippet projectTechIcons()}
-					{#snippet rustIcon()}
-						<IconRust /> Rust
-					{/snippet}
-					{@render technologyTag(rustIcon)}
-
-					{#snippet linuxIcon()}
-						<IconLinux /> Linux
-					{/snippet}
-					{@render technologyTag(linuxIcon)}
-				{/snippet}
-			</ProjectElement>
 		</ul>
 
 		<div class="mx-auto flex max-w-7xl justify-end gap-5 px-3">
