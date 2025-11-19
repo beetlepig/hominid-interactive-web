@@ -104,5 +104,7 @@
 	"contact_modal_header": "Redes y contacto",
 	"contact_modal_description": "Descubre más de mi trabajo o ponte en contacto conmigo por estos medios.",
 	"contact_modal_cv": "Descargar CV",
-	"contact_modal_close": "Cerrar"
+	"contact_modal_close": "Cerrar",
+    "button_previous_project": "Anterior proyecto",
+    "button_next_project": "SIguiente proyecto"
 }

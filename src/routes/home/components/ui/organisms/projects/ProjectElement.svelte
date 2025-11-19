@@ -31,12 +31,12 @@
 >
 	<div class="flex h-full flex-col justify-between gap-6">
 		<div>
-			<h5 class="font-raleway text-base font-medium text-gray-500">
-				{@render projectType()}
-			</h5>
-			<h5 class="font-raleway text-3xl font-bold">
+			<h3 class="font-raleway text-3xl font-bold">
 				{@render projectName()}
-			</h5>
+			</h3>
+			<h4 class="font-raleway text-base font-medium text-gray-500">
+				{@render projectType()}
+			</h4>
 		</div>
 
 		<div class="space-y-3">

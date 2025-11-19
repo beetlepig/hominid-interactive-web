@@ -104,5 +104,7 @@
 	"contact_modal_header": "Contact Links",
 	"contact_modal_description": "You can explore more of my work or reach out to me through the following channels.",
 	"contact_modal_cv": "Download CV",
-	"contact_modal_close": "Close"
+	"contact_modal_close": "Close",
+    "button_previous_project": "Previous project",
+    "button_next_project": "Next project"
 }

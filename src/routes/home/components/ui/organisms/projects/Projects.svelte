@@ -578,8 +578,9 @@
 				class="size-16 rounded-full"
 				disabled={minMaxCardNumbers.min ? minMaxCardNumbers.min <= 1 : false}
 				onclick={() => onClickArrowButton('back')}
+				title={m.button_previous_project()}
 			>
-				<ChevronLeftIcon class="size-8" />
+				<ChevronLeftIcon aria-hidden="true" role="presentation" class="size-8" />
 			</Button>
 
 			<Button
@@ -588,8 +589,9 @@
 				class="size-16 rounded-full"
 				disabled={minMaxCardNumbers.max ? minMaxCardNumbers.max >= 5 : false}
 				onclick={() => onClickArrowButton('forward')}
+				title={m.button_next_project()}
 			>
-				<ChevronRightIcon class="size-8" />
+				<ChevronRightIcon aria-hidden="true" role="presentation" class="size-8" />
 			</Button>
 		</div>
 	</div>

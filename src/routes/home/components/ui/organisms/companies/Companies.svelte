@@ -18,7 +18,7 @@
 
 {#snippet sponsorEntry(/** @type {string} */ alt, /** @type {string} */ src)}
 	<div class="hover:opacity-80">
-		<img {alt} {src} width="70" />
+		<img {alt} {src} width="70" height="70" />
 	</div>
 {/snippet}
 
