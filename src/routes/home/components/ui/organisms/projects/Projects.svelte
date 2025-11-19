@@ -212,7 +212,7 @@
 						: 1
 					: minMaxCardNumbers.max
 						? minMaxCardNumbers.max + 1
-						: 5
+						: 4
 			) {
 				case 1: {
 					scrollParentToChild(projectsContainerRef, firstSlideRef);
