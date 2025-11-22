@@ -46,7 +46,7 @@
 						onHide(projectIndex);
 					};
 				},
-				{ root: rcr, amount: 'all' }
+				{ root: rcr, amount: 0.99 }
 			);
 
 			return () => {
@@ -56,8 +56,11 @@
 	});
 </script>
 
-<li class="w-[82vw] snap-center rounded-3xl bg-background p-8 shadow-sm md:w-xl md:p-20">
-	<div bind:this={projectsRef} class="flex h-full flex-col justify-between gap-6">
+<li
+	bind:this={projectsRef}
+	class="w-[82vw] snap-center rounded-3xl bg-background p-8 shadow-sm md:w-xl md:p-20"
+>
+	<div class="flex h-full flex-col justify-between gap-6">
 		<div>
 			<h3 class="font-raleway text-3xl font-bold">
 				{@render projectName()}
