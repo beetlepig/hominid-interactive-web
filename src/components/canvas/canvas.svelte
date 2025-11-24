@@ -1,9 +1,17 @@
 <script>
+	/** @import {Snippet} from "svelte" */
 	import { createSignal } from '$lib/utils';
 	import { Canvas } from '@threlte/core';
 	import { inView } from 'motion';
 
-	const { children } = $props();
+	/**
+	 * @typedef {object} CanvasProps
+	 * @property {string} [data-testid] - Canvas testid.
+	 * @property {Snippet} [children] - Children slot snippet.
+	 */
+
+	/** @type {CanvasProps} */
+	const { children, 'data-testid': testid } = $props();
 
 	/** @type {HTMLDivElement | null} */
 	let canvasContainerRef = $state(null);
@@ -34,7 +42,7 @@
 	});
 </script>
 
-<div bind:this={canvasContainerRef} class="contents">
+<div bind:this={canvasContainerRef} class="contents" data-testid={testid}>
 	<Canvas renderMode={canvasRenderMode()}>
 		{@render children?.()}
 	</Canvas>

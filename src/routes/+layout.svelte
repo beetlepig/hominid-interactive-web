@@ -20,6 +20,8 @@
 	{/each}
 </div>
 
-<Menu />
+<header>
+	<Menu />
+</header>
 
 {@render children?.()}

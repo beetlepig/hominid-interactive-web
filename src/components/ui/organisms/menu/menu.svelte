@@ -84,9 +84,10 @@
 		isScrolled ? 'backdrop-blur-md' : 'backdrop-blur-none',
 		menuHeight() ? 'h-full md:h-auto' : 'h-auto'
 	)}
+	data-testid="nav-menu"
 >
 	<div class="mx-auto flex max-w-7xl items-center justify-between">
-		<a href="#home" title="Home">
+		<a href="#home" title="Home Icon">
 			<Logo size={4} />
 		</a>
 

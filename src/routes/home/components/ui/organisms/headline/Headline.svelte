@@ -97,7 +97,7 @@
 <section id={sections.home.id} bind:this={headlineContainerRef} class="h-[250dvh] bg-gray-50">
 	<div class="sticky top-0 flex h-dvh flex-col items-center justify-center">
 		<div class="absolute inset-0">
-			<Canvas>
+			<Canvas data-testid="canvas-container-headline">
 				<PolyhedronScene
 					projectName="Headline"
 					targetAnimationSection={AnimationSectionEnum.Pyramid}

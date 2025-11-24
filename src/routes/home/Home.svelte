@@ -33,7 +33,7 @@
 	/>
 </svelte:head>
 
-<div id="main-target" class="relative h-dvh w-full overflow-auto">
+<main id="main-target" class="relative h-dvh w-full overflow-auto">
 	<Headline
 		onVisible={() => {
 			setActiveSection(sections.home.name, sections.home.href);
@@ -63,4 +63,4 @@
 			/>
 		{/snippet}
 	</Companies>
-</div>
+</main>
