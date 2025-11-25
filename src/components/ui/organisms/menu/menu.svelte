@@ -93,7 +93,6 @@
 
 		<menu class="hidden items-center justify-between space-x-6 md:flex">
 			{@render anchor(sections.home.href, sections.home.name)}
-			{@render anchor(sections.aboutMe.href, sections.aboutMe.name)}
 			{@render anchor(sections.skills.href, sections.skills.name)}
 			{@render anchor(sections.projects.href, sections.projects.name)}
 			{@render anchor(sections.contact.href, sections.contact.name)}
