@@ -91,7 +91,7 @@
 			<Logo size={4} />
 		</a>
 
-		<menu class="hidden items-center justify-between space-x-6 md:flex">
+		<menu class=" hidden items-center justify-between space-x-6 md:flex">
 			{@render anchor(sections.home.href, sections.home.name)}
 			{@render anchor(sections.aboutMe.href, sections.aboutMe.name)}
 			{@render anchor(sections.skills.href, sections.skills.name)}
