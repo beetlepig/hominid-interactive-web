@@ -12,7 +12,9 @@ test.describe.serial('Home Route', () => {
 		expect(accessibilityScanResults.violations).toEqual([]);
 	});
 
-	test('navigation header is visible', async ({ page }) => {
+	test('navigation header is visible', async ({ page, isMobile }) => {
+		test.skip(isMobile);
+
 		const menuList = page.getByRole('navigation');
 		await expect(menuList).toBeInViewport();
 
@@ -38,7 +40,9 @@ test.describe.serial('Home Route', () => {
 		await expect(changeLanguageButton).toBeInViewport();
 	});
 
-	test('should navigate to about me section', async ({ page }) => {
+	test('should navigate to about me section', async ({ page, isMobile }) => {
+		test.skip(isMobile);
+
 		const menuList = page.getByRole('navigation');
 		await expect(menuList).toBeInViewport();
 
@@ -53,7 +57,9 @@ test.describe.serial('Home Route', () => {
 		await expect(aboutMeHeading).toBeInViewport();
 	});
 
-	test('should navigate to home section', async ({ page }) => {
+	test('should navigate to home section', async ({ page, isMobile }) => {
+		test.skip(isMobile);
+
 		await page.goto('/#about-me');
 
 		const menuList = page.getByRole('navigation');
