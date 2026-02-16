@@ -11,10 +11,15 @@
 	 *   the description.
 	 * @property {Snippet} projectTechIcons - Snippet that renders a list/group of technology icons used
 	 *   in the project.
-	 * @property {number} projectIndex
-	 * @property {HTMLElement | null} rootContainerRef
-	 * @property {(projectIndex: number) => void} onVisible
-	 * @property {(projectIndex: number) => void} onHide
+	 * @property {number} projectIndex - Index of this project within the projects list (used when
+	 *   reporting visibility changes).
+	 * @property {HTMLElement | null} rootContainerRef - Scroll container used as the
+	 *   IntersectionObserver root for `inView` (i.e., the element whose scrolling controls
+	 *   visibility).
+	 * @property {(projectIndex: number) => void} onVisible - Callback fired when this project becomes
+	 *   visible within the root container.
+	 * @property {(projectIndex: number) => void} onHide - Callback fired when this project stops being
+	 *   visible within the root container.
 	 */
 	import { inView } from 'motion';
 

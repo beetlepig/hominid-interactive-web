@@ -18,13 +18,5 @@ export default defineConfig({
 			outdir: './src/lib/paraglide',
 			strategy: ['url', 'localStorage', 'preferredLanguage', 'baseLocale']
 		})
-	],
-	build: {
-		target: 'esnext'
-	},
-	optimizeDeps: {
-		esbuildOptions: {
-			target: 'esnext'
-		}
-	}
+	]
 });

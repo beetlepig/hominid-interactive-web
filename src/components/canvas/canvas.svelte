@@ -26,12 +26,11 @@
 
 	/**
 	 * @typedef {object} CanvasProps
-	 * @property {string} [data-testid] - Canvas testid.
 	 * @property {Snippet} [children] - Children slot snippet.
 	 */
 
 	/** @type {CanvasProps} */
-	const { children, 'data-testid': testid } = $props();
+	const { children } = $props();
 
 	/** @type {HTMLDivElement | null} */
 	let canvasContainerRef = $state(null);
@@ -92,11 +91,7 @@
 	});
 </script>
 
-<div
-	bind:this={canvasContainerRef}
-	class={cn(isRendererReady ? 'contents' : 'hidden')}
-	data-testid={testid}
->
+<div bind:this={canvasContainerRef} class={cn(isRendererReady ? 'contents' : 'hidden')}>
 	<Canvas renderMode={canvasRenderMode()} {createRenderer}>
 		{@render children?.()}
 	</Canvas>

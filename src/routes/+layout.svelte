@@ -15,8 +15,10 @@
 </svelte:head>
 
 <div style="display:none">
-	{#each locales as locale}
+	{#each locales as locale (locale)}
+		<!-- eslint-disable svelte/no-navigation-without-resolve -->
 		<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
+		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 	{/each}
 </div>
 
