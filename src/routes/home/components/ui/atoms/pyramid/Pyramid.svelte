@@ -81,7 +81,7 @@
 		<Transform>
 			<T.Mesh position.y={animatedPosition.current} scale={animatedScale.current}>
 				<T.PolyhedronGeometry args={[verticesOfPyramid, indicesOfFaces, 1, 0]} />
-				<T.MeshStandardMaterial />
+				<T.MeshStandardNodeMaterial />
 			</T.Mesh>
 		</Transform>
 	{/snippet}

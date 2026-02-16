@@ -1,8 +1,27 @@
 <script>
 	/** @import {Snippet} from "svelte" */
-	import { createSignal } from '$lib/utils';
-	import { Canvas } from '@threlte/core';
+	import {
+		WebGPURenderer,
+		MeshStandardNodeMaterial,
+		Mesh,
+		PolyhedronGeometry,
+		PointLight,
+		PerspectiveCamera,
+		PlaneGeometry
+	} from 'three/webgpu';
+	import { Canvas, extend } from '@threlte/core';
 	import { inView } from 'motion';
+
+	import { createSignal } from '$lib/utils';
+
+	extend({
+		MeshStandardNodeMaterial,
+		Mesh,
+		PolyhedronGeometry,
+		PointLight,
+		PerspectiveCamera,
+		PlaneGeometry
+	});
 
 	/**
 	 * @typedef {object} CanvasProps
@@ -15,9 +34,29 @@
 
 	/** @type {HTMLDivElement | null} */
 	let canvasContainerRef = $state(null);
+	let isRendererReady = $state(false);
+	let isInView = $state(false);
 
 	const [canvasRenderMode, setCanvasRenderMode] =
 		/** @type {typeof createSignal<'always' | 'on-demand' | 'manual'>} */ (createSignal)('manual');
+
+	/** @param {{ canvas: HTMLCanvasElement }} ctx */
+	const createRenderer = ({ canvas }) => {
+		const renderer = new WebGPURenderer({ canvas, antialias: true, forceWebGL: false });
+
+		renderer.init().then(() => {
+			isRendererReady = true;
+			console.log('Renderer backend:', navigator.gpu ? 'WebGPU' : 'WebGL (fallback)');
+		});
+
+		return renderer;
+	};
+
+	$effect(() => {
+		if (isRendererReady && isInView) {
+			setCanvasRenderMode('on-demand');
+		}
+	});
 
 	$effect(() => {
 		const canvasParentElement = canvasContainerRef?.parentElement;
@@ -26,9 +65,14 @@
 			const stop = inView(
 				canvasParentElement,
 				() => {
-					setCanvasRenderMode('on-demand');
+					isInView = true;
+
+					if (isRendererReady) {
+						setCanvasRenderMode('on-demand');
+					}
 
 					return () => {
+						isInView = false;
 						setCanvasRenderMode('manual');
 					};
 				},
@@ -43,7 +87,7 @@
 </script>
 
 <div bind:this={canvasContainerRef} class="contents" data-testid={testid}>
-	<Canvas renderMode={canvasRenderMode()}>
+	<Canvas renderMode={canvasRenderMode()} {createRenderer}>
 		{@render children?.()}
 	</Canvas>
 </div>
