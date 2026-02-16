@@ -14,10 +14,8 @@
 	import IconReact from '~icons/bxl/react';
 	import IconRedux from '~icons/bxl/redux';
 	import IconTailwind from '~icons/bxl/tailwind-css';
-	import IconLinux from '~icons/cib/linux';
 	import IconJest from '~icons/devicon-plain/jest';
 	import IconPlaywright from '~icons/devicon-plain/playwright';
-	import IconRust from '~icons/devicon-plain/rust';
 	import IconStyledComponents from '~icons/devicon-plain/styledcomponents';
 	import IconTypescript from '~icons/devicon-plain/typescript';
 	import IconZustand from '~icons/devicon-plain/zustand';
@@ -471,7 +469,7 @@
 			bind:this={projectsContainerRef}
 			class="scrollbar-hide grid snap-x snap-mandatory grid-flow-col gap-x-6 overflow-x-scroll px-[calc(50%-min(460px,87.5%)/2)] py-2 md:px-[calc(50%-min(1260px,87.5%)/2)]"
 		>
-			{#each projectsArray as project, i}
+			{#each projectsArray as project, i (i)}
 				{@render project(i, projectsRefs, projectsContainerRef, onProjectVisible, onProjectHidden)}
 			{/each}
 		</ul>

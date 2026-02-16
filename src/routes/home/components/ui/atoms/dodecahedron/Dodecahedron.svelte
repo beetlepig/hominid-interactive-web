@@ -48,7 +48,7 @@
 		<Transform>
 			<T.Mesh>
 				<T.PolyhedronGeometry args={[verticesOfDodecahedron, indicesOfFaces, 1, 0]} />
-				<T.MeshStandardMaterial />
+				<T.MeshStandardNodeMaterial />
 			</T.Mesh>
 		</Transform>
 	{/snippet}

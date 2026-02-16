@@ -24,7 +24,7 @@
 		<Transform>
 			<T.Mesh>
 				<T.PolyhedronGeometry args={[verticesOfIcosahedron, indicesOfFaces, 1, 0]} />
-				<T.MeshStandardMaterial />
+				<T.MeshStandardNodeMaterial />
 			</T.Mesh>
 		</Transform>
 	{/snippet}

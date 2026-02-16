@@ -20,7 +20,7 @@
 		<Transform>
 			<T.Mesh>
 				<T.PolyhedronGeometry args={[verticesOfOctahedron, indicesOfFaces, 1, 0]} />
-				<T.MeshStandardMaterial />
+				<T.MeshStandardNodeMaterial />
 			</T.Mesh>
 		</Transform>
 	{/snippet}
