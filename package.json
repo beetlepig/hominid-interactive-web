@@ -13,7 +13,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-        "test:e2e:ui": "playwright test --ui",
+		"test:e2e:ui": "playwright test --ui",
 		"test:e2e": "playwright test",
 		"test": "pnpm test:e2e"
 	},
@@ -71,9 +71,5 @@
 			"@tailwindcss/oxide",
 			"esbuild"
 		]
-	},
-	"volta": {
-		"node": "22.19.0",
-		"pnpm": "10.17.1"
 	}
 }

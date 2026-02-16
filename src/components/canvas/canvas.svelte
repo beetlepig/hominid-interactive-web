@@ -1,9 +1,28 @@
 <script>
 	/** @import {Snippet} from "svelte" */
+	/** @import {WebGPURenderer as WebGPURendererType} from "three/webgpu" */
+	/** @import {WebGLRenderer as WebGLRendererType} from "three" */
+	import { cn, createSignal } from '$lib/utils';
 	import { Canvas, extend } from '@threlte/core';
 	import { inView } from 'motion';
+	import {
+		WebGPURenderer,
+		MeshStandardNodeMaterial,
+		Mesh,
+		PolyhedronGeometry,
+		PointLight,
+		PerspectiveCamera,
+		PlaneGeometry
+	} from 'three/webgpu';
 
-	import { createSignal } from '$lib/utils';
+	extend({
+		MeshStandardNodeMaterial,
+		Mesh,
+		PolyhedronGeometry,
+		PointLight,
+		PerspectiveCamera,
+		PlaneGeometry
+	});
 
 	/**
 	 * @typedef {object} CanvasProps
@@ -18,68 +37,36 @@
 	let canvasContainerRef = $state(null);
 	let isRendererReady = $state(false);
 	let isInView = $state(false);
-	let isWebGPUModuleLoaded = $state(false);
-
-	/** @type {((ctx: { canvas: HTMLCanvasElement }) => import('three').WebGLRenderer) | undefined} */
-	let createRenderer = $state(undefined);
 
 	const [canvasRenderMode, setCanvasRenderMode] =
 		/** @type {typeof createSignal<'always' | 'on-demand' | 'manual'>} */ (createSignal)('manual');
 
-	// Dynamic import of three/webgpu to keep bundle under 50KB gzipped budget.
-	// The TSL node system pulled in by 'three/webgpu' is deferred until the canvas mounts.
-	async function loadWebGPUModules() {
-		const {
-			WebGPURenderer,
-			MeshStandardNodeMaterial,
-			Mesh,
-			PolyhedronGeometry,
-			PointLight,
-			PerspectiveCamera,
-			PlaneGeometry
-		} = await import('three/webgpu');
+	/**
+	 * @type {((canvas: HTMLCanvasElement) => WebGPURendererType | WebGLRendererType)
+	 * 	| undefined}
+	 */
+	const createRenderer = (canvas) => {
+		const renderer = new WebGPURenderer({ canvas, antialias: true, forceWebGL: false });
 
-		extend({
-			MeshStandardNodeMaterial,
-			Mesh,
-			PolyhedronGeometry,
-			PointLight,
-			PerspectiveCamera,
-			PlaneGeometry
-		});
+		renderer
+			.init()
+			.then(() => {
+				isRendererReady = true;
+				console.log(
+					'Renderer backend:',
+					'isWebGPUBackend' in renderer.backend ? 'WebGPU' : 'WebGL'
+				);
+			})
+			.catch((err) => {
+				console.error('WebGPU init failed, falling back:', err);
+				isRendererReady = true;
+			});
 
-		/** @param {{ canvas: HTMLCanvasElement }} ctx */
-		createRenderer = ({ canvas }) => {
-			const renderer = new WebGPURenderer({ canvas, antialias: true, forceWebGL: false });
-
-			renderer
-				.init()
-				.then(() => {
-					isRendererReady = true;
-					const isWebGPU = renderer.backend?.isWebGPUBackend === true;
-					console.log('Renderer backend:', isWebGPU ? 'WebGPU' : 'WebGL (fallback)');
-				})
-				.catch((err) => {
-					console.error('WebGPU init failed, falling back:', err);
-					isRendererReady = true;
-				});
-
-			return renderer;
-		};
-
-		isWebGPUModuleLoaded = true;
-	}
+		return renderer;
+	};
 
 	$effect(() => {
-		if (canvasContainerRef && !isWebGPUModuleLoaded) {
-			loadWebGPUModules();
-		}
-	});
-
-	$effect(() => {
-		if (isRendererReady) {
-			setCanvasRenderMode(isInView ? 'on-demand' : 'manual');
-		}
+		setCanvasRenderMode(isInView && isRendererReady ? 'on-demand' : 'manual');
 	});
 
 	$effect(() => {
@@ -107,13 +94,10 @@
 
 <div
 	bind:this={canvasContainerRef}
-	class="contents"
-	style:visibility={isRendererReady ? 'visible' : 'hidden'}
+	class={cn(isRendererReady ? 'contents' : 'hidden')}
 	data-testid={testid}
 >
-	{#if isWebGPUModuleLoaded && createRenderer}
-		<Canvas renderMode={canvasRenderMode()} {createRenderer}>
-			{@render children?.()}
-		</Canvas>
-	{/if}
+	<Canvas renderMode={canvasRenderMode()} {createRenderer}>
+		{@render children?.()}
+	</Canvas>
 </div>
