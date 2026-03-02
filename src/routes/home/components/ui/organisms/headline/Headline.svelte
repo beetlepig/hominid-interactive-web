@@ -96,7 +96,7 @@
 
 <section id={sections.home.id} bind:this={headlineContainerRef} class="h-[250dvh] bg-gray-50">
 	<div class="sticky top-0 flex h-dvh flex-col items-center justify-center">
-		<div class="absolute inset-0">
+		<div class="absolute inset-0 overflow-x-hidden">
 			<Canvas>
 				<PolyhedronScene
 					projectName="Headline"
