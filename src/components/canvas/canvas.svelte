@@ -50,7 +50,6 @@
 		renderer
 			.init()
 			.then(() => {
-				isRendererReady = true;
 				console.log(
 					'Renderer backend:',
 					'isWebGPUBackend' in renderer.backend ? 'WebGPU' : 'WebGL'
@@ -58,6 +57,8 @@
 			})
 			.catch((err) => {
 				console.error('WebGPU init failed, falling back:', err);
+			})
+			.finally(() => {
 				isRendererReady = true;
 			});
 
